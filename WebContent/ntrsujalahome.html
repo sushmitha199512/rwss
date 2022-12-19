@@ -1,0 +1,600 @@
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keywords" content="RURAL WATER SUPPLY, TELANGANA"  />
+<meta name="keywords" content="RURAL WATER SUPPLY, TELANGANA"  />
+	
+<link rel="stylesheet" type="text/css" href="resources/style/dropdown.css"  />
+<link rel="stylesheet" type="text/css" href="resources/style/static_style.css"  />
+<link rel='stylesheet' type='text/css' href="resources/style/styles.css" />
+
+
+
+
+<LINK rel=stylesheet type=text/css href="imagess/style.css">
+
+
+	<link rel="stylesheet" href="resources/style/demos.css">
+	<link rel="stylesheet" href="resources/style/example.css" type="text/css">
+
+
+	<link href="" rel="stylesheet" id="theme_css"> 
+
+
+<link rel="stylesheet" type="text/css" href="resources/style/dropdown.css"/>
+
+
+<link rel="stylesheet" type="text/css" href="resources/style/rws-styles.css"  />
+
+
+
+
+
+<title> W A T E R S O F T - Official Website of RWSS</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+.style3 {color: #99CC66}
+
+
+
+
+-->
+</style>
+</head>
+<link rel="stylesheet" href="/pred/resources/style/jquery.ui.all.css">
+<script language="JavaScript" src="/pred/resources/javascript/jquery-1.4.2.js"></script>
+
+
+	<script language="JavaScript" src="/pred/imagess/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/pred/imagess/jquery.jqDock.min.js"></script>
+<link href="/pred/resources/style/dockstyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/pred/resources/javascript/jscharts.js"></script>
+<link rel="stylesheet" href="/pred/resources/style/example.css" type="text/css">
+<script type="text/javascript" src="/pred/resources/javascript/tinybox.js"></script>
+<link rel="stylesheet" href="/pred/resources/style/jquery.ui.all.css">
+	<script src="/pred/resources/javascript/jquery-3.6.0.js"></script>
+	<script src="/pred/resources/javascript/jquery.ui.core.js"></script>
+	<script src="/pred/resources/javascript/jquery.ui.widget.js"></script>
+	<script src="/pred/resources/javascript/jquery.ui.tabs.js"></script>
+	<link rel="stylesheet" href="/pred/resources/style/demos.css">
+	<link rel="stylesheet" href="/pred/resources/style/example.css" type="text/css">
+
+
+<script src="/pred/resources/javascript/jquery.ui.mouse.js"></script>
+	<script src="/pred/resources/javascript/jquery.ui.resizable.js"></script>
+	<script src="/pred/resources/javascript/jquery.ui.accordion.js"></script>
+
+<style>
+a:link{font-family:verdana;font-size:8pt;text-decoration:none;color:#316A95}
+a:visited{font-family:verdana;font-size:8pt;text-decoration:none;color:#316A95}
+a:hover{font-family:verdana;font-size:8pt;text-decoration:underline;color:#316A95}
+
+body{
+margin:0px;
+background-color:#87CEFF;
+
+}
+</style>
+<script>
+
+	
+
+
+
+		
+	$(function() {
+		$("#accordion").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+	$(function() {
+		$("#accordion1").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+
+
+	$(function() {
+		$("#accordion2").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	$(function() {
+		$("#accordion3").accordion({
+			event: "click hoverintent"
+		});
+	});
+	$(function() {
+		$("#accordion4").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+
+	$(function() {
+		$("#accordion5").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+	$(function() {
+		$("#accordion15").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	$(function() {
+		$("#accordion6").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	var cfg = ($.hoverintent = {
+		sensitivity: 7,
+		interval: 100
+	});
+
+	$.event.special.hoverintent = {
+		setup: function() {
+			$( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
+		},
+		teardown: function() {
+			$( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
+		},
+		handler: function( event ) {
+			var self = this,
+				args = arguments,
+				target = $( event.target ),
+				cX, cY, pX, pY;
+			
+			function track( event ) {
+				cX = event.pageX;
+				cY = event.pageY;
+			};
+			pX = event.pageX;
+			pY = event.pageY;
+			function clear() {
+				target
+					.unbind( "mousemove", track )
+					.unbind( "mouseout", arguments.callee );
+				clearTimeout( timeout );
+			}
+			function handler() {
+				if ( ( Math.abs( pX - cX ) + Math.abs( pY - cY ) ) < cfg.sensitivity ) {
+					clear();
+					event.type = "hoverintent";
+					// prevent accessing the original event since the new event
+					// is fired asynchronously and the old event is no longer
+					// usable (#6028)
+					event.originalEvent = {};
+					jQuery.event.handle.apply( self, args );
+				} else {
+					pX = cX;
+					pY = cY;
+					timeout = setTimeout( handler, cfg.interval );
+				}
+			}
+			var timeout = setTimeout( handler, cfg.interval );
+			target.mousemove( track ).mouseout( clear );
+			return true;
+		}
+	};
+	</script>	
+<script>
+	$(function() {
+		$( "#tabs" ).tabs({
+    
+			event: "mouseover"
+		});
+
+	});
+	</script>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+<script type=text/javascript>
+
+function hideDefaultText(element, defaultVal)
+{
+	if(element.value == defaultVal){
+		element.value =	'';
+	}
+}
+
+function showDefaultText(element, defaultVal)
+{
+	if(element.value == ''){
+		element.value =	defaultVal;
+	}
+}
+
+function IsEmpty(aTextField) {
+
+	var regexp = /^(\s)*$/
+
+	if(regexp.test(aTextField.value)){
+		return true;
+
+	}else{
+		return false;
+	}
+
+}
+function submitFn()
+{
+	document.forms[0].password.value=document.forms[0].password1.value;
+	if(document.forms[0].userId.value=="" || document.forms[0].userId.value=="Enter User ID")
+	{
+		alert("UserId is required");
+		return false;
+	}
+	else if(document.forms[0].password1.value=="" || document.forms[0].password1.value=="Password")
+	{
+		alert("Password is required");
+		return false;
+	}
+	else if(document.forms[0].userId.value!="" && document.forms[0].password1.value!="")
+	{
+		document.forms[0].password1.value="";
+		return true;
+	}
+		
+	return false;
+}
+
+</script>
+<center>
+<body  >
+<table width="952" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="10" valign="top" width="1" height="1"></td>
+    <td bgcolor="white"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><table width="96%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <!--<td valign="top"><img src="images/logo-1.jpg" width="950" height="129"></td>-->
+			<td valign="top"><img src="images/ntr.jpg" width="1100" height="134"></td>
+			
+			
+			
+			
+		  
+		<!--  <td>Welcome Rwss</td>-->
+		 
+          <tr >
+            <td valign="top"><TABLE WIDTH=1100 BORDER=0 CELLPADDING=0 CELLSPACING=0 height="6">
+            
+			  
+			  
+              
+			  <!-- 
+			   
+			    <tr>
+                    <td><span class="style4">SEARCH</span></td>
+                    <td>:</td>
+		              <td><input type="text" name=q class="input-box"></td>
+                    <td>&nbsp;</td>
+					<td><input type=image  name=btnG value='Search'  src="images/go.gif" width="21" height="17" border="0">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table></TD>-->
+				
+				<tr><Td>
+				<div id='cssmenu'>
+<ul>
+   <li><a href='#' align="right"><span>Home</span></a></li>
+   <!--   <li class='has-sub'><a href='#'><span>About Us NTR Sujala</span></a>
+     
+     <span class="style3"></span></li>
+    <li class='has-sub'><a href='#'><span>NTR</span></a>
+   <li class='has-sub'><a href='#'><span>NTR</span></a>
+       -->
+   </li>
+   <li class='last'><a href='#'><span>Contact Us</span></a></li>
+</ul>
+</div>
+
+
+
+
+</Td>
+</tr>
+
+        </table></td>
+      </tr>
+      <tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="215" valign="top" bgcolor="white">
+			<table width="215" border="0" cellspacing="0" cellpadding="0" >
+              
+              <tr>
+                <td><TABLE WIDTH=215 BORDER=0 CELLPADDING=0 CELLSPACING=0  >
+                   
+		<tr><td>
+	<!-- 	<div id="menu6">
+  <ul>
+    <li><a href="#" title="Citizen Services"> </a></li>
+</ul></div>-->
+
+
+
+			
+</td>
+<div>
+
+<iframe id="datamain" src="./slideshow.htm" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" frameborder="0" height="500px" width="850px"> </iframe>
+
+</div>		
+
+	</td></tr>	
+				
+			
+<TR>
+                    <TD>
+<div id="menu5">
+  <ul>
+  	
+	
+	   <!--
+	<li><a href="#" title="RWS&S At a Glance"> NTR</a></li>
+	<li><a href="#" title="AP Budget"> NTR</a></li>
+	<li><a href="#" title="Org Chart">  NTR</a></li>
+    <li><a href="#" title="IEC & HRD Callender">NTR</a></li>
+  <li><a href="sucessstoriesap.html" title="Success Stories"> Success Stories</a></li>
+    <li><a href="Newintiativesap.html" title="New Intiatives">  New Initiatives</a></li>
+    <li><a href="Functionaryap.html" title="Functionary">Functionary</a></li>
+    <li><a href="Executionap.html" title="Execution">Execution</a></li>
+	<li><a href="Reportsblueap.html" title="Reports">Reports</a></li>
+    <li><a href="mediagalleryap.html" title="MediaGallery"> Media Gallery</a></li> -->
+	
+	
+	
+	
+  </ul>
+</div>
+
+					</TD>
+                  </TR>
+				  
+				 
+				  
+
+                </TABLE></td>
+              </tr>
+                       
+             
+              
+            </table>
+            <!-- 
+            
+             <a href="http://india.gov.in/" target="_blank"> <img src="./images/india_gov_in.png" width="330" height="37"></a>
+            
+            
+	 <a href="http://ddws.gov.in/" target="_blank">  <img src="images/ddwswater1.jpg" onMouseOver="this.src='images/ddwswater1.jpg'" onMouseOut="this.src='images/ddwswater1.jpg'" width="330" height="38" /></a>		
+	 
+    <a href="https://webmail.ap.gov.in/" target="_blank"><img src="images/web.jpg" onMouseOver="this.src='images/web.jpg'" onMouseOut="this.src='images/web.jpg'" width="330" height="38"/></a> 
+  
+			 <a href="http://india.gov.in/" target="_blank"> <img src="./images/india_gov_in.png" width="330" height="37"></a>
+    
+<a href="https://mail.nic.in/mail/mauth" target="_blank"><img src="images/nnic.jpg" onMouseOver="this.src='images/nnic.jpg'" onMouseOut="this.src='images/nnic.jpg'" width="330" height="38" /></a>
+		 -->	
+			</td>
+			
+			
+             <td valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td valign="top" background="images/bg-logo.jpg"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                         
+                       <tr>
+                            <td valign="top">&nbsp;</td>
+                          </tr> <tr>
+                            <td valign="top">&nbsp;</td>
+                          </tr>
+                      <tr>
+                        <td align="center"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+                          <!-- <tr>
+                            <td valign="top" colspan="2"><div align="justify">NTR Sujala Sravanthi programme in which 25 litres of clean water would be provided for Rs 2 for each family in the state would kick off from October 2.</div></td>
+                          </tr>-->
+                         <!-- 
+                          <td valign="top" colspan="2">
+                          <div align="justify">
+                          <b>20-litre mineral water cans to be supplied at Rs.2 to each household</b><br></br>
+The Cabinet sub-committee on NTR Sujala Sravanthi scheme to provide packaged drinking water to every habitation in Andhra Pradesh has tentatively decided to launch the first phase of the scheme from October.<br></br>
+Of 47,190 habitations in the State, about 5,200 villages were identified for supply in the first phase where at present the drinking water supply did not reach even 25 per cent of population in a habitation.<br></br>
+The committee comprising Ministers of Municipal Administration and Urban Development, Irrigation and Panchayat Raj held its first meeting here on Friday to discuss the frame work, technology to be adopted for treatment of water and supply of 20 litres of mineral water at Rs.2 for every household.
+Sujala Sravanthi is one of the five announcements made by the Chief Minister N.Chandrababu Naidu soon after his swearing in and was included in the Telugu Desam manifesto.<br></br>
+Briefing the media persons at the Secretariat, Panchayat Raj Minister Ch.Ayyanna Patrudu said that a seven member committee headed by expert and Technical advisor Kondal Rao has been constituted to study and submit a report in 15 days about the best technology, equipment and methodology for supply of mineral water and maintenance of equipment.<br></br> 
+The technical committee would comprise representatives of National Environmental Engineering Research Institute, Ground Water, Public health, Rural Water Supply, Irrigation, Health (Institute of Preventive Medicine).<br></br>
+Mr Ayyanna Patrudu said that 16,742 habitations in the State were categorised under fully covered area, ie, 55 litres per capita for drinking and all other requirements. 
+The Sujala Sravanthi scheme however will confine itself for supplying 20 litres of drinking water per household.
+                          
+                          </div></td>
+                          
+                          
+                           -->
+                          
+                          
+                     <tr>
+                            <td valign="top">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                
+                                <td><table width="95%" border="0" align="center" cellpadding="5" cellspacing="0">
+                                  
+								  
+								  
+                                </table></td>
+                              </tr>
+                              <tr><td height="20"></td>
+								  </tr>
+                              </table>
+                     
+					
+                      
+                      </table></td>
+						
+                      </tr>
+                     
+                    </table></td>
+				
+
+                   					
+                    <td width="244" valign="top" ><table width="100%" border="0" cellspacing="0" cellpadding="2">
+                    <!--srinu--> 
+					 
+				
+				
+<!--
+<tr><td><img src="themes/blue.jpg" width="25" height="10" >
+<img src="themes/pink.jpg"  width="25" height="10" >
+<img src="themes/greenfin.jpg" width="25" height="10">
+<img src="themes/bluefin.jpg" width="25" height="10" ></td></tr>
+
+
+-->
+				<div class="news_container_main">
+<div class="news_tab_heading_bg1">
+<div class="tab_heading">Highlights</div>
+<div class="view_all_main">
+<!-- 
+<div class="view_all">
+
+<a href="viewall.html" target="_blank">view&nbsp;all</a>
+ 
+</div>
+-->
+</div>
+</div>
+
+
+<div class="BlockContent"> 
+<div class="BlockContent-body">
+ <!--  <marquee direction="up" scrolldelay="25" scrollamount="2" onMouseOver="this.stop()" onMouseOut="this.start()" height="275"> -->
+ 
+<!--<div class="news_scroll_txt"><img src="images/bullet_g.GIF" class="list_icon" alt="" height="7" width="7"></div>-->
+
+
+<a href="./downloads/NTR/2014PR_RT740gos.PDF" target="_blank"><img src="images/new.gif" >GOs on NTR Sujala</a><br></br>
+<a href="./downloads/NTR/NTR Sujala Pathakam - CM Presentation - Final-21.7.14.pdf" target="_blank"><img src="images/new.gif" >Presentation</a>	<br></br>
+<a href="./downloads/NTR/Minutes1.pdf" target="_blank"><img src="images/new.gif" >Minutes of the 1st Meeting of Technical Experts Committee</a><br></br>
+<a href="./downloads/NTR/Minutes2_-_04.07.2014.pdf" target="_blank"><img src="images/new.gif" >Minutes of the 2nd Meeting of Technical Experts Committee</a><br></br>	
+<a href="./downloads/NTR/Minutes_3-14.07.2014.pdf"><img src="images/new.gif" >Minutes of the 3rd Meeting of Technical Experts Committee</a><br></br>
+<a href="./downloads/NTR/Water_treatment_technologies_and_their_effectiveness.pdf"><img src="images/new.gif" >Technical Note on Different Water Treatment Technologies</a><br></br>
+ 
+
+
+</div>
+</div>
+</div>
+</div>	
+			
+	
+
+<td align="left">
+<form  method="post" action="Login.do" onSubmit="return submitFn()" focus="userId">
+
+
+					<table  style="BORDER-COLLAPSE: collapse; "  cellspacing="0" cellpadding="0" width="100%"  >
+                     
+                     
+                     <tr><td>
+                     <a href="switch.do?prefix=/works&page=/ntrSujalaSponser.do&mode=data&subMode=init"><img src="images/sponsor.png"></a></td></tr>
+						  </table>	 
+						
+					
+						<br>
+					
+			
+    
+    
+    			  	
+				
+					  
+                     
+                    </table></td>
+                  </tr>
+				  
+				 
+				  
+                </table>
+				</td>
+				
+            </table></td>
+			
+			
+			
+          </tr>
+        </table></td>
+      </tr>
+	  
+	  
+
+
+	  
+	  
+	 
+     <!--#0068A2-->
+      <tr>
+	  
+	   
+        <td  colspan="4" height="25"  bgcolor="#4A8AC7"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+		  
+            <td colspan="4"><span class="style1">&copy; 2014-15 Rural Water Supply &amp; Sanitation.</span><span class="style1">Designed, 
+      Developed &amp; Hosted and Maintained by National Informatics Centre, Andhra Pradesh 
+      State Centre.	</span></td>
+	  
+		<!--   
+	  <a href="Related Links" target="_blank"> <img src="./images/imagesyyy.jpg" width="210" height="60" ></a>
+	  
+	   <a href=" FeedBack" target="_blank" title="Feedback"> <img src="./images/feedback.jpg" width="110" height="59"></a>
+	  <a href="Visitor" target="_blank" title="Visitors"> <img src="./images/visitors.jpg" width="110" height="59"></a>
+	   
+	  
+	 </tr><td align="center"><span class="style1"><a href="#"><font color="#9933FF"><b> FeedBack</b></font></a></span><span class="style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><font color="#9933FF"><b>Visitor</b></font><span class="style2"></span></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><font color="#9933FF"><b>Related Links</b></font></a></span></td>-->
+    </table></td>
+	
+	
+	
+	
+    <td width="1" valign="top" ></td>
+  </tr>
+</table>
+</form>
+</body>
+</center>
+</html>

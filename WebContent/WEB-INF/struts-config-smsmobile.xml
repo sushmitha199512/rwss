@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+<data-sources>
+<data-source type="org.apache.commons.dbcp.BasicDataSource">
+<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<set-property property="url" value="jdbc:oracle:thin:@10.160.0.20:1521:wsoft" />
+<set-property property="username" value="aprwssuser"/>
+<set-property property="password" value="aprwssuser"/>
+<set-property property="maxActive" value="1000" />
+<set-property property="maxWait" value="5000" />
+<!-- 
+<set-property property="maxActive" value="100"/>
+<set-property property="maxWait" value="100"/>
+ -->
+<set-property property="" value=""/>
+</data-source>
+</data-sources>
+
+<form-beans>
+<form-bean name="TankerRegistrationForm" type="nic.watersoft.smsmobile.RwsTankerRegistrationForm"/>
+ <form-bean name="SmsRegistrationForm" type="nic.watersoft.smsmobile.RwsSmsRegistrationForm"/>
+ <form-bean name="PrivateSourceForm" type="nic.watersoft.smsmobile.Rws_PrivateSourceForm"/>
+  <form-bean name="EmployeeEntryForm" type="nic.watersoft.smsmobile.Rws_Employee_Mobile_Updation_Form" />
+ 
+ <form-bean name="authorisedUserDetailsForm" type="nic.watersoft.smsmobile.AuthorisedMobileUserDetailsForm"/>
+ <form-bean name="residualChlorineForm" type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Form"/>
+  <form-bean name="schemesForm" type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Form"/>
+  <form-bean name="droughtForm" type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Form"/>
+  <form-bean name="ohsrForm" type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Form"/>
+<form-bean name="dlpoForm" type="nic.watersoft.smsmobile.Rws_dlpoForm"/>
+<form-bean name="tankerTripsForm" type="nic.watersoft.smsmobile.RwsWaterTankerTripsForm" />
+ <form-bean name="tvmForm" type="nic.watersoft.smsmobile.Rws_TVM_Frm" />
+  <form-bean name="teluguTranslationForm" type="nic.watersoft.smsmobile.Rws_TeluguTranslation_Frm" />
+ 
+</form-beans>
+
+<!--***************************************************************************************-->
+ 
+<action-mappings>
+<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+
+	<action path="/SourceDestination" name="PrivateSourceForm"
+			scope="request" type="nic.watersoft.smsmobile.Rws_PrivateSource_Entry_frm">
+
+			<forward name="get2" path="/rws_Source_Destination_frm.jsp" />
+			<forward name="view" path="/rws_Sources_Destination_List.jsp" />
+			<forward name="save" path="/rws_Source_Destination_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+
+		</action>
+		<!-- added by nagendra 28-07-2020 for tanker volunteer mapping -->
+		 <action path="/TeluguTranslation" name="teluguTranslationForm" scope="request"
+			type="nic.watersoft.smsmobile.Rws_TeluguTranslation_Entry_Frm">
+			<forward name="teluguEntryFrm" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="villages" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="habitations" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="save" path="/rws_telugu_translation_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		<action path="/PrivateSourceReg" name="PrivateSourceForm"
+			scope="request" type="nic.watersoft.smsmobile.Rws_PrivateSource_Entry_frm">
+
+			<forward name="get2" path="/rws_privateSource_frm.jsp" />
+			<forward name="view" path="/rws_privateSources_List.jsp" />
+			<forward name="save" path="/rws_privateSource_frm.jsp" />
+			<forward name="get" path="/rws_privateSource_Edit_frm.jsp" />
+			<forward name="privateSourceImagesDownload" path="/rws_private_source_images_download.jsp" />
+			<forward name="privateSourceImagesDownloada" path="/rws_private_source_images_download.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+
+		</action>
+		<action path="/TankerRegistration" name="TankerRegistrationForm"
+			scope="request" type="nic.watersoft.smsmobile.Rws_Tanker_Registration_Entry_Action">
+
+			<forward name="get2" path="/Rws_TankerRegistration_frm.jsp" />
+			<forward name="save" path="/Rws_TankerRegistration_frm.jsp" />
+			<forward name="view" path="/Rws_Tanker_Reg_List.jsp" />
+			<forward name="edit" path="/Rws_TankerRegistration_edit_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+
+		</action>
+		<action path="/SmsRegistration" name="SmsRegistrationForm"
+			scope="request" type="nic.watersoft.smsmobile.Rws_SmsRegistration_Entry_frm">
+
+			<forward name="get" path="/rws_SmsRegistration_edit_frm.jsp" />
+			<forward name="get2" path="/rws_SmsRegistration_frm.jsp" />
+			<forward name="view" path="/rws_SmsRegistration_frm.jsp" />
+			<forward name="save" path="/rws_SmsRegistration_frm.jsp" />
+			<forward name="view" path="/rws_SmsRegistration_List.jsp" />
+			<forward name="taskauth" path="/rws_task_authorisation_frm.jsp" />
+			<forward name="viewTask" path="/rws_Task_Details_List.jsp" />
+			<forward name="editTask" path="/rws_task_authorisation_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+
+		<action path="/employeeEntry" name="EmployeeEntryForm" scope="session"
+			type="nic.watersoft.smsmobile.Rws_Employee_Mobile_Updation_Action">
+
+			<forward name="get" path="/rws_employee_entry_frm.jsp" />
+			<forward name="ubdateMobile" path="/rws_employee_entry_frm.jsp" />
+			<forward name="officechnges" path="/rws_employee_entry_officechange_frm.jsp" />
+			<forward name="officedetailsup" path="/rws_employee_entry_officechange_frm.jsp" />
+			<forward name="viewMobile" path="/rws_employee_entry_List.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+		<action name="authorisedUserDetailsForm" path="/AuthorisedUserDetails"
+			scope="session" type="nic.watersoft.smsmobile.AuthorisedMobileUserDetailsAction">
+			<forward name="get2"
+				path="/rws_Authorised_User_Details_Action_Taken_frm.jsp" />
+			<forward name="userData"
+				path="/rws_Authorised_User_Details_Action_Taken_frm.jsp" />
+			<forward name="Save"
+				path="/rws_Authorised_User_Details_Action_Taken_frm.jsp" />
+			<forward name="userDataView"
+				path="/rws_Authorised_User_Details_Action_Taken_View.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+		<action name="residualChlorineForm" path="/ResidualChlorine"
+			scope="session" type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Action">
+			<forward name="get" path="/rws_Residual_Chlorine_Action_Taken_frm.jsp" />
+			<forward name="chlorideData" path="/rws_Residual_Chlorine_Action_Taken_frm.jsp" />
+			<forward name="Save" path="/rws_Residual_Chlorine_Action_Taken_frm.jsp" />
+			<forward name="chlorideDataView" path="/rws_Residual_Chlorine_Action_Taken_View.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		
+		<action name="schemesForm" path="/SchemesActionTaken" scope="session"
+			type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Action">
+			<forward name="get" path="/rws_Schemes_Action_Taken_frm.jsp" />
+			<forward name="schemesData" path="/rws_Schemes_Action_Taken_frm.jsp" />
+			<forward name="SaveSchemes" path="/rws_Schemes_Action_Taken_frm.jsp" />
+			<forward name="schemesDataView" path="/rws_Schemes_Action_Taken_View.jsp" />
+			<forward name="schemesEdit" path="/rws_Schemes_Action_Taken_Edit_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+		<action name="droughtForm" path="/DroughtActionTaken" scope="session"
+			type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Action">
+			<forward name="get" path="/rws_Drought_Action_Taken_frm.jsp" />
+			<forward name="droughtData" path="/rws_Drought_Action_Taken_frm.jsp" />
+			<forward name="SaveDrought" path="/rws_Drought_Action_Taken_frm.jsp" />
+			<forward name="droughtDataView" path="/rws_Drought_Action_Taken_View.jsp" />
+			<forward name="droughtEdit" path="/rws_Drought_Action_Taken_Edit_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+		<action name="ohsrForm" path="/OhsrActionTaken" scope="session"
+			type="nic.watersoft.smsmobile.SMSBased_WQ_Schemes_Drought_Action">
+			<forward name="get" path="/rws_Ohsr_Action_Taken_frm.jsp" />
+			<forward name="ohsrData" path="/rws_Ohsr_Action_Taken_frm.jsp" />
+			<forward name="SaveOhsr" path="/rws_Ohsr_Action_Taken_frm.jsp" />
+			<forward name="ohsrDataView" path="/rws_Ohsr_Action_Taken_View.jsp" />
+			<forward name="droughtEdit" path="/rws_Ohsr_Action_Taken_Edit.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+
+		</action>
+
+
+		<action path="/dlpo" name="dlpoForm" scope="session"
+			type="nic.watersoft.smsmobile.Rws_dlpo_action">
+			<forward name="mpdoEntryFrm" path="/rws_dlpo_entry_frm.jsp" />
+			<forward name="divisions" path="/rws_dlpo_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_dlpo_entry_frm.jsp" />
+			<forward name="get" path="/rws_dlpo_entry_frm.jsp" />
+			<forward name="view" path="/rws_dlpo_list.jsp" />
+			<forward name="save" path="rws_dlpo_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_dlpo_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/divisionMandal" name="dlpoForm" scope="session"
+			type="nic.watersoft.smsmobile.Rws_dlpo_mandals_action">
+
+			<forward name="dlpoMandalEntryFrm" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="divisions" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="editdivisions" path="/rws_dlpo_mandal_edit_frm.jsp" />
+			<forward name="editmandals" path="/rws_dlpo_mandal_edit_frm.jsp" />
+			<forward name="get" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="view" path="/rws_dlpo_mandal_list.jsp" />
+			<forward name="save" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="Edit" path="/rws_dlpo_mandal_edit_frm.jsp" />
+			<forward name="update" path="/rws_dlpo_mandal_entry_frm.jsp" />
+			<forward name="Delete" path="/rws_dlpo_mandal_list.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		<action path="/tankerTrips" name="tankerTripsForm"	scope="request"	type="nic.watersoft.smsmobile.RwsWaterTankerTripsAction">
+			<forward name="data" 	path="/rws_water_tanker_trips_frm.jsp" />			
+			<forward name="view" path="/rws_water_tanker_trips_list.jsp"/> 
+			<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		<!-- added by nagendra 31-10-2019 for tanker volunteer mapping -->
+		 <action path="/TVM" name="tvmForm" scope="request"
+			type="nic.watersoft.smsmobile.Rws_TVM_Entry_Frm">
+			<forward name="tvmEntryFrm" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="villages" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="habitations" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="volunteer" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="tanker" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="view" path="/rws_TVM_list.jsp" />
+			<forward name="edit" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="excelView" path="/rws_tvm_Excel.jsp" />
+			<forward name="save" path="/rws_tvm_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+</action-mappings>
+
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources" />
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+</plug-in>
+
+</struts-config>

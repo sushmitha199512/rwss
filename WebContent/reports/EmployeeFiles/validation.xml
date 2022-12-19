@@ -1,0 +1,1767 @@
+﻿<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+	
+	<global>
+		<constant>
+			<constant-name>decimalMask</constant-name>
+			<constant-value>^[0-9.]$</constant-value>
+		</constant>
+	</global>
+	<formset>
+			
+		<form name="headForm">
+			<field property="hon" depends="required">
+				<arg0 key="app.hon" />
+			</field>
+		</form>
+		<form name="circleOfficeForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.coc" />
+			</field>
+			<field property="con" depends="required">
+				<arg0 key="app.con" />
+			</field>
+		</form>
+		<form name="divisionOfficeForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.coc" />
+			</field>
+			<field property="doc" depends="required">
+				<arg0 key="app.doc" />
+			</field>
+			<field property="don" depends="required">
+				<arg0 key="app.don" />
+			</field>
+		</form>
+		<form name="subdivisionOfficeForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.coc" />
+			</field>
+			<field property="doc" depends="required">
+				<arg0 key="app.doc" />
+			</field>
+			<field property="sdoc" depends="required">
+				<arg0 key="app.sdoc" />
+			</field>
+			<field property="sdon" depends="required">
+				<arg0 key="app.sdon" />
+			</field>
+		</form>
+		<form name="sectionOfficeForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.coc" />
+			</field>
+			<field property="doc" depends="required">
+				<arg0 key="app.doc" />
+			</field>
+			<field property="sdoc" depends="required">
+				<arg0 key="app.sdoc" />
+			</field>
+			<field property="soc" depends="required">
+				<arg0 key="app.soc" />
+			</field>
+			<field property="son" depends="required">
+				<arg0 key="app.son" />
+			</field>
+		</form>
+
+		<form name="officeForm">
+			<field property="hoc" depends="required">
+				<arg0 key="app.headOffice" />
+			</field>
+			<field property="address" depends="required">
+				<arg0 key="app.street" />
+			</field>
+			<field property="city" depends="required">
+				<arg0 key="app.city" />
+			</field>
+			<field property="pin" depends="required,mask">
+				<arg0 key="app.pin" />
+				<var>
+				   <var-name>mask</var-name>
+				   <var-value>^[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="phone" depends="required,mask">
+				<arg0 key="app.phone" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="fax" depends="integer">
+				<arg0 key="app.fax" />
+			</field>
+	    	<field property="email" depends="email">
+				<arg0 key="app.email" />
+			</field>
+			<field property="building" depends="required">
+				<arg0 key="app.building" />
+			</field>
+			<field property="hof" depends="required">
+				<arg0 key="app.hof" />
+			</field>
+			<field property="project" depends="required">
+				<arg0 key="app.project" />
+			</field>
+	    </form>
+	    <form name="desgnForm">
+			<field property="desgnCode" depends="required">
+				<arg0 key="app.desgnCode" />
+			</field>
+			<field property="desgnAcr" depends="required">
+				<arg0 key="app.desgnAcr" />
+			</field>
+			<field property="desgnName" depends="required">
+				<arg0 key="app.desgnName" />
+			</field>
+			<field property="desgnType" depends="required"> 
+				<arg0 key="app.desgnType" />
+			</field>
+		</form>
+		
+		<form name="priorityForm">
+			<field property="priorityCode" depends="required,integer">
+			<msg name="integer" key="errors.integer"/>
+				<arg0 key="app.priorityCode" />
+			</field>
+			<field property="priorityDesc" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.priorityDesc" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="priorityFrom" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.priorityFrom" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+		</form>
+	
+	<form name="qualForm">
+			<field property="qualCode" depends="required">
+				<arg0 key="app.qualCode" />
+			</field>
+			<field property="qualName" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.qualName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+	<form name="repForm">
+		<field property="publicRepName" depends="required,mask">
+		<msg name="mask" key="errors.stringvalids"/>
+			<arg0 key="app.repName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+	<form name="workSpecialForm">
+	<field property="workSpecCode" depends="required">
+		<arg0 key="app.workSpecCode" />
+	 </field>
+	<field property="workSpecName" depends="required">
+		<msg name="mask" key="errors.stringvalids"/>
+			<arg0 key="app.workSpecName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+
+	<form name="instituteForm">
+		<field property="instituteName" depends="required,mask">
+		<msg name="mask" key="errors.stringvalids"/>
+			<arg0 key="app.instName" />
+			<var>
+				<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+			</var>
+		</field>
+	</form>
+	<form name="panchayatForm">
+		<field property="habCode" depends="required">
+			<arg0 key="app.habCode" />
+		</field>
+	</form>
+
+
+	<form name="assetTypeForm">
+			<field property="assetTypeName" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+			<arg0 key="app.assetTypeName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+
+			</field>
+		</form>
+		<form name="assetCompTypeForm">
+			<field property="assetTypeCode" depends="required">
+				<arg0 key="app.assetTypeCode" />
+			</field>
+			<field property="assetCompTypeName" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.assetCompTypeName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			
+		</form>
+
+		<form name="assetSubCompTypeForm">
+			<field property="assetTypeCode" depends="required">
+				<arg0 key="app.assetTypeCode" />
+			</field>
+			<field property="assetCompTypeCode" depends="required">
+				<arg0 key="app.assetCompTypeCode" />
+			</field>
+			<field property="assetSubCompTypeName" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.assetCompTypeName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			
+		</form>
+		<form name="assetSubCompParamForm">
+			<field property="assetTypeCode" depends="required">
+				<arg0 key="app.typeOfAsset" />
+			</field>
+			<field property="assetCompTypeCode" depends="required">
+				<arg0 key="Asset Component Type" resource="false"/>
+			</field>
+			<field property="assetSubCompTypeCode" depends="required">
+				<arg0 key="Asset Sub Component Type" resource="false" />
+			</field>
+			<field property="measurementType" depends="required,mask">
+				<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="Measurement Type" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="unitOfMeasure" depends="required,mask">
+				<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="Unit Of Measurement" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="assetForm">
+
+           <field property="coc" depends="required">
+				<arg0 key="app.circle" />
+			</field>
+			<field property="district" depends="required">
+				<arg0 key="app.district" />
+			</field>
+			<field property="mandal" depends="required">
+				<arg0 key="app.mandal" />
+			</field>
+			<field property="pcode" depends="required">
+				<arg0 key="app.panchayat" />
+			</field>
+			<field property="vcode" depends="required">
+				<arg0 key="app.village" />
+			</field>
+			<field property="habCode" depends="required">
+				<arg0 key="app.habCode" />
+			</field>
+           
+			<field property="assetTypeCode" depends="required">
+				<arg0 key="app.assetTypeCode" />
+			</field>
+
+			<field property="pumpCode" depends="required">
+				<arg0 key="app.pumpCode" />
+			</field>
+			
+			<field property="assetName" depends="required">
+				<arg0 key="app.assetName" />
+			</field> 
+	
+			
+			<field property="location" depends="required">
+				<arg0 key="app.location" />
+			</field>
+			<field property="dateofCreation" depends="mask,required">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.dateofCreation"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[/| ]*[0-9]{2}[/| ]*[0-9]{4}$</var-value>
+				</var>
+			</field>
+			<field property="assetCost" depends="required,float">
+			<msg name="float" key="errors.float"/>
+				<arg0 key="app.assetCost" />
+			</field>
+			<field property="startYear" depends="required,integer">
+				<arg0 key="app.startYear" />
+			</field>
+			<field property="endYear" depends="required,integer">
+				<arg0 key="app.endYear" />
+			</field>
+		    
+			
+		 	
+			<field property="assetStatus" depends="required">
+				<arg0 key="app.assetStatus" />
+			</field>
+					 
+		</form>
+				
+		 <form name="assetForm2" >		
+		 <field property="popDes" depends="required,integer">
+				<arg0 key="app.popDes" />
+			</field>
+		 
+		 <field property="source" depends="required">
+				<arg0 key="app.source" />
+		</field>
+				 
+		<field property="sourceQuality" depends="required">
+				<arg0 key="app.sourceQuality" />
+		</field>
+		
+		<field property="sourceYield" depends="required,float">
+				<arg0 key="app.sourceYield" />
+		</field>
+		
+		<field property="sourceDepend" depends="required">
+				<arg0 key="app.sourceDepend" />
+		</field>
+		
+		<field property="sourceDepth" depends="required,float">
+				<arg0 key="app.sourceDepth" />
+		</field>
+		
+		<field property="sourceDiameter" depends="required,float">
+				<arg0 key="app.sourceDiameter" />
+		</field>
+				
+		<field property="sourceCondition" depends="required">
+				<arg0 key="app.sourceCondition" />
+		</field>
+		
+		<field property="sourceSwl" depends="required,float">
+				<arg0 key="app.sourceSwl" />
+		</field>
+		
+		<field property="sourceNwl" depends="required,float">
+		 <arg0 key="app.sourceNwl" />
+		</field>
+
+		<field property="phSize" depends="required">
+				<arg0 key="app.phSize" />
+		</field>
+		
+		<field property="phCondition" depends="required">
+				<arg0 key="app.phCondition" />
+		</field>
+		
+		<field property="phType" depends="required">
+				<arg0 key="app.phType" />
+		</field>
+
+		<field property="pumpName" depends="required">
+				<arg0 key="app.pumpName" />
+		</field>
+		
+		<field property="pumpCapacity" depends="required,float">
+		 <arg0 key="app.pumpCapacity" />
+		</field>		
+		
+		<field property="pumpType" depends="required">
+				<arg0 key="app.pumpType" />
+		</field>
+		
+		<field property="purYear" depends="required,integer">
+		 <arg0 key="app.purYear" />
+		</field>		
+		
+	   
+		<field property="hrRun" depends="required,integer">
+		 <arg0 key="app.hrRun" />
+		</field>		
+		
+		
+		<field property="staExe" depends="required">
+				<arg0 key="app.staExe" />
+		</field>		
+		
+		<field property="pumpDutyLpm" depends="required,integer">
+		 <arg0 key="app.pumpDutyLpm" />
+		</field>	
+
+		<field property="pumpDutyHead" depends="required,integer">
+		 <arg0 key="app.pumpDutyHead" />
+		</field>	
+		
+				
+		</form>
+		 
+		  <form name="assetForm3" >
+		  <field property="glsrNo" depends="required,integer">
+		  <arg0 key="app.glsrNo" />
+		  </field>	
+		  
+		  <field property="glsrLocation" depends="required">
+		  <arg0 key="app.glsrLocation" />
+		  </field>	
+		  
+		  <field property="glsrCapacityInLts" depends="required,float">
+		  <arg0 key="app.glsrCapacityInLts" />
+		  </field>	
+		  
+		 
+		  <field property="glsrMade" depends="required">
+		  <arg0 key="app.glsrMade" />
+		  </field>	
+		  
+		  <field property="glsrCondition" depends="required">
+		  <arg0 key="app.glsrCondition" />
+		  </field>	
+		  		  
+		  <field property="glsrFillHrs" depends="required,float">
+		  <arg0 key="app.glsrFillHrs" />
+		  </field>	
+		  
+		  <field property="glsrEmptyHrs" depends="required,float">
+		  <arg0 key="app.glsrEmptyHrs" />
+		  </field>	
+		  
+		  <field property="glsrDraCondition" depends="required">
+		  <arg0 key="app.glsrDraCondition" />
+		  </field>	
+		  
+		  <field property="glsrHygiene" depends="required">
+		  <arg0 key="app.glsrHygiene" />
+		  </field>	
+		  
+		  </form>
+		
+		
+		 <form name="assetForm4" >
+		  <field property="ohsrNo" depends="required,integer">
+		  <arg0 key="app.ohsrNo" />
+		  </field>	
+		
+		  
+		  <field property="ohsrLocation" depends="required">
+		  <arg0 key="app.ohsrLocation" />
+		  </field>	
+		  
+		  <field property="ohsrCapacityLts" depends="required,float">
+		  <arg0 key="app.ohsrCapacityLts" />
+		  </field>	
+		  
+		 
+		  <field property="ohsrMade" depends="required">
+		  <arg0 key="app.ohsrMade" />
+		  </field>	
+		  
+		  <field property="ohsrHt" depends="required,float">
+		  <arg0 key="app.ohsrHt" />
+		  </field>	
+		  
+		  <field property="ohsrCond" depends="required">
+		  <arg0 key="app.ohsrCond" />
+		  </field> 
+		  
+		  <field property="ohsrFillHrs" depends="required,float">
+		  <arg0 key="app.ohsrFillHrs" />
+		  </field>	
+		  
+		  <field property="ohsrEmptyHrs" depends="required,float">
+		  <arg0 key="app.ohsrEmptyHrs" />
+		  </field>	
+		  
+		  <field property="ohsrHygiene" depends="required">
+		  <arg0 key="app.ohsrHygiene" />
+		  </field>	
+		  
+		  <field property="ohsrFen" depends="required">
+		  <arg0 key="app.ohsrFen" />
+		  </field>	
+		  
+		  </form>
+		  
+		  <form name="assetForm5" >
+		  <field property="ohsrCode" depends="required">
+		  <arg0 key="app.ohsrCode" />
+		  </field>	
+		  
+		  <field property="ohsrCapacityLts" depends="required,float">
+		  <arg0 key="app.ohsrCapacityLts" />
+		  </field>	
+		  
+		  <field property="ohsrLocation" depends="required">
+		  <arg0 key="app.ohsrLocation" />
+		  </field>	
+		  
+		  <field property="ohsrStages" depends="required,float">
+		  <arg0 key="app.ohsrStages" />
+		  </field>	
+		  
+		  <field property="ohsrStages" depends="required,float">
+		  <arg0 key="app.ohsrLwl" />
+		  </field>	
+		  
+  	      <field property="ohsrStages" depends="required,float">
+		  <arg0 key="app.ohsrMwl" />
+		  </field>	
+		   
+		  <field property="ohsrFillHrs" depends="required,float">
+		  <arg0 key="app.ohsrFillHrs" />
+		  </field>	
+		  
+		  <field property="ohsrEmptyHrs" depends="required,float">
+		  <arg0 key="app.ohsrEmptyHrs" />
+		  </field>	
+		  
+		  
+		  </form>
+		
+		
+		 <form name="assetForm6" >
+		  <field property="ohbrCode" depends="required">
+		  <arg0 key="app.ohbrCode" />
+		  </field>	
+		  
+		  <field property="ohbrCapacityLts" depends="required,float">
+		  <arg0 key="app.ohbrCapacityLts" />
+		  </field>	
+		  
+		  <field property="ohbrLocation" depends="required">
+		  <arg0 key="app.ohbrLocation" />
+		  </field>	
+		  
+		  <field property="ohbrStages" depends="required,float">
+		  <arg0 key="app.ohbrStages" />
+		  </field>	
+		  
+		  <field property="ohbrLwl" depends="required,float">
+		  <arg0 key="app.ohbrLwl" />
+		  </field>	
+		  
+  	      <field property="ohbrMwl" depends="required,float">
+		  <arg0 key="app.ohbrMwl" />
+		  </field>	
+		   
+		  <field property="ohbrFillHrs" depends="required,float">
+		  <arg0 key="app.ohbrFillHrs" />
+		  </field>	
+		  
+		  <field property="ohbrEmptyHrs" depends="required,float">
+		  <arg0 key="app.ohbrEmptyHrs" />
+		  </field>	
+		  	  
+		  </form>
+		  
+		  <form name="assetForm7" >
+		  <field property="glsrCode" depends="required">
+		  <arg0 key="app.glsrCode" />
+		  </field>	
+		  
+		  <field property="glsrCapacityInLts" depends="required,float">
+		  <arg0 key="app.glsrCapacityInLts" />
+		  </field>	
+		  
+		  <field property="glsrLocation" depends="required">
+		  <arg0 key="app.glsrLocation" />
+		  </field>	
+		  
+		  <field property="glsrStages" depends="required,float">
+		  <arg0 key="app.glsrStages" />
+		  </field>	
+		  
+		  <field property="glsrLwl" depends="required,float">
+		  <arg0 key="app.glsrLwl" />
+		  </field>	
+		  
+  	      <field property="glsrMwl" depends="required,float">
+		  <arg0 key="app.glsrMwl" />
+		  </field>	
+		   
+		  <field property="glsrFillHrs" depends="required,float">
+		  <arg0 key="app.glsrFillHrs" />
+		  </field>	
+		  
+		  <field property="glsrEmptyHrs" depends="required,float">
+		  <arg0 key="app.glsrEmptyHrs" />
+		  </field>	
+		  
+		  
+		  </form>
+		 
+		 
+		  
+		  <form name="assetForm8" >
+		  <field property="glbrCode" depends="required">
+		  <arg0 key="app.glbrCode" />
+		  </field>	
+		  
+		  <field property="glbrCapacityInLts" depends="required,float">
+		  <arg0 key="app.glbrCapacityInLts" />
+		  </field>	
+		  
+		  <field property="glbrLocation" depends="required">
+		  <arg0 key="app.glbrLocation" />
+		  </field>	
+		  
+		   
+		  
+		  <field property="glbrLwl" depends="required,float">
+		  <arg0 key="app.glbrLwl" />
+		  </field>	
+		  
+  	      <field property="glbrMwl" depends="required,float">
+		  <arg0 key="app.glbrMwl" />
+		  </field>	
+		   
+		  <field property="glbrFillHrs" depends="required,float">
+		  <arg0 key="app.glbrFillHrs" />
+		  </field>	
+		  
+		  <field property="glbrEmptyHrs" depends="required,float">
+		  <arg0 key="app.glbrEmptyHrs" />
+		  </field>	
+		  
+		  
+		  </form>
+		   <form name="assetForm9" >
+		  <field property="cisNo" depends="required,integer">
+		  <arg0 key="app.cisNo" />
+		  </field>	
+		  
+		  <field property="cisLocation" depends="required">
+		  <arg0 key="app.cisLocation" />
+		  </field>	
+		  
+		  <field property="cisCapLts" depends="required,float">
+		  <arg0 key="app.cisCapacity" />
+		  </field>	
+		  
+		   
+		  
+		  <field property="cisPf" depends="required ">
+		  <arg0 key="app.cisPf" />
+		  </field>	
+		  
+  	      <field property="cisPfCond" depends="required ">
+		  <arg0 key="app.cisPfCond" />
+		  </field>	
+		   
+		  <field property="cisDrain" depends="required ">
+		  <arg0 key="app.cisDrain" />
+		  </field>	
+		  
+		  <field property="cisTap" depends="required,integer">
+		  <arg0 key="app.cisTap" />
+		  </field>	
+		  
+		    <field property="cisTapCond" depends="required ">
+		  <arg0 key="app.cisTapCond" />
+		  </field>	
+		   
+		  <field property="cisHr" depends="required,float">
+		  <arg0 key="app.cisHr" />
+		  </field>	
+		   
+		  </form>
+		 
+		 <form name="assetForm1" >
+		 	
+		 <field property="yearOfDrilling" depends="required,mask">
+				<arg0 key="app.yearOfDrilling" />
+				<var>
+				   <var-name>mask</var-name>
+				   <var-value>^[0-9]*$</var-value>
+				</var>
+			</field>
+			<field property="diameter" depends="required,float">
+			<msg name="float" key="errors.float"/>
+				<arg0 key="app.diameter" />
+			</field>
+			<field property="casing" depends="required">
+				<arg0 key="app.casing" />
+			</field>
+			  
+			<field property="status" depends="required">
+				<arg0 key="app.status" />
+			</field>
+			  
+			<field property="genCondition" depends="required">
+				<arg0 key="app.genCondition" />
+			</field>
+			
+			<field property="gino" depends="required,integer">
+				<arg0 key="app.gino" />
+			</field>
+			
+			<field property="painted" depends="required">
+				<arg0 key="app.painted" />
+			</field>  
+			
+			 
+			
+			<field property="staticWaterLevel" depends="required,float">
+				<arg0 key="app.staticWaterLevel" />
+			</field>  
+			
+			<field property="summerWaterLevel" depends="required,float">
+				<arg0 key="app.summerWaterLevel" />
+			</field>  
+			
+			
+			<field property="pcond" depends="required">
+				<arg0 key="app.pcond" />
+			</field>  
+			
+			<field property="dryduring" depends="required,integer">
+				<arg0 key="app.dryduring" />
+			</field>  
+			
+			<field property="service" depends="required">
+				<arg0 key="app.service" />
+			</field>  
+			
+			<field property="serno" depends="required,integer">
+				<arg0 key="app.serno" />
+			</field>  
+			
+			<field property="serhrs" depends="required,float">
+				<arg0 key="app.serhrs" />
+			</field>  
+			
+			
+			<field property="repairs" depends="required">
+				<arg0 key="app.repairs" />
+			</field>  
+			
+			<field property="platformCondition" depends="required">
+				<arg0 key="app.platformCondition" />
+			</field>  
+			
+			<field property="drain" depends="required">
+				<arg0 key="app.drain" />
+			</field>  
+			
+			<field property="drainCondition" depends="required">
+				<arg0 key="app.drainCondition" />
+			</field>  
+			
+			<field property="drainsd" depends="required">
+				<arg0 key="app.drainsd" />
+			</field>  
+			
+			<field property="drainlp" depends="required">
+				<arg0 key="app.drainlp" />
+			</field>  
+			
+			<field property="hygiene" depends="required">
+				<arg0 key="app.hygiene" />
+			</field>  
+			
+			<field property="avgtime" depends="required,float">
+				<arg0 key="app.avgtime" />
+			</field>  
+			
+			<field property="pyield" depends="required,integer">
+				<arg0 key="app.pyield" />
+			</field>  
+			
+			
+			
+		</form>	
+		
+		<form name="assetCompForm">
+			<field property="assetCode" depends="required">
+				<arg0 key="app.assetCode" />
+			</field>
+			<field property="assetTypeCode" depends="required">
+				<arg0 key="app.assetTypeCode" />
+			</field>
+			
+			<field property="dimension" depends="required">
+				<arg0 key="app.dimension" />
+			</field>
+			<field property="valueOfWork" depends="float">
+			<msg name="float" key="errors.float"/>
+				<arg0 key="app.valueOfWork" />
+			</field>
+		</form>
+		
+		<form name="contamForm">
+	      <field property="contamName" depends="required,mask">
+		    <msg name="mask" key="errors.stringvalids"/>
+		      <arg0 key="app.contamName" />
+			   <var>
+				 <var-name>mask</var-name>
+				 <var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+  		  </field>
+		</form>
+		<form name="majorHeadForm">
+			
+			<field property="majorHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.majorHeadCode" />
+				<arg1 key="4" resource="false" />
+
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{4}[0-9]{0}$</var-value>
+				</var>
+			</field>
+			<field property="majorHeadName" depends="required">
+				<arg0 key="app.majorHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+	<form name="submajorHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+			<field property="submajorHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.submajorHeadCode" />
+				<arg1 key="2" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[0-9]{0}$</var-value>
+				</var>
+				</field>
+				<field property="submajorHeadName" depends="required">
+				<arg0 key="app.submajorHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+
+	<form name="minorHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+				<field property="submajorHeadCode" depends="required">
+				<arg0 key="app.submajorHeadCode" />
+				</field>
+		
+			<field property="minorHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.minorHeadCode" />
+				<arg1 key="3" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{3}[0-9]{0}$</var-value>
+				</var>
+				</field>
+				<field property="minorHeadName" depends="required">
+				<arg0 key="app.minorHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+				</field>
+	</form>
+	
+	<form name="grpSubHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+				<field property="submajorHeadCode" depends="required">
+				<arg0 key="app.submajorHeadCode" />
+				</field>
+				<field property="minorHeadCode" depends="required">
+				<arg0 key="app.minorHeadCode" />
+				</field>
+		
+			<field property="grpSubHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.grpSubHeadCode" />
+				<arg1 key="3" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{3}[0-9]{0}$</var-value>
+				</var>
+				</field>
+				<field property="grpSubHeadName" depends="required">
+				<arg0 key="app.grpSubHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+				</field>
+	</form>
+	
+		<form name="subHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+				<field property="submajorHeadCode" depends="required">
+				<arg0 key="app.submajorHeadCode" />
+				</field>
+				<field property="minorHeadCode" depends="required">
+				<arg0 key="app.minorHeadCode" />
+				</field>
+		
+			<field property="grpSubHeadCode" depends="required">
+				<arg0 key="app.grpSubHeadCode" />
+			</field>
+				
+			<field property="subHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.subHeadCode" />
+				<arg1 key="2" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[0-9]{0}$</var-value>
+				</var>
+				</field>
+				<field property="SubHeadName" depends="required">
+				<arg0 key="app.SubHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+				</field>
+	</form>
+
+		<form name="detailHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+				<field property="submajorHeadCode" depends="required">
+				<arg0 key="app.submajorHeadCode" />
+				</field>
+				<field property="minorHeadCode" depends="required">
+				<arg0 key="app.minorHeadCode" />
+				</field>
+		
+			<field property="grpSubHeadCode" depends="required">
+				<arg0 key="app.grpSubHeadCode" />
+			</field>
+				
+			<field property="subHeadCode" depends="required">
+				<arg0 key="app.subHeadCode" />
+				</field>
+				<field property="detailHeadCode" depends="required">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.detailHeadCode" />
+				<arg1 key="2" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[0-9]{0}$</var-value>
+				</var>
+				</field>
+				<field property="detailHeadName" depends="required">
+				<arg0 key="app.detailHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+				</field>
+	</form>
+	<form name="subDetailHeadForm">
+			
+			<field property="majorHeadCode" depends="required">
+				<arg0 key="app.majorHeadCode" />
+				</field>
+				<field property="submajorHeadCode" depends="required">
+				<arg0 key="app.submajorHeadCode" />
+				</field>
+				<field property="minorHeadCode" depends="required">
+				<arg0 key="app.minorHeadCode" />
+				</field>
+		
+			<field property="grpSubHeadCode" depends="required">
+				<arg0 key="app.grpSubHeadCode" />
+			</field>
+				
+			<field property="subHeadCode" depends="required">
+				<arg0 key="app.subHeadCode" />
+				</field>
+				<field property="detailHeadCode" depends="required">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.detailHeadCode" />
+			
+			</field>
+				<field property="subDetailHeadCode" depends="required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.subDetailHeadCode" />
+				<arg1 key="2" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[0-9]{0}$</var-value>
+				</var>
+			</field>
+			<field property="subDetailHeadName" depends="required">
+				<arg0 key="app.subDetailHeadName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+	</form>
+	
+<form name="contractorForm">
+	
+			<field property="contractorName" depends="required,mask">
+				<arg0 key="app.contractorName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="contractorClass" depends="required">
+			 <arg0 key="app.contractorClass" />
+			</field>
+			<field property="contractorRating" depends="required">
+			 <arg0 key="app.contractorRating" />
+			</field>
+			<field property="street" depends="required,mask">
+				<arg0 key="app.street" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			
+			<field property="area" depends="required,mask">
+				<arg0 key="app.area" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="city" depends="required,mask">
+				<arg0 key="app.city" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="pin" depends="integer,required,mask">
+				<msg name="mask" key="errors.myvalids" />
+				<arg0 key="app.pin" />
+				<arg1 key="6" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{6}[0-9]{0}$</var-value>
+				</var>
+			</field>
+			<field property="phone" depends="integer,required">
+				<arg0 key="app.phone" />
+			</field>
+			<field property="fax" depends="integer">
+				<arg0 key="app.fax" />
+			</field>
+			<field property="email" depends="email">
+				<arg0 key="app.email" />
+     		</field>
+			
+			<field property="contractorRegno" depends="required">
+			 <arg0 key="app.contractorRegno" />
+			</field>
+			<field property="registerAt" depends="required">
+			 <arg0 key="app.registerAt" />
+			</field>
+			
+			<field property="registrationDate" depends="mask">
+			<msg name="mask" key="errors.datevalids" />
+			<arg0 key="app.registrationDate"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{2}[/| ]*[0-9]{2}[/| ]*[0-9]{4}$</var-value>
+			</var>
+		    </field> 
+		    
+		    <field property="validFrom" depends="mask">
+			<msg name="mask" key="errors.datevalids" />
+			<arg0 key="app.validFrom"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[/| ]*[0-9]{2}[/| ]*[0-9]{4}$</var-value>
+				</var>
+				</field>
+			<field property="validTo" depends="mask">
+			<msg name="mask" key="errors.datevalids" />
+			<arg0 key="app.validTo"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[/| ]*[0-9]{2}[/| ]*[0-9]{4}$</var-value>
+				</var>
+			</field>
+		    
+			<field property="projectsExecuted" depends="integer">
+				<arg0 key="app.projectsExecuted" />
+			</field>
+			<field property="projectsCompletedInTime" depends="integer">
+				<arg0 key="app.projectsCompletedInTime" />
+			</field>
+			<field property="projectsCompletedLastYear" depends="integer">
+				<arg0 key="app.projectsCompletedLastYear" />
+			</field>
+			<field property="projectsAbandoned" depends="integer">
+				<arg0 key="app.projectsAbandoned" />
+			</field>
+			<field property="projectsInhand" depends="integer">
+				<arg0 key="app.projectsInhand" />
+			</field>
+			<field property="noofEoat" depends="integer">
+				<arg0 key="app.noofEoat" />
+			</field>
+			<field property="noofSupplentary" depends="integer">
+				<arg0 key="app.noofSupplentary" />
+			</field>
+			<field property="noofPenalised" depends="integer">
+				<arg0 key="app.noofPenalised" />
+			</field>
+</form>
+
+		<form name="programmeForm">
+			<field property="prgmName" depends="required,mask">
+		    	<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.prgmName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="prgmStartYr" depends="required,mask">
+				<arg0 key="Finacial Year" resource="false"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{4}[/-]*[0-9]{4}$</var-value>
+				</var>
+			</field>
+			<field property="prgmEndDate" depends="date">
+				<arg0 key="app.prgmEndDate"/>
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+	    	</field> 
+	    	<field property="centralShare" depends="mask">
+				<arg0 key="app.centralShare" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="stateShare" depends="mask">
+				<arg0 key="app.stateShare" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="publicShare" depends="mask">
+				<arg0 key="app.publicShare" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="otherShare" depends="mask">
+				<arg0 key="app.otherShare" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+	    	<field property="status" depends="required">
+				<arg0 key="app.status" />
+			</field>
+	</form>
+			
+		<form name="subprogrammeForm">
+			<field property="prgmCode" depends="required">
+		  		<arg0 key="app.programme" />
+			</field>
+			<field property="subprgmName" depends="required,mask">
+			    <msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.subprgmName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z]+\s*)*$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="sourceTypeForm">
+			<field property="sourceTypeName" depends="required">
+		  		<arg0 key="app.sourceTypeName" />
+			</field>
+		</form>
+		
+		<form name="subSourceTypeForm">
+			<field property="sourceTypeCode" depends="required">
+		  	<arg0 key="app.sourceTypeCode" />
+			</field>
+			<field property="subSourceTypeName" depends="required">
+		  	<arg0 key="app.subSourceTypeName" />
+			</field>
+	</form>
+		<form name="sourceForm">
+			<field property="district" depends="required">
+				<arg0 key="app.district" />
+			</field>
+			<field property="mandal" depends="required">
+				<arg0 key="app.mandal" />
+			</field>
+			<field property="pcode" depends="required">
+				<arg0 key="app.panchayat" />
+			</field>
+			<field property="vcode" depends="required">
+				<arg0 key="app.village" />
+			</field>
+			<field property="habCode" depends="required">
+				<arg0 key="app.habCode" />
+			</field>
+			<field property="sourceTypeCode" depends="required">
+				<arg0 key="Source Type" resource="false" />
+			</field>
+			<field property="subSourceTypeCode" depends="required">
+				<arg0 key="Sub Source Type" resource="false" />
+			</field>
+			<field property="sourceCode" depends="required">
+				<arg0 key="Source Code" resource="false" />
+			</field>
+			<field property="sourceName" depends="required">
+				<arg0 key="Source Name" resource="false" />
+			</field>
+			<field property="location" depends="required">
+				<arg0 key="app.location" />
+			</field>
+			<field property="noOfHab" depends="required">
+				<arg0 key="app.noOfHab" />
+			</field>
+			<field property="popbenefited" depends="required">
+				<arg0 key="app.popbenefited" />
+			</field>			
+			<field property="seasonal" depends="required">
+				<arg0 key="app.seasonal" />
+			</field>			
+			<field property="presentCondition" depends="required">
+				<arg0 key="app.presentCondition" />
+			</field>	
+			
+		</form>	
+	<form name="empworkForm">
+			<field property="hoc" depends="required">
+		  	<arg0 key="app.hoc" />
+			</field>
+			<field property="empcode" depends="required">
+		  	<arg0 key="app.empcode" />
+			</field>
+			<field property="normalworks" depends="integer">
+		  	<arg0 key="app.normalworks" />
+			</field>
+			<field property="projectworks" depends="integer">
+		  	<arg0 key="app.projectworks" />
+			</field>
+			<field property="schemes" depends="integer">
+		  	<arg0 key="app.schemes" />
+			</field>
+			<field property="roads" depends="integer">
+		  	<arg0 key="app.roads" />
+			</field>
+			<field property="bridges" depends="integer">
+		  	<arg0 key="app.bridges" />
+			</field>
+		</form>
+	
+		<form name="empForm">
+		    
+		    <field property="empcode" depends="required">
+		  	<arg0 key="app.empcode" />
+			</field>
+			<field property="surname" depends="required">
+		  	<arg0 key="app.empsurname1" />
+			</field>
+			<field property="empname" depends="required">
+		  	<arg0 key="app.empname" />
+			</field>
+			<field property="gender" depends="required">
+		  	<arg0 key="app.gender1" />
+			</field>
+			<field property="relation" depends="required">
+		  	<arg0 key="app.wife" />
+			</field>
+			<field property="dob" depends="required">
+		  	<arg0 key="app.dob" />
+			</field>
+			<field property="religion" depends="required">
+		  	<arg0 key="app.religion" />
+			</field>
+			<field property="social" depends="required">
+		  	<arg0 key="app.social" />
+			</field>
+			<field property="ndist" depends="required">
+		  	<arg0 key="app.ndistrict" />
+			</field>
+			<field property="nmand" depends="required">
+		  	<arg0 key="app.nmandal" />
+			</field>
+			<field property="qual" depends="required">
+		  	<arg0 key="app.qual" />
+			</field>
+			<field property="spouseemployd" depends="required">
+		  	<arg0 key="app.semployed" />
+			</field>
+			<field property="desig" depends="required">
+		  	<arg0 key="app.desig" />
+			</field>
+			<field property="desgnCode" depends="required">
+		  	<arg0 key="app.desgnCode" />
+			</field>
+			<field property="apptcategory" depends="required">
+		  	<arg0 key="app.apptcategory" />
+			</field>
+			<field property="appointdate" depends="required">
+		  	<arg0 key="app.appointdate" />
+			</field>
+			<field property="doj" depends="required">
+		  	<arg0 key="app.doj" />
+			</field>
+			<field property="moap" depends="required">
+		  	<arg0 key="app.moap" />
+			</field>
+			<field property="zone" depends="required">
+		  	<arg0 key="app.zone" />
+			</field>
+			<field property="narecruit" depends="required">
+		  	<arg0 key="app.narecruit" />
+			</field>
+			<field property="apcatog" depends="required">
+		  	<arg0 key="app.apcatog" />
+			</field>
+			<field property="dcommprob" depends="required">
+		  	<arg0 key="app.dcommprob" />
+			</field>
+			<field property="ddeclprob" depends="required">
+		  	<arg0 key="app.ddeclprob" />
+			</field>
+			<field property="currentpostdate" depends="required">
+		  	<arg0 key="app.currentpostdate	" />
+			</field>
+			<field property="hoc" depends="required">
+		  	<arg0 key="app.sector" />
+			</field>
+			
+	</form>
+	
+		
+	<form name="offLineForm">
+	<field property="coc" depends="required">
+	<arg0 key="app.circleReq" />
+	</field>
+	</form>
+	
+	
+		<form name="habStatusForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.circle" />
+			</field>
+			<field property="district" depends="required">
+				<arg0 key="app.district" />
+			</field>
+			<field property="mandal" depends="required">
+				<arg0 key="app.mandal" />
+			</field>
+			<field property="pcode" depends="required">
+				<arg0 key="app.panchayat" />
+			</field>
+			<field property="vcode" depends="required">
+				<arg0 key="app.village" />
+			</field>
+			<field property="habCode" depends="required">
+				<arg0 key="app.habCode" />
+			</field>
+			<field property="popCovered" depends="integer">
+				<arg0 key="app.plainCvrd" />
+			</field>
+			<field property="scCovered" depends="integer">
+				<arg0 key="app.scCvrd" />
+			</field>
+			<field property="stCovered" depends="integer">
+				<arg0 key="app.stCvrd" />
+			</field>
+			<field property="censusPop" depends="integer">
+				<arg0 key="app.plainPop" />
+			</field>
+			<field property="censusSc" depends="integer">
+				<arg0 key="app.cnsSc" />
+			</field>
+			<field property="censusSt" depends="integer">
+				<arg0 key="app.cnsSt" />
+			</field>
+			<field property="floatPop" depends="integer">
+				<arg0 key="app.floatPop" />
+			</field>
+			<field property="habYear" depends="date">
+				<arg0 key="app.habYear" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg0 key="app.remarks" />
+				<arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="storeForm">
+			<field property="district" depends="required">
+		  	<arg0 key="app.district" />
+			</field>
+			<field property="mandal" depends="required">
+		  	<arg0 key="app.mandal" />
+			</field>
+			<field property="subdivision" depends="required">
+		  	<arg0 key="app.subdivision" />
+			</field>
+			<field property="location" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.location" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="storeInCharge" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.storeInCharge" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="empcode" depends="required">
+		  	<arg0 key="app.empcode" />
+			</field>
+			<field property="postheld" depends="mask,required">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.postheld"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{2}[/| ]*[0-9]{2}[/| ]*[0-9]{4}$</var-value>
+				</var>
+			</field>
+			
+			</form>
+		<form name="itemForm">
+			<field property="itemName" depends="required,mask">
+		  		<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.itemName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="distCode" depends="required">
+		  	<arg0 key="app.district" />
+			</field>
+			<field property="finyear" depends="mask">
+				<arg0 key="app.finyear" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]{4}[/-]*[0-9]{4}$</var-value>
+				</var>
+			</field>
+			<field property="units" depends="integer">
+			<arg0 key="app.units" />
+			</field>
+			<field property="rate" depends="required,integer">
+		  	<arg0 key="app.rate" />
+			</field>
+		</form>
+		<form name="supplierForm">
+			<field property="supplierName" depends="required,mask">
+		  		<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.supplierName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="address" depends="required,mask">
+		  	<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.street" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="area" depends="mask">
+		  	<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.area" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="location" depends="mask">
+		  	<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.location" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="city" depends="mask">
+		  	<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.city" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="pin" depends="required,integer">
+		  	<arg0 key="app.pin" />
+			</field>
+			<field property="phone" depends="required,integer">
+			<arg0 key="app.phone" />
+			</field>
+			<field property="email" depends="email">
+		  	<arg0 key="app.email" />
+			</field>
+			<field property="supplierRegNo" depends="required">
+		  	<arg0 key="app.supplierRegNo" />
+			</field>
+		</form>
+		<form name="wqTestForm">
+			<field property="testName" depends="required,mask">
+		  		<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.testName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="testPeriod" depends="required">
+		  	<arg0 key="app.testPeriod" />
+			</field>
+		</form>
+		<form name="wqPTestForm">
+			<field property="testCode" depends="required">
+		  	<arg0 key="app.testCode" />
+			</field>
+			<field property="testPName" depends="required,mask">
+		  		<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.testPName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="minPerVal" depends="mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.minPerVal" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="maxPerVal" depends="mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.maxPerVal" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="wqLabForm">
+			<field property="hoc" depends="required">
+		 		<arg0 key="app.hoc" />
+			</field>
+			<field property="desgnCode" depends="required">
+		 		<arg0 key="app.labhead" />
+			</field>
+			<field property="labName" depends="required,mask">
+			<msg name="mask" key="errors.stringvalids"/>
+				<arg0 key="app.labName" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^([a-zA-Z0-9.,-]+\s*)*$</var-value>
+				</var>
+			</field>
+			<field property="location"  depends="required">
+			<arg0 key="app.location" />
+			</field>
+		</form>
+		<form name="mandalSubdivisionForm">
+			<field property="coc" depends="required">
+				<arg0 key="app.circle" />
+			</field>
+			<field property="district" depends="required">
+				<arg0 key="app.district" />
+			</field>
+			
+			<field property="doc" depends="required">
+				<arg0 key="app.division" />
+			</field>
+			
+			<field property="sdoc" depends="required">
+				<arg0 key="app.subdivision" />
+			</field>
+			
+			<field property="mandal" depends="required">
+				<arg0 key="app.mandal" />
+			</field>
+			
+		</form>
+		
+		<form name="hofficeForm">
+			<field property="office" depends="required">
+					<arg0 key="app.office1" />
+			</field>
+			<field property="headOffice" depends="required">
+					<arg0 key="app.headOffice1" />
+			</field>
+		</form>
+		
+		<form name="tslimitForm">
+			<field property="lowerLimit1" depends="required,integer,mask">
+				<arg0 key="app.lowerLimit1"/>
+				<msg name="mask" key="errors.numberMask"/>
+				<var>
+					<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="lowerLimit2" depends="required,integer,mask">
+			<arg0 key="app.lowerLimit2"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="lowerLimit3" depends="required,integer,mask">
+			<arg0 key="app.lowerLimit3"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="lowerLimit4" depends="required,integer,mask">
+			<arg0 key="app.lowerLimit4"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="lowerLimit5" depends="required,integer">
+			<arg0 key="app.lowerLimit5"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="upperLimit1" depends="required,integer">
+			<arg0 key="app.upperLimit1"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="upperLimit2" depends="required,integer">
+			<arg0 key="app.upperLimit2"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="upperLimit3" depends="required,integer">
+			<arg0 key="app.upperLimit3"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="upperLimit4" depends="required,integer">
+			<arg0 key="app.upperLimit4"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		
+		<field property="upperLimit5" depends="required,integer">
+			<arg0 key="app.upperLimit4"/>
+			<msg name="mask" key="errors.numberMask"/>
+			<var>
+				<var-name>mask</var-name>
+				<var-value>^[0-9]{15}*$</var-value>
+			</var>
+		</field>
+		</form>
+		
+		<form name="userAuditForm">
+			<field property="toDate" depends="required">
+				<arg0 key="app.toData" />
+			</field>
+			<field property="fromData" depends="required">
+				<arg0 key="app.fromDate" />
+			</field>
+		</form>
+
+	</formset>
+
+	
+</form-validation>

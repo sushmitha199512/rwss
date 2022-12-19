@@ -1,0 +1,59 @@
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN" 
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+	<global>
+		<constant>
+			<constant-name>nameMask</constant-name>
+			<constant-value>^[a-zA-Z]{1}[a-zA-Z0-9._ ]*$</constant-value>
+		</constant>
+		<constant>
+			<constant-name>generalMask</constant-name>
+			<constant-value>^[a-zA-Z]{1}[a-z. A-Z0-9_]*$</constant-value>
+		</constant>
+		<constant>
+			<constant-name>varcharMask</constant-name>
+			<constant-value>^[a-zA-Z0-9]*$</constant-value>
+		</constant>
+		<constant>
+			<constant-name>decimalMask1</constant-name>
+			<constant-value>^[0-9]*[.]?[0-9]{0,2}$</constant-value>
+		</constant>
+		<constant>
+			<constant-name>decimalMask</constant-name>
+			<constant-value>^[0-9]*[.]?[0-9]{0,2}$</constant-value>
+		</constant>
+		<constant>
+			<constant-name>numberMask</constant-name>
+			<constant-value>^[0-9]*$</constant-value>
+		</constant>
+
+	</global>
+	<formset>
+		 
+	 	<form name="WorkForm">
+			 <field property="tsNo" depends="required">
+				<arg0 key="app.tsNo" />
+			 </field>
+			 <field property="tsAmnt" depends="required">
+				<arg0 key="app.tsAmount" />
+			 </field>
+			 <field property="tsDate" depends="date">
+				<arg0 key="app.tsDate" resource="false"/>
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			 
+	<!-- 		<field property="ssrYear" depends="required">
+				<arg0 key="app.ssrYear"  />
+				
+            </field>
+	-->		
+	 	</form>
+
+	
+	 	</formset>
+</form-validation>

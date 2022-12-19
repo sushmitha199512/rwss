@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>WaterSoft</title>
+
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/rwsstyle.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/theme1.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/menu.css">
+<script language="JavaScript" src="/pred/resources/javascript/utils.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/calendar.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/rwsscript.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_items.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_tpl.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/ajax.js"></script>
+	<script language="javascript">
+	function savefunc()
+	{
+	   var typeOfAsset="01";
+	   var assetCompType="04";
+	   var assetSubCompType="002";
+       
+ 	   if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm1(assetForm1))
+	     {
+	       document.forms[0].action="/pred/masters/Asset1.do?mode=Submit";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm2(assetForm2))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset2.do?mode=addPWSBorewell";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm3(assetForm3))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset3.do?mode=addGLSR";
+	       document.forms[0].submit();
+	     }
+	   }   
+	    else if(typeOfAsset=="01" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm4(assetForm4))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset4.do?mode=addResOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm5(assetForm5))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset5.do?mode=addResCPWSOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm6(assetForm6))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset6.do?mode=addResCPWSOHBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="003")
+	   { 	   
+	     if(validateAssetForm7(assetForm7))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset7.do?mode=addResCPWSGLSR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="004")
+	   { 	   
+	     if(validateAssetForm8(assetForm8))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset8.do?mode=addResCPWSGLBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+   }
+	</script>
+	</head>
+		
+	<body bgcolor="#edf2f8" topmargin="0" leftmargin="0" >
+ 
+	<table  bordercolor= "#8A9FCD"  border="0" rules="none" style="border-collapse:collapse;" width="100%"  >
+	<thead class="gridLabel">
+    <tr bgcolor="#8A9FCD">
+    <td colspan=2 align=left><b>Asset SubComponent Parameter Details</b>
+    </td>
+    </tr>
+ 	</thead>
+	
+	<tr>
+	<td colspan="2">
+	<table  class="row0" bordercolor= "#8A9FCD"  border="1"  rules="none" style="border-collapse:collapse;" width="100%" >
+	     
+	<form name="assetForm3" method="post" >
+	<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;CPWS-PUMPSETS-PUMP DETAILS</b>
+         </td>
+         </tr>
+		<tr >
+		    <td  align=left class="textborder">Pump Code</td>
+			<td align=center class="textborder">
+			<input type="text" name="pumpCode" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			<td  align=left class="textborder">Capacity in H.P</td>
+			<td align=center class="textborder"><input type="text" name="pumpCapacity" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+			<tr>
+			<td align=left class="textborder">Type</td>
+			<td align=center class="textborder">
+			<select name="pumpType"  style="width:130px" class="mytext">
+			<option>SELECT..</option>
+			<option value="Centrifugal">Centrifugal</option>
+			<option  value="SubMersible">SubMersible</option>
+			<option value="Jet">Jet</option>
+			<option value="SubMersible Centrifugal">SubMersible Centrifugal</option>
+			<option value="Vertical Turbine">Vertical Turbine</option>
+			</select>
+			</td>
+			<td align=left class="textborder">Duty Condition Of Each PumpSet</td>
+			<td align=center class="textborder"><input type="text" name="pumpCond" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+			<tr>
+			<td align=left class="textborder">Head In Mtrs</td>
+			<td align=center class="textborder"><input type="text" name="pumpHead" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			<td align=left class="textborder">Discharge L.P.M</td>
+			<td align=center class="textborder"><input type="text" name="pumpDischarge" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+			<tr>
+			<td align=left class="textborder">Stand By Units(HP) Capacity</td>
+			<td align=center class="textborder"><input type="text" name="pumpStandBye" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			<td align=left class="textborder">No Of Years Used</td>
+			<td align=center class="textborder"><input type="text" name="pumpYears" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+			<tr>
+			<td align=left class="textborder">Frequency Of Failures</td>
+			<td align=center class="textborder">
+			<select  name="pumpFail"  style="width:130px" class="mytext" >
+			<option>SELECT..</option>
+			<option value="Once">Once</option>
+			<option value="Twice">Twice</option>
+			<option value="More">More</option>
+			</select>
+			</td>
+			<td align=left class="textborder">Avg No Of Hours Pumping Per Day</td>
+			<td align=center class="textborder"><input type="text" name="pumpAvgHours" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+			<tr>
+			<td align=left class="textborder">Repairs Cost Per Annum(Rs)</td>
+			<td align=center class="textborder"><input type="text" name="pumpRepairs" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			<td align=left class="textborder">Capacitors Provided</td>
+			<td align=center class="textborder">
+			<select  name="pumpCapacitors"  style="width:130px" class="mytext" >
+			<option>SELECT..</option>
+			<option value="YES">Yes</option>
+			<option value="no">No</option></td>
+			</tr>
+
+			<tr>
+			<td align=left class="textborder">Control Panel & Internal Wiring</td>
+			<td align=center class="textborder">
+			<select  name="pumpCp"  style="width:130px" class="mytext" >>
+			<option>SELECT..</option>
+			<option value="YES">Yes</option>
+			<option value="NO">No</option>
+			</select>
+			</td>
+			<td align=left class="textborder">Hours Of Availability Of Power Per Day
+			</td>
+			<td align=center class="textborder"><input type="text" name="pumpAvailHrs" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>
+		
+			<tr>
+			<td align=left class="textborder">No Of Hours Running Per Day</td>
+			<td align=center class="textborder"><input type="text" name="pumpHrsRun" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			<td align=left class="textborder">Qty Of Water Pumping Per Day</td>
+			<td align=center class="textborder"><input type="text" name="pumpQuantity" maxlength="13" value=""  style="width:130px" class="mytext"></td>
+			</tr>			
+		</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+		<input type="button" name="mode" value="Save" class="btext" title="Save the Fields">
+	    <input type="reset" value="Close" onclick="javascript:window.close()" class="btext" title="Close the Window">
+	</td>
+   </tr>
+   </table>
+    </form>
+		

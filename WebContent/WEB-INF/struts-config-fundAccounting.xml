@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<data-sources>
+		<data-source type="org.apache.commons.dbcp.BasicDataSource">
+			<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+			<set-property property="url"
+				value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+			<set-property property="username" value="preduser" />
+			<set-property property="password" value="preduser" />
+		</data-source>
+	</data-sources>
+
+	<form-beans>
+		<form-bean name="BroDetailsForm"
+			type="nic.watersoft.fundAccounting.Rws_BroDetailsForm" />
+		<form-bean name="LocDetailsForm"
+			type="nic.watersoft.fundAccounting.Rws_LocDetailsForm" />
+		<form-bean name="Rws_BroLocDetails_rpt_Form"
+			type="nic.watersoft.fundAccounting.Rws_BroLocDetails_rpt_Form" />
+		<form-bean name="Rws_ReleasesVsExp_WorkWise_Form"
+			type="nic.watersoft.fundAccounting.Rws_ReleasesVsExp_WorkWise_Form" />
+		<form-bean name="RwsPAOBillActionForm"
+			type="nic.watersoft.fundAccounting.RwsPAOBillActionForm" />
+		<form-bean name="voucherFWDForm"
+			type="nic.watersoft.fundAccounting.RwsVoucherFwdActionForm" />
+		<form-bean name="RwsBankBillActionForm"
+			type="nic.watersoft.fundAccounting.RwsBankBillActionForm" />
+		<form-bean name="RwsPaymentRevertActionForm"
+			type="nic.watersoft.fundAccounting.RwsPaymentRevertActionForm" />
+		<form-bean name="OTPForm"
+			type="nic.watersoft.fundAccounting.Rws_OTP_EEBudget_Form" />
+
+	</form-beans>
+
+	<action-mappings>
+
+		<action path="/switch" type="org.apache.struts.actions.SwitchAction" />
+
+		<action path="/otp" name="OTPForm" scope="session"
+			type="nic.watersoft.fundAccounting.Rws_OTP_EEBudget_Action">
+			<forward name="data" path="/rws_otp_bank_eebudget_frm.jsp" />
+			<forward name="get" path="/BANKBillAction.do?mode=data" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+		</action>
+
+		<action name="RwsPaymentRevertActionForm" path="/paymentRevertion"
+			type="nic.watersoft.fundAccounting.RwsPaymentRevertAction" scope="session">
+			<forward name="data" path="/rws_payment_revert.jsp"></forward>
+			<forward name="invalid" path="/unauthorization.jsp"></forward>
+			<forward name="expired" path="/sessionExpired.jsp"></forward>
+		</action>
+
+		<action name="RwsBankBillActionForm" path="/BANKBillAction"
+			type="nic.watersoft.fundAccounting.RwsBankBillAction" scope="session">
+			<forward name="data" path="/rws_bank_bills_list.jsp"></forward>
+			<forward name="milestones" path="/Rws_work_phy_progress.jsp"></forward>
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/BANKBillUnSelectedAction" type="nic.watersoft.fundAccounting.RwsBankBillUnSelectedAction"
+		 name="RwsBankBillActionForm" scope="session">
+			<forward name="data" path="/rws_bank_bills_not_forwarded_bills.jsp"></forward>
+			<forward name="excel" path="/rws_bank_bills_not_forwarded_bills_excel.jsp"></forward>
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		<action input="/rws_ee_voucher_fwd.jsp" name="voucherFWDForm"
+			path="/voucherForwardAction" scope="session"
+			type="nic.watersoft.fundAccounting.RwsVoucherFwdAction">
+			<forward name="data" path="/rws_ee_voucher_fwd.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/../masters/unauthorization.jsp" />
+		</action>
+
+		<action name="RwsPAOBillActionForm" path="/PAOBillAction"
+			type="nic.watersoft.fundAccounting.RwsPAOBillAction" scope="session">
+			<forward name="data" path="/rws_pao_bills_list_frm.jsp"></forward>
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		<action name="BroDetailsForm" path="/broDetails"
+			type="nic.watersoft.fundAccounting.Rws_BroDetailsFrm" scope="session">
+			<forward name="init" path="/rws_broDetails_frm.jsp" />
+			<forward name="addNew" path="/rws_broDetails_frm.jsp" />
+			<forward name="accDetails" path="/rws_broDetails_frm.jsp" />
+			<forward name="minorhead" path="/rws_broDetails_frm.jsp" />
+
+			<forward name="edit" path="/rws_broDetails_frm.jsp" />
+			<forward name="success" path="/rws_broDetails_frm.jsp" />
+			<forward name="addNewProgrammeForBro" path="/rws_broDetails_frm.jsp" />
+			<forward name="data" path="/rws_broDetails_frm.jsp" />
+			<forward name="save" path="/broDetails.do?mode=edit" />
+			<forward name="saveError" path="/rws_broDetails_frm.jsp" />
+			<forward name="view" path="/rws_broDetailsView.jsp" />
+			<forward name="getBroProgDetails" path="/rws_broProgDetailsList.jsp" />
+			<forward name="delete" path="/broDetails.do?mode=view" />
+			<forward name="deleteBro" path="/broDetails.do?mode=edit" />
+			<forward name="getSubProgram" path="/rws_broDetails_frm.jsp" />
+			<forward name="deleteFromBroProgList" path="/rws_broDetails_frm.jsp" />
+			<forward name="getQtrs" path="/rws_broDetails_frm.jsp" />
+			<forward name="getQtrDetails" path="/rws_broDetails_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action name="LocDetailsForm" path="/locDetails"
+			type="nic.watersoft.fundAccounting.Rws_LocDetailsFrm" scope="session">
+			<forward name="init" path="/rws_locDetails_frm.jsp" />
+			<forward name="addNew" path="/rws_locDetails_frm.jsp" />
+			<forward name="deleteFromLocProgList" path="/rws_locDetails_frm.jsp" />
+			<forward name="edit" path="/rws_locDetails_frm.jsp" />
+			<forward name="broIdChangedInSaveMode" path="/rws_locDetails_frm.jsp" />
+			<forward name="broIdChangedInEditMode" path="/rws_locDetails_frm.jsp" />
+			<forward name="success" path="/rws_locDetails_frm.jsp" />
+			<forward name="addNewProgrammeForLoc" path="/rws_locDetails_frm.jsp" />
+			<forward name="data" path="/rws_locDetails_frm.jsp" />
+			<forward name="save" path="/locDetails.do?mode=edit" />
+			<forward name="saveError" path="/rws_locDetails_frm.jsp" />
+			<forward name="view" path="/rws_locDetailsView.jsp" />
+			<forward name="getLocProgDetails" path="/rws_locProgDetailsList.jsp" />
+			<forward name="delete" path="/locDetails.do?mode=view" />
+			<forward name="deleteLoc" path="/locDetails.do?mode=edit" />
+			<forward name="programmeChanged" path="/rws_locDetails_frm.jsp" />
+			<forward name="getDivisions" path="/rws_locDetails_frm.jsp" />
+			<forward name="getCircles" path="/rws_locDetails_frm.jsp" />
+			<forward name="getCircleLocIdList" path="/rws_locDetails_frm.jsp" />
+			<forward name="workId" path="/rws_select_workid_frm.jsp" />
+			<forward name="HOA" path="/rws_HOA_select_frm.jsp" />
+		</action>
+
+		<action name="Rws_BroLocDetails_rpt_Form" path="/broDetailsList"
+			type="nic.watersoft.fundAccounting.Rws_BroLocDetails_rpt" scope="request">
+			<forward name="getBroList" path="/rws_brosForwardedFromHO_rpt.jsp" />
+			<forward name="getBroList_frm_view" path="/rws_brosForwardedFromHO_rpt.jsp" />
+			<forward name="getLocList" path="/rws_locDetailsList_rpt.jsp" />
+			<forward name="getCircleLocList" path="/rws_locDetailsList_rpt.jsp" />
+			<forward name="getProjectLocList" path="/rws_locDetailsList_rpt.jsp" />
+			<forward name="getBroList_frm" path="/Rws_BroList_frm.jsp" />
+
+		</action>
+
+		<action name="Rws_ReleasesVsExp_WorkWise_Form" path="/releasesVsExpenditureWorkWise"
+			type="nic.watersoft.fundAccounting.Rws_ReleasesVsExp_WorkWise_Act"
+			scope="request">
+			<forward name="init" path="/Rws_ReleasesVsExp_WorkWise_Rpt.jsp" />
+			<forward name="officeWiseInit" path="/Rws_ReleasesVsExp_OfficeWise_Rpt.jsp" />
+		</action>
+
+		<action name="Rws_ReleasesVsExp_WorkWise_Form" path="/releasesVsExpenditureSchemeWise"
+			type="nic.watersoft.fundAccounting.Rws_ReleasesVsExp_SchemeWise_Act"
+			scope="request">
+			<forward name="init" path="/Rws_ReleasesVsExp_SchemeWise_Rpt.jsp" />
+		</action>
+
+		<action name="Rws_ReleasesVsExp_WorkWise_Form" path="/releasesVsExpenditureSchemeWiseBetweenDates"
+			type="nic.watersoft.fundAccounting.Rws_ReleasesVsExp_SchemeWise_Act"
+			scope="request">
+			<forward name="betweenDates" path="/Rws_ReleasesVsExp_frm.jsp" />
+			<forward name="betweenDatesView"
+				path="/Rws_ReleasesVsExp_SchemeWise_BetweenDates.jsp" />
+		</action>
+		<action name="Rws_ReleasesVsExp_WorkWise_Form" path="/releasesVsExpenditureProgrammeWise"
+			type="nic.watersoft.fundAccounting.Rws_ReleasesVsExp_ProgWise_Act"
+			scope="request">
+			<forward name="init" path="/Rws_ReleasesVsExpProgrammeWise_frm.jsp" />
+			<forward name="getProgWiseRpt" path="/Rws_ReleasesVsExpProgWise_rpt.jsp" />
+			<forward name="getProgWiseDrillRpt" path="/Rws_ReleasesVsExpProgWiseDrill_rpt.jsp" />
+			<forward name="ProgWiseDrillFrm" path="/Rws_ReleasesVsExpProgWiseDrill_frm.jsp" />
+			<forward name="getProgWiseReleasesRpt" path="/Rws_ReleasesProgWiseRpt.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="nic.watersoft.resources.ApplicationResources" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-works.xml" />
+	</plug-in>
+
+
+</struts-config>

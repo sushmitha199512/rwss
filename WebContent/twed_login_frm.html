@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="keywords" content="RURAL WATER SUPPLY, ANDHRA PRADESH"  />
+<meta name="keywords" content="RURAL WATER SUPPLY, ANDHRA PRADESH"  />
+<link rel="stylesheet" type="text/css" href="resources/style/rws-styles.css"  />	
+<link rel="stylesheet" type="text/css" href="resources/style/dropdown.css"  />
+<link rel="icon" href="images/favicon.ico" type="image/x-icon" />   
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />  
+<title> W A T E R S O F T - Official Website of RWSS</title>
+
+<SCRIPT type=text/javascript>
+
+function hideDefaultText(element, defaultVal)
+{
+	if(element.value == defaultVal){
+		element.value =	'';
+	}
+}
+
+function showDefaultText(element, defaultVal)
+{
+	if(element.value == ''){
+		element.value =	defaultVal;
+	}
+}
+
+function IsEmpty(aTextField) {
+
+	var regexp = /^(\s)*$/
+
+	if(regexp.test(aTextField.value)){
+		return true;
+
+	}else{
+		return false;
+	}
+
+}
+
+var Scroll=""
+	var wiper
+	var index=0
+	var space=" "
+	reset();
+	function reset()
+	{
+		text = new Array(4)
+		var textnr=Math.round((Math.random()*4))
+		text[0]="Welcome to W A T E R S O F T"
+		text[1]="Welcome to W A T E R S O F T"
+		text[2]="Welcome to W A T E R S O F T"
+		text[3]="Welcome to W A T E R S O F T"
+		text[4]="Welcome to W A T E R S O F T"
+		Scroll=text[textnr]
+		index=0
+		main();
+	}
+
+	function main()
+	{
+		window.status=Scroll.substring(0,index)
+		index++
+		if(index==(Scroll.length+4)){setTimeout('reset_clear()',300);}
+		else{setTimeout('main()',50)}
+	}
+	function reset_clear()
+	{
+	index=0
+	wiper=""
+	for(var a=0;a<Scroll.length;a++){wiper+=space}
+	clearem()
+	}
+	function clearem()
+	{
+	window.status=wiper.substring(0,index) + "->" + Scroll.substring(index+2,Scroll.length)
+	index++
+	if(index==(Scroll.length+4)){reset()}
+	else{setTimeout('clearem()',50)}
+	}
+	
+var menuids=["treemenu1"] //Enter id(s) of SuckerTree UL menus, separated by commas
+
+function buildsubmenus_horizontal(){
+for (var i=0; i<menuids.length; i++){
+  var ultags=document.getElementById(menuids[i]).getElementsByTagName("ul")
+    for (var t=0; t<ultags.length; t++){
+		if (ultags[t].parentNode.parentNode.id==menuids[i]){ //if this is a first level submenu
+			ultags[t].style.top=ultags[t].parentNode.offsetHeight+"px" //dynamically position first level submenus to be height of main menu item
+			ultags[t].parentNode.getElementsByTagName("a")[0].className="mainfoldericon"
+		}
+		else{ //else if this is a sub level menu (ul)
+		
+	//	 ultags[t].style.left=ultags[t-1].getElementsByTagName("a")[0].offsetWidth+"px" //position menu to the right of menu item that activated it
+		  ultags[t].style.left="105px";
+		  ultags[t].style.top="5px"
+    //	ultags[t].parentNode.getElementsByTagName("a")[0].className="subfoldericon"
+		}
+    ultags[t].parentNode.onmouseover=function(){
+    this.getElementsByTagName("ul")[0].style.visibility="visible"
+    }
+    ultags[t].parentNode.onmouseout=function(){
+    this.getElementsByTagName("ul")[0].style.visibility="hidden"
+    }
+  }
+
+  }
+}
+
+if (window.addEventListener)
+window.addEventListener("load", buildsubmenus_horizontal, false)
+else if (window.attachEvent)
+window.attachEvent("onload", buildsubmenus_horizontal)
+
+function loadwindow(url,width,height,cont){
+//window.showModalDialog('UnderConstruct.htm',cont,"dialogWidth:650px;dialogHeight:400px");
+//window.showModalDialog(url,cont,"dialogWidth:"+width+"px;dialogHeight:"+height+"px");
+loadwindow1(url,width,height,cont);
+}
+function loadwindow1(url,width,height,cont){
+var properties = "width="+width+",height="+height+",screenX=10,screenY=10,toolbar=no,"
+				   + "status=no,menubar=no,location=no,directories=no,scrollbars=yes,copyhistory=no,"
+				   + "resizable=yes,status=yes";
+newWindow = window.open(url, "_New", properties);
+//window.open(url,"","width="+width,"height=600px,status=1,scrollbars=yes")
+}
+function submitFn()
+	{   
+        // alert("userid"+	document.forms[0].userId.value);
+
+		document.forms[0].password.value=hex_md5(document.forms[0].password1.value+document.forms[0].slt.value);
+		if(document.forms[0].userId.value=="" || document.forms[0].userId.value=="Enter User ID")
+		{   //alert("1111");
+			alert("UserId is required");
+			return false;
+		}
+		else if(document.forms[0].password1.value=="" || document.forms[0].password1.value=="Password")
+		{   //alert("222");
+			alert("Password is required");
+			return false;
+		}
+		else if(document.forms[0].userId.value!="" && document.forms[0].password1.value!="")
+		{   // alert("3333");
+			document.forms[0].password1.value="";
+            return true;
+		}
+		
+		return false;
+	}
+
+
+
+
+
+
+var photos=new Array()
+
+photos[0]="./SlideshowImages/Nlg.jpg"
+photos[1]="./SlideshowImages/DSC_0013.JPG"
+photos[2]="./SlideshowImages/DSC_0023.JPG"
+photos[3]="./SlideshowImages/DSC_0024.JPG"
+photos[4]="./SlideshowImages/DSC_0027.JPG"
+photos[5]="./SlideshowImages/DSC_0030.JPG"
+photos[6]="./SlideshowImages/DSC_0032.JPG"
+photos[7]="./SlideshowImages/DSC_0033.JPG"
+photos[8]="./SlideshowImages/DSC_0038.JPG"
+photos[9]="./SlideshowImages/DSC_0039.JPG"
+photos[10]="./SlideshowImages/DSC_0043.JPG"
+photos[11]="./SlideshowImages/DSC_0053.JPG"
+photos[12]="./SlideshowImages/DSC_0068.JPG"
+photos[13]="./SlideshowImages/DSC_0324.JPG"
+photos[14]="./SlideshowImages/DSC_0346.JPG"
+
+//photos[15]="./SlideshowImages/DSC_0404.JPG"
+//photos[16]="./SlideshowImages/DSC_990.JPG"
+//photos[17]="./SlideshowImages/DSC_991.JPG"
+//photos[18]="./SlideshowImages/DSC00078.JPG"
+//photos[19]="./SlideshowImages/Image021.jpg"
+//photos[20]="./SlideshowImages/Image035.jpg"
+//photos[21]="./SlideshowImages/Image051.jpg"
+//photos[22]="./SlideshowImages/IMG_1368.JPG"
+//photos[23]="./SlideshowImages/Picture 304.jpg"
+//photos[24]="./SlideshowImages/Picture 497.jpg"
+//photos[25]="./SlideshowImages/RWS-NLG01.jpg"
+//photos[26]="./SlideshowImages/RWS-NLG02.jpg"
+//photos[27]="./SlideshowImages/RWS-NLG04.jpg"
+//photos[28]="./SlideshowImages/RWS-NLG06.jpg"
+//photos[29]="./SlideshowImages/DSC_0006.jpg"
+
+//photos[30]="./SlideshowImages/DSC_0019.JPG"
+//photos[31]="./SlideshowImages/DSC_0345.JPG"
+//photos[32]="./SlideshowImages/DSC_0350.JPG"
+//photos[33]="./SlideshowImages/DSC_0351.JPG"
+//photos[34]="./SlideshowImages/DSC_0352.JPG"
+//photos[35]="./SlideshowImages/DSC_0379.JPG"
+//photos[36]="./SlideshowImages/DSC_0382.JPG"
+//photos[37]="./SlideshowImages/DSC_0384.JPG"
+//photos[38]="./SlideshowImages/DSC_0393.JPG"
+//photos[39]="./SlideshowImages/DSC_0401.JPG" 
+
+var preloadedimages=new Array()
+for (i=0;i<photos.length;i++){
+preloadedimages[i]=new Image()
+preloadedimages[i].src=photos[i]
+}
+
+
+var Onerotate_delay = 2000; // delay in milliseconds (5000 = 5 secs)
+Onecurrent = -1;
+var t;
+function Oneap(text) {
+		Onecurrent = (Onecurrent == 14) ? 0 : Onecurrent+1;
+		document.images.Oneshow.src = photos[Onecurrent];
+		t = window.setTimeout("Oneap()", Onerotate_delay);
+}
+function pause()
+{
+window.clearTimeout(t);
+}
+function resume()
+{
+	Oneap('Start');
+}
+</SCRIPT>
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #3399FF;
+	font-weight: bold;
+}
+.style2 {font-family: Verdana}
+.style10 {
+	color: #0033FF;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	text-decoration: none;
+}
+-->
+</style>
+<style type="text/css">
+
+#marqueecontainer{
+position: relative;
+width: 200px; /*marquee width */
+height: 176px; /*marquee height */
+background-color: white;
+overflow: hidden;
+border: 3px solid #3889e0;
+padding: 2px;
+padding-left: 4px;
+}
+
+.style3 {
+	font-size: 12px;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+
+/***********************************************
+* Cross browser Marquee II- © Dynamic Drive (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+***********************************************/
+
+var delayb4scroll=2000 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
+var marqueespeed=1 //Specify marquee scroll speed (larger is faster 1-10)
+var pauseit=1 //Pause marquee onMousever (0=no. 1=yes)?
+
+////NO NEED TO EDIT BELOW THIS LINE////////////
+
+var copyspeed=marqueespeed
+var pausespeed=(pauseit==0)? copyspeed: 0
+var actualheight=''
+
+function scrollmarquee(){
+if (parseInt(cross_marquee.style.top)>(actualheight*(-1)+8))
+cross_marquee.style.top=parseInt(cross_marquee.style.top)-copyspeed+"px"
+else
+cross_marquee.style.top=parseInt(marqueeheight)+8+"px"
+}
+
+function initializemarquee(){
+cross_marquee=document.getElementById("vmarquee")
+cross_marquee.style.top=0
+marqueeheight=document.getElementById("marqueecontainer").offsetHeight
+actualheight=cross_marquee.offsetHeight
+if (window.opera || navigator.userAgent.indexOf("Netscape/7")!=-1){ //if Opera or Netscape 7x, add scrollbars to scroll and exit
+cross_marquee.style.height=marqueeheight+"px"
+cross_marquee.style.overflow="scroll"
+return
+}
+setTimeout('lefttime=setInterval("scrollmarquee()",30)', delayb4scroll)
+}
+
+if (window.addEventListener)
+window.addEventListener("load", initializemarquee, false)
+else if (window.attachEvent)
+window.attachEvent("onload", initializemarquee)
+else if (document.getElementById)
+window.onload=initializemarquee		
+
+function getIEversion()
+{
+var ua = window.navigator.userAgent
+var msie = ua.indexOf ( "MSIE " )
+if ( msie > 0 ) // If Internet Explorer, return version number
+return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )))
+else // If another browser, return 0
+return 0
+}
+function checkBrowser()
+{
+	if(getIEversion()==0)
+	{
+		alert("The WATERSOFT Software Not Supported this Browser - Please Use Internet Explorer Only");
+		document.forms[0].submit2.disabled=true;
+		document.forms[0].submit2.value='Login Disabled';
+		document.forms[0].reset2.disabled=true;
+	}
+	fnInit();
+}
+function fnInit()
+{
+	var randomnumber=Math.floor(Math.random()*99999999);
+	document.forms[0].slt.value=randomnumber;
+}
+
+</script>
+<script language="JavaScript" src="/pred/resources/javascript/md5.js"></script>
+</head>
+
+<body  onLoad="Oneap('Start')">
+
+<table width="950" border="0" cellspacing="0" cellpadding="0" align="center">
+   <tr height="4px">
+        <td colspan="4"><img src="images/BannerRowtribal.jpg" width="980" /></td>
+   </tr>
+  <TR>
+    <TD vAlign=top align=left width=823 bgColor=white colSpan=4 height=19>
+      <P align=center><B><MARQUEE scrollDelay=85 width=800  behavior="alternate">
+<FONT face=century gothic   color=#08088A size=5>
+HAPPY NEW YEAR 2012</FONT>
+</MARQUEE>
+</B></P></TD></TR>
+  <tr>
+    <td class="menu" style="padding-left:10px">
+	<div class="suckertreemenu">
+		<ul id=treemenu1 >
+			<li style="width:70px;"><a onclick="loadwindow('aboutus.htm',700,450,'About RWS&S')" style="cursor:hand"  href="#" >About&nbsp;Us	</a></li>
+			<li class="suckertreemenu-sep">|</li> 
+			<li style="width:65px;"><a onclick="loadwindow('budget.htm',600,450,'About RWS&S')" style="cursor:hand" href="#" >Budget</a></li> 
+			<li class="suckertreemenu-sep">|</li> 
+			<li style="width:65px;"><a onclick="loadwindow('mis.htm',600,450,'About RWS&S')" style="cursor:hand" href="#" >MIS</a></li>
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:95px;"><a onclick="loadwindow('functionaries.htm',750,450,'About RWS&amp;S')" style="cursor:hand" href="#" >Functionary</a> </li>
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:95px;"><a onclick="loadwindow('execution.htm',750,450,'About RWS&amp;S')" style="cursor:hand" href="#" >Execution</a> </li>
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:95px;"><a href="#" onclick="loadwindow('OrgChart.html',800,650,'About RWS&S')" style="cursor:hand">Org. Chart </a>			</li> 
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:120px;"><a   href="#" onclick="loadwindow('citizenCharter.htm',800,600,'About RWS&S')" style="cursor:hand">CitizenCharter</a></li>
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:65px;"><a   href="#" >Reports</a>
+				<ul>
+						<li><a href="#">Habitation</a>
+						<ul>
+						    <li class="b"><a href="/pred/switch.do?prefix=/reports&page=/DistrictListAction.do">Directory</a></li>
+							<li class="b"><a href="/pred/switch.do?prefix=/reports&page=/reportsDisplay.do&mode=data">Coverage Status</a></li>
+						    <li class="b"><a href="/pred/switch.do?prefix=/reports&page=/DistrictHabitationSearch.do">Search</a></li>
+							<li class="b"><a href="./reports/rws_NSS_habitations_rpt.jsp">QA Habs</a></li>
+							<li class="b"><a href="./reports/rws_dist_pop_rpt1.jsp">Population Range</a></li>
+							<li class="b"><a href="./reports/rws_dist_popcate_rpt1.jsp">Population Category</a></li>
+							<li class="b"><a href="./reports/rws_dist_popstatus_rpt1.jsp">Population Coverage</a></li>
+							<li class="b"><a href="./reports/rws_hab_status_resource_rpt.jsp">Hab Vs Resources</a></li>
+						</ul>
+						</li>
+						
+						
+						<li><a href="#">Water Quality</a>
+						<ul>
+							<li class="b"><a href="./public_domain/rws_WQ_lab_frm_rpt.jsp">Water Quality profile Lab Testing </a></li>
+						</ul>
+						</li>
+						<li><a href="#">Drought</a>
+						<ul>
+							<li class="b"><a href="./public_domain/rws_drought_daily_rpt.jsp">Daily Report</a></li>
+						</ul>
+						</li>
+						
+						<li><a href="#">Works</a>
+						<ul>
+							<li class="b"><a href="./reports/rws_work_normal_abstract_rpt1.jsp">District Wise</a></li>
+							<li class="b"><a href="./reports/rws_worksmonitoring_progstatus_select1.jsp">Programme Wise</a></li>
+						</ul>
+						</li>
+				</ul>
+			</li>
+			<li class="suckertreemenu-sep">|</li>
+			<li style="width:105px;"><a href="#" style="cursor:hand" onclick="loadwindow('./SecyHomeRedirect1.jsp',900,450,'')">AP @Glance  </a></li>	 
+			<li class="suckertreemenu-sep">|</li>
+		    <li style="width:60px;"><a href="#" style="cursor:hand" onclick="loadwindow('UnderConstruct.htm',900,450,'')">Downloads </a></li>
+		</ul>
+    </div>	</td>
+
+</tr>
+  <tr>
+    <td style="background-color:#fff; padding:5px;"><table width="940" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="204" style="background-color:#72777A; width:204px; vertical-align:top;"><table width="204" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td height="2"></td>
+          </tr>
+         <tr>
+            <td class="dec-top-bg">RWS&S Achievements</td>
+          </tr>
+
+          <tr>
+            <td><DIV align="center"><img src="SlideshowImages/Nlg.jpg" width="207" height="201" name="Oneshow" border="0" onmouseover="pause()" onmouseout="resume()" onclick="loadwindow('slideshow1.html',625,530,'About RWS&S')" title="Click here to View Slide Show" style="cursor:hand" /></DIV></td>
+          </tr>
+		  
+		  <tr>
+            <td class="dec-top-bg">Latest Updates </td>
+          </tr>
+		  <tr>
+		  	<td>
+				<div id="marqueecontainer" onMouseover="copyspeed=pausespeed" onMouseout="copyspeed=marqueespeed">
+					<div id="vmarquee" style="position: absolute; width: 98%;">
+					<table width="200" border="0">
+					<tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold"><img src="/pred/images/new.gif"> <a href="./WorldBank/RFP_Document_06-10-2012.pdf" target="_blank">CCDU
+						Tender Notice No: RWS&S/CCDU/IEC/HRD-2012-2013.</a></td>
+					  </tr>
+					  <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:blue; font-weight:bold"> <a href="./WorldBank/fbp.html"><b>Date Of Opening Of Financial Bid PostPoned.<b></a></td>
+					  </tr>
+					
+					 <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold"> <a href="Aprwssp_Worldbank.html">Applications are invited APRWSSP(World Bank) for the posts of procurement specialist,Engineering Specialist and Accountant posts on outsourcing basis in PSU & DSU's.</a></td>
+					  </tr>
+					  <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold">Update Assets and Water Quality modules</td>
+					  </tr>
+					  <tr><td colspan="2"></td></tr>
+					  <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold">Update Work Execution.</td>
+					  </tr>
+					  <tr><td colspan="2"></td></tr>
+					  <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold"> - Workshop on Implementation of WaterSoft Application at  NIC , Hyderabad From 27.01.2012 to 02.02.2012</td>
+					  </tr>
+					  <!-- Lines to be Copy for New Line in marquee - BEGIN HERE -->
+					  <!-- <tr><td colspan="2"></td></tr>
+					   <tr>
+						<td valign="top"><b>&raquo;</b></td>
+						<td style="font-family:verdana; font-size:3; color:#3889e0; font-weight:bold">RWSS training on fund accounting module From 01.08.2011 to 06.08.2011</td>
+					  </tr> -->
+					  <!-- ENDS HERE -->
+					 
+					</table>
+
+					
+					</div>
+				</div>			</td>
+		</tr>
+        </table></td>
+        <td width="736" class="text-bg">
+		<table width="752" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color:#fff">
+          <tr>
+            <td style="padding:5px 25px; font-family:Verdana, Arial;" valign="top">   
+              <table border="0" width="100%"><tr>
+							<td height="230" colspan="5" background="images/bg-logo2.jpg"><table cellspacing="0" cellpadding="0">
+							  <tr>
+                                <td valign="top"><div align="justify" class="style2">The Drinking Water Supply is very important issue in the   present times in the light of the increasing health awareness among the rural   public. One of the most important objective of the State Government is to   provide safe drinking water to the rural population. <br />
+                                      <br />
+                                  The Rural Water   Supply and Sanitation Department is nodal agency in the State for providing   drinking water and Sanitation facilities in rural areas under RWS sector. The   drinking water facilities are being provided by various types such   as</div></td>
+						      </tr>
+                             
+                              <tr>
+                                <td valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                    <tbody>
+                                      <tr>
+                                        <td valign="top" width="106"><img src="images/wel-im.jpg" alt="PWS Scheme" width="96" height="100" /></td>
+                                        <td><table border="0" cellspacing="0" cellpadding="5" width="96%" align="center">
+                                            <tbody>
+                                              <tr>
+                                                <td valign="top" width="10"><img src="images/arrow.gif" width="9" height="13" /></td>
+                                                <td class="style2">Spot sources (Bore Wells fitted with Hand Pumps)</td>
+                                              </tr>
+                                              <tr>
+                                                <td valign="top"><img src="images/arrow.gif" width="9" height="13" /></td>
+                                                <td class="style2">Protected Water Supply Schemes (for one habitation/village) </td>
+                                              </tr>
+                                              <tr>
+                                                <td valign="top"><img src="images/arrow.gif" width="9" height="13" /></td>
+                                                <td class="style2">Comprehensive Protected Water Supply Schemes (for a group of habitations/   villages)</td>
+                                              </tr>
+                                            </tbody>
+                                        </table></td>
+										<td valign="top" width="106"><img src="images/photo2.jpg" alt="Spot Source" width="106" height="100" /></td>
+                                      </tr>
+                                    </tbody>
+                                </table></td>
+                              </tr>
+							  </table>							</td>
+							</tr>
+                <tr>
+				<form  method="post" action="tribalLogin.do" onSubmit="return submitFn()" focus="userId">
+                  <td colspan="2" align="right" valign="top"><div align="center">
+				  <div id="vert" style="width:350px" align="center">
+				  	<div style="width:350px" align="center">
+						   <p class="style3">&nbsp;</p>
+						   <p class="style3">Quick Links:</p>
+						    <div align="center">&nbsp;
+						      
+						      <a href="https://mail.nic.in/mail/mauth" target="_new"><img src="SlideshowImages/NIC.png" alt="AP NIC E-MAIL" width="105" height="46" border="0" onmouseover="this.src='SlideshowImages/NIC1.png';" onmouseout="this.src='SlideshowImages/NIC.png';" /></a>&nbsp;<a href="https://webmail.ap.gov.in/" target="_new"><img src="SlideshowImages/APWEBMAIL.png" width="123" height="46" onmouseover="this.src='SlideshowImages/APWEBMAIL1.png';" onmouseout="this.src='SlideshowImages/APWEBMAIL.png';" border="0" /></a><a href="http://ddws.gov.in/" target="_new"><img src="SlideshowImages/DDWS.png" alt="DDWS-IMIS" width="88" height="46" border=0 onmouseover="this.src='SlideshowImages/DDWS1.png';" onmouseout="this.src='SlideshowImages/DDWS.png';" /></a><a href="http://somesite.com"></a>&nbsp;
+						    </div>
+				  	</div>
+				  </div>
+				  </div></td>
+                  <td width="34%" align="right"><table id="AutoNumber16" style="BORDER-COLLAPSE: collapse" bordercolor="#4B72B1"  height="145" cellspacing="0" cellpadding="0" width="100%" border="4" align="right">
+                      <tbody >
+                        <tr>
+                          <td width="100%" height="18" bgcolor="#CCFFFF"><b><font face="Verdana" 
+                        color="#ffffff" size="1">&nbsp;</font></b><font face="Verdana" 
+                        color="#000000" size="2"><b>Authorized RWSS Users</b></font></td>
+                        </tr>
+                        <tr>
+                          <td width="100%" height="19"><div align="center">
+                              <center>
+                                <table id="AutoNumber14" style="BORDER-COLLAPSE: collapse" 
+                        bordercolor="#111111" height="69" cellspacing="0" 
+                        cellpadding="0" width="96%" border="0">
+                                  <tbody>
+                                    <tr>
+                                      <td width="32%" bgcolor="#ffffff" height="32"><font 
+                              face="Verdana" color="#000000" size="2"><b>&nbsp;User 
+                                        Id</b></font></td>
+                                      <td width="68%" bgcolor="#ffffff" height="32"><p align="center">
+                                          <input type="text" name="userId" styleclass="thin-text-box" onfocus="return hideDefaultText(this, 'Enter User ID')" onblur="return showDefaultText(this, 'Enter User ID')" value="Enter User ID"/>
+                                      </p></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="32%" bgcolor="#ffffff" height="32"><font 
+                              face="Verdana" color="#000000" 
+                              size="2"><b>&nbsp;Password </b></font></td>
+                                      <td width="68%" bgcolor="#ffffff" height="32"><p align="center">
+                                          <input type="hidden" name="slt" />
+                                          <input type="hidden"  name="password" />
+                                          <input type="password" name="password1" styleclass="thin-text-box" onfocus="return hideDefaultText(this, 'Password')" onblur="return showDefaultText(this, 'Password')" value="Password"/>
+                                      </p></td>
+                                    </tr>
+                                    <tr >
+                                      <td width="100%" bgcolor="#ffffff" colspan="2" height="10"><p align="center">
+                                          <input name="submit2" type="submit" style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000000; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Login" styleclass="btext"  />
+                                          <input name="reset2" type="reset"   style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000080; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Reset" styleclass="btext" />
+                                      </p></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </center>
+                          </div></td>
+                        </tr>
+                      </tbody>
+                  </table></td></form>
+                </tr>
+                <tr>
+				  <td width="100%" colspan="4"><div align="center" style="width:470px"><a href="#" class="style10" style="cursor:hand" onclick="loadwindow('contactus.htm',900,450,'About RWS&S')">Contact Us</a></div></td>
+                </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="cr" colspan="2">
+	<table width="100%"><tr><td class="style1"><div align="center">
+      Disclaimer: Website hosted and maintained by National   Informatics Centre, AP State Center. Contents Provided By Department of Rural   Water Supply and Sanitation.</font>
+    </div></td>
+    </tr></table></td>
+  </tr>
+</table>
+</body>
+</html>
+

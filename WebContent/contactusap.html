@@ -1,0 +1,1279 @@
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+	
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="resources/style/rws-styles.css"  />	
+<link rel="stylesheet" type="text/css" href="resources/style/dropdown.css"  />
+<link rel="stylesheet" type="text/css" href="resources/style/static_style.css"  />
+<link rel='stylesheet' type='text/css' href="resources/style/styles.css" />
+
+
+
+
+<LINK rel=stylesheet type=text/css href="imagess/style.css">
+
+
+	<link rel="stylesheet" href="resources/style/demos.css">
+	<link rel="stylesheet" href="resources/style/example.css" type="text/css">
+
+
+	<link href="" rel="stylesheet" id="theme_css"> 
+
+
+<link rel="stylesheet" type="text/css" href="resources/style/dropdown.css"/>
+
+
+
+
+
+
+
+
+<title> W A T E R S O F T - Official Website of RWSS</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+.style3 {color: #99CC66}
+
+
+
+
+-->
+</style>
+</head>
+<link rel="stylesheet" href="./aprwss/resources/style/jquery.ui.all.css">
+<script language="JavaScript" src="./aprwss/resources/javascript/jquery-1.4.2.js"></script>
+
+
+	<script language="JavaScript" src="./aprwss/imagess/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./aprwss/imagess/jquery.jqDock.min.js"></script>
+<link href="./aprwss/resources/style/dockstyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./aprwss/resources/javascript/jscharts.js"></script>
+<link rel="stylesheet" href="./aprwss/resources/style/example.css" type="text/css">
+<script type="text/javascript" src="./aprwss/resources/javascript/tinybox.js"></script>
+<link rel="stylesheet" href="./aprwss/resources/style/jquery.ui.all.css">
+	<script src="./aprwss/resources/javascript/jquery-1.8.0.js"></script>
+	<script src="./aprwss/resources/javascript/jquery.ui.core.js"></script>
+	<script src="./aprwss/resources/javascript/jquery.ui.widget.js"></script>
+	<script src="./aprwss/resources/javascript/jquery.ui.tabs.js"></script>
+	<link rel="stylesheet" href="./aprwss/resources/style/demos.css">
+	<link rel="stylesheet" href="./aprwss/resources/style/example.css" type="text/css">
+
+
+<script src="./aprwss/resources/javascript/jquery.ui.mouse.js"></script>
+	<script src="./aprwss/resources/javascript/jquery.ui.resizable.js"></script>
+	<script src="./aprwss/resources/javascript/jquery.ui.accordion.js"></script>
+
+<script>
+
+	
+
+
+
+		
+	$(function() {
+		$("#accordion").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+	$(function() {
+		$("#accordion1").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+
+
+	$(function() {
+		$("#accordion2").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	$(function() {
+		$("#accordion3").accordion({
+			event: "click hoverintent"
+		});
+	});
+	$(function() {
+		$("#accordion4").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+
+	$(function() {
+		$("#accordion5").accordion({
+			event: "click hoverintent"
+		});
+	});
+
+	$(function() {
+		$("#accordion15").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	$(function() {
+		$("#accordion6").accordion({
+			event: "click hoverintent"
+		});
+	});
+	
+	var cfg = ($.hoverintent = {
+		sensitivity: 7,
+		interval: 100
+	});
+
+	$.event.special.hoverintent = {
+		setup: function() {
+			$( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
+		},
+		teardown: function() {
+			$( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
+		},
+		handler: function( event ) {
+			var self = this,
+				args = arguments,
+				target = $( event.target ),
+				cX, cY, pX, pY;
+			
+			function track( event ) {
+				cX = event.pageX;
+				cY = event.pageY;
+			};
+			pX = event.pageX;
+			pY = event.pageY;
+			function clear() {
+				target
+					.unbind( "mousemove", track )
+					.unbind( "mouseout", arguments.callee );
+				clearTimeout( timeout );
+			}
+			function handler() {
+				if ( ( Math.abs( pX - cX ) + Math.abs( pY - cY ) ) < cfg.sensitivity ) {
+					clear();
+					event.type = "hoverintent";
+					// prevent accessing the original event since the new event
+					// is fired asynchronously and the old event is no longer
+					// usable (#6028)
+					event.originalEvent = {};
+					jQuery.event.handle.apply( self, args );
+				} else {
+					pX = cX;
+					pY = cY;
+					timeout = setTimeout( handler, cfg.interval );
+				}
+			}
+			var timeout = setTimeout( handler, cfg.interval );
+			target.mousemove( track ).mouseout( clear );
+			return true;
+		}
+	};
+	</script>	
+<script>
+	$(function() {
+		$( "#tabs" ).tabs({
+    
+			event: "mouseover"
+		});
+
+	});
+	</script>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+<script type=text/javascript>
+
+function hideDefaultText(element, defaultVal)
+{
+	if(element.value == defaultVal){
+		element.value =	'';
+	}
+}
+
+function showDefaultText(element, defaultVal)
+{
+	if(element.value == ''){
+		element.value =	defaultVal;
+	}
+}
+
+function IsEmpty(aTextField) {
+
+	var regexp = /^(\s)*$/
+
+	if(regexp.test(aTextField.value)){
+		return true;
+
+	}else{
+		return false;
+	}
+
+}
+function submitFn()
+{
+	document.forms[0].password.value=document.forms[0].password1.value;
+	if(document.forms[0].userId.value=="" || document.forms[0].userId.value=="Enter User ID")
+	{
+		alert("UserId is required");
+		return false;
+	}
+	else if(document.forms[0].password1.value=="" || document.forms[0].password1.value=="Password")
+	{
+		alert("Password is required");
+		return false;
+	}
+	else if(document.forms[0].userId.value!="" && document.forms[0].password1.value!="")
+	{
+		document.forms[0].password1.value="";
+		return true;
+	}
+		
+	return false;
+}
+
+</script>
+
+<body >
+<center>
+<table width="952" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="10" valign="top" width="1" height="1"></td>
+    <td bgcolor="white"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top"><table width="96%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <!--<td valign="top"><img src="images/logo-1.jpg" width="950" height="129"></td>-->
+			<td valign="top"><img src="images/logo.jpg" width="1100" height="134"></td>
+			
+			
+			
+			
+		  
+		<!--  <td>Welcome Rwss</td>-->
+		 
+          <tr >
+            <td valign="top"><TABLE WIDTH=1100 BORDER=0 CELLPADDING=0 CELLSPACING=0 height="6">
+            
+			  
+			  
+              
+			  <!-- 
+			   
+			    <tr>
+                    <td><span class="style4">SEARCH</span></td>
+                    <td>:</td>
+		              <td><input type="text" name=q class="input-box"></td>
+                    <td>&nbsp;</td>
+					<td><input type=image  name=btnG value='Search'  src="images/go.gif" width="21" height="17" border="0">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table></TD>-->
+				
+				<tr><Td>
+				<div id='cssmenu'>
+<ul>
+   <li><a href='./rws_login_frm.jsp'><span>Home</span></a></li>
+   <li class='has-sub'><a href='./aboutap.html'><span>About Us</span></a>
+     
+      <span class="style3"></span></li>
+    <li class='has-sub'><a href='./programmeap.html'><span>Programmes</span></a>
+   <li class='has-sub'><a href='./OandMap.html'><span>O & M</span></a>
+     
+   </li>
+   <li class='last'><a href='./contactusap.html'><span>Contact Us</span></a></li>
+</ul>
+</div>
+
+
+
+
+</Td>
+</tr>
+
+        </table></td>
+      </tr>
+      <tr>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="215" valign="top" bgcolor="white">
+			<table width="215" border="0" cellspacing="0" cellpadding="0" >
+              
+              <tr>
+                <td><TABLE WIDTH=215 BORDER=0 CELLPADDING=0 CELLSPACING=0  >
+                   
+		<tr><td>
+		<div id="menu6">
+  <ul>
+    <li><a href="citizencornerap.html" title="Citizen Services"> Citizen Corner</a></li>
+</ul></div>
+	</td></tr>	
+				
+			
+<TR>
+                    <TD>
+<div id="menu5">
+  <ul>
+  	
+	
+	<!-- <li><a href="./rwsatglanceap.html" title="RWS&S At a Glance"> RWS&S At a Glance</a></li>
+	<li><a href="budgetap.html" title="AP Budget"> Budget</a></li>
+    <li><a href="./orgchrtap.html" title="Org Chart">  Org. Chart</a></li>
+    <li><a href="./IECHRDap.html" title="IEC & HRD Callender">IEC & HRD Calender</a></li>
+    <li><a href="./sucessstoriesap.html" title="Success Stories"> Success Stories</a></li>
+    <li><a href="./Newintiativesap.html" title="New Intiatives">  New Initiatives</a></li> -->
+   <li><a href="./downloads/RWSS _At_A_Glance.pdf"
+																							target="_blank" title="RWS&S At a Glance">
+																								RWS&S At a Glance</a></li>
+																						<li><a href="budgetap.jsp" title="AP Budget">Budget</a></li>
+																						<li><a href="orgchrtap.jsp"
+																							title="Org Chart"> Org. Chart</a></li>
+																							<li><a href="sucessap.jsp"  title="Success Stories">
+																								Success Stories</a></li>
+																						
+																								
+																								<li><a href="./downloads/Innovative_Technologies.pdf"
+																							target="_blank" title="New Intiatives">New
+																								Initiatives</a></li>
+																						<li><a href="Functionaryap.jsp"
+																							title="Functionary">Functionary</a></li>
+																						<li><a href="Executionap.jsp"
+																							title="Execution">Execution</a></li>
+																						<li><a href="Reportsblueap.jsp"
+																							title="Reports">Reports</a></li>
+																						<!--<li><a href="MediaGallery.jsp"
+																							title="MediaGallery">Media Gallery</a></li>-->
+	
+	
+	
+	
+  </ul>
+</div>
+
+					</TD>
+                  </TR>
+				  
+				 
+				  
+
+                </TABLE></td>
+              </tr>
+                       
+             
+              
+            </table>
+			 <a href="http://ddws.gov.in/" target="_blank">  <img src="images/ddwswater1.jpg" onMouseOver="this.src='images/ddwswater1.jpg'" onMouseOut="this.src='images/ddwswater1.jpg'" width="200" height="38" /></a>
+		 
+    <a href="https://webmail.telangana.gov.in/" target="_blank"><img src="images/web.jpg" onMouseOver="this.src='images/web.jpg'" onMouseOut="this.src='images/web.jpg'" width="200" height="38"/></a> 
+  
+			 <a href="http://india_gov_in.png" target="_blank"> <img src="./images/india_gov_in.png" width="200" height="37"></a>
+  
+   
+	<a href="https://mail.nic.in/mail/mauth" target="_blank"><img src="images/nnic.jpg" onMouseOver="this.src='images/nnic.jpg'" onMouseOut="this.src='images/nnic.jpg'" width="200" height="38" /></a>
+			
+			</td>
+			
+			
+             <td valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td valign="top" background="images/bg-logo.jpg"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                         
+                      
+                          
+                          <tr>
+                <td align="center" valign="top"><table width="90%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td ><!-- InstanceBeginEditable name="EditRegion1" -->
+                      <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                         <td valign="top"><font color=#4A8AC7><b>Contact Us</b></font>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        
+                         <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                       
+                        
+                        
+                    <!--     <tr>
+                        <td><a href="./downloads/ee-se-phoneap.xls" target="_blank"><b>1.</b>&nbsp;&nbsp;Contact Details </a></td>
+                        </tr>
+                        
+                       -->  
+
+					   <TR>
+                                  <TD> <table border="0" width="150%" align="center" cellpadding="8" cellspacing="1" bgcolor="lightblue">
+                                      <TBODY>
+									   <tr bgcolor="#E8F3FF">
+                              <td colspan="7" bgcolor="lightblue" align="center" ><div align="left"><span class="style6"><b>AP&nbsp;Secretariat</b></span></div></td>
+                              </tr>
+						<tr>
+                          <td>&nbsp;</td>
+                        </tr>
+              
+                       		  <tr bgcolor="#E8F3FF">
+                              <td align="center" bgcolor="lightblue" ><strong>Sno </strong></td>
+                              <td align="center" bgcolor="lightblue" ><strong>Name </strong></td>
+                              <td align="center" bgcolor="lightblue" ><strong>Designation </strong></td>
+                              <td align="center" bgcolor="lightblue" ><strong>Office Address </strong></td>
+                              <td align="center" bgcolor="lightblue" ><strong>Tel. No </strong></td>
+                              <td align="center" bgcolor="lightblue" ><strong>E - Mail ID </strong></td>
+                              </tr>
+					
+                             <tr height="35px" bgcolor="#E8F3FF">
+                              <td width="29"><div align="center">1. </div></td>
+                              <td width="100" align="center" valign="center">Budi. Mutyala Naidu</td>
+                              <td width="150" align="center" valign="center">Deputy Chief Minister and Minister for PR & RD</td>
+                              <td width="103" align="center" valign="center"> <!--South  H --> 5th Block <div align="center"> </div></td>
+                              <td width="86" align="center" valign="center"><!-- 040-23456299 --> 0863-2443768 <div align="center"></div></td>
+                              <td width="162" align="center" valign="center">ministerprrdap@gmail.com<!-- mprpeshi@gmail[dot]com --></td>
+                              </tr>
+                              
+                            <tr height="35px" bgcolor="#E8F3FF">
+                              <td width="29" align="center"><div align="center">2 </div></td>
+                              <td width="109" align="left" valign="center"> Gopal Krishna Dwivedi</td>
+                              <td width="114" align="center" valign="center"><!-- Secretary, RWSS -->Principal Secretary, RWSS </td>
+                              <td width="103" align="center" valign="center"> <!-- J -->5th Block <div align="center"> </div></td>
+                              <td width="86" align="center" valign="center"> 0863-2445509<div align="center"></div></td>
+                              <td width="162" align="center" valign="center">prlsecy_pr@ap[dot]gov[dot]in</td>
+                             </tr>
+                         
+					    <tr>
+                              <td colspan="7" align="top" bgcolor="#E8F3FF"></td>
+                              </tr>
+							 
+							 
+							 </TBODY></TABLE></TD></TR>
+
+							  <tr><td>&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;</td></tr>
+
+					   <TR>
+                                  <TD> <table border="0" width="150%" align="center" cellpadding="8" cellspacing="1" bgcolor="lightblue">
+                                      <TBODY>
+									   <tr bgcolor="#E8F3FF">
+                              <td colspan="7" bgcolor="lightblue" align="center" ><div align="left"><span class="style6"><b>Engineer in Chief & other Officers</b></span></div></td>
+                              </tr>
+
+              			<tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                       		 <TR bgColor="#e8f3ff">
+                                          <TD bgColor="lightblue" align="middle"><STRONG>S.No </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Name of the Officer </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Designation of the Officer </STRONG></TD>
+                                         <TD bgColor="lightblue" align="middle"><STRONG>Present Email ID </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Mobile Number </STRONG></TD>
+                                     
+                                         
+                                        </TR>
+
+                            	<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center" ><div align="center">1.</div></TD>
+                                          <TD align="center"> R.V.Krishna Reddy</TD>
+                                          <td width="157">Engineer In Chief</td>
+                                          <TD align="center">eicrwss@ap[dot]gov[dot]in</TD>
+                                          <TD align="center">9100120503</TD>
+                                                                                   
+                                           </TR>
+
+
+										<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">2.</div></TD>
+                                          <TD align="center">T.Gayatri Devi</TD>
+                                          <td width="157">Chief Engineer-II-JJM</td>     
+                                          <TD align="center">ce_rws2@ap[dot]gov[dot]in</TD>
+                                          <TD align="center">9100120502</TD>
+                                          
+                                           </TR>
+                                           <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">3.</div></TD>
+                                          <TD align="middle">P.Sanjeeva Reddy</TD>
+                                          <td width="157">Chief Engineer-III-Drinking Water Projects (Water Grid)</td>
+                                          <TD align="middle">ce_rws3@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120504</TD>
+                                           </TR>
+										
+										<TR  height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">4.</div></TD>
+                                          <TD align="middle">B.Hare Ram Naik</TD>
+                                          <td width="157">Chief Engineer-IV, Project Director( SWSM) & APDWSC</td>
+                                          <TD align="middle">ce_rws4@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120501</TD>
+                                          <TD align="middle"></TD>
+                                          <TD align="middle"></TD>
+                                           </TR>
+                                         <TR  height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">5.</div></TD>
+                                          <TD align="middle">V.Ravi Kumar</TD>
+                                          <td width="157">Chief Engineer, Drought</td>
+                                          <TD align="middle">ce_rws4@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120520</TD>
+                                          <TD align="middle"></TD>
+                                          <TD align="middle"></TD>
+                                           </TR> 
+			
+					    <tr>
+                              <td colspan="7" align="top" bgcolor="#E8F3FF"></td>
+                              </tr>
+							 
+							 
+							 </TBODY></TABLE></TD></TR>
+							 
+							 <tr><td>&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;</td></tr>
+							 
+	
+				   <TR>
+                                  <TD> <table border="0" width="150%" align="center" cellpadding="8" cellspacing="1" bgcolor="lightblue">
+                                      <TBODY>
+									   <tr bgcolor="#E8F3FF">
+                              <td colspan="7" bgcolor="lightblue" align="center" ><div align="left"><span class="style6"><b>Superintending Engineer</b></span></div></td>
+                              </tr>
+
+              				<tr><td>&nbsp;</td></tr>
+                       		 <TR bgColor="#e8f3ff">
+                                          <TD bgColor="lightblue" align="middle"><STRONG>S.No </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>District </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Name </STRONG></TD>
+                                         <TD bgColor="lightblue" align="middle"><STRONG>Email ID </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Mobile Number </STRONG></TD>
+                                         
+                                        </TR>
+
+                            <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">1.</div></TD>
+                                          <TD align="middle">Srikakulam</TD>
+                                          <td width="157">T.Srinivasa Prasad</td>
+                                          <TD align="middle">se_rws_sklm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120600</TD>
+                                           </TR>
+
+									<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">2.</div></TD>
+                                          <TD align="middle">Vizianagaram</TD>
+                                          <td width="157">B.Uma Shankar</td>
+                                          <TD align="middle">se_rws_vznm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120700</TD>
+                                           </TR>
+
+								  <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">3.</div></TD>
+                                          <TD align="middle">Visakhapatnam</TD>
+                                          <td width="157">K.V.Sivananda Kumar</td>   
+                                          <TD align="middle">se_rws_vspm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120800</TD>     
+                                           </TR>
+                                     <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">4.</div></TD>
+                                          <TD align="middle">Kakinada</TD>
+                                          <td width="157">M.Srinivas</td> 
+                                          <TD align="middle">se-rws-kkd@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121100</TD>
+                                        </TR>
+								    <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">5.</div></TD>
+                                          <TD align="middle">Eluru</TD>
+                                          <td width="157">N.V.V.Satyannarayana</td>  
+                                          <TD align="middle">se-rws-elr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121200</TD>
+                                           </TR>
+                                           
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">6.</div></TD>
+                                          <TD align="middle">NTR</TD>
+                                          <td width="157">D.Venkata Ramana</td>
+                                          <TD align="middle">se-rws-ntr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121300</TD>
+                                         </TR>
+                                         
+                                                            
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">7.</div></TD>
+                                          <TD align="middle">Guntur</TD>
+                                          <td width="157">R.Suresh</td>
+                                          <TD align="middle">se_rws_gntr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121400</TD>
+                                         </TR>
+											
+										                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">8.</div></TD>
+                                          <TD align="middle">Sri Potti Sriramulu Nellore</TD>
+                                          <td width="157">A.RangaPrasada Rao</td>
+                                          <TD align="middle">se_rws_nlr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121700</TD>
+                                         </TR>
+											
+																		                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">9.</div></TD>
+                                          <TD align="middle">Prakasam</TD>
+                                          <td width="157">Sk.Mardan Ali</td>
+                                          <TD align="middle">se_rws_pkm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121600</TD>
+                                         </TR>	
+                                         	
+  									 <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">10.</div></TD>
+                                          <TD align="middle">Kurnool</TD>
+                                          <td width="157">B Nageswara Rao</td>
+                                          <TD align="middle">se_rws_krnl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122400</TD>
+                                         </TR>		
+                                         
+                                                                    	
+  									 <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">11.</div></TD>
+                                          <TD align="middle">YSR Kadapa</TD>
+                                          <td width="157">M.ChinaVeeranna</td>       
+                                          <TD align="middle">se_rws_kdp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122348</TD>
+                                         </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">12.</div></TD>
+                                          <TD align="middle">Ananthapuramu</TD>
+                                          <td width="157">Eshan Basha</td>       
+                                          <TD align="middle">se_rws_antp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9014212899</TD>
+                                         </TR>		
+                                         
+                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="center"><div align="center">13.</div></TD>
+                                          <TD align="middle">Chittoor</TD>
+                                          <td width="157">KV Naga jyothi</td>       
+                                          <TD align="middle">se_rws_cttr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121800</TD>
+                                         </TR>		
+
+             
+					    <tr>
+                              <td colspan="7" align="top" bgcolor="#E8F3FF"></td>
+                              </tr>
+							 
+							 
+							 </TBODY></TABLE></TD></TR>
+							 
+							<tr><td>&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;</td></tr> 
+							 
+					 				 
+							 
+							 
+						   <TR>
+                                  <TD> <table border="0" width="150%" align="center" cellpadding="8" cellspacing="1" bgcolor="lightblue">
+                                      <TBODY>
+									   <tr bgcolor="#E8F3FF">
+                              <td colspan="7" bgcolor="lightblue" align="center" ><div align="left"><span class="style6"><b>District RWS Engineering Officer</b></span></div></td>
+                              </tr>
+							<tr><td>&nbsp;&nbsp;</td></tr>
+              
+                       		 <TR bgColor="#e8f3ff">
+                                          <TD bgColor="lightblue" align="middle"><STRONG>S.No </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>District </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Name </STRONG></TD>
+                                         <TD bgColor="lightblue" align="middle"><STRONG>Email ID </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Mobile Number </STRONG></TD>
+                                         
+                                        </TR>
+
+                            <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">1.</div></TD>
+                                          <TD align="middle">Parvathipuram Manyam</TD>
+                                          <td width="157">O.Prabhakara Rao</td>
+                                          <TD align="middle">dre-rws-ppm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120772</TD>
+                                          </TR>
+
+							<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">2.</div></TD>
+                                          <TD align="middle">Alluri Sitharama Raju</TD>
+                                          <td width="157">P.Leela krinshna</td>
+                                          <TD align="middle">dre-rws-asr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9493426561</TD>
+     								   </TR>
+
+							    <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">3.</div></TD><!--
+                                          <TD align="middle"></TD>
+                                          <TD align="middle">Head Office</TD>
+                                          -->
+                                          <TD align="middle">Anakapalli</TD>
+                                          <td width="157">B.V.V.Nageswara Rao</td>
+                                          
+                                          <TD align="middle">dre-rws-akp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9866554599</TD>
+                                        </TR>
+                                   
+                                    <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">4.</div></TD>
+                                          <TD align="middle">East Godavari</TD>
+                                          <td width="157">D.BalaSankara Rao</td>
+                                          <TD align="middle">se_rws_egd@ap[dot]gov[dot]in
+                                          <TD align="middle">9100121102</TD>
+                                        </TR>
+									<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">5.</div></TD>
+                                          <TD align="middle">Konaseema</TD>
+                                          <td width="157">Ch.N.V.Krishna Reddy</td>
+                                          <TD align="middle">dre-rws-ksm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121101</TD>
+                                           </TR>
+                                           
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">6.</div></TD>
+                                          <TD align="middle">West Godavari</TD>
+                                          <td width="157">A.S.A. Ramaswamy</td>
+                                          <TD align="middle">se_rws_wgd@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121217</TD>
+                                         </TR>
+                                         
+                                                            
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">7.</div></TD>
+                                          <TD align="middle">Krishna</TD>
+                                          <td width="157">M.V.S.N.Raju </td>
+                                          <TD align="middle">se_rws_krsn@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121323</TD>
+                                         </TR>
+											
+										                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">8.</div></TD>
+                                          <TD align="middle">Palnadu</TD>
+                                          <td width="157">R.S.R.Suresh</td>
+                                          <TD align="middle">dre-rws-pld@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121402</TD>
+                                         </TR>
+											
+																		                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">9.</div></TD>
+                                          <TD align="middle">Bapatla</TD>
+                                          <td width="157">Ch.Vidya Sagar</td>
+                                          <TD align="middle">dre-rws-bpl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121403</TD>
+                                         </TR>	
+                                         	
+  									 <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">10.</div></TD>
+                                          <TD align="middle">Tirupati</TD>
+                                          <td width="157">K.Vijaya Kumar</td>
+                                          <TD align="middle">dre-rws-tpt@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121845</TD>
+                                         </TR>		
+                                         
+                                                                    	
+  									 <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">11.</div></TD>
+                                          <TD align="middle">Nandyal</TD>
+                                          <td width="157">Ch.Manohar</td>       
+                                          <TD align="middle">dre-rws-ndl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122459</TD>
+                                         </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">12.</div></TD>
+                                          <TD align="middle">Annamayya</TD>
+                                          <td width="157">P.V.Prasanna Kumar</td>       
+                                          <TD align="middle">dre-rws-amy@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122300</TD>
+                                         </TR>		
+                                         
+                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">13.</div></TD>
+                                          <TD align="middle">Sri Sathya Sai</TD>
+                                          <td width="157">P.Rasheed Khan</td>       
+                                          <TD align="middle">dre-rws-sss@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">7569300318</TD>
+                                         </TR>		
+
+             
+					    <tr>
+                              <td colspan="7" align="top" bgcolor="#E8F3FF"></td>
+                              </tr>
+							 
+							 
+							 </TBODY></TABLE></TD></TR>		 
+		 
+							 
+							 <tr><td>&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;</td></tr>
+							
+				   <TR>
+                                  <TD> <table border="0" width="150%" align="center" cellpadding="8" cellspacing="1" bgcolor="lightblue">
+                                      <TBODY>
+									   <tr bgcolor="#E8F3FF">
+                              <td colspan="7" bgcolor="lightblue" align="center" ><div align="left"><span class="style6"><b>Executive Engineer,RWS&S</b></span></div></td>
+                              </tr>
+
+              				<tr><td>&nbsp;&nbsp;</td></tr>
+                       		 <TR bgColor="#e8f3ff">
+                                          <TD bgColor="lightblue" align="middle"><STRONG>S.No </STRONG></TD><!--
+                                           <TD bgColor="lightblue" align="middle"><STRONG>District</STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Circle/Division </STRONG></TD>
+                                          --><TD bgColor="lightblue" align="middle"><STRONG>Division </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Name </STRONG></TD>
+                                         <TD bgColor="lightblue" align="middle"><STRONG>Email ID </STRONG></TD>
+                                          <TD bgColor="lightblue" align="middle"><STRONG>Mobile Number </STRONG></TD>
+                                         
+                                        </TR>
+
+                            		<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">1.</div></TD>
+                                          <TD align="middle">Srikakulam</TD>
+                                          <td width="157">John Benhar</td>
+                                          <TD align="middle">ee_rws_sklm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120666</TD>
+                                           </TR>
+
+									<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">2.</div></TD>
+                                          <TD align="middle">Vizianagaram</TD>
+                                          <td width="157">A.V.S.Rajan</td>
+                                          <TD align="middle">ee_rws_vznm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120712</TD>
+                                         </TR>
+
+								
+									<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">3.</div></TD>
+                                           <TD align="middle">Parvathipuram</TD>
+                                          <td width="157">O.Prabhakara Rao</td>
+                                          <TD align="middle">ee_rws_vznmp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100120772</TD>
+                                          </TR>
+                                           
+                                     <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">4.</div></TD>
+                                           <TD align="middle">Visakhapatnam</TD>
+                                          <td width="157">T Siva Prasad</td>
+                                          <TD align="middle">ee_rws_vspm@ap[dot]gov[dot]in
+                                          <TD align="middle">9100120812</TD>
+                                         </TR>
+                                         
+									<TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">5.</div></TD>
+                                          <TD align="middle">Paderu</TD>
+                                          <td width="157">P.Leela krinshna</td>
+                                          <TD align="middle">ee_rws_pdr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9493426561</TD>
+                                        </TR>
+                                           
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">6.</div></TD>
+                                          <TD align="middle">Anakapalli</TD>
+                                          <td width="157">B.V.V.Nageswara Rao</td>
+                                          <TD align="middle">ee-rws-akp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9866554599</TD>
+                                        </TR>
+                                         
+                                                            
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">7.</div></TD>
+                                         <TD align="middle">Kakinada</TD>
+                                          <td width="157">K.V.V Chowdary </td>
+                                          <TD align="middle">ee_rws_kkd@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121109</TD>
+                                         </TR>
+											
+										                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">8.</div></TD>
+                                         <TD align="middle">Rajamahendravaram</TD>
+                                          <td width="157">D.BalaSankara Rao</td>
+                                          <TD align="middle">ee_rws_rjm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121102</TD>
+                                         </TR>
+											
+																		                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">9.</div></TD>
+                                         <TD align="middle">Amalapuram</TD>
+                                          <td width="157">Ch.N.V.Krishna Reddy</td>
+                                          <TD align="middle">ee-rws-amp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121101</TD>
+                                         </TR>	
+                                         	
+  									 <TR height="35px"bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">10.</div></TD>
+                                          <TD align="middle">Eluru</TD>
+                                          <td width="157">B.V.Giri</td>
+                                          <TD align="middle">ee_rws_elur@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121211</TD>
+                                          </TR>		
+                                         
+                                                                    	
+  									 <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">11.</div></TD>
+                                          <TD align="middle">Bhimavaram</TD>
+                                          <td width="157">A.S.A. Ramaswamy</td>       
+                                          <TD align="middle">ee-rws-bvrm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121217</TD>
+                                          </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">12.</div></TD>
+                                          <TD align="middle">Vijayawada</TD>
+                                          <td width="157">D.Ramalinga Prasad</td>       
+                                          <TD align="middle">ee_rws_vja@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121346</TD>
+                                          </TR>		
+                                         
+                                                   
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">13.</div></TD>
+                                          <TD align="middle">Machilipatnam</TD>
+                                          <td width="157">M.V.S.N.Raju</td>       
+                                          <TD align="middle">ee_rws_gdv@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121323</TD>
+                                          </TR>	
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">14.</div></TD>
+                                          <TD align="middle">Guntur</TD>
+                                          <td width="157">G.Trinadh Babu</td>       
+                                          <TD align="middle">ee_rws_gntr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121401</TD>
+                                         </TR>	
+                                         
+                                     <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">15.</div></TD>
+                                          <TD align="middle">Palnadu</TD>
+                                          <td width="157">R.S.R. Suresh </td>       
+                                          <TD align="middle">ee-rws-pld@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121402</TD>
+                                          </TR>	
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">16.</div></TD>
+                                          <TD align="middle">Bapatla</TD>
+                                          <td width="157">Ch.Vidya Sagar</td>       
+                                          <TD align="middle">ee-rws-bpt@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121403</TD>
+                                          </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">17.</div></TD>
+                                          <TD align="middle">Ongole</TD>
+                                          <td width="157">V.Vijay Kumar</td>       
+                                          <TD align="middle">ee_rws_pkm@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121610</TD>
+                                         </TR>	
+                                         
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">18.</div></TD>
+                                          <TD align="middle">Podili</TD>
+                                          <td width="157">V Viswanatha Reddy </td>       
+                                          <TD align="middle">ee_rws_pdl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121651</TD>
+                                          </TR>	
+                                         
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">19.</div></TD>
+                                          <TD align="middle">Nellore</TD>
+                                          <td width="157">M srinivasa kumar</td>       
+                                          <TD align="middle">ee_rws_nlr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121746</TD>
+                                         </TR>	
+                                         
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">20.</div></TD>
+                                          <TD align="middle">Gudur</TD>
+                                          <td width="157">Shaik Md. Sattar Hussain </td>       
+                                          <TD align="middle">ee_rws_gdr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121707</TD>
+                                         </TR>	
+                                         
+                                        <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">21.</div></TD>
+                                          <TD align="middle">Tirupati</TD>
+                                          <td width="157">K.Vijaya Kumar </td>       
+                                          <TD align="middle">ee_rws_tpti@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121845</TD>
+                                         </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">22.</div></TD>
+                                          <TD align="middle">Chittoor</TD>
+                                          <td width="157">K.V.Naga Jyothi </td>       
+                                          <TD align="middle">ee_rws_cttr@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121808</TD>
+                                         </TR>	
+                                         
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">23.</div></TD>
+                                          <TD align="middle">Madanapalli</TD>
+                                          <td width="157">Md Abdul Mateen </td>       
+                                          <TD align="middle">ee_rws_mdp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100121882</TD>
+                                          </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">24.</div></TD>
+                                          <TD align="middle">Rayachoti</TD>
+                                          <td width="157">P.V.Prasanna Kumar </td>       
+                                          <TD align="middle">ee-rws-rct@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122300</TD>
+                                          </TR>	
+                                         
+                                       <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">25.</div></TD>
+                                         <TD align="middle">Kadapa</TD>
+                                          <td width="157">N Venkateswarulu</td>       
+                                          <TD align="middle">ee_rws_kdp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122307</TD>
+                                         </TR>	
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">26.</div></TD>
+                                          <TD align="middle">Pulivendula</TD>
+                                          <td width="157">G.Vijaya Bhaskar</td>       
+                                          <TD align="middle">ee_rws_pvd@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122369</TD>
+                                          </TR>
+                                         
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">27.</div></TD>
+                                          <TD align="middle">Ananthapuramu</TD>
+                                          <td width="157">K.Jawahar Kumar</td>       
+                                          <TD align="middle">ee_rws_antp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">7569300273</TD>
+                                          </TR>				
+                                         	
+                                                      
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">28.</div></TD>
+                                         <TD align="middle">Puttaparthy</TD>
+                                          <td width="157">P.Rasheed Khan</td>       
+                                          <TD align="middle">ee-rws-ptp@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">7569300318</TD>
+                                          </TR>	
+                                         
+                                         
+                                                      
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">29.</div></TD>
+                                          <TD align="middle">Kurnool</TD>
+                                          <td width="157">B.Nageswara Rao</td>       
+                                          <TD align="middle">ee_rws_krnl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122409</TD>
+                                          </TR>
+                                         
+                                                       
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                        <TD align="middle"><div align="center">30.</div></TD>
+                                          <TD align="middle">Adoni</TD>
+                                          <td width="157">P Sankara Babu</td>       
+                                          <TD align="middle">ee_rws_adni@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122497</TD>
+                                         </TR>	
+                                         
+                                                      
+                                      <TR height="35px" bgColor="#e8f3ff">
+                                          <TD align="middle"><div align="center">31.</div></TD>
+                                          <TD align="middle">Nandyal</TD>
+                                          <td width="157">Ch.Manohar</td>       
+                                          <TD align="middle">ee_rws_ndl@ap[dot]gov[dot]in</TD>
+                                          <TD align="middle">9100122459</TD>
+                                         </TR>						
+
+             
+					    <tr>
+                              <td colspan="7" align="top" bgcolor="#E8F3FF"></td>
+                              </tr>
+							 
+							 
+							 </TBODY></TABLE></TD></TR>				 
+							 
+		 
+							 
+                       
+                         <tr><td>&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;</td></tr>
+                          
+                          
+                          
+                        </table></td>      
+                        
+                          
+                          
+                          
+                        </table></td>
+						
+						
+						
+						
+						
+						
+						
+                      </tr>
+                      
+					 
+					 
+					  
+					
+                      
+                      </table></td>
+						
+                      </tr>
+                     
+                    </table></td>
+				
+
+                   					
+                    <td width="244" valign="top"><table width="100%"
+															border="0" cellspacing="0" cellpadding="2">
+															<!--srinu-->
+
+
+
+<!-- 
+
+															<div class="news_container_main">
+																<div class="news_tab_heading_bg1">
+																	<div class="tab_heading">What's New</div>
+																	<div class="view_all_main"></div>
+																</div>
+
+
+																<div class="BlockContent">
+																	<div class="BlockContent-body">
+																		<marquee direction="up" scrolldelay="25"
+																			scrollamount="2" onMouseOver="this.stop()"
+																			onMouseOut="this.start()" height="175">
+																			<div class="news_scroll_txt"><img src="images/bullet_g.GIF" class="list_icon" alt="" height="7" width="7"></div>
+
+																			<a href="./advt/advt_new.pdf" target="_blank"><img
+																				src="images/arrow1.gif" />Advertisement No. RWS&S/Consultant/Workplan/2015-16<img src="images/new.gif"></a> <br></br>
+
+																			<a
+																				href="./downloads/EoI_for_Implementation_of_Swacch_Bharat__Government_of_Andhra_Pradesh_NS_14_May_15.pdf"
+																				target="_blank"><img src="images/arrow1.gif" />EOI,TOR
+																				NGO's Participation. <img src="images/new.gif" /></a> <br></br>
+																			<a href="http://www.smart.ap.gov.in/" target=_new>
+																				<img src="images/arrow1.gif" /> Smart Andhra
+																				Pradesh <img src="images/new.gif" />
+																			</a> <br>
+																			<br> <a href="NtrSujalaHomePage.html"
+																				target="_New"><img src="images/arrow1.gif" />
+																				NTR Sujala Patakam <img src="images/new.gif"></a>
+																			<br></br>
+
+
+																			<a href="./unicef_onlineapplication.jsp" target="_blank"><img src="images/arrow1.gif" />Notification of SBM(G) By UNICEF.</a>
+<br></br>
+																			<a href="./Enquiry_Notices_For_Lab_Materials.jsp"
+																				target="_blank"><img src="images/arrow1.gif" />Enquiry
+																				Notices For Water Quality Laboratory Materials . <img
+																				src="images/new.gif" /> </a> <br></br>
+																			<a href="./downloads/Tasks___Qualifications_of_WSSO_consultants.pdf" target="_blank"><img src="images/arrow1.gif" />  Tasks Qualifications Of WSSO Consultants. </a>
+<br></br>
+<a href="./downloads/Application_form_-_08-10-2013.pdf" target="_blank"><img src="images/arrow1.gif" />&nbsp;&nbsp; Application Form. </a>
+
+<br></br>
+
+																		</marquee>
+																	</div>
+																</div>
+															</div> -->
+															</div>
+
+
+
+                    
+                    <!--Contact Us  -->
+                   
+                  </tr>
+				  
+				 
+				  
+                </table>
+				</td>
+				
+            </table></td>
+			
+			
+			
+          </tr>
+        </table></td>
+      </tr>
+	  
+	  
+
+
+	  
+	  
+	 
+     <!--#0068A2-->
+      <tr>
+	  
+	   
+        <td  colspan="4" height="25"  bgcolor="#4A8AC7"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+		  
+            <td colspan="4"><span class="style1">&copy; 2014-15 Rural Water Supply &amp; Sanitation.</span><span class="style1">Designed, 
+      Developed &amp; Hosted and Maintained by National Informatics Centre, Andhra Pradesh 
+      State Centre	</span></td>
+	  
+		<!--   
+	  <a href="Related Links" target="_blank"> <img src="./images/imagesyyy.jpg" width="210" height="60" ></a>
+	  
+	   <a href=" FeedBack" target="_blank" title="Feedback"> <img src="./images/feedback.jpg" width="110" height="59"></a>
+	  <a href="Visitor" target="_blank" title="Visitors"> <img src="./images/visitors.jpg" width="110" height="59"></a>
+	   
+	  
+	 </tr><td align="center"><span class="style1"><a href="#"><font color="#9933FF"><b> FeedBack</b></font></a></span><span class="style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><font color="#9933FF"><b>Visitor</b></font><span class="style2"></span></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><font color="#9933FF"><b>Related Links</b></font></a></span></td>-->
+    </table></td>
+	
+	
+	`
+	
+    <td width="1" valign="top" ></td>
+  </tr>
+</table>
+<input type="hidden" name="as_sfid" value="AAAAAAU8ggydrUmUuTY6NkX2U3kPCqgplvhNLaHq51JMJEabH5YcabyD5-wsZMy3rzzjXm0u8fOlsbtumoDWjLEpyG25vGiy5GYXbUFVvybouAkiS1hXVsg4WH20vPcmBKw4_fU=" /><input type="hidden" name="as_fid" value="fd12113d92cfb0736d5ae6a0574b99729d8e4c30" /></form>
+</center>
+</body>
+</html>

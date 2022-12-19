@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+         <set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+		<set-property property="maxActive" value="200" />
+		<set-property property="maxWait" value="10000" />
+
+	</data-source>
+</data-sources>
+
+
+<form-beans>
+	<form-bean name="workStageForm" type="nic.watersoft.worksMonitoring.WorkStageForm" />
+	<form-bean name="mbookForm" type="nic.watersoft.worksMonitoring.MbookActionForm" />
+	<form-bean name="physicalForm" type="nic.watersoft.worksMonitoring.PhysicalProgressActionForm" />
+	<form-bean name="physicalQueryForm" type="nic.watersoft.worksMonitoring.PhysicalProgressQueryActionForm" />
+	<form-bean name="financialForm" type="nic.watersoft.worksMonitoring.FinancialProgressActionForm" />
+	<form-bean name="financialFormt" type="nic.watersoft.worksMonitoring.FinancialProgressActionFormt" />
+	<form-bean name="loginForm" type="nic.watersoft.worksMonitoring.LoginActionForm" />
+	<form-bean name="monitoringForm" type="nic.watersoft.worksMonitoring.WorksMonitoringActionForm" />
+	<form-bean name="WorkStatus" type="nic.watersoft.worksMonitoring.WorkStageForm" />
+</form-beans>
+
+<global-forwards>
+	<forward name="login" path="/login.jsp" />
+	<forward name="success" path="/success.jsp" redirect="true" />
+	<forward name="insert" path="/success.jsp" redirect="true" />
+	<forward name="update" path="/update.jsp" redirect="true" />
+	<forward name="delete" path="/delete.jsp" redirect="true" />
+	<forward name="failure" path="/error.jsp" redirect="true" />
+	<forward name="exception" path="/exception.jsp"/>
+	<forward name="empty" path="/empty.jsp" redirect="true" />
+</global-forwards>
+
+<action-mappings>
+<action path="/WorkStat" type="nic.watersoft.worksMonitoring.rws_work_status_frm" name="WorkStatus">
+<forward name="data" path="/rws_work_Status.jsp"/>
+</action>
+
+
+
+	<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	
+	<!-- ########### REPRESENTATIVE PROPOSALS ############ -->
+
+	<!-- Representative Proposal Data Action -->
+	<action path="/Exit" type="nic.watersoft.worksMonitoring.ExitAction" >
+		<forward name="success" path="/SgryMain.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/WorkStageCodeAction" type="nic.watersoft.worksMonitoring.WorkStageCodeAction">
+		<forward name="success" path="/workstageentry.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	<action path="/InsertWorkStage" name="workStageForm" type="nic.watersoft.worksMonitoring.InsertWorkStage"   validate="true" input="/workstageentry.jsp">
+		<forward name="success" path="/WorkStageCodeAction.do" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	
+	
+	<action path="/PopWorkStage" type="nic.watersoft.worksMonitoring.PopWorkStage" >
+		<forward name="success" path="/mbookentry.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	<action path="/InsertMbookEntry" name="mbookForm" type="nic.watersoft.worksMonitoring.InsertMbookEntryAction" scope="request">
+		<forward name="success" path="/success.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/GenPhysicalProgressAction" name="physicalForm" type="nic.watersoft.worksMonitoring.GenPhysicalProgressAction" scope="request" validate="true" input="/physicalprogressquery.jsp">
+		<forward name="success" path="/physicalprogressquery.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/PhysicalProgress" name="physicalForm" type="nic.watersoft.worksMonitoring.PhysicalProgressQueryAction" scope="request" validate="true" input="/physicalprogressquery.jsp">
+		<forward name="success" path="/physicalprogress.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	<action path="/InsertPhysicalProgress" name="physicalForm" type="nic.watersoft.worksMonitoring.PhysicalProgressAction" scope="request" validate="true" input="/physicalprogress.jsp">
+		<forward name="success" path="/success.jsp" />
+		<forward name="success1" path="/success_ins.jsp" />
+		<forward name="success2" path="/success_del.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/GenFinancialProgressAction" name="financialForm" type="nic.watersoft.worksMonitoring.GenFinancialProgressAction" scope="request">
+		<forward name="success" path="/financialprogressquery.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	
+	<action path="/GenFinancialProgressActiont" name="financialFormt" type="nic.watersoft.worksMonitoring.GenFinancialProgressActiont" scope="request">
+		<forward name="success" path="/financialprogressqueryt.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/FinancialProgress" name="financialForm" type="nic.watersoft.worksMonitoring.FinancialProgressQueryAction" scope="request" validate="true" input="/financialprogressquery.jsp">
+		<forward name="success" path="/financialprogress.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/FinancialProgresst" name="financialFormt" type="nic.watersoft.worksMonitoring.FinancialProgressQueryActiont" scope="request" >
+		<forward name="success" path="/financialprogresst.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/InsertFinancialProgress" name="financialForm" type="nic.watersoft.worksMonitoring.FinancialProgressAction" scope="request" validate="true" input="/financialprogress.jsp">
+		<forward name="success" path="/success.jsp" />
+		<forward name="success1" path="/success_ins.jsp" />
+		<forward name="success2" path="/success_del.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/InsertFinancialProgresst" name="financialFormt" type="nic.watersoft.worksMonitoring.FinancialProgressActiont" scope="request" validate="true" input="/financialprogresst.jsp">
+		<forward name="success" path="/financialprogresst.jsp" />
+		<forward name="success1" path="/financialprogresst.jsp" />
+		<forward name="success2" path="/financialprogresst.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/GenPhysicalProgressReport" name="physicalForm" type="nic.watersoft.worksMonitoring.GenPhysicalProgressReport" scope="request">
+		<forward name="success" path="/physicalprogress_report.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/LoginAction" name="loginForm" type="nic.watersoft.worksMonitoring.LoginValAction" scope="request">
+		<forward name="success" path="/Menu.jsp" />
+		<forward name="failure" path="/failure.jsp" />
+	</action>
+
+<action path="/PhysicalReport" name="physicalForm" type="nic.watersoft.worksMonitoring.PhysicalProgressActionReport" scope="request">
+		<forward name="success" path="/physical_report.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/GenWorksMonitoringAction" name="monitoringForm" type="nic.watersoft.worksMonitoring.GenWorksMonitoringAction" scope="request">
+		<forward name="success" path="/worksmonitoringquery.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+
+	<action path="/WorksMonitor" name="monitoringForm" type="nic.watersoft.worksMonitoring.WorksMonitorQueryAction" scope="request" >
+		<forward name="success" path="/worksmonitor.jsp" />
+		<forward name="failure" path="/error.jsp" />
+	</action>
+	<action path="/PickHabitation" type="nic.watersoft.worksMonitoring.PickHabitation">
+		<forward name="data-success" path="/rws_pick_hab_frm.jsp"/>
+		<forward name="Mandal-View" path="/rws_pick_Man_frm.jsp"/>
+	</action>
+	<action path="/SaveHabitation" name="monitoringForm" scope="request" type="nic.watersoft.worksMonitoring.SaveHabitation">
+		<forward name="save-success" path="/rws_pick_hab_frm.jsp"/>
+	</action>
+	<action path="/RevPickHabitation" type="nic.watersoft.worksMonitoring.RevPickHabitation">
+		<forward name="data-success" path="/rws_rev_pick_hab_frm.jsp"/>
+		<forward name="Mandal-View" path="/rws_pick_rev_Man_frm.jsp"/>
+	</action>
+	<action path="/RevSaveHabitation" name="monitoringForm" scope="request" type="nic.watersoft.worksMonitoring.RevSaveHabitation">
+		<forward name="save-success" path="/rws_rev_pick_hab_frm.jsp"/>
+		
+	</action>
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources"/> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-worksMonitoring.xml"/>
+</plug-in>
+
+</struts-config>

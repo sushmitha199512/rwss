@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources>
+		<data-source type="org.apache.commons.dbcp.BasicDataSource">
+			<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+			<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+			<set-property property="username" value="preduser" />
+			<set-property property="password" value="preduser" />
+		</data-source>
+	</data-sources>
+
+	<form-beans>
+		<form-bean name="assetForm" type="nic.watersoft.reports.Rws_Asset_FormBean" />
+		<form-bean name="habPublicInstitution" type="nic.watersoft.reports.CheckListFormBean" />
+		<form-bean name="checkListForm" type="nic.watersoft.reports.rws_asset_CheckList_FormBean">
+			<form-property name="circleCode" type="java.lang.String" />
+			<form-property name="circleName" type="java.lang.String" />
+			<form-property name="divisionCode" type="java.lang.String" />
+			<form-property name="divisionName" type="java.lang.String" />
+			<form-property name="subdivisionCode" type="java.lang.String" />
+			<form-property name="subdivName" type="java.lang.String" />
+			<form-property name="districtCode" type="java.lang.String" />
+			<form-property name="districtName" type="java.lang.String" />
+			<form-property name="mandalCode" type="java.lang.String" />
+			<form-property name="mandalName" type="java.lang.String" />
+			<form-property name="panchayatCode" type="java.lang.String" />
+			<form-property name="panchayatName" type="java.lang.String" />
+			<form-property name="villageCode" type="java.lang.String" />
+			<form-property name="villageName" type="java.lang.String" />
+			<form-property name="habitationCode" type="java.lang.String" />
+			<form-property name="habitationName" type="java.lang.String" />
+			<form-property name="mode" type="java.lang.String" />
+			<form-property name="pws" type="java.lang.String" />
+			<form-property name="cpws" type="java.lang.String" />
+			<form-property name="mpws" type="java.lang.String" />
+			<form-property name="shallowHandPumps" type="java.lang.String" />
+			<form-property name="ponds" type="java.lang.String" />
+			<form-property name="openWells" type="java.lang.String" />
+			<form-property name="dp" type="java.lang.String" />
+
+
+
+			<form-property name="shalHpCount" type="java.lang.String" />
+			<form-property name="pondsCount" type="java.lang.String" />
+			<form-property name="wellsCount" type="java.lang.String" />
+			<form-property name="handPump" type="java.lang.String" />
+			<form-property name="pwsCount" type="java.lang.String" />
+			<form-property name="cpwsCount" type="java.lang.String" />
+			<form-property name="mpwsCount" type="java.lang.String" />
+			<form-property name="handPumpCount" type="java.lang.String" />
+			<form-property name="dpCount" type="java.lang.String" />
+			<form-property name="assetCode" type="java.lang.String" />
+		</form-bean>
+		<!-- code added by sridhar for Asset Free Format Report -->
+		<form-bean name="AssetFreeFormatform" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="offices" type="java.lang.String" />
+			<form-property name="division" type="java.lang.String" />
+			<form-property name="subdivision" type="java.lang.String" />
+			<form-property name="district" type="java.lang.String" />
+			<form-property name="mandal" type="java.lang.String" />
+			<form-property name="panchayat" type="java.lang.String" />
+			<form-property name="village" type="java.lang.String" />
+			<form-property name="habCode" type="java.lang.String" />
+			<form-property name="assettype" type="java.lang.String" />
+			<form-property name="assetstatus" type="java.lang.String" />
+			<form-property name="assetname" type="java.lang.String" />
+			<form-property name="location" type="java.lang.String" />
+			<form-property name="yrcreation" type="java.lang.String" />
+			<form-property name="yrcreationcond" type="java.lang.String" />
+			<form-property name="costasset" type="java.lang.String" />
+			<form-property name="costassetcond" type="java.lang.String" />
+			<form-property name="nofhab" type="java.lang.String" />
+			<form-property name="nofhabcond" type="java.lang.String" />
+			<form-property name="popben" type="java.lang.String" />
+			<form-property name="popbencond" type="java.lang.String" />
+			<form-property name="creport" type="java.lang.String" />
+			<form-property name="creport1" type="java.lang.String" />
+			<form-property name="commonfields" type="java.lang.String[]" />
+			<form-property name="sourcefields" type="java.lang.String[]" />
+			<form-property name="headworksfields" type="java.lang.String[]" />
+			<form-property name="pipelinefields" type="java.lang.String[]" />
+			<form-property name="srreservoirsfields" type="java.lang.String[]" />
+			<form-property name="othersfields" type="java.lang.String[]" />
+			<form-property name="pumpingfields" type="java.lang.String[]" />
+			<form-property name="borewellfields" type="java.lang.String[]" />
+			<form-property name="shpfields" type="java.lang.String[]" />
+			<form-property name="openwellfields" type="java.lang.String[]" />
+			<form-property name="pondsfields" type="java.lang.String[]" />
+			<form-property name="othercheckfields" type="java.lang.String[]" />
+		</form-bean>
+
+		<form-bean name="flexForm1" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="district" type="java.lang.String" />
+			<form-property name="mandal" type="java.lang.String" />
+			<form-property name="panchayat" type="java.lang.String" />
+			<form-property name="village" type="java.lang.String" />
+			<form-property name="habCode" type="java.lang.String" />
+			<form-property name="offices" type="java.lang.String" />
+			<form-property name="division" type="java.lang.String" />
+			<form-property name="subdivision" type="java.lang.String" />
+			<form-property name="constituency" type="java.lang.String" />
+			<form-property name="program" type="java.lang.String" />
+			<form-property name="subprogram" type="java.lang.String" />
+			<form-property name="workcategory" type="java.lang.String" />
+			<form-property name="scheme" type="java.lang.String" />
+			<form-property name="expyear" type="java.lang.String" />
+			<form-property name="noh_condition" type="java.lang.String" />
+			<form-property name="nohabs" type="java.lang.String" />
+			<form-property name="plan" type="java.lang.String" />
+			<form-property name="augnew" type="java.lang.String" />
+			<form-property name="addate_condition" type="java.lang.String" />
+			<form-property name="adminSancDate" type="java.lang.String" />
+			<form-property name="asa_condition" type="java.lang.String" />
+			<form-property name="asa" type="java.lang.String" />
+			<form-property name="tsdate_condition" type="java.lang.String" />
+			<form-property name="techSancDate" type="java.lang.String" />
+			<form-property name="tsa_condition" type="java.lang.String" />
+			<form-property name="tsa" type="java.lang.String" />
+			<form-property name="sid_condition" type="java.lang.String" />
+			<form-property name="sidDate" type="java.lang.String" />
+			<form-property name="sidhand_condition" type="java.lang.String" />
+			<form-property name="sidhandDate" type="java.lang.String" />
+			<form-property name="condate_condition" type="java.lang.String" />
+			<form-property name="conDate" type="java.lang.String" />
+			<form-property name="condur_condition" type="java.lang.String" />
+			<form-property name="conDur" type="java.lang.String" />
+			<form-property name="wrkexp_condition" type="java.lang.String" />
+			<form-property name="wrkExp" type="java.lang.String" />
+			<form-property name="wrkcompdt_condition" type="java.lang.String" />
+			<form-property name="wrkcompDate" type="java.lang.String" />
+			<form-property name="wrkcommdt_condition" type="java.lang.String" />
+			<form-property name="wrkcommDate" type="java.lang.String" />
+			<form-property name="compl_stat" type="java.lang.String[]" />
+			<form-property name="cp" type="java.lang.String" />
+			<form-property name="cst" type="java.lang.String" />
+			<form-property name="csc" type="java.lang.String" />
+			<form-property name="ctot" type="java.lang.String" />
+			<form-property name="tot_wat_supl" type="java.lang.String" />
+			<form-property name="ext_wat_lvl" type="java.lang.String" />
+			<form-property name="near_surf_source" type="java.lang.String" />
+			<form-property name="near_ground_source" type="java.lang.String" />
+			<form-property name="prev_stat" type="java.lang.String[]" />
+			<form-property name="prop_year" type="java.lang.String" />
+			<form-property name="amnt_reqd" type="java.lang.String" />
+			<form-property name="flopop" type="java.lang.String" />
+			<form-property name="freason" type="java.lang.String" />
+			<form-property name="creport" type="java.lang.String" />
+			<form-property name="creport1" type="java.lang.String" />
+			<form-property name="commonfields" type="java.lang.String[]" />
+			<form-property name="adminfields" type="java.lang.String[]" />
+			<form-property name="techfields" type="java.lang.String[]" />
+			<form-property name="sourcefields" type="java.lang.String[]" />
+			<form-property name="confields" type="java.lang.String[]" />
+			<form-property name="wrkexpfields" type="java.lang.String[]" />
+			<form-property name="wrkcompfields" type="java.lang.String[]" />
+			<form-property name="checkall" type="java.lang.String" />
+			<form-property name="districtName" type="java.lang.String" />
+			<form-property name="cp_condition" type="java.lang.String" />
+			<form-property name="csc_condition" type="java.lang.String" />
+			<form-property name="cst_condition" type="java.lang.String" />
+			<form-property name="ctot_condition" type="java.lang.String" />
+			<form-property name="flopop_condition" type="java.lang.String" />
+			<form-property name="tot_wat_supl_condition" type="java.lang.String" />
+			<form-property name="ext_wat_lvl_condition" type="java.lang.String" />
+			<form-property name="near_surf_source_condition" type="java.lang.String" />
+			<form-property name="near_ground_source_condition"
+				type="java.lang.String" />
+			<form-property name="amnt_reqd_condition" type="java.lang.String" />
+			<form-property name="popdet" type="java.lang.String[]" />
+			<form-property name="ec_condition" type="java.lang.String" />
+			<form-property name="ec" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="flexForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="district" type="java.lang.String" />
+			<form-property name="mandal" type="java.lang.String" />
+			<form-property name="panchayat" type="java.lang.String" />
+			<form-property name="village" type="java.lang.String" />
+			<form-property name="habCode" type="java.lang.String" />
+			<!-- constituency field added by sridhar -->
+			<form-property name="Constituency" type="java.lang.String" />
+			<form-property name="compl_stat" type="java.lang.String[]" />
+			<form-property name="cp" type="java.lang.String" />
+			<form-property name="cst" type="java.lang.String" />
+			<form-property name="csc" type="java.lang.String" />
+			<form-property name="ctot" type="java.lang.String" />
+			<form-property name="tot_wat_supl" type="java.lang.String" />
+			<form-property name="ext_wat_lvl" type="java.lang.String" />
+			<form-property name="near_surf_source" type="java.lang.String" />
+			<form-property name="near_ground_source" type="java.lang.String" />
+			<form-property name="prev_stat" type="java.lang.String[]" />
+			<form-property name="prop_year" type="java.lang.String" />
+			<form-property name="amnt_reqd" type="java.lang.String" />
+			<form-property name="flopop" type="java.lang.String" />
+			<form-property name="freason" type="java.lang.String" />
+			<form-property name="creport" type="java.lang.String" />
+			<form-property name="fields" type="java.lang.String[]" />
+			<form-property name="checkall" type="java.lang.String" />
+			<form-property name="districtName" type="java.lang.String" />
+			<form-property name="cp_condition" type="java.lang.String" />
+			<form-property name="csc_condition" type="java.lang.String" />
+			<form-property name="cst_condition" type="java.lang.String" />
+			<form-property name="ctot_condition" type="java.lang.String" />
+			<form-property name="flopop_condition" type="java.lang.String" />
+			<form-property name="tot_wat_supl_condition" type="java.lang.String" />
+			<form-property name="ext_wat_lvl_condition" type="java.lang.String" />
+			<form-property name="near_surf_source_condition" type="java.lang.String" />
+			<form-property name="near_ground_source_condition"
+				type="java.lang.String" />
+			<form-property name="amnt_reqd_condition" type="java.lang.String" />
+			<form-property name="popdet" type="java.lang.String[]" />
+			<!--added by swapna -->
+			<form-property name="habType" type="java.lang.String" />
+			<form-property name="habSubType" type="java.lang.String" />
+			<form-property name="habCat" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="StateForm" type="nic.watersoft.reports.StateForm">
+		</form-bean>
+
+		<form-bean name="reportsForm" type="nic.watersoft.reports.ReportsForm" />
+		<form-bean name="reportsForm1" type="nic.watersoft.reports.ReportsForm" />
+
+		<!-- added by jyothi for gis data -->
+
+		<form-bean name="tablesForm" type="nic.watersoft.reports.TablesForm" />
+		<form-bean name="excelForm" type="nic.watersoft.reports.Rws_ExcelSheet_Form" />
+		<form-bean name="psexcelForm"
+			type="nic.watersoft.reports.Rws_Projectshelf_ExcelSheet_Form" />
+		<form-bean name="habScoreCardForm"
+			type="nic.watersoft.reports.RwsHabScoreCardActionForm" />
+		<!-- end -->
+
+
+		<form-bean name="imisForm" type="nic.watersoft.reports.Rws_Imis_Ids_Form" />
+		<form-bean name="genericActionForm" type="nic.watersoft.reports.GenericActionForm" />
+		<form-bean name="imisProgrammeForm" type="nic.watersoft.masters.Rws_Imis_Programme_Entry_Form" />
+	</form-beans>
+	<global-forwards>
+		<forward name="ExceptionPage" path="/CheckList_Exception_Page.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<action path="/switch" type="org.apache.struts.actions.SwitchAction" />
+		<action path="/imisIds" name="imisForm" type="nic.watersoft.reports.Rws_Imis_Ids_Save_Action" scope="request">
+			<forward name="data" path="/Rws_Imis_Ids_Save_Frm.jsp" />
+			<forward name="get" path="/Rws_Imis_Ids_Save_Frm.jsp" />
+			<forward name="fail" path="/Rws_Imis_Ids_Save_Frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+
+		<action name="habScoreCardForm" path="/rwssHabScoreCard" scope="session"
+			type="nic.watersoft.reports.RwsHabScoreCardAction">
+			<forward name="home" path="/HabScoreCard/RWSHabScoreCardHome.jsp" />
+			<forward name="SVS" path="/HabScoreCard/rws_rfd_svs_target_ach_rpt.jsp" />
+			<forward name="MVS" path="/HabScoreCard/rws_rfd_mvs_target_ach_rpt.jsp" />
+			<forward name="SCH" path="/HabScoreCard/rws_rfd_sch_target_ach_rpt.jsp" />
+			<forward name="ANG" path="/HabScoreCard/rws_rfd_anganavadi_target_ach_rpt.jsp"/>
+		</action>
+
+		<action name="habPublicInstitution" path="/PublicInst" scope="session"
+			validate="false" type="nic.watersoft.reports.rws_hab_publicinstitution_rpt_act"
+			input="/rws_hab_publicinstitutions_rpt.jsp">
+			<forward name="data" path="/rws_hab_publicinstitutions_rpt.jsp" />
+			<forward name="div" path="/rws_hab_publicinstitutions_rpt.jsp" />
+			<forward name="view" path="/rws_hab_publicinstitutions_distrpt.jsp" />
+			<forward name="report" path="/rws_dist_publicinstitutions_rpt.jsp" />
+		</action>
+
+		<action name="checkListForm" path="/CheckList" scope="session"
+			validate="false" type="nic.watersoft.reports.rws_asset_CheckList_Act"
+			input="/rws_asset_CheckList.jsp">
+			<forward name="data" path="/rws_asset_CheckList.jsp" />
+			<forward name="div" path="/rws_asset_CheckList.jsp" />
+			<forward name="subDiv" path="/rws_asset_CheckList.jsp" />
+			<forward name="mandals" path="/rws_asset_CheckList.jsp" />
+			<forward name="counts" path="/rws_asset_CheckList.jsp" />
+		</action>
+		<!--Asset free format Reprot added by sridhar -->
+		<action path="/AssetFreeFormat" name="AssetFreeFormatform"
+			scope="request" type="nic.watersoft.reports.AssetFreeFormatReport_Act">
+			<forward name="data" path="/AssetFreeFormat_frm.jsp" />
+			<forward name="report" path="/AssetFreeFormat_report.jsp" />
+			<forward name="detail" path="/AssetFreeFormat_detailreport.jsp" />
+		</action>
+
+
+		<action path="/mdbDownload" name="psexcelForm" scope="request"
+			type="nic.watersoft.reports.rws_Mdb_File_Porting_Act">
+			<forward name="get" path="/portings/rws_access_porting_sample_frm.jsp" />
+			<forward name="fail" path="/portings/rws_mdb_file_frm.jsp" />
+		</action>
+
+		<!-- DIRECT PUMPING CODE added by sridhar -->
+
+		<action path="/DpDrilldown" name="checkListForm" scope="session"
+			type="nic.watersoft.reports.rws_direct_pumping_Act">
+			<forward name="dpump" path="/rws_direct_pumping.jsp" />
+		</action>
+
+		<!---code end -->
+
+
+		<!--################################CPWS ACTION MAPINGS ########################################################## -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ SOURCE <action path="/PsPumpDetReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_source_Pumpsets_Act"> 
+			<forward name="CpwsPumpsetReport" path="/rws_asset_cpws_source.jsp" /> </action> 
+			<action path="/CpwsSourceSurface" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_source_surface_Act"> 
+			<forward name="CpwsSourceReport" path="/rws_asset_cpws_source.jsp" /> </action> 
+			<action path="/CpwsSubSourceSurface" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_source_subSurface_Act"> <forward 
+			name="CpwsSourceReport" path="/rws_asset_cpws_source.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF SOURCE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HEAD WORKS $$$$$ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/HwRwcWellReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_rwcWell_Act"> 
+			<forward name="HwRwcWellReport" path="/rws_asset_cpws_headWorks.jsp" /> </action> 
+			<action path="/HwSsTankReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_ssTank_Act"> 
+			<forward name="HwSsTankReport" path="/rws_asset_cpws_headWorks.jsp" /> </action> 
+			<action path="/HwSsFiltersReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_ssFilters_Act"> 
+			<forward name="HwSsFiltersReport" path="/rws_asset_cpws_headWorks.jsp" /> 
+			</action> <action path="/HwRsFiltersReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_hw_rsFilters_Act"> <forward name="HwRsFiltersReport" 
+			path="/rws_asset_cpws_headWorks.jsp" /> </action> <action path="/HwSumpReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_sump_Act"> 
+			<forward name="HwSumpReport" path="/rws_asset_cpws_headWorks.jsp" /> </action> 
+			<action path="/HwFootPathBridgeReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_hw_fpb_Act"> <forward name="HwFpbReport" 
+			path="/rws_asset_cpws_headWorks.jsp" /> </action> <action path="/HwPumpHouseReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_pumpHouse_Act"> 
+			<forward name="HwPumpHouseReport" path="/rws_asset_cpws_headWorks.jsp" /> 
+			</action> <action path="/HwWatchManReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_hw_watchMan_Act"> <forward name="HwWatchManReport" 
+			path="/rws_asset_cpws_headWorks.jsp" /> </action> <action path="/HwCwcWellReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_cwcWell_Act"> 
+			<forward name="HwCwcWellReport" path="/rws_asset_cpws_headWorks.jsp" /> </action> 
+			<action path="/HwMicroFiltersReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_hw_microFilters_Act"> <forward 
+			name="HwMicroFiltersReport" path="/rws_asset_cpws_headWorks.jsp" /> </action> 
+			<action path="/HwRoPlantsReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_hw_roPlants_Act"> 
+			<forward name="HwRoPlantsReport" path="/rws_asset_cpws_headWorks.jsp" /> 
+			</action> -->
+
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$END OF HEAD WORKS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PlGravityMainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_pipeline_gm_Act"> <forward name="Gmpipelinereport" 
+			path="/rws_asset_cpws_pipeline.jsp" /> </action> <action path="/PlDistributionReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_pipeline_db_Act"> 
+			<forward name="Dbpipelinereport" path="/rws_asset_cpws_pipeline.jsp" /> </action> 
+			<action path="/PlPumpingMainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_pipeline_pm_Act"> <forward name="Pmpipelinereport" 
+			path="/rws_asset_cpws_pipeline.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ End OF PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ RESERVOIRS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/RvOhsrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_reservoirs_ohsr_Act"> 
+			<forward name="OhsrReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" 
+			/> </action> <action path="/RvCSTReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_reservoirs_cisterns_Act"> <forward 
+			name="CSTReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" /> </action> 
+			<action path="/RvOhbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_reservoirs_ohbr_Act"> 
+			<forward name="OhbrReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" 
+			/> </action> <action path="/RvGlsrReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_reservoirs_glsr_Act"> <forward 
+			name="GlsrReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" /> </action> 
+			<action path="/RvGlbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_reservoirs_glbr_Act"> 
+			<forward name="GlbrReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" 
+			/> </action> <action path="/RvBptReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_reservoirs_bpt_Act"> <forward 
+			name="BptReservoirReport" path="/rws_asset_cpws_reservoirs.jsp" /> </action> -->
+
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF RESERVOIRS $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ OTHERS $$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/CpwsOthersMsl" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_others_MSL_Act"> 
+			<forward name="Cpwsmislane" path="/rws_asset_cpws_others_MSL.jsp" /> </action> -->
+		<!-- code added by sridhar for chlorination and O and M <action path="/CpwsOthersChlorination" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_others_Chlorination_Act"> 
+			<forward name="CpwsChlorination" path="/rws_asset_cpws_others_Chlorination.jsp" 
+			/> </action> <action path="/CpwsOthersOandM" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_others_OandM_Act"> <forward name="CpwsOandM" 
+			path="/rws_asset_cpws_others_OandM.jsp" /> </action> Code end -->
+
+
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF OTHERS $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DISTRICT AND MANDL DRILL MAPINGS FOR 
+			PWS&CPWS $$$$$$$$$$$$$$$$$$$$$$$$$$$ <action path="/CpwsDrillDown" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_cpws_grillDown_Act"> 
+			<forward name="CpwsGrillDown" path="/rws_asset_cpws_grillDown.jsp" /> <forward 
+			name="SourceAllSurface" path="/rws_asset_All_Source_Dist_Dril.jsp" /> </action> -->
+		<!-- code added by sridhar for division wise report for CPWS> <action path="/CpwsDivision" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_Division_Act"> 
+			<forward name="CpwsDivision" path="/rws_asset_cpws_Division.jsp" /> </action> 
+			<action path="/CpwsSubdivision" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_cpws_Subdivision_Act"> 
+			<forward name="CpwsSubdivision" path="/rws_asset_cpws_Subdivision.jsp" /> 
+			</action> <action path="/MandalDrillDown" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_cpws_MandalDrillDown_Act"> <forward 
+			name="CpwsDrillDown" path="/rws_asset_cpws_MadalDrillDown.jsp" /> <forward 
+			name="AllSources" path="/rws_asset_All_Source_mandal_Drill.jsp" /> </action> -->
+
+		<!-- code added by sridhar for Pws <action path="/PwsDivision" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_pws_Division_Act"> 
+			<forward name="PwsDivision" path="/rws_asset_pws_Division.jsp" /> </action> 
+			<action path="/PwsSubdivision" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_Subdivision_Act"> 
+			<forward name="PwsSubdivision" path="/rws_asset_pws_Subdivision.jsp" /> </action> 
+			<action path="/PwsDrillDown" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_grillDown_Act"> 
+			<forward name="PwsGrillDown" path="/rws_asset_pws_grillDown.jsp" /> </action> 
+			<action path="/PwsMandalDrillDown" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_MandalDrillDown_Act"> 
+			<forward name="PwsMandalDrillDown" path="/rws_asset_pws_Mandal_DrillDown.jsp" 
+			/> </action> code end -->
+
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$END of DISTRICT AND MANDL DRILL MAPINGS 
+			FOR PWS&CPWS $$$$$$$$$$$$$$$$$$$$$ -->
+		<!--##################################END OF CPWS ACTION MAPINGS################################################# -->
+
+		<!--####################################PWS ACTION MAPINGS######################################################## -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ SOURCE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PwsPumpsetReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_source_Pumpset_Act"> 
+			<forward name="PwsPumpsetReport" path="/rws_asset_pws_source1.jsp" /> </action> 
+			<action path="/PwsSourceSurface" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_source_surface_Act"> 
+			<forward name="PwsSourceReport" path="/rws_asset_pws_source1.jsp" /> </action> 
+			<action path="/PwsSubSourceSurface" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_pws_source_subSurface_Act"> <forward 
+			name="PwsSourceReport" path="/rws_asset_pws_source1.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF SOURCE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HEAD WORKS $$$$$ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PwsHwRwcWellReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_hw_rwcWell_Act"> 
+			<forward name="HwRwcWellReport" path="/rws_asset_pws_headworks.jsp" /> </action> 
+			<action path="/PwsHwSsTankReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_ssTank_Act"> 
+			<forward name="HwSsTankReport" path="/rws_asset_pws_headworks.jsp" /> </action> 
+			<action path="/PwsHwSsFilterReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_Pws_hw_ssFilters_Act"> <forward name="HwSsFiltersReport" 
+			path="/rws_asset_pws_headworks.jsp" /> </action> <action path="/PwsHwRsFilterReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_rsFilters_Act"> 
+			<forward name="HwRsFiltersReport" path="/rws_asset_pws_headworks.jsp" /> 
+			</action> -->
+		<!-- code added by sridhar for micro filter and Roplants <action path="/PwsHwMicroFiltersReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_microFilters_Act"> 
+			<forward name="HwMicroFiltersReport" path="/rws_asset_pws_headworks.jsp" 
+			/> </action> <action path="/PwsHwRoPlantsReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_Pws_hw_roPlants_Act"> <forward name="HwRoPlantsReport" 
+			path="/rws_asset_pws_headworks.jsp" /> </action> <action path="/PwsHwFootPathBridgeReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_fpb_Act"> 
+			<forward name="HwFpbReport" path="/rws_asset_pws_headworks.jsp" /> </action> 
+			<action path="/PwsPumpHouseReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_pumpHouse_Act"> 
+			<forward name="HwPumpHouseReport" path="/rws_asset_pws_headworks.jsp" /> 
+			</action> <action path="/PwsHwWatchManReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_Pws_hw_watchMan_Act"> <forward name="HwWatchManReport" 
+			path="/rws_asset_pws_headworks.jsp" /> </action> <action path="/PwsHwCwcWellReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_cwcWell_Act"> 
+			<forward name="HwCwcWellReport" path="/rws_asset_pws_headworks.jsp" /> </action> 
+			<action path="/PwsHwSumpReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_hw_sump_Act"> 
+			<forward name="HwSumpReport" path="/rws_asset_pws_headworks.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$END OF HEAD WORKS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PwsPipelinePumpingmainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_pws_pipeline_pm_Act"> <forward name="PwsPipelinePumpingmainReport" 
+			path="/rws_asset_pws_pipeline.jsp" /> </action> <action path="/PwsPipelineDistributionReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_pipeline_disrtib_Act"> 
+			<forward name="PwsPipelineDistributionReport" path="/rws_asset_pws_pipeline.jsp" 
+			/> </action> <action path="/PwsGravityMainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_Pws_pipeline_gm_Act"> <forward name="Gmpipelinereport" 
+			path="/rws_asset_pws_pipeline.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ End OF PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ RESERVOIRS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PwsohsrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_reservoirs_Ohsr_Act"> 
+			<forward name="PwsOhsr" path="/rws_asset_pws_reservoirs.jsp" /> </action> 
+			<action path="/PwsohbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_reservoirs_ohbr_Act"> 
+			<forward name="PwsOhbr" path="/rws_asset_pws_reservoirs.jsp" /> </action> 
+			<action path="/PwsGlsrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_pws_reservoirs_Glsr_Act"> 
+			<forward name="PwsGlsr" path="/rws_asset_pws_reservoirs.jsp" /> </action> 
+			<action path="/PwsGlbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_reservoirs_glbr_Act"> 
+			<forward name="PwsGlbr" path="/rws_asset_pws_reservoirs.jsp"/> </action> 
+			<action path="/PwsRvBptReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Pws_reservoirs_bpt_Act"> 
+			<forward name="BptReservoirReport" path="/rws_asset_pws_reservoirs.jsp"/> 
+			</action> <action path="/PwsCisternsReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_pws_reservoirs_Cisterns_Act"> <forward 
+			name="PwsCisterns" path="/rws_asset_pws_reservoirs.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF RESERVOIRS $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ OTHERS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/PwsOthersMsl" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_pws_assset_others_MSL_Act"> 
+			<forward name="Pwsmislane" path="/rws_asset_pws_others_MSL.jsp" /> </action> -->
+
+		<!-- code addded by sridhar <action path="/PwsOthersChlorination" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_pws_others_Chlorination_Act"> 
+			<forward name="PwsChlorination" path="/rws_asset_pws_others_Chlorination.jsp" 
+			/> </action> <action path="/PwsOthersOandM" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_pws_others_OandM_Act"> <forward name="PwsOandM" 
+			path="/rws_asset_pws_others_OandM.jsp" /> </action> -->
+		<!-- code end -->
+
+
+		<!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END OF OTHERS $$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+		<!--############################### END OF PWS ########################################################### -->
+
+		<!--############################ MPWS ACTION MAPINGS ####################################################### 
+			<action path="/MpwsDrillDown" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Mpws_DistrictDrillDown_Act"> 
+			<forward name="MpwsDrillDown" path="/rws_asset_Mpws_districtDrillDown.jsp" 
+			/> </action> <action path="/MpwsMandalDrillDown" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_MandalDrillDown_Act"> <forward 
+			name="MpwsDrillDown" path="/rws_asset_Mpws_MandalDrillDown.jsp" /> </action> -->
+		<!-- code added by sridhar for division report <action path="/MpwsDivisionWise" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Mpws_Division_Act"> 
+			<forward name="MpwsDivisionWise" path="/rws_asset_Mpws_Division.jsp" /> </action> -->
+		<!-- code for subdivision report <action path="/MpwsSubdivisionwise" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_Mpws_Subdivision_Act"> 
+			<forward name="MpwsSubdivisionwise" path="/rws_asset_Mpws_Subdivision.jsp" 
+			/> </action> -->
+
+
+		<!-- code end -->
+		<!--$$$$$$$$$$$$$$$$$$$SOURCE$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/MpwsPsPumpDetReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_source_Pumpsets_Act"> <forward 
+			name="MpwsPumpsetReport" path="/rws_asset_mpws_source.jsp" /> </action> <action 
+			path="/MpwsSourceSurface" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_Mpws_source_surface_Act"> 
+			<forward name="MpwsSourceReport" path="/rws_asset_mpws_source.jsp" /> </action> 
+			<action path="/MpwsSubSourceSurface" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_Mpws_source_subSurface_Act"> <forward 
+			name="MpwsSourceReport" path="/rws_asset_mpws_source.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$$$END OF SOURCE$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$$$$$$ PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/MpwsPlGravityMainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_pipeline_gm_Act"> <forward name="Gmpipelinereport" 
+			path="/rws_asset_mpws_pipeline.jsp" /> </action> <action path="/MpwsPlDistributionReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_pipeline_db_Act"> 
+			<forward name="Dbpipelinereport" path="/rws_asset_mpws_pipeline.jsp" /> </action> 
+			<action path="/MpwsPlPumpingMainReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_pipeline_pm_Act"> <forward name="Pmpipelinereport" 
+			path="/rws_asset_mpws_pipeline.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$$$$END OF PIPELINE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+		<!--$$$$$$$$$$$$$$RESERVOIRS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/MpwsGlbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_reservoirs_glbr_Act"> 
+			<forward name="GlbrReservoirReport" path="/rws_asset_mpws_reservoirs.jsp"/> 
+			</action> <action path="/MpwsRvOhsrReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_reservoirs_ohsr_Act"> <forward 
+			name="OhsrReservoirReport" path="/rws_asset_mpws_reservoirs.jsp" /> </action> 
+			<action path="/MpwsRvOhbrReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_reservoirs_ohbr_Act"> 
+			<forward name="OhbrReservoirReport" path="/rws_asset_mpws_reservoirs.jsp" 
+			/> </action> <action path="/MpwsRvGlsrReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_reservoirs_glsr_Act"> <forward 
+			name="GlsrReservoirReport" path="/rws_asset_mpws_reservoirs.jsp" /> </action> 
+			<action path="/MpwsRvBptReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_reservoirs_bpt_Act"> 
+			<forward name="BptReservoirReport" path="/rws_asset_mpws_reservoirs.jsp" 
+			/> </action> <action path="/MpwsRvCSTReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_reservoirs_cisterns_Act"> <forward 
+			name="CSTReservoirReport" path="/rws_asset_mpws_reservoirs.jsp" /> </action> -->
+		<!--$$$$$$$$$$$$$$END OF RESERVOIRS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+		<!--$$$$$$$$$$$$$$$$$HEAD WORKS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+			<action path="/MpwsHwCwcWellReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_cwcWell_Act"> <forward name="HwCwcWellReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> <action path="/MpwsOthersMsl" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_others_MSL_Act"> 
+			<forward name="Mpwsmislane" path="/rws_asset_mpws_others_MSL.jsp" /> </action> -->
+		<!-- code added by sridhar for chlorination and OandM - <action path="/MpwsOthersChlorination" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_others_Chlorination_Act"> 
+			<forward name="MpwsChlorination" path="/rws_asset_mpws_others_Chlorination.jsp" 
+			/> </action> <action path="/MpwsOthersOandM" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_others_OandM_Act"> <forward name="MpwsOandM" 
+			path="/rws_asset_mpws_others_OandM.jsp" /> </action> -->
+
+		<!-- code end - <action path="/MpwsHwPumpHouseReport" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_mpws_hw_pumpHouse_Act"> 
+			<forward name="HwPumpHouseReport" path="/rws_asset_mpws_headWorks.jsp" /> 
+			</action> <action path="/MpwsHwRwcWellReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_rwcWell_Act"> <forward name="HwRwcWellReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> <action path="/MpwsHwSsTankReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_hw_ssTank_Act"> 
+			<forward name="HwSsTankReport" path="/rws_asset_mpws_headWorks.jsp" /> </action> 
+			<action path="/MpwsHwSsFiltersReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_ssFilters_Act"> <forward name="HwSsFiltersReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> <action path="/MpwsHwRsFiltersReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_hw_rsFilters_Act"> 
+			<forward name="HwRsFiltersReport" path="/rws_asset_mpws_headWorks.jsp" /> 
+			</action> <action path="/MpwsHwSumpReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_sump_Act"> <forward name="HwSumpReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> <action path="/MpwsHwFootPathBridgeReport" 
+			name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_mpws_hw_fpb_Act"> 
+			<forward name="HwFpbReport" path="/rws_asset_mpws_headWorks.jsp" /> </action> 
+			<action path="/MpwsHwWatchManReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_watchMan_Act"> <forward name="HwWatchManReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> -->
+		<!-- code added by sridhar <action path="/MpwsHwMicroFiltersReport" name="checkListForm" 
+			scope="session" type="nic.watersoft.reports.rws_asset_mpws_hw_microFilters_Act"> 
+			<forward name="HwMicroFiltersReport" path="/rws_asset_mpws_headWorks.jsp" 
+			/> </action> <action path="/MpwsHwRoPlantsReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_mpws_hw_roPlants_Act"> <forward name="HwRoPlantsReport" 
+			path="/rws_asset_mpws_headWorks.jsp" /> </action> -->
+		<!-- code end -->
+
+
+		<!--$$$$$$$$$$$$$$$$$$$END OF HEAD WORKS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+		<!--#############################END OF MPWS################################################################### -->
+		<!--###############################HAND PUMPS#################################################################### 
+			<action path="/HandpumpsBorewellReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_handpumps_borewell_Act" > <forward 
+			name="HandpumpsReport" path="/rws_asset_handpumps_borewell.jsp"/> </action> -->
+		<!--####################################END OF HAND PUMPS####################################################### -->
+
+		<!--####################################Shallow HAND PUMPS####################################################### 
+			<action path="/ShallowHpReport" name="checkListForm" scope="session" type="nic.watersoft.reports.rws_asset_ShalloHp_Act" 
+			> <forward name="ShallowHpReport" path="/rws_asset_ShalloHp.jsp"/> </action> -->
+		<!--####################################END OF Shallow HAND PUMPS############################################## -->
+		<!--OPEN WELLS <action path="/OpenWellsReport" name="checkListForm" scope="session" 
+			type="nic.watersoft.reports.rws_asset_OpenWells_Act" > <forward name="OpenWells" 
+			path="/rws_asset_OpenWells.jsp"/> </action> -->
+		<!--################################DOWNLOAD MAPINGS############################################# -->
+		<action path="/DownLoadPred_offline" name="checkListForm"
+			scope="session" type="nic.watersoft.reports.Pred_offline_DownLoader">
+			<forward name="DownLoadPred_offline" path="/Pred_offline_DownLoader.jsp" />
+		</action>
+
+		<action path="/offlinePatch" forward="/Pred_offline_patch_download.jsp">
+		</action>
+		<action path="/offlinePatch2" forward="/pred_offline_patch2_download.jsp">
+		</action>
+		<action path="/offlinePatch3" forward="/pred_offline_patch3_download.jsp">
+		</action>
+
+		<action path="/offlinePatch4" forward="/pred_offline_patch4_download.jsp">
+		</action>
+		<action path="/offlinePatches" forward="/pred_offline_patches.jsp">
+		</action>
+
+
+		<!--##################################END OF DOWNLOAD ################################################ -->
+		<!--#############################END OF MPWS################################################################### -->
+
+
+		<!--****************************TEMP MAPPING FOR PORTING********************************************************* -->
+		<action path="/porting" name="assetTypeForm" scope="request"
+			type="nic.watersoft.reports.Rws_porting_frm">
+			<forward name="portingStatus" path="/portingStatus.jsp" />
+
+		</action>
+
+		<!-- free format Reprot -->
+		<action path="/flexReport" name="flexForm" scope="request"
+			type="nic.watersoft.reports.FlexReportAct">
+			<forward name="inFlexi" path="/rws_flexi_report_form.jsp" />
+			<forward name="outFlex" path="/out_flexi_report.jsp" />
+			<forward name="excelView" path="/excel_flexi_report.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<!--work free format Reprot -->
+		<action path="/flexReport1" name="flexForm1" scope="request"
+			type="nic.watersoft.reports.FlexReportAct1">
+			<forward name="inFlexi" path="/rws_flexi_report_form1.jsp" />
+			<forward name="outFlex" path="/out_flexi_report1.jsp" />
+			<forward name="excel" path="/out_flexi_report1_excel.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+
+		<action path="/DistrictListAction" name="StateForm"
+			type="nic.watersoft.reports.DistrictListAction" validate="false">
+			<forward name="success" path="/rws_total_list.jsp" />
+			<forward name="mandal" path="/rws_mandal_list.jsp" />
+			<forward name="panchayat" path="/rws_panchayat_list.jsp" />
+			<forward name="village" path="/rws_village_list.jsp" />
+			<forward name="habitation" path="/rws_habitation_list.jsp" />
+		</action>
+
+
+		<!-- Habitation status Report -->
+		<action path="/reportsDisplay" name="reportsForm"
+			type="nic.watersoft.reports.ReportsAction" scope="session" validate="false">
+			<forward name="data" path="/rws_habitation_status_rpt.jsp" />
+			<forward name="getMandals" path="/rws_habitation_status_rpt.jsp" />
+			<forward name="Submit" path="/rws_habitation_status_rpt.jsp" />
+			<forward name="District" path="/rws_habitation_status_rpt.jsp" />
+			<forward name="mandal" path="/rws_habitation_status_rpt.jsp" />
+		</action>
+
+		<action path="/assetStatus" name="reportsForm"
+			type="nic.watersoft.reports.ReportsAction" scope="request" validate="false">
+			<forward name="Assets" path="/rws_asset_status_rpt.jsp"></forward>
+		</action>
+
+		<action path="/duplicates" name="reportsForm"
+			type="nic.watersoft.reports.DuplicatesAction" scope="request"
+			validate="false">
+			<forward name="data" path="/rws_duplicates_list_rpt.jsp" />
+			<forward name="duplicates" path="/rws_duplicates_list_rpt.jsp" />
+		</action>
+
+		<action path="/unidentified" name="reportsForm1"
+			type="nic.watersoft.reports.UnIdentifiedAction" scope="request"
+			validate="false">
+			<forward name="data" path="/rws_unidentified_habitations_frm.jsp" />
+			<forward name="listHabs" path="/rws_unidentified_habitations_rpt.jsp" />
+		</action>
+
+		<!--Added by srilaxmi on 23/10/08 -->
+
+		<action path="/DistrictHabitationSearch" name="StateForm"
+			type="nic.watersoft.reports.DistrictHabitationSearchAction" validate="true">
+			<forward name="get2" path="/rws_districts_searchhabitation_frm.jsp" />
+			<forward name="search" path="/rws_mandalsearch_list.jsp" />
+			<forward name="searchpanchayat" path="/rws_panchayat_search_list.jsp" />
+			<forward name="searchvillage" path="/rws_village_search_list.jsp" />
+			<forward name="searchhabitation" path="/rws_habitation_search_list.jsp" />
+		</action>
+
+		<!--added by jyothi for gis data -->
+
+		<action path="/ListTables" name="tablesForm"
+			type="nic.watersoft.reports.TableListAction" scope="request">
+			<forward name="districts" path="/rws_tables_list_rep.jsp" />
+			<forward name="mandals" path="/rws_tables_list_rep.jsp" />
+		</action>
+
+		<action path="/GisTables" name="tablesForm" type="nic.watersoft.reports.TableListAction" scope="request">
+			<forward name="districts" path="/rws_tables_gis_list_rep.jsp" />
+			<forward name="mandals" path="/rws_tables_gis_list_rep.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+		<action path="/WQLab" name="psexcelForm" type="nic.watersoft.reports.Rws_Wq_Lab_Porting_Action" scope="request">
+			<forward name="data" path="/rws_wq_lab_porting_frm.jsp" />
+			<forward name="get" path="/rws_wq_lab_porting_download_files.jsp" />
+			<forward name="fail" path="/rws_wq_lab_porting_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+			<forward name="expire" path="/../masters/sessionExpired.jsp"/>		 
+		</action>
+
+		<action path="/PSExcel" name="psexcelForm"	type="nic.watersoft.reports.Rws_ProjectShelf_Excel_Action" scope="request">
+			<forward name="data" path="/rws_projectshelf_porting_automated_frm.jsp" />
+			<forward name="get" path="/rws_projectshelf_porting_download_files.jsp" />
+			<forward name="fail" path="/rws_projectshelf_porting_automated_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+
+		<action path="/accessPorting" name="psexcelForm" type="nic.watersoft.reports.Rws_Mpr_Access_Action" scope="request">
+			<forward name="data" path="/rws_access_porting_frm.jsp" />
+			<forward name="get" path="/rws_access_porting_file.jsp" />
+			<forward name="fail" path="/rws_access_porting_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+
+		<action path="/draccessPorting" name="psexcelForm" type="nic.watersoft.reports.Rws_Drought_ProjectShelf_Action" scope="request">
+			<forward name="data" path="/rws_drought_access_porting_frm.jsp" />
+			<forward name="get" path="/rws_drought_access_porting_file.jsp" />
+			<forward name="fail" path="/rws_drought_access_porting_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+
+		<action path="/WQFTKACCESS" name="excelForm" type="nic.watersoft.reports.Rws_Wq_Ftk_Access_Action" scope="request">
+			<forward name="data" path="/rws_wq_ftk_porting_frm.jsp" />
+			<forward name="get" path="/rws_wq_ftk_porting_download_files.jsp" />
+			<forward name="fail" path="/rws_wq_ftk_porting_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+
+		<action path="/DistrictLevel" name="psexcelForm" type="nic.watersoft.reports.Rws_District_Level_Wrks_Access_Action"
+			scope="request">
+			<forward name="data" path="/rws_district_level_wrks_porting.jsp" />
+			<forward name="get" path="/rws_district_level_wrks_porting_file.jsp" />
+			<forward name="fail" path="/rws_district_level_wrks_porting.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	
+		</action>
+		<action name="genericActionForm" path="/GenericActionTaken"
+			scope="session" type="nic.watersoft.reports.GenericActionTaken_Act">
+			<forward name="get2" path="/rws_generic_actiontaken_rpt.jsp" />
+			<forward name="Save" path="/rws_generic_actiontaken_rpt.jsp" />
+		</action>
+		<action path="/assetImages" scope="session" name="assetForm" type="nic.watersoft.reports.AssetImageDownloader">
+			<forward name="data" path="/rws_Asset_Components_frm.jsp"></forward>
+			<forward name="view" path="/rws_Asset_Components_frm.jsp"></forward>
+			<forward name="view1" path="/assetImages.do?mode=zip"></forward>
+			<forward name="fail" path="/rws_Asset_Components_frm.jsp"></forward>
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp"/>	
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>	 
+		</action>
+		<action path="/geoTagging" scope="session" name="assetForm" type="nic.watersoft.reports.RwsGeoTaggingFormatDownloader">
+			<forward name="data" path="/rws_geo_tag_frm.jsp"></forward>
+			<forward name="view" path="/rws_geo_tag_frm.jsp"></forward>
+			<forward name="view1" path="/geoTagging.do?mode=zip"></forward>
+			<forward name="fail" path="/rws_geo_tag_frm.jsp"></forward>
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+	 		<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+		</action>
+		<action path="/DownloadIt" name="psexcelForm"
+			type="nic.watersoft.reports.Rws_FileDownload_Action" scope="request">
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="nic.watersoft.resources.ApplicationResources" />
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-admin.xml" />
+	</plug-in>
+
+</struts-config>
