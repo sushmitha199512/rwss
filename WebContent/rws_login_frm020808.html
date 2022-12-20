@@ -1,0 +1,472 @@
+<<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML><HEAD><TITLE>Official Website of PRED</TITLE>
+<script language="JavaScript" src="/pred/resources/javascript/md5.js"></script>
+<META http-equiv=Content-Language content=en-us>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<LINK href="images/style.css" type=text/css rel=stylesheet>
+ 
+
+<META content="MSHTML 6.00.2900.2912" name=GENERATOR></HEAD>
+<BODY text=#999999 vLink=#666666 aLink=#666666 link=#cccccc bgColor=#646464 leftMargin=0 marginheight="0" marginwidth="0" onload="fnInit()">
+</head>
+<BODY leftmargin=0 topmargin=0>
+<script language="JavaScript">
+<!--
+function fnInit()
+{
+get_radio_value();
+	var randomnumber=Math.floor(Math.random()*99999999);
+	
+	document.forms[0].slt.value=randomnumber;
+//alert(randomnumber);
+document.forms[0].userId.focus();
+}
+	var Scroll=""
+	var wiper
+	var index=0
+	var space=" "
+	reset();
+	function reset()
+	{
+	text = new Array(4)
+	var textnr=Math.round((Math.random()*4))
+	text[0]="Welcome to WaterSoft"
+	text[1]="Welcome to WaterSoft"
+	text[2]="Welcome to WaterSoft"
+	text[3]="Welcome to WaterSoft"
+	text[4]="Welcome to WaterSoft"
+	Scroll=text[textnr]
+	index=0
+	main()
+	}
+
+	function main()
+	{
+	window.status=Scroll.substring(0,index)
+	index++
+	if(index==(Scroll.length+4)){setTimeout('reset_clear()',300);}
+	else{setTimeout('main()',50)}
+	}
+	function reset_clear()
+	{
+	index=0
+	wiper=""
+	for(var a=0;a<Scroll.length;a++){wiper+=space}
+	clearem()
+	}
+	function clearem()
+	{
+	window.status=wiper.substring(0,index) + "->" + Scroll.substring(index+2,Scroll.length)
+	index++
+	if(index==(Scroll.length+4)){reset()}
+	else{setTimeout('clearem()',50)}
+	}
+	function get_radio_value()
+	{
+		for (var i=0; i < document.forms[0].loginMode.length; i++)
+	   	{
+		   	if (document.forms[0].loginMode[i].checked)
+		     {
+		      	var rad_val = document.forms[0].loginMode[0].value;
+		    }
+	  	}
+	}
+	
+	function submitFn()
+	{
+		document.forms[0].password.value=hex_md5(document.forms[0].password1.value+document.forms[0].slt.value);
+		/*
+		document.forms[0].password1.value="";
+		*/
+		if(document.forms[0].userId.value!="" && document.forms[0].password1.value!="")
+		{
+		//document.forms[0].password.value=document.forms[0].password1.value;
+		document.forms[0].password1.value="";
+		return true;
+		}
+		else if(document.forms[0].userId.value=="")
+		{
+			alert("UserId is required");
+			document.forms[0].userId.focus();
+			return false;
+		}
+		else if(document.forms[0].password1.value=="")
+		{
+			alert("Password is required");
+			document.forms[0].password1.focus();
+			return false;
+		}
+		return false;
+	}
+      
+//-->
+</SCRIPT>
+<DIV align=left></DIV>
+
+<DIV align=center>
+<CENTER>
+<TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+height=76 cellSpacing=0 cellPadding=0 width=760 bgColor=#ffffff border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left width=28 height=63><IMG height=21 
+      src="images/round1.jpg" width=28 border=0></TD>
+    <TD width=260 height=63><IMG height=54 
+      src="images/WaterSoft.jpg" width=228 
+border=0></TD>
+    <TD width=503 height=63>
+      <P align=center><IMG height=80 
+      src="images/rightimg.jpg" width=473 
+    border=0></P></TD>
+    <TD vAlign=top align=right width=32 height=63><IMG height=21 
+      src="images/round2.jpg" width=28 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 colSpan=4 height=1><IMG height=8 
+      src="images/spacer.gif" width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 bgColor=#9a9b9c colSpan=4 height=19>
+      <P align=center><B><FONT face=Arial color=#ffffff size=2>
+      <!-- <MARQUEE scrollDelay=120 width=793>&nbsp; Flash !  Review on PRED - MIS by JS(DDWS) / Director(DDWS) on 12.03.07 ---</MARQUEE>--></FONT></B></P></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 
+    background="images/cb.jpg" colSpan=4 
+      height=1><IMG height=8 src="images/spacer.gif" 
+      width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 colSpan=4 height=19>
+      <DIV align=center>
+      <CENTER>
+	  <form  method="post" action="Login.do" onsubmit="return submitFn()" focus="userId">
+      
+      <TABLE id=AutoNumber9 style="BORDER-COLLAPSE: collapse" 
+      borderColor=#111111 height=25 cellSpacing=0 cellPadding=0 width="92%" 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width="20%" height=25><IMG height=180 
+            src="images/img1.jpg" width=180 
+          border=0></TD>
+          <TD width="20%" height=25>&nbsp;</TD>
+          <TD width="20%" height=25><IMG height=180 
+            src="images/img2.jpg" width=180 
+          border=0></TD>
+          <TD width="20%" height=25><IMG height=180 
+            src="images/img3.jpg" width=180 
+          border=0></TD>
+         <!-- 
+          <TD width="20%" height=25><IMG height=180 
+            src="images/123.bmp" width=180 
+          border=0></TD>
+           -->
+          <TD width="21%" height=25><IMG height=180 
+            src="images/img4.jpg" width=180 
+          border=0></TD></TR></TBODY></TABLE></CENTER></DIV></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 colSpan=4 height=19>
+      <TABLE id=AutoNumber10 style="BORDER-COLLAPSE: collapse" 
+      borderColor=#111111 height=339 cellSpacing=0 cellPadding=0 width="100%" 
+      border=0 >
+        <TBODY>
+        <TR>
+          <TD vAlign=top width="100%" bgColor=#d6d6d6 colSpan=3 height=3><IMG 
+            height=3 src="images/spacer.gif" width=3 
+            border=0></TD></TR>
+        <TR>
+          <TD vAlign=top width="100%" colSpan=3 height=10><IMG height=8 
+            src="images/spacer.gif" width=8 
+          border=0></TD></TR>
+        <TR>
+          <TD vAlign=top width="23%" height=326>
+            <DIV align=center>
+            <CENTER>
+            <TABLE id=AutoNumber11 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=325 cellSpacing=1 cellPadding=4 
+            width="92%" bgColor=#d6d6d6 border=0>
+              <TBODY>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> <B><!-- <A 
+                  href="http://10.160.2.136/sabita/html/aboutus.html"> --><A href="/pred">HOME</A></B></FONT></TD></TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> <B><A 
+                  href="./help/aboutus.doc">About 
+                  Us</A></B></FONT></TD></TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="./organisation.jsp" >Oganisation</A></B></FONT></TD></TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B>Citizen Charter</B></FONT></TD></TR>
+              <!-- 
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="./help/EOI.doc">EOI for APRWSSP</A></B></FONT></TD></TR>
+                  -->
+              <TR>
+                <!-- <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="./help/notification_consultants.doc">Notification for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APRWSSP</A></B></FONT></TD>-->
+                  <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="./help/inhoue_cnts_EOI_PaperAdv.doc" target="_new">Advt. For EOI<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From Consultants</A></B></FONT></TD>
+                  </TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="Rws_workshop_photos.html">Photo Gallery</A></B></FONT></TD></TR>
+             
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><a href="rws_contactUs.jsp"> Feedback</a></B></FONT></TD></TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><A href="./externalLinks.jsp">External Links</A></B></FONT></TD></TR>
+				   <TR>
+              
+				   <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#FF66FF 
+                  size=1><B><A href="./reports/rws_login_asset_rpt.jsp">Asset Status 
+                  </A></B></FONT></TD></TR>
+              <TR>
+ 				  <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#FF0066
+                  size=1><B><A href="./reports/rws_login_hab_rpt11.jsp">Habitation Status
+					</A></B></FONT></TD></TR>
+              <TR>
+                <TD width="89%" bgColor=#ffffff height=25><FONT face=Verdana 
+                  color=#000000 size=1><IMG height=12 
+                  src="images/but1.gif" width=12 
+                  border=0> </FONT><FONT face=Verdana color=#000080 
+                  size=1><B><a href="">Contact 
+            Us</a></B></FONT></TD></TR></TBODY></TABLE></CENTER></DIV></TD>
+          <TD vAlign=top width="42%" height=326>
+            <DIV align=center>
+            <CENTER>
+           
+             <TABLE id=AutoNumber12 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=315 cellSpacing=0 cellPadding=0 
+            width="99%" border=0 background="images/borewell.jpg">
+              <TBODY>
+              <TR>
+                <TD width="100%" height=28><FONT face=Verdana color="navy" 
+                  size=2 >Rural Water Supply Sector ::</FONT><B><FONT 
+                  face=Verdana color=#000080 size=1><BR><IMG height=3 
+                  src="images/imgDotLine.gif" 
+                  width=130 border=0><IMG height=3 
+                  src="images/imgDotLine.gif" 
+                  width=130 border=0></FONT></B></TD></TR>
+              <TR>
+                <TD width="100%" height=287>
+                  <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 150%; MARGIN-RIGHT: 10px" 
+                  align=justify><FONT face=Verdana color="navy" size=1>The Panchayati Raj 
+                  and Engineering Department is an Engineering wing of PR & RD Department
+				  &nbsp;  
+                  &nbsp;  
+                  &nbsp; </FONT></P>
+                  <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 100%; MARGIN-RIGHT: 10px" 
+                  align=justify><FONT face=Verdana color="navy" size=1>The Objective of PRED 
+				  is to design , execute and maintain needed Infrastructure facilities in rural 
+				  areas for the economic development of rural people in Andhra Pradesh
+                  &nbsp;  
+                  &nbsp; &nbsp;  </FONT></P>
+                  <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 100%; MARGIN-RIGHT: 10px" 
+                  align=justify><FONT face=Verdana color="navy" size=1>PRED has two Sectors 
+                  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				  &nbsp;  </FONT></P>
+                  <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 100%; MARGIN-RIGHT: 10px" 
+                  align=justify><FONT face=Verdana color="navy" size=1>
+				  1.Rural Water Supply  (RWS)
+				   </FONT></P>
+				   <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 100%; MARGIN-RIGHT: 10px" 
+                  align=justify><FONT face=Verdana color="navy" size=1>
+				  2.Panchayati Raj (PR)
+				   </FONT></P>
+                  <P 
+                  style="MARGIN-LEFT: 10px; LINE-HEIGHT: 150%; MARGIN-RIGHT: 10px" 
+                  align=right><FONT face=Verdana color="navy" size=1>more 
+                  ...</FONT></P></TD></TR></TBODY></TABLE></CENTER></DIV></TD>
+          <TD vAlign=top width="35%" height=326>
+            <DIV align=center>
+            <CENTER>
+            <TABLE id=AutoNumber13 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=327 cellSpacing=0 cellPadding=0 
+            width="100%" border=0>
+              <TBODY>
+              <tr><td>
+ 						<table>
+						<tr><td><font color="black">&nbsp;&nbsp;&nbsp;Logon
+						<input type="radio" name="loginMode" value="watersoft" checked>WaterSoft
+						<input type="radio" name="loginMode" value="prajapatham">Prajapatham
+						</font>
+						</td>
+						</tr>
+						</table>
+						
+				</td></tr>
+				
+				
+              <TR>
+                <TD width="100%" height=125>
+                  <DIV align=center>
+                  <CENTER>
+                  <TABLE id=AutoNumber16 style="BORDER-COLLAPSE: collapse" 
+                  borderColor=#111111 height=45 cellSpacing=0 cellPadding=0 
+                  width="89%" bgColor=#688cc0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="100%" height=26><B><FONT face=Verdana 
+                        color=#ffffff size=1>&nbsp;</FONT></B><FONT face=Verdana 
+                        color=#ffffff size=2>Authorised Users</FONT></TD></TR>
+                    <TR>
+                      <TD width="100%" height=19>
+                        <DIV align=center>
+                        <CENTER>
+                        <TABLE id=AutoNumber14 style="BORDER-COLLAPSE: collapse" 
+                        borderColor=#111111 height=69 cellSpacing=0 
+                        cellPadding=0 width="96%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="32%" bgColor=#ffffff height=32><FONT 
+                              face=Verdana color=#000000 size=1><B>&nbsp;User 
+                              Id</B></FONT></TD>
+                             <TD width="68%" bgColor=#ffffff height=32>
+                              <P align=center>
+							  <input type="text" name="userId" value="" styleClass="thin-text-box"   /></P>
+							  </TD></TR> 
+                          <TR>
+                            <TD width="32%" bgColor=#ffffff height=32><FONT 
+                              face=Verdana color=#000000 
+                              size=1><B>&nbsp;Password </B></FONT></TD>
+                            <TD width="68%" bgColor=#ffffff height=32>
+                              <P align=center>
+							   <input type="hidden" name="slt">
+							  <input type="hidden"  name="password" />
+							  <input type="password" name="password1" value="" styleClass="thin-text-box"  /></P>
+							 
+      						  
+							  </TD></TR>
+                          <TR >
+                            <TD width="100%" bgColor=#ffffff colSpan=2 height=10>
+                            <!-- <!--   <FORM action=../_vti_bin/shtml.dll/html/index.html  
+                              method=post webbot-action="--WEBBOT-SELF--"><!--webbot bot="SaveResults" u-file="../_private/form_results.csv" s-format="TEXT/CSV" s-label-fields="TRUE" startspan <INPUT 
+                              type=hidden value=0 name=VTI-GROUP><!--webbot bot="SaveResults" endspan i-checksum="43374" --> 
+							  <P align=center>
+								<input type="submit" styleClass="btext" style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000000; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Submit"  />
+								 <!-- <html:button property="submit" styleClass="btext" style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000000; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Submit"  onclick="submitFn()"/>-->
+								<input type="reset" styleClass="btext"   style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000080; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Reset" />
+							</P>
+                             <!--  <P align=center><INPUT style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000000; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" type=submit value=Submit name=B1>&nbsp;&nbsp; 
+								<INPUT style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000080; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" type=reset value=Reset name=B2></P> -->
+				
+				</FORM></TD></TR>
+                          <TR>
+                            <TD width="100%" bgColor=#0080c0 colSpan=2 
+                              height=1><IMG height=4 
+                              src="images/spacer.gif" 
+                              width=4 
+                        border=0></TD></TR></TBODY></TABLE></CENTER></DIV></TD></TR></TBODY></TABLE></CENTER></DIV></TD></TR>
+              
+              
+              
+              
+              <TR>
+                <TD width="100%" height=19>&nbsp;</TD></TR>
+              <TR>
+                <TD width="100%" height=183>
+                  <DIV align=center>
+                  <CENTER>
+                  
+                  <TABLE id=AutoNumber15 style="BORDER-COLLAPSE: collapse" 
+                  borderColor=#111111 height=38 cellSpacing=0 cellPadding=5 
+                  width="87%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="12%" bgColor=#d6d6d6 height=20>
+                        <P align=center><IMG height=17 
+                        src="images/arr1.gif" width=14 
+                        border=0><B><FONT face=Verdana color=#000000 size=1> 
+                        </FONT></B></P></TD>
+                      <TD width="88%" bgColor=#d6d6d6 height=20><B><FONT 
+                        face=Verdana color=#000000 size=1>&nbsp;Events &amp; 
+                        Happenings</FONT></B></TD></TR>
+                                            
+                    
+                                      <!-- 
+                    <TR>
+                      <TD width="100%" bgColor=#f7f7f7 colSpan=2 height=1><IMG 
+                        height=11 
+                        src="images/arrow1.gif" 
+                        width=20 border=0> <B><FONT face=Verdana size=1>New 
+                        Event 1&nbsp; </FONT></B></TD>
+                    </TR>
+                    <TR>
+                      <TD width="100%" bgColor=#f7f7f7 colSpan=2 height=1><IMG 
+                        height=11 
+                        src="images/arrow1.gif" 
+                        width=20 border=0> <B><FONT face=Verdana size=1>New 
+                        Event 1&nbsp; </FONT></B></TD></TR>
+                    <TR>
+                      <TD width="100%" bgColor=#f7f7f7 colSpan=2 height=1><IMG 
+                        height=11 
+                        src="images/arrow1.gif" 
+                        width=20 border=0> <B><FONT face=Verdana size=1>New 
+                        Event 1&nbsp; 
+                  </FONT></B></TD></TR> 
+                  -->
+                  </TBODY></TABLE></CENTER></DIV>
+                  <P>&nbsp;</P></TD></TR></TBODY></TABLE></CENTER></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 
+    background="images/cb.jpg" colSpan=4 
+      height=5><IMG height=8 src="images/spacer.gif" 
+      width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=bottom align=left width=28 height=21><IMG height=21 
+      src="images/round4.jpg" width=28 border=0></TD>
+    <TD width=763 colSpan=2 height=21>
+      <P align=center><B><FONT face=Verdana color=#808080 size=1>Designed, 
+      Developed &amp; Hosted by National Informatics Centre, Andhra Pradesh 
+      State Unit. </FONT></B></P></TD>
+    <TD vAlign=bottom align=right width=32 height=21><IMG height=21 
+      src="images/round3.jpg" width=28 
+  border=0></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=center><B><FONT face=Verdana color=#c7c7c7 size=1>Best Viewed with IE 6.0+ and 1024 
+x 768 resolution</FONT><FONT face=Verdana color=#ffffff 
+size=1><BR>Disclaimer</FONT></B></P></BODY></HTML>
+</form>

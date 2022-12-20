@@ -1,0 +1,389 @@
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN" 
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+	<global>
+		<constant>
+			<constant-name>decimalMask</constant-name>
+			<constant-value>^[0-9]*[.]?[0-9]{0,2}$</constant-value>
+		</constant>
+	</global>
+	<formset>
+		<form name="NewEstimateForm">
+			<field property="assetType" depends="required">
+				<arg0 key="app.assetType" />
+			</field>
+			<field property="workId" depends="required">
+				<arg0 key="app.workId" />
+			</field>
+			<field property="estimateAmount" depends="required,mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.estimateAmount" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="sanctionedAmount" depends="required,mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.sanctionedAmount" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="sourceType" depends="required">
+				<arg0 key="app.sourceType" />
+			</field>
+			<field property="subsourceType" depends="required">
+				<arg0 key="app.subsourceType" />
+			</field>
+			<field property="sourceCode" depends="required">
+				<arg0 key="app.source" />
+			</field>
+			<field property="financialYear" depends="required">
+				<arg0 key="app.financialYear" />
+			</field>
+			<field property="totalComponents" depends="required">
+				<arg0 key="app.noOfComponents" />
+			</field>
+			<!-- 
+			<field property="detailedEstimate" depends="required">
+				<arg0 key="app.detailedEstimate" />
+			</field>
+			 -->
+			<field property="remarks" depends="maxlength">
+				<arg0 key="app.remarks"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+		</form>
+		
+		<form name="EditNewEstForm">
+			<field property="sourceType" depends="required">
+				<arg0 key="app.sourceType" />
+			</field>
+			<field property="subsourceType" depends="required">
+				<arg0 key="app.subsourceType" />
+			</field>
+			<field property="sourceCode" depends="required">
+				<arg0 key="app.source" />
+			</field>
+			<field property="financialYear" depends="required">
+				<arg0 key="app.financialYear" />
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg0 key="app.remarks"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="totalComponents" depends="required">
+				<arg0 key="app.noOfComponents" />
+			</field>
+		</form>
+		
+		<form name="NewEstTechForm">
+			<field property="tsOffice" depends="required">
+				<arg0 key="TS. Office" resource="false"/>
+			</field>
+			<field property="tsGivenBy" depends="required">
+				<arg0 key="TS. Given By" resource="false" />
+			</field>
+			<field property="tsEndtNo" depends="required">
+				<arg0 key="TS. No." resource="false" />
+			</field>
+			<field property="tsEndtDate" depends="required,date">
+				<arg0 key="TS. Date" resource="false" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>						
+			<field property="tsAmount" depends="required,mask,floatRange">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.tsAmount" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="ssrYear" depends="required">
+				<arg0 key="SSR Year" resource="false" />
+			</field>
+		</form>
+		
+		<form name="OMEstimateForm">
+			<field property="workId" depends="required">
+				<arg0 key="app.workId" />
+			</field>
+			<field property="estimateAmount" depends="required,mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.estimateAmount" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="sanctionedAmount" depends="required,mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.sanctionedAmount" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="sourceType" depends="required">
+				<arg0 key="app.sourceType" />
+			</field>
+			<field property="subsourceType" depends="required">
+				<arg0 key="app.subsourceType" />
+			</field>
+			<field property="sourceCode" depends="required">
+				<arg0 key="app.source" />
+			</field>
+			<field property="financialYear" depends="required">
+				<arg0 key="app.financialYear" />
+			</field>
+			<field property="manpowerCharges" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.manpowerCharges" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="powerCharges" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.powerCharges" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="consumables" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.consumables" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="repairs" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.repairsAndRenewals" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="others" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.otherCharges" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>999999.99</var-value>
+				</var>
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg0 key="app.remarks"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="totalComponents" depends="required">
+				<arg0 key="app.noOfComponents" />
+			</field>
+			<field property="layout" depends="required">
+				<arg0 key="app.layout" />
+			</field>
+			<field property="detailedEstimate" depends="required">
+				<arg0 key="app.detailedEstimate" />
+			</field>
+		</form>
+		
+		<form name="EditOMEstForm">
+			<field property="sourceType" depends="required">
+				<arg0 key="app.sourceType" />
+			</field>
+			<field property="subsourceType" depends="required">
+				<arg0 key="app.subsourceType" />
+			</field>
+			<field property="sourceCode" depends="required">
+				<arg0 key="app.source" />
+			</field>
+			<field property="financialYear" depends="required">
+				<arg0 key="app.financialYear" />
+			</field>
+			<field property="manpowerCharges" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.manpowerCharges" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="powerCharges" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.powerCharges" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="consumables" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.consumables" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+			</field>
+			<field property="repairs" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.repairsAndRenewals" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>	
+			</field>
+			<field property="others" depends="mask">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.otherCharges" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>	
+			</field>
+			<field property="remarks" depends="maxlength">
+				<arg0 key="app.remarks"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>50</var-value>
+				</var>
+			</field>
+			<field property="totalComponents" depends="required">
+				<arg0 key="app.noOfComponents" />
+			</field>
+		</form>
+		
+		<form name="OMEstTechForm">
+			<field property="tsOffice" depends="required">
+				<arg0 key="TS. Office" resource="false"/>
+			</field>
+			<field property="tsGivenBy" depends="required">
+				<arg0 key="TS. Given By" resource="false" />
+			</field>
+			<field property="tsEndtNo" depends="required">
+				<arg0 key="TS. No." resource="false" />
+			</field>
+			<field property="tsEndtDate" depends="required,date">
+				<arg0 key="TS. Date" resource="false" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>						
+			<field property="tsAmount" depends="required,mask,floatRange">
+				<msg name="mask" key="errors.decimalMask" />
+				<arg0 key="app.tsAmount" />
+				<arg1 name="floatRange" key="${var:min}" resource="false" />
+				<arg2 name="floatRange" key="${var:max}" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${decimalMask}</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>0.01</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>100000.00</var-value>
+				</var>
+			</field>
+			<field property="ssrYear" depends="required">
+				<arg0 key="SSR Year" resource="false" />
+			</field>
+		</form>
+	</formset>
+</form-validation>

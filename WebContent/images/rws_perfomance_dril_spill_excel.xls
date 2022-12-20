@@ -1,0 +1,3095 @@
+
+<div id="content1"><noscript>
+<meta http-equiv="refresh" content="0;url=/pred/EnableJS.html">
+</noscript></div>
+<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />   
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript">
+//
+window.onbeforeunload = doUnload;
+function doUnload()
+{ 
+ if(getIEversion()<=6)
+  {
+   if ( (window.event.clientX > 999 && window.event.clientX <1023)  && (window.event.clientY < -90 && window.event.clientY > -139))
+    {
+     alert("Logout...");
+	 location.href="/pred/rws_logout.jsp";
+	}
+  }
+
+  if(getIEversion()>6)
+    {
+		if ( (window.event.clientX > 999 && window.event.clientX <1023)  && (window.event.clientY < -69 && window.event.clientY > -169))
+		  {
+		    alert("Logout...");
+			location.href="/pred/rws_logout.jsp";
+		  }
+    }
+} 
+// 
+function getIEversion()
+{
+var ua = window.navigator.userAgent
+var msie = ua.indexOf ( "MSIE " )
+
+if ( msie > 0 ) // If Internet Explorer, return version number
+return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )))
+else // If another browser, return 0
+return 0
+}
+</script>
+
+<!--  
+<script language="JavaScript">
+//Added By Sai Prasad
+	var message = "Not allowed here."; 
+	function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ 	alert(message); return false; } 
+	if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { 	alert(message); 	return false; } } 
+	document.onmousedown = rtclickcheck;
+</script>
+-->
+
+<script language="JavaScript" type="text/javascript">
+
+//Hides all status bar messages
+//Added by Sai Prasad(31-05-2012)
+
+function hidestatus(){
+window.status='WATERSOFT'
+return true
+}
+
+if (document.layers)
+document.captureEvents(Event.MOUSEOVER | Event.MOUSEOUT)
+
+document.onmouseover=hidestatus
+document.onmouseout=hidestatus
+</script>
+
+<html>
+<head>
+
+<title>WaterSoft</title>
+
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/rwsstyle.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/theme1.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/menu.css">
+<script language="JavaScript" src="/pred/resources/javascript/calendar.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/calendarfuture.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/rwsscript.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/jquery-1.4.2.js"></script>
+<!--  <script language="JavaScript" src="/pred/resources/javascript/menu_items.js"></script>  -->
+
+<script language="JavaScript" src="/pred/resources/javascript/menu_tpl.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/ajax.js"></script>
+
+
+  
+
+
+
+<form>
+<table border = 1 cellspacing = 0 cellpadding = 0 width="100%"  bordercolor=#000000 style="border-collapse:collapse" bgcolor="#ffffff" ALIGN=CENTER>
+
+<tr bgcolor="#8A9FCD" align="center">
+		<td align="center" class="rptHeading" ></td><td align="right" class="rptHeading" >*** Rupees in Lakhs</td>
+</tr>
+</table>
+<table   bgcolor="#FFFFFF" bordercolor= "#8A9FCD"  width="100%" border=1 style="border-collapse:collapse"  ALIGN=CENTER >
+<tr align=center>
+<td class=btext ><b>SLNO   </b></td>
+<td class=btext ><b>DISTRICT   </b></td>
+
+<td class=btext ><b>Division  </b></td>
+<td class=btext ><b>Work ID   </b></td>
+<td class=btext ><b>Work Name </b></td>    
+<td class=btext ><b>Admin Sanction Date   </b></td>  
+<td class=btext ><b>Sanction Amount   </b></td>
+ <td class=btext ><b>Projects/Normal  </b></td>
+<td class=btext ><b>New/Augmentation  </b></td>
+<td class=btext ><b>Remarks   </b></td> 
+ 
+  
+</tr>
+
+	
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;1 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090227   </td>  
+				<td class=rptValue>PWS SCHEME TO DIMILADA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;2 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010102080002   </td>  
+				<td class=rptValue>MPWS AT ADDANGI   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">2.7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">NO RESPONSE FROM LOCAL AND NOT COVERED UNDER NRDWP  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;3 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090230   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO GOKARNAPURAM   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">1.8  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 01010101090228</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;4 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090082   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT TEEMARA   </td>  
+				<td class=rptValue align="center">27/02/2008  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;5 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090196   </td>  
+				<td class=rptValue>AUGMENTATION OF PWS SCHEME AT EDUPURAM   </td>  
+				<td class=rptValue align="center">21/07/2007  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;6 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101110005   </td>  
+				<td class=rptValue>NEW SVS AT Balakrishnapuram   </td>  
+				<td class=rptValue align="center">11/04/2011  </td>  
+				<td class=rptValue align="right">10  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;7 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090056   </td>  
+				<td class=rptValue>AUG AT BAPADUGUDA   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">1.2  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">THE WORK IS OPEN WELL AND NO RESPONSE. ALSO THE WORK NOT COVERED UNDER NRDWP.  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;8 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080147   </td>  
+				<td class=rptValue>BORE WELL AT METTAVANIPETA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 01010101100025</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;9 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080153   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT GOVARAMPETA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">3.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;10 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080160   </td>  
+				<td class=rptValue>AUG OF PWS SCHEME AT SARVARPETA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 01010101090166</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;11 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080154   </td>  
+				<td class=rptValue>PWS SCHEME AT ODIPADU   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;12 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080121   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT KASIPURAM   </td>  
+				<td class=rptValue align="center">30/10/2007  </td>  
+				<td class=rptValue align="right">13.7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;13 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080081   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT SARIAPALLI   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">6  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Borewell drilled   </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;14 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080082   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT VG PURAM   </td>  
+				<td class=rptValue align="center">30/10/2007  </td>  
+				<td class=rptValue align="right">11  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">bw drilled  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;15 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>23000101080070   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT K.KOTTURU   </td>  
+				<td class=rptValue align="center">12/06/2006  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;16 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>23000101080027   </td>  
+				<td class=rptValue>EXTN. OF PWS SCHEME AT PARASURAMPURAM   </td>  
+				<td class=rptValue align="center">01/01/2000  </td>  
+				<td class=rptValue align="right">1.92  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;17 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080061   </td>  
+				<td class=rptValue>PWS SCHEME AT NAVAGODA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">4.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;18 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>18010103100001   </td>  
+				<td class=rptValue>CPWS SCHEME TO POLAKI AND OTHER HABITATIONS INCLUDING NARASANNAPETA VILLAGE   </td>  
+				<td class=rptValue align="center">19/04/2005  </td>  
+				<td class=rptValue align="right">1500  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;19 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080169   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT DENABANDUPURAM   </td>  
+				<td class=rptValue align="center">19/04/2008  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">To be grounded  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;20 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080083   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT UMAGIRI   </td>  
+				<td class=rptValue align="center">30/10/2007  </td>  
+				<td class=rptValue align="right">10.25  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">BW DRILLED  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;21 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080118   </td>  
+				<td class=rptValue>PROVIDING OF PWS SCHEME AT VADDITHANDRA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;22 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01040101090040   </td>  
+				<td class=rptValue>PROVIDNG PWS SCHEME AT HIMAGIRI   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;23 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010102080016   </td>  
+				<td class=rptValue>PROVIDING MPWS SCHEME AT ANNAPURNAMMA NAGAR   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">5.58  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">BW COMPLETED AND MAIN WORK NOT STARTED  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;24 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01040101080006   </td>  
+				<td class=rptValue>EXTN OF PWS SCHEME TO VENKANNAPETA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">2.7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;25 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080106   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT THOTADA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">new BW DRILLED is succesful and work is started and in progress  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;26 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080092   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT SOMPETA URBAN TOWN   </td>  
+				<td class=rptValue align="center">05/08/2005  </td>  
+				<td class=rptValue align="right">59.53  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;27 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080093   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT ANANTAPURAM   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">4.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;28 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080094   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT BLERSHABADRA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;29 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080184   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT CHINNALAXMIPURAM   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;30 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080087   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT AMALAKUDIA AND PURNABHADRA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">bw drilled  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;31 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01040101090037   </td>  
+				<td class=rptValue>PWS SCHEME TO LOTHURU AND OTHER VILLAGES   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;32 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>18010103100002   </td>  
+				<td class=rptValue>PROVIDING CPWS SCHEME TO POLAKI AND OTHER HABITATIONS INCLUDING NARASANNAPETA VILLAGE   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">1500  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;33 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080192   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT CHINAMURAHARIPURAM   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;34 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080091   </td>  
+				<td class=rptValue>PROVIDING MPWS SCHEME AT POTRIYA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">1.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">BW DRILLED   </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;35 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080173   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES AT TAMALAPURAM   </td>  
+				<td class=rptValue align="center">19/04/2008  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;36 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101080088   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT ALLUKOLA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;37 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01050101090032   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT GOPALAPURAM   </td>  
+				<td class=rptValue align="center">28/12/2007  </td>  
+				<td class=rptValue align="right">3.77  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;38 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090055   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT LOTTURU   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">15  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;39 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01050101090007   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT GOLLAMAKANNAPALLI   </td>  
+				<td class=rptValue align="center">05/09/2007  </td>  
+				<td class=rptValue align="right">20  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;40 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090047   </td>  
+				<td class=rptValue>PWS SCHEME TO MOOLAPETA   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">14  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;41 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01040101090012   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT HIMAGIRI AND OTHER HABITATIONS   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">12  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;42 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090143   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT CHINNABARAMPURAM AND OTHER HABITATIONS   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">BW drilled and pipe line to be started  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;43 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090114   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME WITH TREAT PLANT TO RAMAKRISHNAPURAM   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">12  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;44 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01000101090001   </td>  
+				<td class=rptValue>PWS AT GUNABHADRA COLONY   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">9  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;45 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090035   </td>  
+				<td class=rptValue>PWS SCHEME TO BINNALA   </td>  
+				<td class=rptValue align="center">27/02/2008  </td>  
+				<td class=rptValue align="right">1.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;46 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090139   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT BINNALA   </td>  
+				<td class=rptValue align="center">06/06/2007  </td>  
+				<td class=rptValue align="right">8  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">BW DRILLED AND PIPE LINES IN PROGRESS  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;47 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090037   </td>  
+				<td class=rptValue>PWS SCHEME TO MULIPADU   </td>  
+				<td class=rptValue align="center">27/02/2008  </td>  
+				<td class=rptValue align="right">2  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;48 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090111   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME WITH TREAT PLANT TO TEKKALIPADU   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">12  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;49 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090067   </td>  
+				<td class=rptValue>PWS SCHEME TO DEVALABHADRA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;50 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090069   </td>  
+				<td class=rptValue>PWS SCHEME TO CH.LAVUNIPALLI    </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;51 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090070   </td>  
+				<td class=rptValue>PWS SCHEME TO NOWGAM   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">15  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;52 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090071   </td>  
+				<td class=rptValue>PWS SCHEME TO KALLADA   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">25  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;53 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090003   </td>  
+				<td class=rptValue>PWS SCHEME TO DEVALABHADRA   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;54 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090166   </td>  
+				<td class=rptValue>PROVIDING D,W.FECILITY TO SAVARAPETA   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;55 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100019   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO SABAKOTA   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">3.04  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;56 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100015   </td>  
+				<td class=rptValue> PROVIDING SINGLE VILLAGE SCHEME TO KUDUMASAI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">1.65  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;57 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100016   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO CHEEPI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">1.7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;58 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100038   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO MARRIPADU   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">3.28  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;59 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090180   </td>  
+				<td class=rptValue>PROVIDING PWS SCEME AT  TEEMARA   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">6  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;60 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101090036   </td>  
+				<td class=rptValue>PWS SCHEME TO BUDARISINGI   </td>  
+				<td class=rptValue align="center">27/02/2008  </td>  
+				<td class=rptValue align="right">3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;61 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090179   </td>  
+				<td class=rptValue>A gumentation to  Dwarakapuram.   </td>  
+				<td class=rptValue align="center">30/10/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;62 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090058   </td>  
+				<td class=rptValue>PWS SCHEME TO NAUGAM   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;63 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090059   </td>  
+				<td class=rptValue>PWS SCHEME AT PEDDABADAM   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">To be grounded  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;64 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100009   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO PUTTURU   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">1.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;65 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090213   </td>  
+				<td class=rptValue>AUGMENTATION TO PWS AT ANNUPURAM   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">9.8  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 49010101100002</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;66 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100015   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO RAMAKRISHNAPURAM   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">11  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;67 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100017   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO S.JADUPALLII   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">2.55  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;68 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090172   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO NANDAVA KOTHURU   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.32  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;69 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090175   </td>  
+				<td class=rptValue>Providing D.W. Facilities to  Chinaneelapuram.   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.32  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;70 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090087   </td>  
+				<td class=rptValue>PWS SCHEME TO MONDRAIVALASA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">6  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;71 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090161   </td>  
+				<td class=rptValue>AUG,TO PWS SCHEME TO SURAVARAM   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Borewell drilled Pipe line work is in progress  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;72 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090162   </td>  
+				<td class=rptValue>PROVIDING D.W FECILITY TO RAMINAIDUPETA   </td>  
+				<td class=rptValue align="center">18/07/2008  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;73 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101090211   </td>  
+				<td class=rptValue>AUG TO OW AT EGUVANELLIGUDA   </td>  
+				<td class=rptValue align="center">21/07/2008  </td>  
+				<td class=rptValue align="right">1.2  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">THE WORK IS OPEN WELL AND NO RESPONSE. ALSO THE WORK NOT COVERED UNDER NRDWP.  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;74 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01050101090034   </td>  
+				<td class=rptValue>AUGMENTATION TO KITTALAPADU   </td>  
+				<td class=rptValue align="center">07/03/2008  </td>  
+				<td class=rptValue align="right">40  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;75 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01040101090043   </td>  
+				<td class=rptValue>AUGMENTATION OF PWS SCHEME TO BHAGIRATHIPETA   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion. Insufficient funds .36 lakhs  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;76 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100075   </td>  
+				<td class=rptValue>Aug to SVS at Jagannadhapuram   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">5.35  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;77 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100076   </td>  
+				<td class=rptValue>Aug to SVS at Bheempuram   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;78 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101100001   </td>  
+				<td class=rptValue>PROVIDING SVS PATHALOTHURU   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;79 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01060101090001   </td>  
+				<td class=rptValue>PROVIDING SUB SURFACE DYKE FOR CPWS SCHEME TO POLAKI   </td>  
+				<td class=rptValue align="center">30/10/2007  </td>  
+				<td class=rptValue align="right">20  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;80 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100053   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO RAMNAGAR   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;81 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101110003   </td>  
+				<td class=rptValue>NEW SVS GOLLAPETA   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">2  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;82 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100048   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO SEETHARAMPALLI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">4.6  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;83 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101110004   </td>  
+				<td class=rptValue>NEW SVS AT SEETHARAMPURAM   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">3.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;84 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49030101110001   </td>  
+				<td class=rptValue>NEW SVS AT PUVULAKONDA   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">2.07  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;85 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49020101100004   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO KARTHALI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">7.55  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;86 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100069   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO HAMSARALI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">8.47  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;87 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100073   </td>  
+				<td class=rptValue>PROVIDING SINGLE VILLAGE SCHEME TO CHINA DOKULAPADU    </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">9.58  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;88 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100082   </td>  
+				<td class=rptValue>PROVIDING SVS TO CHINNADOKULAPADU   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">9.58  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;89 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100005   </td>  
+				<td class=rptValue>DW FACILITY TO ZPH SCHOOL AT LUKALAM    </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;90 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100002   </td>  
+				<td class=rptValue>DW FACILITIES TO PRIMARY SCHOOL   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;91 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100004   </td>  
+				<td class=rptValue>DW FACILITY TOPRIMARY SCHOOL AT DOMANAPALLI   </td>  
+				<td class=rptValue align="center">03/07/2008  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;92 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01020101100002   </td>  
+				<td class=rptValue>AUG TO KOBAGAM VILLAGE   </td>  
+				<td class=rptValue align="center">27/02/2008  </td>  
+				<td class=rptValue align="right">.35  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;93 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100010   </td>  
+				<td class=rptValue>PRO. PWS SCHEME AT CHINNAPADMAPURAM OF PATHAPATNAM MANDAL   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">1.08  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;94 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100014   </td>  
+				<td class=rptValue>PRO. DW FACILITIES TO ZP SCHOOL AT LN PETA OF LN PETA MANDAL   </td>  
+				<td class=rptValue align="center">17/07/2009  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;95 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100015   </td>  
+				<td class=rptValue>PRO. DW FACILITIES TO ELE. SCHOOL AT LN PETA OF LNPETA MANDAL   </td>  
+				<td class=rptValue align="center">17/07/2009  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Bore Well drilled  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;96 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100016   </td>  
+				<td class=rptValue>PRO. DW FACILITIES TO ELE. SCHOOL AT BORRAMPETA OF LN PETA MANDAL   </td>  
+				<td class=rptValue align="center">17/07/2009  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;97 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100009   </td>  
+				<td class=rptValue>PRO. PWS SCHEME AT ANTARABA OF PATHAPATNAM MANDAL   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">5.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;98 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100022   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT VENKATAPURAM   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.42  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;99 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100023   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT VELUSODA   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;100 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100024   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT METTAPETA   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;101 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01030101100001   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT BADAM   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;102 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100020   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT KOBAGAM   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;103 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100007   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT TEKKALIPADU WITH TREATMENT PLANT    </td>  
+				<td class=rptValue align="center">18/07/2007  </td>  
+				<td class=rptValue align="right">12  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;104 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100008   </td>  
+				<td class=rptValue>PWS SCHEME AT PEDDAROKALAPALLI   </td>  
+				<td class=rptValue align="center">06/11/2007  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;105 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100021   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT KANUKURTHIVANIPETA   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;106 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100018   </td>  
+				<td class=rptValue>PROVIDING DWFACILITIESTO PRIMARY SCHOOL AT KAMMARIPETA   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;107 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100025   </td>  
+				<td class=rptValue>PROVIDING DW FACILITIES TO PRIMARY SCHOOL AT MTTAVANIPETA   </td>  
+				<td class=rptValue align="center">03/07/2008  </td>  
+				<td class=rptValue align="right">.3  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;108 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100083   </td>  
+				<td class=rptValue>PWS SCHEME TO GANDHI NAGAR 3RD LINE OF SOMPETA URBAN   </td>  
+				<td class=rptValue align="center">23/06/2010  </td>  
+				<td class=rptValue align="right">7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;109 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100027   </td>  
+				<td class=rptValue>BORE WELL AT RAMESWARAM   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;110 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100086   </td>  
+				<td class=rptValue>DRILLING OF BORE WELL AT BELLUBADHARA   </td>  
+				<td class=rptValue align="center">23/06/2010  </td>  
+				<td class=rptValue align="right">1.7  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;111 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100030   </td>  
+				<td class=rptValue>BORE WELL AT JAKKARAPETA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;112 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100028   </td>  
+				<td class=rptValue>BORE WELL AT BORIGIPETA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;113 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100029   </td>  
+				<td class=rptValue>BORE WELL AT PALASINGI   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">.36  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">Proposed for Deletion  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;114 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100042   </td>  
+				<td class=rptValue>DW FACILITY TO KOTTURU   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;115 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100045   </td>  
+				<td class=rptValue>DW FACILTY AT BAGIRADAPURAM   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;116 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100041   </td>  
+				<td class=rptValue>DW FACILIT AT PEDDA SUNNAPURAM   </td>  
+				<td class=rptValue align="center">29/03/2008  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;117 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100043   </td>  
+				<td class=rptValue>DW FACILTY AT K.MUKUNDAPURAM   </td>  
+				<td class=rptValue align="center">29/03/2007  </td>  
+				<td class=rptValue align="right">.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;118 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100044   </td>  
+				<td class=rptValue>DW FACILTY AT BARANIKOTA   </td>  
+				<td class=rptValue align="center">29/03/2008  </td>  
+				<td class=rptValue align="right">.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;119 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100046   </td>  
+				<td class=rptValue>DW FACILTY AT KOTTA BUTUPURAM   </td>  
+				<td class=rptValue align="center">29/07/2008  </td>  
+				<td class=rptValue align="right">.55  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;120 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101100047   </td>  
+				<td class=rptValue>DW FACILITY AT CH.GOLLAGANDI   </td>  
+				<td class=rptValue align="center">29/07/2008  </td>  
+				<td class=rptValue align="right">.55  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;121 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101100095   </td>  
+				<td class=rptValue>SINGLE VILLAG SYSTEM AT PEDDALAXMIPURAM   </td>  
+				<td class=rptValue align="center">23/06/2010  </td>  
+				<td class=rptValue align="right">3.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;122 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101110002   </td>  
+				<td class=rptValue>DRILLING OF 150MM DIA BORE WELL AT KARLEMMA NN COLONY   </td>  
+				<td class=rptValue align="center">30/07/2008  </td>  
+				<td class=rptValue align="right">.45  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;123 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>51010103110001   </td>  
+				<td class=rptValue>Augmentation to CPWSS at Polaki & other Habitations   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">100  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;124 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>51010103110002   </td>  
+				<td class=rptValue>Drinking water project to QA habitations in Santhabommali Mandal   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">200  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;125 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010103110001   </td>  
+				<td class=rptValue>CPWS Scheme to Pathapatnam and other habitations in Srikakulam district   </td>  
+				<td class=rptValue align="center">06/09/2010  </td>  
+				<td class=rptValue align="right">500  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;126 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>01010101110006   </td>  
+				<td class=rptValue>PROVIDING PWS SCHEME AT RAMAYYAVALASA   </td>  
+				<td class=rptValue align="center">19/04/2006  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;127 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010103110002   </td>  
+				<td class=rptValue>PROVIDING WATER SUPPLY FACILITIES TO PATHAPATNAM HABITATIONS   </td>  
+				<td class=rptValue align="center">09/06/2010  </td>  
+				<td class=rptValue align="right">500  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;128 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>60010101110001   </td>  
+				<td class=rptValue>MTC. OF LAB AT PALASA   </td>  
+				<td class=rptValue align="center">25/08/2010  </td>  
+				<td class=rptValue align="right">6.66  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;129 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>53010103110001   </td>  
+				<td class=rptValue>PROVIDING POWER SUPPLY TO THE IW-I TO IV , RELAYING OF DAMAGED PIPE LINE IN MAHENDRA TANAYA RIVER AT   </td>  
+				<td class=rptValue align="center">13/12/2010  </td>  
+				<td class=rptValue align="right">10  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> 00000103330001</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;130 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>60010103110001   </td>  
+				<td class=rptValue>SPECIAL REPAIRS TO CPWS SCHEME TO UDDANAM   </td>  
+				<td class=rptValue align="center">23/11/2010  </td>  
+				<td class=rptValue align="right">600  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> 00000103330001</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;131 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010103110003   </td>  
+				<td class=rptValue>CPWS SCHEME FOR PROVIDING DW FACILITY TO TEKKALI AND OTHER HABATIONS   </td>  
+				<td class=rptValue align="center">09/06/2010  </td>  
+				<td class=rptValue align="right">600  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;132 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101110012   </td>  
+				<td class=rptValue>S.VS. TO BALAKRISHANAPURAM   </td>  
+				<td class=rptValue align="center">01/03/2011  </td>  
+				<td class=rptValue align="right">10  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;133 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010103120001   </td>  
+				<td class=rptValue>APL. REPAIRS TO THE CPWS SCHEME TO UDDANAM   </td>  
+				<td class=rptValue align="center">23/11/2010  </td>  
+				<td class=rptValue align="right">600  </td> 
+		<td class=rptValue align="right"> Projects </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;134 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>59010101120001   </td>  
+				<td class=rptValue>RESTORATION OF PWS SCHEME AT T.BARAMPURAM   </td>  
+				<td class=rptValue align="center">30/12/2010  </td>  
+				<td class=rptValue align="right">1.4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;135 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120001   </td>  
+				<td class=rptValue>PRO. DW FACILITIESTO ZPHS AT ROMPIVALASA   </td>  
+				<td class=rptValue align="center">28/09/2011  </td>  
+				<td class=rptValue align="right">.65  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;136 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>59010101120002   </td>  
+				<td class=rptValue>RESTORATION OF DAMAGED PWS SCHEMES AT KAVITI   </td>  
+				<td class=rptValue align="center">30/12/2010  </td>  
+				<td class=rptValue align="right">4  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;137 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>59010101120003   </td>  
+				<td class=rptValue>RESTORATION OF DAMAGED PWS SCHEMES AT KANCHILI   </td>  
+				<td class=rptValue align="center">30/12/2010  </td>  
+				<td class=rptValue align="right">2.9  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;138 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>59010101120004   </td>  
+				<td class=rptValue>FENSING AROUND MAIN HEAD WORKS RELAYING OF AB CABLE FROM IW TO HEAD WORKS  TO T.SASANAM HEAD WORKS    </td>  
+				<td class=rptValue align="center">30/12/2010  </td>  
+				<td class=rptValue align="right">10  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;139 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120020   </td>  
+				<td class=rptValue>PRO. SVS AT SIRTHALI   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;140 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120022   </td>  
+				<td class=rptValue>AUG. TO PWS SCHEME AT MAHASINGI   </td>  
+				<td class=rptValue align="center">11/02/2011  </td>  
+				<td class=rptValue align="right">5.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;141 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120025   </td>  
+				<td class=rptValue>PRO. PWS SCHEME AT SIRTHALI OF KANCHILI MANDAL   </td>  
+				<td class=rptValue align="center">18/08/2010  </td>  
+				<td class=rptValue align="right">5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;142 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120021   </td>  
+				<td class=rptValue>AUG. TO PWS SCHEME AT MAHASINGI   </td>  
+				<td class=rptValue align="center">26/02/2011  </td>  
+				<td class=rptValue align="right">5.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;143 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120016   </td>  
+				<td class=rptValue>PRO. SVS TO SIRTHALI   </td>  
+				<td class=rptValue align="center">04/06/2010  </td>  
+				<td class=rptValue align="right">5.1  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;144 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120017   </td>  
+				<td class=rptValue>AUG. TO SVS AT PEDAGUJJUWDA   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">5.1  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;145 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120018   </td>  
+				<td class=rptValue>AUG. TO PWS SCHEME AT KUMMARIGUNTA   </td>  
+				<td class=rptValue align="center">01/06/2010  </td>  
+				<td class=rptValue align="right">1  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> </td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;146 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120023   </td>  
+				<td class=rptValue>AUG. TO PWS SCHEME AT MAHASINGI   </td>  
+				<td class=rptValue align="center">08/02/2011  </td>  
+				<td class=rptValue align="right">5.5  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 00000101240019</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;147 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120026   </td>  
+				<td class=rptValue>AUG. TO PWS SCHEME AT PEDAGUJUWADA OF SARAVAKOTA MANDAL   </td>  
+				<td class=rptValue align="center">18/02/2011  </td>  
+				<td class=rptValue align="right">5.1  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 04040101090013</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+
+                <tr>
+	           
+                <td class=rptValue>&nbsp;148 </td>
+ <td  class=rptLabel align="center">&nbsp;SRIKAKULAM </td>
+         
+				<td class=rptValue>&nbsp;PALASA </td>    
+				<td class=rptValue>49010101120024   </td>  
+				<td class=rptValue>AUG. TO PWS SHCEME AT PARAPURAM   </td>  
+				<td class=rptValue align="center">11/02/2011  </td>  
+				<td class=rptValue align="right">6  </td> 
+		<td class=rptValue align="right"> Normal </td> 
+		<td class=rptValue align="right"> 00000101150011</td> 
+
+                      
+                <td class=rptValue align="right">-  </td>
+		
+			
+				</tr>
+		
+	
+</table>
+</form>
+

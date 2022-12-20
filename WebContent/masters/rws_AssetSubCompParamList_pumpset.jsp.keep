@@ -1,0 +1,1391 @@
+	 <%@ include file="/commons/rws_header1.jsp" %>
+	 <html:javascript formName="assetForm" />
+	
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+	function firstfunc()
+	{
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>";
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("pumpCode")%>";
+			alert(assetcode+"  ,  "+habcode+"  ,  "+typeOfAsset+"  ,  "+assetCompType+"  ,  "+assetSubCompType+"  ,  "+pumCode);
+	document.forms[0].action="/pred/masters/Asset.do?mode=firstHP&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	}
+	function lastfunc()
+	{
+		alert(assetcode+"  ,  "+habcode+"  ,  "+typeOfAsset+"  ,  "+assetCompType+"  ,  "+assetSubCompType+"  ,  "+pumCode);
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>";
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("pumpCode")%>";
+		 
+	document.forms[0].action="/pred/masters/Asset.do?mode=lastHP&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	}
+	function otherfn(that)
+	{
+		
+		if(document.getElementById("casing").value=="OTHERS")
+		{
+			document.getElementById("otherspecify").disabled=false;
+		}
+		else
+		{
+			document.getElementById("otherspecify").disabled=true;
+			document.getElementById("otherspecify").value="";
+		}
+	}
+
+	function drainCond(that)
+	{
+		
+		if(document.getElementById("drain").value=="E")
+		{
+			
+			document.getElementById("drainCondition").disabled=false;
+		}
+		else
+		{	
+			document.getElementById("drainCondition").disabled=true;
+			document.getElementById("drainCondition").value="";
+		}
+
+	}
+	function platformCond(that)
+	{
+		
+		if(document.getElementById("pcond").value=="Y")
+		{
+			document.getElementById("platformCondition").disabled=false;
+			
+		}
+		else
+		{	
+			document.getElementById("platformCondition").disabled=true;
+			document.getElementById("platformCondition").value="";
+		}
+
+	}
+	function qualityAffect()
+	{
+		
+		//alert(document.getElementById("qualityAffected").value);
+	if(document.getElementById("qualityAffected").value == "Y")
+	{
+		document.getElementById('conti').style.display='block'
+		
+		}
+	else
+	{//alert("sadiq");
+		document.getElementById('conti').style.display='none'
+		//alert(document.getElementById('contitype').style.display)
+		}
+	}
+	
+function getContam(that)
+{	
+	
+	var optype = that.value;
+	var option1 = assetForm.flouride.value;
+	var option2 = assetForm.brakish.value;
+	var option3 = assetForm.iron.value;
+	
+	if(that.value == "FLOURIDE" || option1 != "0.0")
+			document.getElementById('FLOURIDE').style.display='block'
+	/*else
+			document.getElementById('FLOURIDE').style.display='none'*/
+
+	if(that.value == "BRAKISH" || option2  != "0.0" )
+			document.getElementById('BRAKISH').style.display='block'
+/*	else
+			document.getElementById('BRAKISH').style.display='none'*/
+	if(that.value == "IRON" || option3 != "0.0" )
+		document.getElementById('IRON').style.display='block'
+/*	else
+		document.getElementById('IRON').style.display='none'
+	/*else
+	{	//alert("sadiq");
+		document.getElementById('FLOURIDE').style.display='none'
+		document.getElementById('BRAKISH').style.display='none'
+		document.getElementById('IRON').style.display='none'
+	}*/
+	
+}
+	function addnew()
+	{
+		alert("in addnew");
+		var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+			//alert(typeOfAsset);
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   //alert(assetCompType);
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		//alert(assetSubCompType);
+	 /*  if((typeOfAsset=="01" && assetCompType=="05" && assetSubCompType=="001")
+	   {  
+			//alert("addnew");
+	      var count = document.getElementById("count").value;
+ 	      var message ="";
+ 	     /* for(var i=0; i<count; i++)
+		  {  message ="";
+		    if(document.getElementById("ASSETRESERVIOR_LIST["+i+"].glsrCode").value=="")
+	    	   message=message + "Glsr Code is required\n";
+	      } 
+	      if(message=="" || count==0)
+    	  {    
+    	  
+    	   document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	      }  
+    	  else
+	      { 
+	        //alert(message);
+    	  } 
+	   }
+		  else */ if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+		   {
+			  //alert("addnew");
+			document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+		   }
+		   else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="03" && ( assetSubCompType=="001" ||  assetSubCompType=="002" ) ) 
+		   {1
+			  alert("addnew");			
+			  document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+		       document.forms[0].submit();
+		   }
+ 	}
+	 function nextfunc()
+	{
+		   //alert("PPP");
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>";
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("pumpCode")%>";
+		 
+		   //alert(typeOfAsset);
+		   //alert(assetCompType);
+		   //alert(assetSubCompType);
+			alert(pumCode);
+				 			   
+	 if(typeOfAsset=="04" &&  assetCompType=="01" && assetSubCompType=="001" )
+	   {
+
+	       document.forms[0].action="/pred/masters/Asset.do?mode=nextpump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }   
+	   if(typeOfAsset=="01" &&  assetCompType=="03" && assetSubCompType=="003" )
+	   {
+		//alert("next");
+	       document.forms[0].action="/pred/masters/Asset.do?mode=nextpump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }   
+   }
+	 function prevfunc()
+	{
+		   //alert("PPP");
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>";
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("pumpCode")%>";
+		 
+		   //alert(typeOfAsset);
+		   //alert(assetCompType);
+		   //alert(assetSubCompType);
+				 			   
+	 if(typeOfAsset=="04" &&  assetCompType=="01" && assetSubCompType=="001" )
+	   {
+
+	       document.forms[0].action="/pred/masters/Asset.do?mode=previouspump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }   
+	    if(typeOfAsset=="01" &&  assetCompType=="03" && assetSubCompType=="003" )
+	   {
+
+	      //alert("preve"); document.forms[0].action="/pred/masters/Asset.do?mode=previouspump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }   
+   }
+   function savefunc()
+	{
+	
+       var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	   alert(typeOfAsset +"   "+assetCompType+"   "+assetSubCompType);
+	  
+	    if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	      	alert("sadiqa"); document.forms[0].action="/pred/masters/Asset.do?mode=addSubCompPump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }    
+	   else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="03" && ( assetSubCompType=="001" ||  assetSubCompType=="002" ) ) 
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=addSubCompPump&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }    
+	   }    
+
+   function removeSubComp(that)
+	{
+	var input_box=confirm("Are You Sure to Delete?");
+	if (input_box==true)
+	{ 
+	alert ("You clicked OK"); 
+	
+
+       var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	   var assetCode="<%=request.getParameter("assetCode")%>"; 
+	   var frm = that.form;
+	    if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=Submit&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }  
+	     if(typeOfAsset=="01" && assetCompType=="03" && assetSubCompType=="003")
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=Submit&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }    
+	     }
+	   }    
+
+   
+	//-->
+	</SCRIPT>
+	
+   
+  
+   
+
+	</head>
+		
+	<body bgcolor="#edf2f8" topmargin="0" leftmargin="0" onload="qualityAffect();getContam(this);drainCond(this);platformCond(this)">	
+	<% try {
+	System.out.println("sadiq in alert888888888888   "+request.getAttribute("message"));%>
+	<table  bordercolor= "#8A9FCD"  border="0" rules="none" style="border-collapse:collapse;" width="100%"  >
+	<thead class="gridLabel" align="center">
+    <tr bgcolor="#8A9FCD">
+    <td colspan=4 align=left><b>Asset SubComponent Parameter Details </b>
+    </td>
+    </tr>
+ 	</thead>
+
+	<c:if test="${sessionScope.assetsubCompParams=='PwsPumpHouse'}">
+	<html:form action="Asset.do?mode=Submit" >
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;PWS-PUMPSETS-PUMP HOUSE</b>
+        
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseCode"/></b></font>
+		</th> 
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpCond"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseArea"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseHeight"/></b></font>
+		 </th>
+   		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseCode" maxlength="3" styleClass="gridText" style="width:160px"/>
+	     </td>
+  		 <td align=center >
+	       <html:select name="ASSETHEADWORK_LIST" indexed="true" property="pumpCond" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="SOUND">Sound</html:option>
+				<html:option value="NEEDS MAINTENNANCE">Needs Maintennance</html:option>
+				<html:option value="NEEDS REPAIRS">Needs Repairs</html:option>
+				<html:option value="DELAPITATED">Delapitated</html:option>
+			</html:select>
+	     </td>
+  		 <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseType" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="LOAD BEARING">Load bearing</html:option>
+				<html:option value="RCC FRAME">RCC Frame</html:option>
+				<html:option value="READYMADE(GI)">Readymade(GI Sheets)</html:option>
+				<html:option value="RCC PIPED">RCC Piped</html:option>
+			</html:select>
+           </td>
+ 
+ 		 </td>
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseArea"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseHeight" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	 </tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       	<html:button property="mode" title="Add New Pump House" styleClass="btext" value="Add New Pump House" onclick="addnew()"/>
+       	<html:button property="mode" title="Remove Pump House" styleClass="btext" value="Remove Pump House" onclick="removeSubComp(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc()"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+
+
+
+
+	 <c:if test="${sessionScope.assetsubCompParams=='PwsPumpDetails'}">
+	<tr>
+	<td colspan="3">
+	<table  class="row" bordercolor= "#8A9FCD"  border="1"  rules="none" style="border-collapse:collapse;" width="100%" >
+        <%
+    	System.out.println("after  pwsPumpDetails"); %>
+     
+ 	<html:form action="Asset.do?mode=Submit">
+  	 <nested:iterate id="ASSETPUMPSET_LIST" property="assetPumpSets">
+		<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;PWS-PUMPSETS-PUMPDETAILS</b>
+         </td>
+         </tr>
+		<tr>
+			<td align=left class="textborder"><bean:message key="app.pumpdet_code"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="pumpdet_code" maxlength="4" styleClass="mytext"  style="width:160px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.pumpcode"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="pumpcode" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+		<tr>
+			<td align=left class="textborder"><bean:message key="app.hp"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="hp" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.type"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETPUMPSET_LIST"   property="type" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Centrifugal">Centrifugal</html:option>
+				<html:option value="SubMersible">SubMersible</html:option>			 
+				<html:option value="Jet">Jet</html:option>
+				<html:option value="SubMersible Centrifugal">SubMersible Centrifugal</html:option>
+				<html:option  value="Vertical Turbine">Vertical Turbine</html:option>	
+				</html:select>
+		
+			</td>
+		</tr>
+		<tr>
+			<td align=left class="textborder"><bean:message key="app.duty_con"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="duty_con" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.head_mts"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="head_mts" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+
+			<tr>
+			<td align=left class="textborder"><bean:message key="app.discharge_lpm"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="discharge_lpm" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.standby_hp"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="standby_hp" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+				<tr>
+			<td align=left class="textborder"><bean:message key="app.years_used"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="years_used" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.failure_freq"/> 
+			</td>
+			<td  class="textborder" align=center>
+			
+			<html:select name="ASSETPUMPSET_LIST"   property="failure_freq" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="ONCE">ONCE</html:option>
+				<html:option value="TWICE">TWICE</html:option>			 
+				<html:option value="MORE">MORE</html:option>
+				
+				</html:select>
+			</td>
+		</tr>
+			 	<tr>
+			<td align=left class="textborder"><bean:message key="app.avg_hr_pumping_day"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="avg_hr_pumping_day" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.repair_cost_year"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="repair_cost_year" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+			 	<tr>
+			<td align=left class="textborder"><bean:message key="app.capasitor"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETPUMPSET_LIST"   property="capasitor" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>					
+				</html:select>
+				</td>
+
+			<td align=left class="textborder"><bean:message key="app.control_panel"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETPUMPSET_LIST"   property="control_panel" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>					
+				</html:select>
+				</td>
+		</tr>
+		 	<tr>
+			<td align=left class="textborder"><bean:message key="app.power_hours"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="power_hours" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.work_hrs"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="work_hrs" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+		 	<tr>
+			<td align=left class="textborder"><bean:message key="app.qty_water_cum"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPUMPSET_LIST"  property="qty_water_cum" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+		</tr>
+	</nested:iterate>
+	</html:form>
+  
+   </table>
+	</td>
+	</tr>  
+	
+
+<tr>
+			<td  align="left" colspan="1" >
+			
+				<html:button property="first" title="First Asset" styleClass="btext" value="First"/>		
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev" onclick="prevfunc()"/>
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next" onclick="nextfunc()"/>
+				<html:button property="last" title="Last Asset" styleClass="btext" value="Last" />
+				
+			</td>
+			<td  align="right" colspan="1" >
+				 <html:button property="add" title="Add the Fields" styleClass="btext" value="Add New" onclick="addnew()"/>
+				  <html:button property="delete" title="Delete the Fields" styleClass="btext" 
+				  value="Remove" onclick="removefunc()"/>
+			    <html:button property="save" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc()"/>
+	    		<html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	    	</td>
+	   </tr>
+	</c:if>
+
+<c:if test="${sessionScope.assetsubCompParams=='HandPumps'}">
+ 	<html:form action="Asset.do?mode=Submit">
+	<%
+	System.out.println ("sssssssss000000000ss");
+	%>
+  	 <nested:iterate id="ASSETSUBCOMPONENTS_LIST" property="assetSubComponents" indexId="ndx">
+		<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;HAND PUMPS-SOURCE-BORE WELL</b>
+         </td>
+         </tr>
+		 <tr >
+		 <td align=left class="textborder"><bean:message key="app.pumpCode"/> 
+			</td>
+			 <td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="hpCode" maxlength="5"  styleClass="mytext" style="width:160px" readonly="true" />
+			</td>
+			<td align=left class="textborder"><bean:message key="app.location"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="location" maxlength="60" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>
+		<tr>
+		<td align=left class="textborder"><bean:message key="app.diameter"/>
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="diameter" styleClass="mycombo" style="width:150px" onkeypress="numeralsOnly()">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="112">112</html:option>
+				<html:option value="150">150</html:option>
+				<html:option value="163">163</html:option>
+				</html:select>
+				<!-- <nested:text name="ASSETSUBCOMPONENTS_LIST" property="diameter" styleClass="mytext" style="width:150px"/> -->
+			</td>
+			<td align=left class="textborder"><bean:message key="app.depth"/>(Mts) 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="depth" styleClass="mytext" style="width:150px" onkeypress="decimalsOnly()"/>
+			</td>
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.casing"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="casing" styleClass="mycombo" style="width:150px" onchange="javaScript:otherfn(this)">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="PVC">PVC</html:option>
+				<html:option value="MS">MS</html:option>
+				<html:option value="OTHERS">OTHERS</html:option>
+				</html:select>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.ifother"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="otherspecify" maxlength="25"  styleClass="mytext" style="width:150px"  />
+			</td>
+			</tr>
+		<tr>
+		<td align=left class="textborder"><bean:message key="app.gino"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="gino" maxlength="3"  styleClass="mytext" style="width:150px" onkeypress="numeralsOnly()"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.genCondition"/> 
+			</td>
+			
+			<td  class="textborder" align=center >
+ 			 <html:select name="ASSETSUBCOMPONENTS_LIST" property="genCondition" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="G">GOOD</html:option>
+				<html:option value="B">BAD</html:option>
+             </html:select>
+			</td>			
+		</tr>
+		<tr>
+		<td align=left class="textborder"><bean:message key="app.staticWaterLevel"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="staticWaterLevel" styleClass="mytext" style="width:150px" onkeypress="decimalsOnly()"/>
+			</td>
+		<td align=left class="textborder"><bean:message key="app.summerWaterLevel"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="summerWaterLevel" styleClass="mytext" style="width:150px" onkeypress="decimalsOnly()"/>
+			</td>
+		</tr>
+		<tr>
+			<td align=left class="textborder"><bean:message key="app.serhrs"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="serhrs" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.serno"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="serno" maxlength="5"  styleClass="mytext" style="width:150px" onkeypress="numeralsOnly()"/>
+			</td>
+		</tr>
+		
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.painted"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="painted" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+            </html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.repairs"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<!-- <nested:text name="ASSETSUBCOMPONENTS_LIST" property="repairs" maxlength="10" styleClass="mytext" style="width:150px"  onkeypress="upperOnly()"/> -->
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="repairs" styleClass="mycombo" style="width:150px"> 
+				<html:option value="">SELECT...</html:option>
+				<html:option value="ONCE">ONCE</html:option>
+				<html:option value="TWICE">TWICE</html:option>
+				<html:option value="MORE">MORE</html:option>
+				
+            </html:select>
+			</td>			
+		</tr>
+		<tr >
+			
+			<td align=left class="textborder"><bean:message key="app.pcond"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="pcond" styleClass="mycombo" style="width:150px" onchange="javaScript:platformCond(this)">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+            </html:select>
+			</td>
+				
+			<td align=left class="textborder"><bean:message key="app.platformCondition"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="platformCondition" styleClass="mycombo" style="width:150px" >
+				<html:option value="">SELECT...</html:option>
+				<html:option value="G">GOOD</html:option>
+				<html:option value="B">BAD</html:option>
+            </html:select>
+			</td>
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.dryduring"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="dryduring" maxlength="3"  styleClass="mytext" style="width:150px" onkeypress="numeralsOnly()"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.service"/> 
+			</td>
+			<td  class="textborder" align=center >
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="service" styleClass="mycombo" style="width:150px"> 
+				<html:option value="">SELECT...</html:option>
+				<html:option value="D">DRINKING</html:option>
+				<html:option value="B">BOTH</html:option>
+				<html:option value="C">CATTLE</html:option>
+				<html:option value="O">OTHERS</html:option>
+            </html:select>
+			</td>
+		</tr>
+	
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.drain"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST"  property="drain" styleClass="mycombo" style="width:150px"  onchange="javaScript:drainCond(this)">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="E">EXISTING</html:option>
+				<html:option value="N">NOT EXISTING</html:option>
+                </html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.drainCondition"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="drainCondition" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="G">GOOD</html:option>
+				<html:option value="B">BAD</html:option>
+            </html:select>
+			</td>
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.drainsd"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="drainsd" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+	            </html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.drainlp"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="drainlp" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+	            </html:select>
+			</td>
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.hygiene"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="hygiene" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="G">GOOD</html:option>
+				<html:option value="B">BAD</html:option>
+	            </html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.avgtime"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="avgtime" styleClass="mytext" style="width:150px" onkeypress="decimalsOnly()" />
+			</td>
+		</tr>
+		<tr>
+			<!-- <td align=left class="textborder"><bean:message key="app.yearOfDrilling"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="yearOfDrilling" maxlength="4" styleClass="mytext" style="width:150px"/>
+			</td> -->
+			<td align=left class="textborder"><bean:message key="app.pyieldlocal"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="pyieldLocal" styleClass="mycombo" style="width:150px" >
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Intermittent">Intermittent</html:option>
+				<html:option value="Continuous">Continuous</html:option>
+	            </html:select> 
+			</td>		
+			<td align=left class="textborder"><bean:message key="app.pyield"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="pyield" maxlength="5"  styleClass="mytext" style="width:150px" onkeypress="numeralsOnly()"/>
+			</td>		
+		</tr> 
+		<tr >
+			<!-- <td align=left class="textborder"><bean:message key="app.qualityAffected"/>  -->
+			<td align=left class="textborder"><bean:message key="app.waterquality"/>  
+			</td>
+			<td  class="textborder" align=center >
+				<!-- <html:select name="ASSETSUBCOMPONENTS_LIST" property="qualityAffected" styleClass="mycombo" style="width:150px" onchange="javaScript:qualityAffect()">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+	            </html:select> -->
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="qualityAffected" styleClass="mycombo" style="width:150px" onchange="javaScript:qualityAffect()">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">NSS</html:option>
+				<html:option value="N">Safe Source</html:option>
+	            </html:select>
+			</td>
+			 <td align=left class="textborder"><bean:message key="app.status"/> 
+			</td> 
+			
+			<td  class="textborder" align=center >
+			 	<html:select name="ASSETSUBCOMPONENTS_LIST" property="status" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="W">WORKING</html:option>
+				<html:option value="N">NOT WORKING</html:option>
+				<html:option value="D">DRIED</html:option>
+				<html:option value="S">SEASONAL</html:option>
+				<html:option value="C">CONDEMED</html:option>
+				</html:select>
+			</td>	
+			<td>
+		<nested:text name="ASSETSUBCOMPONENTS_LIST"  property="assetCode" styleClass="mytext" 
+		style="width:0px" />
+		</td>
+
+			<!--<td align=left class="textborder"><bean:message key="app.flouride"/> 
+			</td>
+			 <td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="flouride" styleClass="mytext" style="width:150px"/>
+			</td> -->
+		</tr>
+		
+		<!-- <tr >
+			<td align=left class="textborder"><bean:message key="app.brakish"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="brakish" maxlength="5"  styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.iron"/> 
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="iron" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr> -->
+	</nested:iterate>
+		
+	</table>
+
+	</td>
+	</tr>
+			<tr>
+		<div id="conti" style="position:relative;overflow-n:auto;left:0;height:34;width:500;top:0;display:none">
+		<fieldset>
+		<legend>Contamination Details</legend>
+			<label>
+			<table bordercolor= "#000000" border="1" style="border-collapse:collapse;" width="100%" align=center >
+			
+			<tbody bgcolor="#FFFFFF">
+			<td class="bwborder">
+				    <input type="radio" name="opType1"  style="width:12px;height:13px"  styleClass="mytext" onclick="javascript:getContam(this)" value="FLOURIDE" /><font size="1" face="verdana"><b>&nbsp;Flouride</b></font> &nbsp;&nbsp;
+ 				    <input type="radio" name="opType2"  style="width:12px;height:13px"  styleClass="mytext" onclick="javascript:getContam(this)" value="BRAKISH" /><font size="1" face="verdana"><b>&nbsp;Brakish</b></font> 
+				    <input type="radio" name="opType3"  style="width:12px;height:13px"  styleClass="mytext" onclick="javascript:getContam(this)" value="IRON" /><font size="1" face="verdana"><b>&nbsp;Iron</b></font> 				        
+		        </td> 
+			</tbody>
+			</table>
+			</label>
+		</fieldset>
+		</div>
+		 </tr>
+		<tr>
+		<div id="FLOURIDE" style="position:relative;overflow-y:auto;left:0;height:34;width:500;top:0;display:none">
+		<fieldset>
+		<!-- <legend>Contamination Details</legend> -->
+		<label>
+			<table bordercolor= "#000000" border="1" style="border-collapse:collapse;" width="100%" align=center >
+			
+			<tbody bgcolor="#FFFFFF">
+				 <nested:iterate id="ASSETSUBCOMPONENTS_LIST" property="assetSubComponents" indexId="ndx">
+			<td align=left class="textborder"><bean:message key="app.flouride"/> 
+			</td>
+			 <td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="flouride" styleClass="mytext" style="width:150px"/>%
+				</nested:iterate>
+			</tbody>
+			</tbody>
+			</table>
+			</label>
+		</fieldset>
+		</div>
+		</tr>
+			<tr>
+		<div id="BRAKISH" style="position:relative;overflow-y:auto;left:0;height:34;width:500;top:0;display:none">
+		<fieldset>
+		<!-- <legend>Contamination Details</legend> -->
+		<label>
+			<table bordercolor= "#000000" border="1" style="border-collapse:collapse;" width="100%" align=center >
+			
+			<tbody bgcolor="#FFFFFF">
+				 <nested:iterate id="ASSETSUBCOMPONENTS_LIST" property="assetSubComponents" indexId="ndx">
+			<td align=left class="textborder"><bean:message key="app.brakish"/> 
+			</td>
+			 <td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="brakish" styleClass="mytext" style="width:150px"/>%
+				</nested:iterate>
+			</tbody>
+			</tbody>
+			</table>
+			</label>
+		</fieldset>
+		</div>
+		</tr>
+			<tr>
+		<div id="IRON" style="position:relative;overflow-y:auto;left:0;height:34;width:500;top:0;display:none">
+		<fieldset>
+		<!-- <legend>Contamination Details</legend> -->
+		<label>
+			<table bordercolor= "#000000" border="1" style="border-collapse:collapse;" width="100%" align=center >
+			
+			<tbody bgcolor="#FFFFFF">
+				 <nested:iterate id="ASSETSUBCOMPONENTS_LIST" property="assetSubComponents" indexId="ndx">
+			<td align=left class="textborder"><bean:message key="app.iron"/> 
+			</td>
+			 <td  class="textborder" align=center >
+				<nested:text name="ASSETSUBCOMPONENTS_LIST" property="iron" styleClass="mytext" style="width:150px"/>%
+				</nested:iterate>
+			</tbody>
+			</tbody>
+			</table>
+			</label>
+		</fieldset>
+		</div>
+		</tr>
+		  <tr align="center">
+			<td  align="left" colspan=2 >
+				<table  class="row" bordercolor= "#8A9FCD"  border="0"  rules="none" style="border-collapse:collapse;" width="100%" >
+				<tr>
+				<td>			
+				<html:button property="first" title="First Asset" styleClass="btext" value="First"  onclick="firstfunc()" />
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev" onclick="prevfunc()" />
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next" onclick="nextfunc()"/>
+				<html:button property="last" title="Last Asset" styleClass="btext" value="Last"  onclick="lastfunc()"/>
+				<!-- <c:if test="${sessionScope.first!='first'}">
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev3" onclick="prevfunc()" disabled="true"/>
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next3" onclick="nextfunc()"/>
+				</c:if>
+				<c:if test="${sessionScope.prev=='prev'}">
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev1" onclick="prevfunc()" disabled="true" />
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next1" onclick="nextfunc()"/>
+				</c:if>
+				<c:if test="${sessionScope.last=='last'}">
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev2" onclick="prevfunc()" />
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next2" onclick="nextfunc()" disabled="true"/>
+				</c:if>
+				<c:if test="${sessionScope.prev!='prev' && sessionScope.last!='last'}">
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev3" onclick="prevfunc()" />
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next3" onclick="nextfunc()"/>
+				</c:if> --> 
+				
+				
+			</td>
+
+			<td  align="right" colspan=2>
+				 <html:button property="add" title="Add the Fields" styleClass="btext" value="Add New" 
+				 onclick= "addnew()" />
+				  <html:button property="delete" title="Delete the Fields" styleClass="btext" 
+				  value="Remove"onclick="removeSubComp(this)"/>
+			    <html:button property="save" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc()"/>
+	    		<html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	    
+				</td>
+				</tr>
+				</table>
+			</td>
+	</tr>	
+
+ </html:form>
+  </c:if>
+
+
+
+
+
+
+<c:if test="${sessionScope.assetsubCompParams=='PwsPumpingMain' || sessionScope.assetsubCompParams=='CpwsPumpingMain'}">
+
+    	 <c:if test="${sessionScope.assetsubCompParams=='PwsPumpingMain'}"> 
+	 <%System.out.println("pipeline jsp pumping main"); %>
+	
+	 <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;PWS-PIPELINE-PUMPING MAIN</b>
+        </td>
+        </tr>
+		</c:if>
+    	 <c:if test="${sessionScope.assetsubCompParams=='CpwsPumpingMain'}"> 
+	 <%System.out.println("pipeline jsp pumping main"); %>
+	
+	 <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;CPWS-PIPELINE-PUMPING MAIN</b>
+        </td>
+        </tr>
+		</c:if>
+
+        <html:form action="Asset.do?mode=Submit">
+	 <nested:iterate id="ASSETPIPELINE_LIST" property="assetPipeLine" indexId="ndx">
+	  <tr >
+			<td align=left class="textborder"><bean:message key="app.pmCode"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmCode" maxlength="24" styleClass="mytext" style="width:160px" readonly="true"/>
+				<nested:text name="ASSETPIPELINE_LIST"  property="assetCode" styleClass="mytext" 
+				style="width:0px" />
+			</td>
+			<td align=left class="textborder"><bean:message key="app.nopipe"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="noOfPipes" styleClass="mytext" maxlength="4" style="width:100px" onkeypress="upperOnly()"/>
+				<html:button  property="addMat" value="..." styleClass="btext"
+					 onclick='<%= "javascript: fnPickPipeMat('" + ndx +"')"%>' />
+			</td>
+		  </tr>
+			
+		<!-- 	<td align=left class="textborder"><bean:message key="app.pmCla"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmCla" styleClass="mytext" maxlength="30" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		  </tr>
+	
+		 <tr >
+			<td align=left class="textborder"><bean:message key="app.pmDia"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmDia" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.pmLen"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmLen" styleClass="mytext" maxlength="30" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		</tr> -->
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.pmCond"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST" property="pmCond"  styleClass="mytext" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Sound">Sound</html:option>
+				<html:option value="Frquent Failures">Frquent Failures</html:option>
+				<html:option value="Occasianal Failures">Occasianal Failures</html:option>
+				</html:select>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.pmRep"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST" property="pmRep" styleClass="mytext"  style="width:150px" onkeypress="upperOnly()">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="once">Once</html:option>
+				<html:option value="twice">Twice</html:option>
+				<html:option value="more">More</html:option>
+				</html:select>
+			</td>
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.pmNat"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST" property="pmNat"  styleClass="mytext" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Breakages">Breakages</html:option>
+				<html:option value="Longitudianal Bursts">Longitudianal Bursts</html:option>
+				<html:option value="Diametrical/Circumfernce">Diametrical/Circumfernce</html:option>
+				</html:select>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.pmAvNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETPIPELINE_LIST" property="pmAvNo" styleClass="mytext"  maxlength="5"style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		</tr>
+		<!-- <tr >
+			<td align=left class="textborder"><bean:message key="app.pmAvConG"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmAvConG" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.pmAvConB"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmAvConB" styleClass="mytext" maxlength="30" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		</tr> -->
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.pmScrvNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmScrvNo" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.pmSvNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmSvNo" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+				</tr>
+			
+			<!-- <td align=left class="textborder"><bean:message key="app.pmScrvCondG"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmScrvCondG" styleClass="mytext" maxlength="30" style="width:150px" onkeypress="upperOnly()"/>
+			</td> -->
+	
+		
+			<!-- <td align=left class="textborder"><bean:message key="app.pmScrvCondB"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmScrvCondB" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td> -->
+			
+		
+		
+	<!-- 	<tr >
+			<td align=left class="textborder"><bean:message key="app.pmSvCondG"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmSvCondG" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+		<td align=left class="textborder"><bean:message key="app.pmSvCondB"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmSvCondB" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr> -->
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.pmRvNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmRvNo" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+		<!-- <td align=left class="textborder"><bean:message key="app.pmRvCondG"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmRvCondG" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td> -->
+		</tr>
+	<!--	<tr>
+	 	<td align=left class="textborder"><bean:message key="app.pmRvCondB"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST" property="pmRvCondB" maxlength="7" styleClass="mytext" style="width:150px"/> 
+		
+			
+			</tr>-->
+       </table>
+	   </nested:iterate>
+	   </td></tr>
+	    <tr align="center">
+			<td  align="left" colspan=2 >
+				<table  class="row" bordercolor= "#8A9FCD"  border="0"  rules="none" style="border-collapse:collapse;" width="100%" >
+				<tr>
+				<td>			
+				<html:button property="first" title="First Asset" styleClass="btext" value="First" disabled="true"/>		
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev" onclick="prevfunc()"/>
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next" onclick="nextfunc()"/>
+				<html:button property="last" title="Last Asset" styleClass="btext" value="Last" disabled="true"/>
+				
+			</td>
+
+			<td  align="right" colspan=2>
+				 <html:button property="add" title="Add the Fields" styleClass="btext" value="Add New" 
+				 onclick= "addnew()" />
+				  <html:button property="delete" title="Delete the Fields" styleClass="btext" 
+				  value="Remove"onclick="removeSubComp(this)"/>
+			    <html:button property="save" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc()"/>
+	    		<html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	    
+				</td>
+				</tr>
+				</table>
+			</td>
+	</tr>	
+         </html:form>
+          </c:if>
+
+
+ <c:if test="${sessionScope.assetsubCompParams=='GravityMain'}">
+         <%
+    	System.out.println("after  cPwsCapacitors"); %>
+     
+ 	<html:form action="Asset.do?mode=Submit">
+
+  		 <nested:iterate id="ASSETPIPELINE_LIST" property="assetPipeLine">
+		<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;CPWS-PIPELINE-GRAVITYMAIN</b>
+         </td>
+         </tr>
+          <tr>
+		 <td align=left class="textborder"><bean:message key="app.gravitymain_code"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="gravitymain_code"   styleClass="mytext" style="width:160px" readonly="true"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.lengths"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="lengths" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr>
+			  <tr>
+		 <td align=left class="textborder"><bean:message key="app.met_type"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST"  property="met_type" styleClass="mycombo" style="width:100px"> 
+				<html:option value="">SELECT...</html:option>
+				 <html:option value="A">AC</html:option>
+				<html:option value="P">PVC</html:option>
+				<html:option value="H">HDPE</html:option>
+				<html:option value="C">CI</html:option>
+				<html:option value="D">DI</html:option>
+				</html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.fail_freq"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST"  property="fail_freq" styleClass="mycombo" style="width:100px"> 
+				<html:option value="">SELECT...</html:option>
+				 <html:option value="O">ONCE</html:option>
+				<html:option value="T">TWICE</html:option>
+				<html:option value="M">MORE</html:option>
+            </html:select>
+			</td>
+			</tr>
+			
+		 <tr>
+		 <td align=left class="textborder"><bean:message key="app.fail_type"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST"  property="fail_freq" styleClass="mycombo" style="width:100px"> 
+				<html:option value="">SELECT...</html:option>
+				 <html:option value="T">Traseverse</html:option>
+				<html:option value="L">Longitudinal</html:option>
+			</html:select>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.fail_reason"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETPIPELINE_LIST"  property="fail_reason" styleClass="mycombo" style="width:100px"> 
+				<html:option value="">SELECT...</html:option>
+				 <html:option value="S">At Same Location</html:option>
+				<html:option value="D">At Different Location</html:option>
+				</html:select>
+			</td>
+			</tr>
+			 <tr>
+		 <td align=left class="textborder"><bean:message key="app.airvalve_no"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="airvalve_no" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.airvalvepit_no"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="airvalvepit_no" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr>
+			<!--  <tr>
+		 <td align=left class="textborder"><bean:message key="app.airvalvepit_cond_good"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="airvalvepit_cond_good" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.airvalvepit_cond_bad"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="airvalvepit_cond_bad" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr> -->
+			<!--  <tr>
+		 <td align=left class="textborder"><bean:message key="app.airvalvepit_cond_nrc"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="airvalvepit_cond_nrc" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			
+			</tr> -->
+		 <tr>
+		 <td align=left class="textborder"><bean:message key="app.scourevalve"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="scourevalve" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+		 <td align=left class="textborder"><bean:message key="app.sr_valvepit_no"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sr_valvepit_no" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			<!-- <td align=left class="textborder"><bean:message key="app.sr_valvepit_cond_good"/>&nbsp;&nbsp;
+			</td> -->
+			<!-- <td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sr_valvepit_cond_good" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td> -->
+			</tr>
+			 <tr>
+		<!--  <td align=left class="textborder"><bean:message key="app.sr_valvepit_cond_bad"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sr_valvepit_cond_bad" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td> -->
+			<td align=left class="textborder"><bean:message key="app.reflexvalve"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="reflexvalve" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.r_valvepit_no"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="r_valvepit_no" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr>
+			<!-- <tr>
+			
+			 <td align=left class="textborder"><bean:message key="app.r_valvepit_cond_good"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="r_valvepit_cond_good" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td> 
+			</tr>-->
+			 <tr>
+		<!--  <td align=left class="textborder"><bean:message key="app.r_valvepit_cond_bad"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="r_valvepit_cond_bad" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td> -->
+			<td align=left class="textborder"><bean:message key="app.sluicevalve"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sluicevalve" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			 <td align=left class="textborder"><bean:message key="app.sl_valvepit_no"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sl_valvepit_no" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr>
+			<!--	 <tr>
+		
+		 	<td align=left class="textborder"><bean:message key="app.sl_valvepit_cond_good"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sl_valvepit_cond_good" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+			</tr> 
+		 <tr>
+		<!--  <td align=left class="textborder"><bean:message key="app.sl_valvepit_cond_bad"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETPIPELINE_LIST"  property="sl_valvepit_cond_bad" maxlength="5"  styleClass="mytext" style="width:100px"/>
+			</td>
+		</tr>-->
+			
+</nested:iterate>
+	</td>
+	</tr>
+	<tr>
+				<td  align="left" colspan="2">
+				<html:button property="first" title="First Asset" styleClass="btext" value="First"/>		
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev" onclick="prevfunc()"/>
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next" onclick="nextfunc()"/>
+				<html:button property="last" title="Last Asset" styleClass="btext" value="Last" />
+				
+			</td>
+			<td  align="right" colspan="2">
+				 <html:button property="add" title="Add the Fields" styleClass="btext" value="Add New" onclick="addnew()"/>
+				  <html:button property="delete" title="Delete the Fields" styleClass="btext" 
+				  value="Remove" onclick="removefunc()"/>
+			    <html:button property="save" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    		<html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>
+				</td>
+	   </tr>
+	
+   </table>
+   </html:form>
+  </c:if>
+
+
+
+   </table>
+   <%
+	}catch(Exception e)
+   {
+	   System.out.println("error is "+e);
+   }
+
+   %>
+   <%@ include file="/commons/rws_alert.jsp"%>
+
+
+

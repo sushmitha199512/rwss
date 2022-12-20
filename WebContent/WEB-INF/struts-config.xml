@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+	</data-source>
+</data-sources>
+
+<form-beans>
+<!-- <form-bean name="GrievanceloginForm" type="nic.watersoft.admin.GrievanceLoginForm"/> -->
+	<form-bean name="loginForm" type="nic.watersoft.admin.LoginForm"/>
+</form-beans>
+<global-forwards>
+	
+</global-forwards>
+
+<action-mappings>
+	<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	
+	
+	<action path="/Login" name="loginForm" type="nic.watersoft.admin.LoginAction" scope="request"  attribute="loginForm" validate="true" >
+			<forward name="success" path="/adminmenu.jsp"/>
+			<forward name="failure" path="/rws_login_failed.jsp"/>
+			<forward name="pwrwss" path="/dashboards/rws_sec_dashboard.jsp"/>
+			<forward name="enc" path="/dashboards/rws_enc_dashboard.jsp"/> 
+			<!-- <forward name="enc" path="/rws_otp_frm.jsp"/>
+			<forward name="otploginenc" path="/dashboards/rws_enc_dashboard.jsp"/>-->
+			<forward name="ee" path="/dashboards/rws_ee_dashboard.jsp"/>
+			<!-- <forward name="admin" path="/dashboards/rws_admin_dashboard.jsp"/> -->
+			<forward name="otploginadmin" path="/dashboards/rws_admin_dashboard.jsp"/>
+			<forward name="admin" path="/rws_otp_frm.jsp"/>
+		    <forward name="user" path="/dashboards/rws_user_dashboard.jsp"/>
+			<forward name="ao" path="/dashboards/rws_ao_dashboard.jsp"/>
+			<forward name="drought" path="/dashboards/rws_drought_dashboard.jsp"/>
+			<forward name="wquality" path="/dashboards/rws_WQ_dashboard.jsp"/>
+			<forward name="guest" path="/dashboards/rws_guest_dashboard.jsp"/>
+      		<forward name="pwdNoChange" path="/commons/pwdNoChange.jsp"/>
+      		<forward name="eebudget" path="/dashboards/rws_ee_budget_dashboard.jsp"/>
+      		<!-- <forward name="eebudget" path="/rws_otp_frm.jsp"/>
+      		<forward name="otplogineebudget" path="/dashboards/rws_ee_budget_dashboard.jsp"/> -->
+      		<forward name="aprwssp" path="/dashboards/rws_world_bank_dashboard.jsp"/>
+      		<forward name="minrwss" path="/dashboards/rws_minister_dashboard.jsp"/>
+      		<forward name="cerwss" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="vqc" path="/dashboards/rws_vqc_dashboard.jsp"/>
+			<forward name="pdswsm" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="pdccdu" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="ce_nab" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="ce_stp" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="ce_vqc" path="/dashboards/rws_ce_dashboard.jsp"/>
+      		<forward name="urbanpage" path="/dashboards/ur_urban_dashboard.jsp"/>
+      		
+<forward name="collector" path="/dashboards/rws_collector_dashboard.jsp"/>
+            
+	</action>
+	
+<!--  <action path="/LoginGrievance" name="GrievanceloginForm" type="nic.watersoft.admin.LoginGrievanceAction" scope="request"  attribute="GrievanceloginForm" validate="true" input="/rws_grievence_login_frm.jsp">
+			<forward name="login" path="/rws_grievence_login_frm.jsp"/>
+			<forward name="failure" path="/rws_login_failed.jsp"/>
+			<forward name="grievance" path="/dashboards/rws_grievance_dashboard.jsp"/>
+	</action> -->
+	
+	<action
+			path="/LoginGrievance1"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/rws_grievence_login_frm.jsp"/>
+	
+	<action path="/Logout" forward="/rws_logout.jsp"></action>
+	<action path="/underConstruction" forward="/siteUnderConstruction.jsp">
+	</action>
+	
+	<action path="/closeWindow" forward="/closeWindow.jsp">
+	
+	</action>
+	
+	<!-- configuration for jsp pages -->
+	<action path="/home" forward="/home.jsp"/>
+	<action path="/expire" forward="/sessionExpired.jsp"/>
+	
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources"/> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-admin.xml"/>
+</plug-in>
+
+
+
+</struts-config>

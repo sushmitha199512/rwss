@@ -1,0 +1,70 @@
+//oracle procedures used
+	
+	CREATE OR REPLACE FUNCTION getFinancialYear(year IN varchar2,month in varchar2) 
+	RETURN varchar2
+	IS 
+	   numYear number(4);
+	   numMonth number(2);
+	   financialYear varchar2(9);
+	   BEGIN 
+	   		numYear:=to_number(year);
+	   		numMonth:=to_number(month);
+	   		if numMonth>3 then
+	   			financialYear:=to_char(numYear)||'-'||to_char(numYear+1);
+		    end if;
+		    if numMonth<4  and numMonth<>0 then
+				financialYear:=to_char((numYear-1))||'-'||to_char(numYear);
+		    end if;
+		    return financialYear;
+	   
+	   	END;
+	   /
+	    
+	     
+	CREATE OR REPLACE FUNCTION getFinancialMonth(month in varchar2) 
+	RETURN number
+	IS 
+	   numMonth number(2);
+	   
+	   BEGIN 
+	   		numMonth:=to_number(month);
+	   		if month='01' then
+	   			numMonth:=10;
+	   		elsif month='02' then
+	   			numMonth:=11;
+	   		elsif month='03' then
+	   			numMonth:=12;
+	   		elsif month='04' then
+	   			numMonth:=1;
+	   		elsif month='05' then
+	   			numMonth:=2;
+	   		elsif month='06' then
+	   			numMonth:=3;
+	   		elsif month='07' then
+	   			numMonth:=4;
+	   		elsif month='08' then
+	   			numMonth:=5;
+	   		elsif month='09' then
+	   			numMonth:=6;
+	   		elsif month='10' then
+	   			numMonth:=7;
+	   		elsif month='11' then
+	   			numMonth:=8;
+	   		elsif month='12' then
+	   			numMonth:=9;
+	   		end if;
+		    return numMonth;
+	   
+	   	END;
+	   /
+	  
+	CREATE OR REPLACE FUNCTION getPreviousFinancialYear(financialYear in varchar2) 
+	RETURN varchar2
+	IS 
+	  
+	BEGIN 
+	   		
+	    return to_number(substr(financialYear,1,4))-1||'-'||substr(financialYear,1,4);
+	   
+	END;
+	   /

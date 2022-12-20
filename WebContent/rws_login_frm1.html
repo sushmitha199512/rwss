@@ -1,0 +1,430 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML><HEAD><TITLE>Official Website of PRED</TITLE>
+<script language="JavaScript" src="/pred/resources/javascript/md5.js"></script>
+<META http-equiv=Content-Language content=en-us>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<LINK href="images/style.css" type=text/css rel=stylesheet>
+ 
+
+<META content="MSHTML 6.00.2900.2912" name=GENERATOR>
+<style type="text/css">
+<!--
+.style2 {color: red}
+#Layer1 {
+	position:absolute;
+	width:32px;hu
+	z-index:1;
+	left: 220px;
+	top: 164px;
+}
+#Layer2 {
+	position:absolute;
+	width:27px;
+	height:35px;
+	z-index:2;
+	left: 177px;
+	top: 265px;
+}
+#Layer3 {
+	position:absolute;
+	width:20px;
+	height:20px;
+	z-index:3;
+	top: 167px;
+	left: 500px;
+}
+#Layer4 {
+	position:absolute;
+	width:39px;
+	height:40px;
+	z-index:4;
+	top: 359px;
+	left: 498px;
+}
+#Layer5 {
+	position:absolute;
+	width:33px;
+	height:28px;
+	z-index:5;
+	top: 310px;
+	left: 185px;
+	visibility: visible;
+}
+#Layer6 {
+	position:absolute;
+	width:21px;
+	height:29px;
+	z-index:6;
+	left: 200px;
+	top: 213px;
+}
+#Layer7 {
+	position:absolute;
+	width:29px;
+	height:33px;
+	z-index:7;
+	top: 365px;
+	left: 213px;
+}
+.style10 {
+	color: #0033FF;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	text-decoration: none;
+}
+#Layer8 {
+	position:absolute;
+	width:40px;
+	height:39px;
+	z-index:8;
+	top: 257px;
+	left: 535px;
+}
+#Layer9 {
+	position:absolute;
+	width:40px;
+	height:38px;
+	z-index:9;
+	top: 209px;
+	left: 524px;
+}
+#Layer10 {
+	position:absolute;
+	width:35px;
+	height:36px;
+	z-index:10;
+	top: 306px;
+	left: 526px;
+}
+#Layer11 {
+	position:absolute;
+	width:27px;
+	height:35px;
+	z-index:11;
+	left: 318px;
+	top: 421px;
+}
+#Layer12 {
+	position:absolute;
+	width:113px;
+	height:26px;
+	z-index:12;
+	left: 361px;
+	top: 424px;
+}
+.style11 {
+	color: #FF0000;
+	font-weight: bold;
+}
+#Layer13 {
+	position:absolute;
+	width:29px;
+	height:33;
+	z-index:13;
+	left: 191px;
+	top: 315px;
+}
+-->
+</style>
+</HEAD>
+<BODY text=#999999 vLink=#666666 aLink=#666666 link=#cccccc leftMargin=0 marginheight="0" marginwidth="0" onLoad="fnInit()">
+<head></head>
+<BODY bgcolor="#FFFFCC" leftmargin=0 topmargin=0>
+<script language="JavaScript">
+<!--
+function fnInit()
+{
+get_radio_value();
+	var randomnumber=Math.floor(Math.random()*99999999);
+	
+	document.forms[0].slt.value=randomnumber;
+//alert(randomnumber);
+document.forms[0].userId.focus();
+}
+	var Scroll=""
+	var wiper
+	var index=0
+	var space=" "
+	reset();
+	function reset()
+	{
+	text = new Array(4)
+	var textnr=Math.round((Math.random()*4))
+	text[0]="Welcome to WaterSoft"
+	text[1]="Welcome to WaterSoft"
+	text[2]="Welcome to WaterSoft"
+	text[3]="Welcome to WaterSoft"
+	text[4]="Welcome to WaterSoft"
+	Scroll=text[textnr]
+	index=0
+	main()
+	}
+
+	function main()
+	{
+	window.status=Scroll.substring(0,index)
+	index++
+	if(index==(Scroll.length+4)){setTimeout('reset_clear()',300);}
+	else{setTimeout('main()',50)}
+	}
+	function reset_clear()
+	{
+	index=0
+	wiper=""
+	for(var a=0;a<Scroll.length;a++){wiper+=space}
+	clearem()
+	}
+	function clearem()
+	{
+	window.status=wiper.substring(0,index) + "->" + Scroll.substring(index+2,Scroll.length)
+	index++
+	if(index==(Scroll.length+4)){reset()}
+	else{setTimeout('clearem()',50)}
+	}
+	function get_radio_value()
+	{
+		for (var i=0; i < document.forms[0].loginMode.length; i++)
+	   	{
+		   	if (document.forms[0].loginMode[i].checked)
+		     {
+		      	var rad_val = document.forms[0].loginMode[0].value;
+		    }
+	  	}
+	}
+	
+	//function submitFn()
+	//{
+//		alert("WATERSOFT SITE is under Maintenance. It will be up within a few minutes.. Sorry for the inconvenience");
+	//	return false;
+	//}
+	function submitFn()
+	{
+		document.forms[0].password.value=hex_md5(document.forms[0].password1.value+document.forms[0].slt.value);
+		if(document.forms[0].userId.value!="" && document.forms[0].password1.value!="")
+		{
+		document.forms[0].password1.value="";
+		return true;
+		}
+		else if(document.forms[0].userId.value=="")
+		{
+			alert("UserId is required");
+			document.forms[0].userId.focus();
+			return false;
+		}
+		else if(document.forms[0].password1.value=="")
+		{
+			alert("Password is required");
+			document.forms[0].password1.focus();
+			return false;
+		}
+		return false;
+	}
+      
+//-->
+</SCRIPT>
+<DIV align=left></DIV>
+
+<DIV align=center>
+<CENTER>
+<TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+height=91% cellSpacing=0 cellPadding=0 width=100% bgColor=#ffffff border=0>
+  <TBODY>
+  <TR>
+      <TD width=260 height=63><IMG height=54 
+      src="images/WaterSoft.jpg" width=228 
+border=0></TD>
+    <TD width=503 height=63>
+    <P align=center><img height=80 
+      src="images/rightimg.jpg" width=473 
+    border=0></P></TD>
+ <TR>
+    <TD vAlign=top align=left width=823 colSpan=4 height=1><IMG height=8 
+      src="images/spacer.gif" width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=left width=823 bgColor=#99CC00 colSpan=4 height=19>
+      <P align=center><B><MARQUEE scrollDelay=80 width=1000  behavior="alternate">
+<FONT face=verdana color=white size=2>
+&nbsp;&nbsp;&nbsp;Flash&nbsp;!&nbsp;&nbsp;Flash&nbsp;!!&nbsp;&nbsp;&nbsp;Please Update Works Monitoring, Water Quality</FONT>
+</MARQUEE>
+</B></P></TD></TR>
+
+<TR>
+    <TD vAlign=top align=left width=823 
+    background="images/cb.jpg" colSpan=4 
+      height=1><IMG height=8 src="images/spacer.gif" 
+      width=8 border=0></TD></TR>
+
+<form  method="post" action="Login.do" onSubmit="return submitFn()" focus="userId">
+ <TR>
+
+    <TD vAlign=top align=left width="100%" colSpan=4 height=19>
+<br><br>
+    <table width="991" height="231" border="0" align="center">
+  <tr>
+    <td width="203" height="45"><div align="right" class="style2"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="purple">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="purple">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="red">Administration</font></b>
+      <div id="Layer1"><b><font color="purple"><img src="images/admin.bmp" width="31" ></font></b></div>
+    </div></td>
+    <td width="315" rowspan="5"><img src="images/12.jpg" width="315" height="252" /></td>
+    <td width="219"><div id="Layer3"><b><span class="style2"><img src="images/estimates.jpg" width="34" height="32"></span></b></div>      
+      <b><span class="style2">Estimates&nbsp;</span><font color="purple">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="purple">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="purple">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> </b></td>
+    <td width="236" rowspan="5">
+    <TABLE id=AutoNumber16 style="BORDER-COLLAPSE: collapse" borderColor="#4B72B1"  height=45 cellSpacing=0 cellPadding=0 
+                  width="100%" border=4>
+                  <font face="verdana" color="black" size="1"><b>
+              LogOn
+              <input type="radio" name="loginMode" value="watersoft" checked>WaterSoft
+              <input type="radio" name="loginMode" value="prajapatham">Prajapatham</font></b>
+        <TBODY >
+         <TR>
+          <TD width="100%" height=26 bgcolor="#99CC00"><B><FONT face=Verdana 
+                        color=#ffffff size=1>&nbsp;</FONT></B><FONT face=Verdana 
+                        color="#000000" size=2><b>Authorised Users</b></FONT></TD>
+        </TR>
+        <TR>
+          <TD width="100%" height=19><DIV align=center>
+              <CENTER>
+                <TABLE id=AutoNumber14 style="BORDER-COLLAPSE: collapse" 
+                        borderColor=#111111 height=69 cellSpacing=0 
+                        cellPadding=0 width="96%" border=0>
+                  <TBODY>
+                    <TR>
+                      <TD width="32%" bgColor=#ffffff height=32><FONT 
+                              face=Verdana color=#000000 size=1><B>&nbsp;User 
+                        Id</B></FONT></TD>
+                      <TD width="68%" bgColor=#ffffff height=32><P align=center>
+                          <input type="text" name="userId" value="" styleClass="thin-text-box"   />
+                      </P></TD>
+                    </TR>
+                    <TR>
+                      <TD width="32%" bgColor=#ffffff height=32><FONT 
+                              face=Verdana color=#000000 
+                              size=1><B>&nbsp;Password </B></FONT></TD>
+                      <TD width="68%" bgColor=#ffffff height=32><P align=center>
+                          <input type="hidden" name="slt">
+                          <input type="hidden"  name="password" />
+                          <input type="password" name="password1" value="" styleClass="thin-text-box"  />
+                      </P></TD>
+                    </TR>
+                    <TR >
+                      <TD width="100%" bgColor=#ffffff colSpan=2 height=10>
+                      <P align=center>
+                            <input name="submit2" type="submit" style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000000; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Submit" styleClass="btext" />
+                            <input name="reset2" type="reset"   style="BORDER-RIGHT: #ffa87d 2px inset; BORDER-TOP: #ffa87d 2px inset; BORDER-LEFT: #ffa87d 2px inset; COLOR: #000080; BORDER-BOTTOM: #ffa87d 2px inset; BACKGROUND-COLOR: #ffe9d2" value="Reset" styleClass="btext" />
+                      </P> </TD>
+                    </TR>
+    </TBODY>
+    </TABLE>
+  </CENTER>
+</DIV></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    </tr>
+  <tr>
+    <td height="46"><div align="right" class="style2">
+      <div id="Layer6"><b><font color="purple"><img src="images/water.jpg" height="30" width="20"></font></b></div>
+      <b>Water Quality</font>&nbsp;&nbsp;&nbsp;</b></div></td>
+    <td><span class="style2"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span>
+      <div id="Layer9"><b><img src="images/fund.jpg"></b></div>
+      <span class="style2"><b>Fund Accounting</b></span></td>
+</tr>
+  <tr>
+    <td height="39"><div align="right" class="style2"><b>Complaints Monitoring</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        <div id="Layer2"><img src="images/complaints1.bmp" ></div>
+    </div></td>
+    <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style2">&nbsp;</span></b>
+      <div id="Layer8"><span class="style2"><img src="images/contractor.gif" width="38" height="38"></span></div>
+      <b><span class="style2">&nbsp;Contractor Management</span></b></td>
+</tr>
+  <tr>
+    <td height="43"><div align="right"><b><span class="style2">Proposal</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style2"> </span></b>
+        <div class="style11" id="Layer12">
+        <div align="left"></div>
+      </div>
+      </div></td>
+    <td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+      <div id="Layer10"><b><span class="style2"><img src="images/works.gif" width="36" height="37"></span></b></div>
+      <b><span class="style2">Works</span></b></td>
+</tr>
+  <tr>
+    <td height="46"><div align="right" class="style2"><b>M</b>
+      <div id="Layer13"><img src="images/proposals.jpg" width="31" height="29"></div>
+      <b>asters</b>
+      <div id="Layer7"><img src="images/masters.bmp" width="31" height="29"></div>
+    </div></td>
+    <td><div id="Layer4"><span class="style2"><img src="images/reports.jpg"></span></div>      
+      <span class="style2"><b>Reports</b></span></td>
+</tr>
+</table>
+    
+    <p>&nbsp;</p> 
+<table width="100%" style="BORDER-COLLAPSE:collapse"  align="center" bordercolor="#4855B0" border="2">
+  <tr>
+	  <th width="50%"  bgcolor="#99CC00" border="0"><font color="black" size="2" face="Georgia"><b>Habitation</b></font></th>
+	  <th width="25%"  bgcolor="#99CC00" border="0"><font color="black" size="2" face="Georgia"><b>Works</b></font></th>
+	  <th width="25%"  bgcolor="#99CC00" border="0"><font color="black" size="2" face="Georgia"><b>Assets</b></font></th>
+  </tr>
+  <tr>
+    <td colspan="3"><table border="1" bordercolor="green" width="100%" height="70">
+	<tr>
+		<td width="25%"><a href="./switch.do?prefix=/reports&page=/DistrictHabitationSearch.do"><FONT class="style10">&nbsp;&nbsp;Habitation Search </FONT></a></td>
+	    <td width="25%"><a href="reports/rws_dist_pop_rpt1.jsp"><FONT class="style10">&nbsp;&nbsp;Population-Range</FONT></a></td>
+		<!-- <td width="25%"><a href="./reports/rws_worksmonitoring_workstatus_select1.jsp"> -->
+		<td width="25%"><a href="reports/rws_work_normal_abstract_rpt1.jsp">
+		<FONT class="style10">&nbsp;&nbsp;District Wise Works</FONT></a></td>
+		<td width="25%"><FONT class="style10">&nbsp;&nbsp;Asset Status</FONT></td>
+	<!--<td width="25%"><a href="switch.do?prefix=/reports&page=/assetStatus.do&mode=Assets"><FONT class="style10">&nbsp;&nbsp;Asset Status</FONT></a></td>-->
+	</tr>
+    <tr>
+ 		<td><a href="./switch.do?prefix=/reports&page=/reportsDisplay.do&mode=data"><FONT class="style10">&nbsp;&nbsp;Habitation Coverage Status </FONT></a></td>
+		<td><a href="reports/rws_dist_popcate_rpt1.jsp"><FONT class="style10">&nbsp;&nbsp;Population-Category</FONT></a></td>
+		<td><a href="reports/rws_worksmonitoring_progstatus_select1.jsp"><FONT class="style10">&nbsp;&nbsp;Program Wise Works</FONT></a></td>
+		<td>&nbsp;</td>
+<!--    <td><a href="./reports/rws_spill_new.jsp"><FONT class="style10">&nbsp; 42 Columns(Spill/New)Report <img src="images/new1.gif" width="32" height="18" BORDER=0></FONT></a></td>-->
+	</tr>
+    <tr>
+		<td><a href="reports/rws_NSS_habitations_rpt.jsp"><FONT class="style10">&nbsp;&nbsp;Quality Affected Habitations</FONT></a></td>
+		<td><a href="reports/rws_dist_popstatus_rpt1.jsp"><FONT class="style10">&nbsp;&nbsp;Population-Coverage</FONT></a></td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+        <td><a href="reports/rws_complaints_frm.jsp"><FONT class="style10">&nbsp;&nbsp;Total Complaints</FONT></a></td>
+	</tr>
+    <tr>
+      <td><a href="switch.do?prefix=/reports&page=/DistrictListAction.do"><FONT class="style10">&nbsp; Habitation Directory </FONT></a></td>
+     <td><a href="reports/rws_hab_status_resource_rpt.jsp"><FONT class="style10">&nbsp; Habitation Vs Resources</FONT></a></td>
+	  <td>&nbsp;</td>
+	  <td>&nbsp;</td>
+    </tr>
+    </table></td>
+    
+    
+    </tr>
+</table>
+
+<TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" borderColor=#111111 
+cellSpacing=0 cellPadding=0 width=100% bgColor=#ffffff border=0>
+<TR>
+    <TD vAlign=top align=left width=180 
+    background="images/cb.jpg" colSpan=4 
+      height=5><IMG height=8 src="images/spacer.gif" 
+      width=1 border=0></TD></TR>
+  <TR>
+      <TD align=center width=950 colSpan=2 height=21>
+      <P align=center><FONT face=Verdana color=navy size=1 >            Designed, 
+      Developed &amp; Hosted and Maintained by National Informatics Centre, Andhra Pradesh 
+      State Centre. </FONT></P></TD>
+  </TR>
+<tr><td>
+<P align=center><B><FONT face=Verdana color=red size=1>Best Viewed with IE 6.0+ and 1024 
+x 768 resolution</FONT><FONT face=Verdana color=#ffffff 
+size=1><BR>Disclaimer</FONT></B></P>
+</td></tr>
+</table>
+</form>
+
+</BODY></HTML>

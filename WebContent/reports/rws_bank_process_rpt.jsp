@@ -1,0 +1,133 @@
+<%@ include file="/commons/rws_header1.jsp"%>
+<%@ include file="/commons/rws_header2.jsp"%>
+<%@ include file = "/reports/conn.jsp" %>
+<%@ page import = "java.sql.Date" %>
+<%@ page import = "java.util.*" %>
+
+<%
+ String datew=request.getParameter("datewise");
+  Statement stmt1=conn.createStatement();
+  ResultSet rs1=null;
+  String qry1="";
+  String div="",cir="";
+if(request.getParameter("division")!=null && !request.getParameter("division").equals(""))
+  {
+	String cirdiv=request.getParameter("division");
+	div=cirdiv.substring(2,3);
+	cir=cirdiv.substring(0,2);
+
+  }
+else{
+	String cirdiv=request.getParameter("division");
+    if(cirdiv!=null && !cirdiv.equals("")){
+	div=cirdiv.substring(2,3);
+	cir=cirdiv.substring(0,2);}
+   }
+   DecimalFormat ndf = new DecimalFormat("####.00");
+%>
+<table>
+<tr><td class=btext>Bill Wise Releases - Central</td></tr></table>
+<table border = 0 cellspacing = 0 cellpadding = 0 width=80%>
+<caption>
+	<table  border=0 rules=none style="border-collapse:collapse" align = "right">
+		<tr align="right">
+			<td class="bwborder"><a href="#" onclick="javascript:history.go(-1)">Back</a>|<a href="../home.jsp">Home</a>|<a href="./rws_bank_process_xls.jsp?datewise=<%=datew%>&cir=<%=cir%>&div=<%=div%>" target=_new>Excel</a>
+			</td>
+		</tr>
+</table>
+</caption>
+</table>
+<table border = 1 cellspacing = 0 cellpadding = 0  width=80%  bordercolor=#000000 style="border-collapse:collapse">
+<tr><td align="center" class=btext>Date :<font face="verdana" size=2 color="green"><%=datew%></font></td></tr>
+<%String qry="select distinct division_office_name,txid,txid_div,office_code,bill_amount_central,circle_office_code,division_office_code  from rws_bill_bank_settlement_tbl a,rws_complete_office_view v where substr (office_code,2,2) =v.circle_office_code and substr(office_code,4,1)=v.division_office_code and to_char (processed_start_date,'dd/mm/yyyy')='"+datew+"' ";
+//and bill_activation_flag='P'  ";
+
+ if(cir!=null && !cir.equals("") && div!=null && !div.equals(""))
+ {
+	 qry+= "  and  substr (office_code,2,2) ='"+cir+"' and  substr (office_code,4,1)='"+div+"' "; 
+ }
+qry+=" order by txid,circle_office_code,division_office_code ";
+
+//System.out.println("qry:"+qry);
+int count=0;
+double gtot=0.0;
+int count1=0;
+stmt=conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+ResultSet resultSet=stmt.executeQuery(qry);
+if(resultSet.isBeforeFirst())
+{
+resultSet.next();
+String gtid=resultSet.getString(2);
+String prevgtid="";
+%>
+<td bgcolor="green"><font color="white" face="verdana" size="2"><B>Group TransactionId:&nbsp;&nbsp;<%=resultSet.getString(2)%></B></font>
+</td>
+<%
+resultSet.previous();
+while(resultSet.next())
+{
+	
+	if(gtid.equals(resultSet.getString(2))){%>
+	<tr><td class=btext colspan=4><%=++count%>.Division:<%out.println(resultSet.getString(1));%>&nbsp;&nbsp;&nbsp;TransactionId:<%=resultSet.getString(3)%>&nbsp;</td></tr>
+   <%
+	}else{
+     if(!prevgtid.equals(resultSet.getString(2))){	
+		 %>
+<tr><td bgcolor="green"><font color="white" face="verdana" size="2"><B>Group TransactionId:&nbsp;&nbsp;<%=resultSet.getString(2)%>
+</B></font></td></tr>
+<%
+	 } else{}%>
+	<tr><td class=btext colspan=4><%=++count1%>.Division:<%out.println(resultSet.getString(1));%>&nbsp;&nbsp;&nbsp; TransactionId:<%=resultSet.getString(3)%>&nbsp;</td></tr>
+   
+	<% }
+		
+
+		%>
+   <tr>
+   <td>
+   <table border=1 cellspacing = 0 cellpadding = 0  width=100%  bordercolor=#000000 style="border-collapse:collapse">
+	   <td class=rptvalue width="15%" align="center"><font color="red">Work Id</font></td>
+	   <td class=rptvalue width="50%" align="center"><font color="red">Work Name</font></td>
+	   <td class=rptvalue width="15%" align="center"><font color="red">Bill No</font></td>
+	   <td class=rptvalue width="10%" align="center"><font color="red">BMS TR NO</font></td>
+	   	   <td class=rptvalue width="20%" align="center"><font color="red">Bill Amount  Processed<br>(In Rupees)</font></td>
+	</tr>
+      
+<%
+
+double amt=0.0;
+
+qry1="select a.work_id,work_name,bill_no,bill_amount_central,bill_activation_flag,nvl(BMS_TR_NO,'-') from rws_bill_bank_bridge_det_tbl a,rws_work_bill_tbl b,rws_work_admn_tbl c where a.work_id=b.work_id and a.work_id=c.work_id and c.work_id=b.work_id and a.bill_sl_no=b.bill_sl_no  and txid='"+resultSet.getString(2)+"'   and a.office_code='"+resultSet.getString(4)+"' ";
+rs1=stmt1.executeQuery(qry1);
+while(rs1.next())
+{%>
+    <tr>
+	    <td class=rptvalue><%=rs1.getString(1)%></td>
+		<td class=rptvalue><%=rs1.getString(2)%></td>
+		<td class=rptvalue><%=rs1.getString(3)%></td>
+	 	<td class=rptvalue><%=rs1.getString(6)%></td> 
+		<td class=rptvalue align="right"><%=rs1.getString(4)%></td>
+		
+	</tr>
+<%
+  amt+=rs1.getDouble(4);
+ }%>
+<tr>
+<td class=btext colspan=4 align="center">Total:</td><td align="right" class=btext><%=ndf.format(amt)%></td>
+</tr>
+</td>
+</tr>
+</table>
+<%
+ gtot=gtot+amt;	
+	prevgtid=resultSet.getString(2);
+}
+}
+resultSet.close();%>
+</td>
+</tr>
+<tr><td class=btext align="right">Grand Total:&nbsp;&nbsp;&nbsp;&nbsp; <%=ndf.format(gtot)%></td></tr>
+</table>
+
+
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+
+<struts-config>
+	<!-- Data Sources -->
+	<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource" >
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+		<set-property property="maxActive" value="10" />
+		<set-property property="maxWait" value="10000" />
+	</data-source>
+</data-sources>
+	<!-- Form Beans -->
+	<form-beans>
+		<form-bean name="tenderNotificationForm" type="nic.watersoft.contractor.TenderNotificationForm" />
+		<form-bean name="tenderScheduleForm" type="nic.watersoft.contractor.TenderScheduleForm" />
+		
+		<form-bean name="tenderAppForm" type="nic.watersoft.contractor.Rws_Tender_Application_FormBean">
+		<form-property name="tenderIdNo"      type="java.lang.String"/>
+		<form-property name="tenderApplNo"    type="java.lang.String"/>
+		<form-property name="contractorRegNo" type="java.lang.String"/>
+		<form-property name="preparedBy"      type="java.lang.String"/>
+		<form-property name="chequeNo"        type="java.lang.String"/>
+		<form-property name="chequeDate"      type="java.lang.String"/>
+		<form-property name="bank"            type="java.lang.String"/>
+		<form-property name="contractorName"  type="java.lang.String"/>
+		<form-property name="contractorAdd1"  type="java.lang.String"/>
+		<form-property name="contractorAdd2"  type="java.lang.String"/>
+		<form-property name="contractorAdd3"  type="java.lang.String"/>
+		<form-property name="branch"          type="java.lang.String"/>
+		<form-property name="tenderAmount"    type="java.lang.String"/>
+		<form-property name="mode"            type="java.lang.String"/>
+		</form-bean>
+
+<form-bean name="contractorForm" type="nic.watersoft.contractor.ContractorForm" />
+	</form-beans>
+	
+
+	<!--form beans-->
+	<!-- Action Mappings -->
+	<action-mappings>
+	    
+		<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+
+		<action name="tenderScheduleForm" path="/TenderSchedule"  scope="request" validate="true" type="nic.watersoft.contractor.Rws_Tender_Schedule_Act_frm">
+			<forward name="data" path="/rws_tender_schedule_A_frm.jsp" />
+			<forward name="components" path="/rws_tender_schedule_A_frm.jsp" />
+			<forward name="Save" path="/rws_tender_schedule_A_frm.jsp" />
+			<forward name="workDetails" path="/rws_new_work_details.jsp" />
+			<forward name="dispTender" path="/rws_upload_tender_notification.jsp"/>
+			<forward name="View" path="/rws_TenderScheduleAList_frm.jsp" />
+		    <forward name="get" path="/rws_EditTender_schedule_A_frm.jsp"/>
+		    <forward name="delete" path="/TenderSchedule.do?mode=View"/>
+		    <forward name="edit" path="/TenderSchedule.do?mode=View"/>
+		    
+ 		</action>
+		<action name="tenderNotificationForm" path="/TenderNotification"  scope="request" validate="true" type="nic.watersoft.contractor.rws_TenderNotificationAction_frm">
+			<forward name="data" path="/rws_cm_tender_notification.jsp" />
+			<forward name="Save" path="/rws_cm_tender_notification.jsp" />
+			<forward name="View" path="/rws_cm_tender_notificationList_frm.jsp" />
+			<forward name="pickWorkId" path="/rws_PickWorkId_frm.jsp" />
+			<forward name="AddWorkId" path="/close.jsp" />
+			<forward name="dispWork" path="/rws_DispWorks.jsp" />
+			<forward name="get" path="/rws_Editcm_tender_notification.jsp"/>
+		    <forward name="delete" path="/TenderNotification.do?mode=View"/>
+		    <forward name="edit" path="/TenderNotification.do?mode=View"/>
+		</action>
+		
+		 <action name="tenderAppForm" path="/TenderApplication" scope="request" validate="false"
+		 type="nic.watersoft.contractor.Rws_Tender_Application_Act" input="/rws_tender_application.jsp">
+		 <forward name="data" path="/rws_tender_application.jsp"/>
+		 <forward name="save" path="/rws_tender_application.jsp"/>
+		 <forward name="view" path="/rws_tender_application_list.jsp"/>
+	     </action>
+
+<action path="/ContractorChange" name="contractorForm"  scope="session"  	
+        type="nic.watersoft.contractor.rws_ContractorCodeEntryChangeAct_frm" >
+    	<forward name="get2" path="/rws_contractor_change_entry_frm.jsp" />
+        <forward name="closeWithMessage" path="/closeWithMessage.jsp" />
+	    <forward name="data" path="/rws_contractor_change_frm.jsp" />
+	     <forward name="view" path="/rws_contractor_change_frm.jsp" />
+	     <forward name="update" path="/rws_contractor_change_frm.jsp" />
+         <forward name="display" path="/rws_contractor_change_frm.jsp" /> 
+         <forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+
+	</action>
+		
+	</action-mappings>
+	
+	<message-resources parameter="nic.watersoft.resources.ApplicationResources" /> 
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-contractor.xml"/>
+	</plug-in>
+
+
+</struts-config>

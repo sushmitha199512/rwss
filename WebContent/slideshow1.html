@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<script type="text/javascript">
+
+/***********************************************
+* DHTML slideshow script-  © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice must stay intact for legal use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+var photos=new Array()
+var photoslink=new Array()
+var which=0
+
+//define images. You can have as many as you want:
+photos[0]="./SlideshowImages/DSC_0006.jpg"
+photos[1]="./SlideshowImages/DSC_0013.JPG"
+photos[2]="./SlideshowImages/DSC_0023.JPG"
+photos[3]="./SlideshowImages/DSC_0024.JPG"
+photos[4]="./SlideshowImages/DSC_0027.JPG"
+photos[5]="./SlideshowImages/DSC_0030.JPG"
+photos[6]="./SlideshowImages/DSC_0032.JPG"
+photos[7]="./SlideshowImages/DSC_0033.JPG"
+photos[8]="./SlideshowImages/DSC_0038.JPG"
+photos[9]="./SlideshowImages/DSC_0039.JPG"
+photos[10]="./SlideshowImages/DSC_0043.JPG"
+photos[11]="./SlideshowImages/DSC_0053.JPG"
+photos[12]="./SlideshowImages/DSC_0068.JPG"
+photos[13]="./SlideshowImages/DSC_0324.JPG"
+photos[14]="./SlideshowImages/DSC_0346.JPG"
+photos[15]="./SlideshowImages/DSC_0019.JPG"
+photos[16]="./SlideshowImages/DSC_0345.JPG"
+photos[17]="./SlideshowImages/DSC_0350.JPG"
+photos[18]="./SlideshowImages/DSC_0351.JPG"
+photos[19]="./SlideshowImages/DSC_0352.JPG"
+photos[20]="./SlideshowImages/DSC_0379.JPG"
+photos[21]="./SlideshowImages/DSC_0382.JPG"
+photos[22]="./SlideshowImages/DSC_0384.JPG"
+photos[23]="./SlideshowImages/DSC_0393.JPG"
+photos[24]="./SlideshowImages/DSC_0401.JPG"
+photos[25]="./SlideshowImages/DSC_0404.JPG"
+photos[26]="./SlideshowImages/DSC_990.JPG"
+photos[27]="./SlideshowImages/DSC_991.JPG"
+photos[28]="./SlideshowImages/DSC00078.JPG"
+photos[29]="./SlideshowImages/Image021.jpg"
+photos[30]="./SlideshowImages/Image035.jpg"
+photos[31]="./SlideshowImages/Image051.jpg"
+photos[32]="./SlideshowImages/IMG_1368.JPG"
+photos[33]="./SlideshowImages/Picture 304.jpg"
+photos[34]="./SlideshowImages/Picture 497.jpg"
+photos[35]="./SlideshowImages/RWS-NLG01.jpg"
+photos[36]="./SlideshowImages/RWS-NLG02.jpg"
+photos[37]="./SlideshowImages/RWS-NLG04.jpg"
+photos[38]="./SlideshowImages/RWS-NLG06.jpg"
+
+
+
+//Specify whether images should be linked or not (1=linked)
+var linkornot=0
+
+//Set corresponding URLs for above images. Define ONLY if variable linkornot equals "1"
+photoslink[0]=""
+photoslink[1]=""
+photoslink[2]=""
+
+//do NOT edit pass this line
+
+var preloadedimages=new Array()
+for (i=0;i<photos.length;i++){
+preloadedimages[i]=new Image()
+preloadedimages[i].src=photos[i]
+}
+
+
+function applyeffect(){
+if (document.all && photoslider.filters){
+photoslider.filters.revealTrans.Transition=Math.floor(Math.random()*23)
+photoslider.filters.revealTrans.stop()
+photoslider.filters.revealTrans.apply()
+}
+}
+
+
+
+function playeffect(){
+if (document.all && photoslider.filters)
+photoslider.filters.revealTrans.play()
+}
+
+function keeptrack(){
+window.status="Image "+(which+1)+" of "+photos.length
+}
+
+
+function backward(){
+if (which>0){
+which--
+applyeffect()
+document.images.photoslider.src=photos[which]
+
+playeffect()
+keeptrack()
+}
+}
+
+function forward(){
+if (which<photos.length-1){
+which++
+applyeffect()
+document.images.photoslider.src=photos[which]
+playeffect()
+keeptrack()
+}
+}
+
+function transport(){
+window.location=photoslink[which]
+}
+var rotate_delay = 100; 
+function rotate() {
+	for(var i=0;i<photos.length-1;i++)
+	{
+		window.setTimeout("rotate1(i)", rotate_delay);
+	}
+}
+function rotate1(i)
+{
+if (i<photos.length-1){
+i++
+applyeffect()
+document.images.photoslider.src=photos[i]
+playeffect()
+keeptrack()
+}
+}
+
+</script>
+<style type="text/css">
+<!--
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.style2 {font-family: Verdana, Arial, Helvetica, sans-serif}
+-->
+</style>
+</HEAD>
+
+<BODY>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+    <td height="21" colspan="3"><p align="left"><a href="#" class="style2" onClick="backward();return false">Previous Slide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="style2" onClick="forward();return false">Next Slide</a></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2" height="22"><center>
+<script>
+if (linkornot==1)
+document.write('<a href="javascript:transport()">')
+document.write('<img src="'+photos[0]+'" name="photoslider" width=600 height=500 style="filter:revealTrans(duration=2,transition=23)" border=0>')
+if (linkornot==1)
+document.write('</a>')
+</script>
+</center></td>
+  </tr>
+</table>
+</BODY>
+</HTML>

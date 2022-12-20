@@ -1,0 +1,252 @@
+<html>
+<head>
+<title>WaterSoft</title>
+
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/rwsstyle.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/theme1.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/menu.css">
+<script language="JavaScript" src="/pred/resources/javascript/utils.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/calendar.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/rwsscript.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_items.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_tpl.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/ajax.js"></script>
+	   	 
+	<script language="javascript">
+	function savefunc()
+	{
+	   var typeOfAsset="01";
+	   var assetCompType="04";
+	   var assetSubCompType="002";
+       
+ 	   if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm1(assetForm1))
+	     {
+	       document.forms[0].action="/pred/masters/Asset1.do?mode=Submit";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm2(assetForm2))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset2.do?mode=addPWSBorewell";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm3(assetForm3))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset3.do?mode=addGLSR";
+	       document.forms[0].submit();
+	     }
+	   }   
+	    else if(typeOfAsset=="01" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm4(assetForm4))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset4.do?mode=addResOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm5(assetForm5))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset5.do?mode=addResCPWSOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm6(assetForm6))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset6.do?mode=addResCPWSOHBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="003")
+	   { 	   
+	     if(validateAssetForm7(assetForm7))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset7.do?mode=addResCPWSGLSR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="004")
+	   { 	   
+	     if(validateAssetForm8(assetForm8))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset8.do?mode=addResCPWSGLBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+   }
+	</script>
+	</head>
+		
+	<body bgcolor="#edf2f8" topmargin="0" leftmargin="0" >
+ 
+	<table  bordercolor= "#8A9FCD"  border="0" rules="none" style="border-collapse:collapse;" width="100%"  >
+	<thead class="gridLabel">
+    <tr bgcolor="#8A9FCD">
+    <td colspan=2 align=left><b>Asset SubComponent Parameter Details</b>
+    </td>
+    </tr>
+ 	</thead>
+	
+	<tr>
+	<td colspan="3">
+	<table  class="row0" bordercolor= "#8A9FCD"  border="1"  rules="none" style="border-collapse:collapse;" width="100%" >
+	     
+	<form name="assetForm3" method="post"  >
+	<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;PWS-PUMPSETS-CAPACITORS</b>
+         </td>
+         </tr>
+		<tr >
+			<td align=left class="textborder">Capacitor Existing
+				 
+			<td  class="textborder" align=center >
+				<select name="capExist" style="width:150px" class="mycombo"><option value="">SELECT...</option>
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+				 
+				</select>
+			</td>
+			
+			<td align=left class="textborder">Capacitor Condition
+			 
+			</td>
+			<td  class="textborder" align=center >
+				<select name="capCond" style="width:150px" class="mycombo"><option value="">SELECT...</option>
+				<option value="Working">Working</option>
+				<option value="Not Working">Not Working</option>
+				 </select>
+				 </td>
+		</tr>
+		<tr >
+			<td align=left class="textborder">Capacitors
+			 
+			</td>
+			 <td  class="textborder" align=center >
+				<select name="capacitors" style="width:150px" class="mycombo"><option value="">SELECT...</option>
+				<option value="Provided">Provided</option>
+				<option value="Not Provided">Not Provided</option>
+				 </select>
+				 </td>
+			<td align=left class="textborder">Capcitors Connected
+			 
+			</td>
+			 <td  class="textborder" align=center >
+				<select name="capCond" style="width:150px" class="mycombo"><option value="">SELECT...</option>
+				<option value="Working">Working</option>
+				<option value="Not Working">Not Working</option>
+				 </select>
+				 </td>
+			
+		</tr>
+		
+		<tr >
+			<td align=left class="textborder">Capacitor Main Switch
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capMs" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+			<td align=left class="textborder">Capacitor Pilot lamps
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capPl" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+			
+		</tr>
+		
+		
+		<tr >
+			<td align=left class="textborder">Capacitor Cutouts
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capCut" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+			<td align=left class="textborder">Capacitor Phasing preventor
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capPp" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+			
+		</tr>
+
+		<tr >
+			
+			<td align=left class="textborder">Capacitor Volt Meter
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capVm" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+			<td align=left class="textborder">Capacitor Ammeter
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capAm" maxlength="13" value=""  style="width:150px" class="mytext"></td>
+		</tr>
+
+		<tr >
+			
+			<td align=left class="textborder">Capacitor Starter
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capSta" maxlength="13" value=""  style="width:150px" class="mytext">
+     			</td>
+
+         <td align=left class="textborder">Capacitor MS or Wooden Cary Box
+			</td>
+			<td  class="textborder" align=center >
+	        <input type="text" name="capMs1" maxlength="13" value=""  style="width:150px" class="mytext">
+	     			</td>
+        </tr>
+		
+		<tr >
+		   	<td align=left class="textborder">Earthing to S.B
+			</td>
+			<td  class="textborder" align=center >
+   			<select name="capSb" style="width:150px" class="mycombo"><option value="">SELECT...</option>
+				<option value="Provided">Provided</option>
+				<option value="Not Provided">Not Provided</option>
+				<option value="Provided but not proerly done">Provided but not proerly done</option>
+				</select>
+			</td>
+      </tr>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+		<input type="button" name="mode" value="Save"   class="btext" title="Save the Fields">
+	    <input type="reset" value="Close" onclick="javascript:window.close()" class="btext" title="Close the Window">
+	</td>
+   </tr>
+   </table>
+    </form>
+		
+
+
+
+
+    	
+	
+	
+		
+	
+	
+		
+	
+	
+	
+		
+		
+			
+		
+	
+
+ 
+
+
+
+

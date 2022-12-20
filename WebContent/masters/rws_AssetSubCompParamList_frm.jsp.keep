@@ -1,0 +1,2671 @@
+	 <%@ include file="/commons/rws_header1.jsp" %>
+	 
+	 <html:javascript formName ="assetForm" />
+
+	<script language="javascript">
+	<!--
+
+var newWindow;
+
+function closeFunc()
+{
+//code to refresh the parent window
+opener.document.forms[0].action="switch.do?prefix=/masters&page=/Asset.do&mode=ShowHabsBenfit";
+opener.document.forms[0].submit();
+self.close();
+//var url = "switch.do?prefix=/masters&page=/Asset.do&mode=params&assetCode="+assetForm.assetCode.value+"&assetTypeCode="+assetTypeCode+"&assetCompTypeCode="+assetCompTypeCode+"&assetSubCompTypeCode="+assetSubCompTypeCode+"&habCode="+habCode+"&pumpCode="+assetForm.pumpCode.value+"&dcode="+assetForm.dcode.value+"&mandal="+mandal+"&district="+assetForm.district.value;
+return true;
+}
+function fnPickPipeMat(index)
+{
+	var noofpipes="";
+	//alert("sadiq  "+index);
+	//alert( document.getElementById("ASSETPIPELINE_LIST["+index+"].disCode").value);
+	//alert( document.getElementById("ASSETPIPELINE_LIST["+index+"].disNoOfPipes").value);
+	var discode = document.getElementById("ASSETPIPELINE_LIST["+index+"].disCode").value;
+	noofpipes = document.getElementById("ASSETPIPELINE_LIST["+index+"].disNoOfPipes").value;
+if(noofpipes!="")
+	{
+
+		var width = 648;
+		var height = 332;
+		var left = parseInt((screen.availWidth/2)-(width/2));
+		var top = parseInt((screen.availHeight/2)-(height/2));
+	
+		 var url = "switch.do?prefix=/masters&page=/Asset.do&mode=pickpipemat"
+				+ "&discode="+discode
+				+ "&index="+index+"&disNoOfPipes="+noofpipes;
+	    var properties = "width="+width+",height="+height+",screenX="+left+",screenY="+top+",toolbar=no,"
+					   + "status=no,menubar=no,location=no,directories=no,scrollbars=yes,copyhistory=no,"
+					   + "resizable=yes";
+					  
+		if( !newWindow || newWindow.closed)
+		{
+			newWindow = window.open(url, "", properties);
+		}
+		else
+		{
+			newWindow.focus();
+		}
+	}
+	else
+	{
+		alert("Please Enter Required Pipe Materials...");
+		document.getElementById("ASSETPIPELINE_LIST["+index+"].disNoOfPipes").focus();
+
+	}
+}
+
+function fnPickHabitations(index)
+{
+	alert("fnpickhab"+index);
+		var subCompCodeTemp= document.getElementById("subCompCode").value;
+	var subCompCode1=(document.getElementById("ASSETHEADWORK_LIST["+index+"]."+subCompCodeTemp).value);
+	alert("subCompCodeTemp"+subCompCodeTemp);
+	alert("subComp1"+subCompCode1);
+	   var dcode ="<%=request.getParameter("dcode")%>";
+	   var district ="<%=request.getParameter("district")%>";
+   	   var mandal ="<%=request.getParameter("mandal")%>";
+	   var habCode ="<%=request.getParameter("habCode")%>";
+		alert(dcode + "  " +district+ " "+ mandal + "  ");
+		var width = 648;
+		var height = 332;
+		var left = parseInt((screen.availWidth/2)-(width/2));
+		var top = parseInt((screen.availHeight/2)-(height/2));
+	
+		 var url = "switch.do?prefix=/masters&page=/Asset.do&mode=AddHabs&subCompCode1="+subCompCode1
+				+ "&dcode="+dcode
+				+ "&district="+district+"&mandal="+mandal;
+	    var properties = "width="+width+",height="+height+",screenX="+left+",screenY="+top+",toolbar=no,"
+					   + "status=no,menubar=no,location=no,directories=no,scrollbars=no,copyhistory=no,"
+					   + "resizable=yes";
+					  
+		if( !newWindow || newWindow.closed)
+		{
+			newWindow = window.open(url, "", properties);
+		}
+		else
+		{
+			newWindow.focus();
+		}
+		 
+}
+
+
+   /*   Asset Types
+   
+   01-PWS
+   02-MPWS
+   03-CPWS
+   04-HANDPUMPS
+   05-DIRECT PUMPING
+   
+   Asset Component Types
+   
+   Asset Type-PWS
+   01-SOURCE
+   03-PIPELINE
+   04-RESERVOIRS
+   05-PUMPSETS
+   
+   Asset Type-CPWS
+   01-SOURCE
+   02-HEADWORKS
+   03-PIPELINE
+   04-SR.RESERVOIRS
+   05-PUMPSETS
+   
+   Asset Type-HANDPUMPS
+   01-SOURCE
+   
+   Asset Type-MPWS
+   
+   01-SOURCE
+   03-PIPELINE
+   04-RESERVOIRS
+   05-PUMPSETS
+   
+   Asset SubComponents
+   
+   Asset Type-04-HANDPUMPS
+   Asset Component-01-SOURCE
+   Asset SubComponent-001-BOREWElL
+   
+   Asset Type-01-PWS 
+   Asset Component-01-SOURCE
+   Asset SubComponent- 001-BORE WELL   
+   
+   Asset Type-01-PWS 
+   Asset Component-01-SOURCE 
+   Asset SubComponent- 002-WATCHMAN QUARTER
+   
+   Asset Type- 01-PWS
+   Asset Component-03-PIPELINE
+   Asset SubComponent-001-DISTRIBUTION
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-03-PIPELINE
+   ASSET SUBCOMPONENT-002-STANDPOSTS
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-03-PIPELINE
+   ASSET SUBCOMPONENT-003-PUMPING MAIN
+ 
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-04-RESERVOIRS
+   ASSET SUBCOMPONENT-001-OHSR
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-04-RESERVOIRS
+   ASSET SUBCOMPONENT-002-CISTERNS
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-04-RESERVOIRS
+   ASSET SUBCOMPONENT-003-GLSR
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-05-PUMPSETS
+   ASSET SUBCOMPONENT-002-PUMP HOUSE
+   
+   ASSET TYPE=01-PWS
+   ASSET COMPONENT-05-PUMPSETS
+   ASSET SUBCOMPONENT-003-CAPACITORS
+ 
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-01-SOURCE
+   ASSET SUBCOMPONENT-001-BOREWELL
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-01-SOURCE
+   ASSET SUBCOMPONENT-002-ROTARY BOREWELL
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT- 01-SOURCE
+   ASSET SUBCOMPONENT-003- INTAKE WELL
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-01-SOURCE
+   ASSET SUBCOMPONENT-004-INFILTRATION WELL
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-01-SOURCE
+   ASSET SUBCOMPONENT-005-SOURCE TYPE
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEAD WORKS
+   ASSET SUBCOMPONENT-001-RAW WATER COLLECTION WELL
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-002-SS TANK
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-004-SS FILTERS
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-005-RS FILTERS
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-006-SUMP
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-009-FOOT PATH BRIDGE
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-010-PUMP HOUSE
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-011-WATCHMAN QUARTER
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-02-HEADWORKS
+   ASSET SUBCOMPONENT-012-CLEAR WATER COLLECTION WELL
+    
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-03-PIPELINE
+   ASSET SUBCOMPONENT-001-PUMPING MAIN
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-03-PIPELINE
+   ASSET SUBCOMPONENT-002-GRAVITY MAIN
+ 
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-03-PIPELINE
+   ASSET SUBCOMPONENT-003-DISTRIBUTION
+    
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-04-SR.RESERVOIRS 
+   ASSET SUBCOMPONENT-001-OHSR
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-04-SR.RESERVOIRS 
+   ASSET SUBCOMPONENT-002-OHBR
+    
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-04-SR.RESERVOIRS 
+   ASSET SUBCOMPONENT-003-GLSR
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-04-SR.RESERVOIRS 
+   ASSET SUBCOMPONENT-004-GLBR
+   
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-04-SR.RESERVOIRS 
+   ASSET SUBCOMPONENT-005-BPT
+    
+   ASSET TYPE=03-CPWS
+   ASSET COMPONENT-05-PUMPSETS
+
+   ASSET SUBCOMPONENT-001-PUMP DETAILS
+   */
+   //-->
+
+
+ function getData(that)
+{
+	//alert("getdate");
+	var count = document.getElementById("count").value;
+	//alert("Count"+count);
+/*	alert("count is  "+count);*/
+ 	var message ="";
+	var frm = that.form;
+	
+	    for(var i=1; i<=count; i++)
+		   {	
+
+				var p;
+				var rfIds= document.getElementById("RFed"+i+"").name;
+			   	var ufIds = document.getElementById("UFed"+i+"").name;
+				
+
+				if (document.getElementById("UFed"+i+"").checked)
+				{
+					p = document.getElementById("UFed"+i+"").value;
+					
+				}
+				else if (!document.getElementById("UFed"+i+"").checked)
+				{
+					//alert("IN else");
+					p = document.getElementById("UFed"+i+"").value;
+					//alert(p);
+					//alert("rfed is "+document.form.getElementById("RFed"+p+"").disabled)
+					document.getElementById("RFed"+p+"").disabled=false;
+					
+				//	alert("rfed is "+document.getElementById("RFed"+p+"").disabled=false);
+					
+				}
+				
+				if (document.getElementById("RFed"+i+"").checked)
+				{
+					p = document.getElementById("RFed"+i+"").value;
+				//	alert(document.getElementById("UFed"+p+"").disabled)
+				//	document.getElementById("UFed"+p+"").disabled=false;
+					//alert(p);
+				}
+				else if (!document.getElementById("RFed"+i+"").checked)
+				{
+					//alert("IN else");
+					p = document.getElementById("RFed"+i+"").value;
+				
+					document.getElementById("UFed"+p+"").disabled=false;
+					
+				
+					
+				}
+
+			 if(document.getElementById("UFed"+i+"").checked)
+			   {
+				 //alert("IN checked");
+	     		 document.getElementById("RFed"+p+"").disabled="true";
+		         document.getElementById("ASSETPIPELINE_LIST["+parseInt(i-1)+"].pcUf").value="Y";
+                 document.getElementById("ASSETPIPELINE_LIST["+parseInt(i-1)+"].pcRf").value="N";
+     		     	  
+			   }
+			   else if(document.getElementById("RFed"+i+"").checked)
+			   {
+				// alert("IN checked");
+				 document.getElementById("UFed"+p+"").disabled="true";
+		         document.getElementById("ASSETPIPELINE_LIST["+parseInt(i-1)+"].pcRf").value="Y";
+		         document.getElementById("ASSETPIPELINE_LIST["+parseInt(i-1)+"].pcUf").value="N";
+			   }
+			   
+
+		   }
+      
+ 	for(var i=0; i<count; i++)
+	 {     message ="";
+		   if(document.getElementById("ASSETPIPELINE_LIST["+i+"].disCovered").value=="")
+			      	   message=message + "GLBR Code is required\n";
+		   else
+		 { 
+		var val=document.getElementById("ASSETPIPELINE_LIST["+i+"].disCovered").value
+		//   alert(val);
+		 }
+		 if(val=='N')
+		 {
+	document.getElementById("ASSETPIPELINE_LIST["+i+"].disTotLength").value="";
+	document.getElementById("ASSETPIPELINE_LIST["+i+"].disTotLength").disabled="true";
+		 }
+
+	      } 
+	 
+	
+} 
+   function removeSubComps(that)
+	{
+		 var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	   var assetCode="<%=request.getParameter("assetCode")%>"; 
+	   var frm = that.form;
+	   var removeIds = frm.elements("remove");
+	   if(removeIds)
+	   {
+		 var len = removeIds.length;
+		 var count = 0;
+		 if(typeof len != "number")
+		   removeIds = [removeIds];
+		   for(var i=0; i<len; i++)
+		   {
+			 if(removeIds[i].checked)
+		 	   count++;
+		   }
+        }
+	if(count!="0")
+		{
+	var input_box=confirm("Are You Sure to Delete?");
+	if (input_box==true)
+	{ 
+	alert ("You clicked OK"); 
+	
+
+      
+	  if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=Submit";
+	       document.forms[0].submit();
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=addPWSBorewell";
+	       document.forms[0].submit();
+	  
+	   }   
+	    
+
+	    else if((typeOfAsset=="01" ||typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="04")
+	   {  
+	     
+			if(count == 0)
+				alert("Please select atleast one GLSR to remove!");
+			else
+			if(count == len)
+				alert("You cannot remove all Assets!\nPlease de-select one GLSR.");
+			else{	
+	            document.forms[0].action="/pred/masters/Asset.do?mode=removeSubComps&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	            document.forms[0].submit();
+	        }    
+	      
+       }   
+	   else if((typeOfAsset=="01" ||typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="03")
+	   {  
+	       if(count == 0)
+				alert("Please select atleast one Distribution to remove!");
+			else
+			if(count == len)
+				alert("You cannot remove all Assets!\nPlease de-select one Distribution.");
+			else{	
+	            document.forms[0].action="/pred/masters/Asset.do?mode=removeSubComps&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	            document.forms[0].submit();
+	        }    
+	   }     
+	    
+	    else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="02")
+	   { 	   
+	        if(count == 0)
+				alert("Please select atleast one SS Tank to remove!");
+			else
+			if(count == len)
+				alert("You cannot remove all Assets!\nPlease de-select one SS Tank.");
+			else{	
+	            document.forms[0].action="/pred/masters/Asset.do?mode=removeSubComps&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	            document.forms[0].submit();
+	        }    
+	   }  
+	   
+	
+	   
+	   }
+
+	else
+	{
+	alert ("You clicked cancel");
+	}
+	}	    
+	else
+		{
+		alert("Please select  Record(s) to remove!");
+		}
+	}
+function removefunc()
+{
+	 var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	  
+		//alert(typeOfAsset);
+		//alert(assetCompType);
+		//alert(assetSubCompType);
+	 if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="001")
+	   { 	   
+	      document.forms[0].action="/pred/masters/Asset.do?mode=removeSubCompss&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	      document.forms[0].submit();
+	    }   
+
+}
+
+	
+	function addnew()
+	{
+	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	
+      
+		//asset type=pws or cpws
+      	//asset comptype=reservoirs
+      	//subcomponent = ohsr
+	     if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="04" )
+	    {  
+	      var count = document.getElementById("count").value;
+ 	      var message ="";
+ 	    /*  for(var i=0; i<count; i++)
+		  {  message ="";
+		    if(document.getElementById("ASSETRESERVIOR_LIST["+i+"].ohsrNo").value=="")
+	    	   message=message + "OHSR Code is required\n";
+	      } */
+	      if(message==""  || count==0)
+    	  {    
+    	   	//alert("sadiqali9999999999"); 
+    	   	document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	        document.forms[0].submit();
+	      }  
+    	  else
+	      { 
+	        alert(message);
+    	  }    
+	    } 
+ 	   else if(typeOfAsset=="01" && (assetCompType=="01" || assetCompType=="05" )&& (assetSubCompType=="001" ||assetSubCompType=="003"))
+	   {
+	   		//alert("sadiqali9999999999");
+	         document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       	 document.forms[0].submit();
+	    }    
+	    
+	   
+	    //asset type=pws or cpws
+      	//asset comptype=pipeline
+      	//subcomponent = pumpingmain or distribution
+	     else if((typeOfAsset=="01" || typeOfAsset=="03") && assetCompType=="03" && (assetSubCompType=="001" || assetSubCompType=="003"))
+	    {  
+	      var count = document.getElementById("count").value;
+ 	      var message ="";
+ 
+ 	      for(var i=0; i<count; i++)
+		  {  message ="";
+		    if(document.getElementById("ASSETPIPELINE_LIST["+i+"].disCode").value=="")
+	    	   message=message + "Pipe Code is required\n";
+	      } 
+	      if(message=="" || count==0)
+    	  {    
+    	    document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	        document.forms[0].submit();
+	      }  
+    	  else
+	      { 
+	        alert(message);
+    	  }    
+	    }     
+	    
+	    //asset type=pws
+      	//asset comptype=pipeline
+      	//subcomponent = missing in database
+	    else if(typeOfAsset=="01" && assetCompType=="03" && assetSubCompType=="002")
+	    {  
+	      var count = document.getElementById("count").value;
+ 	      var message ="";
+ 	       //alert("count"+count);
+    	    document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	        document.forms[0].submit();
+	     
+	    }     
+	    
+	    //asset type=cpws
+      	//asset comptype=headworks
+      	//subcomponent = ssTank
+	  else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="02" )
+	    {  
+	      var count = document.getElementById("count").value;
+ 	      var message ="";
+
+ 	   /*   for(var i=0; i<count; i++)
+		  {  message ="";
+		    if(document.getElementById("ASSETHEADWORK_LIST["+i+"].collectionWellCode").value=="")
+	    	   message=message + "Collection Well Code is required\n";
+	      } */
+	      if(message=="" || count==0)
+    	  {    alert("sadiq");
+		   
+	   var dcode ="<%=request.getParameter("dcode")%>";
+	   var district ="<%=request.getParameter("district")%>";
+   	   var mandal ="<%=request.getParameter("mandal")%>";
+	    var habCode ="<%=request.getParameter("habCode")%>";
+	 
+
+		/*   url = "switch.do?prefix=/masters&page=/Asset.do&mode=hab&dcode="+dcode+"&district="+district+"&habCode="+habCode+"&assetTypeCode="+typeOfAsset+"&mandal="+mandal;
+		   window.open(url,"","width=600,height=400,left=100,top=100,scrollbars=1");*/
+    	    document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	        document.forms[0].submit();
+	      }  
+    	  else
+	      { 
+	        alert(message);
+    	  }    
+	    }          
+	    //asset type=pws
+      	//asset comptype=source or 'others'
+      	//subcomponent = borewell or watchman quarter
+      	        
+	   else if(typeOfAsset=="01" && (assetCompType=="01" || assetCompType=="05") && (assetSubCompType=="001" || assetSubCompType=="005" ))
+	   {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	     document.forms[0].submit();
+	   }
+	   //asset type=cpws
+      	//asset comptype=pipeline
+      	//subcomponent = gravity main
+	   else if(typeOfAsset=="03" && assetCompType=="03" && assetSubCompType=="002" )
+	   {
+	      document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	     document.forms[0].submit();
+	   }
+	   //asset type=cpws
+      	//asset comptype=others
+      	//subcomponent = pump details
+	    else if(typeOfAsset=="03" && assetCompType=="05" && assetSubCompType=="001" )
+	   {
+   document.forms[0].action="/pred/masters/Asset.do?mode=addNew&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	     document.forms[0].submit();
+	   }
+	}
+ 
+	function savefunc(that)
+	{
+alert("save");
+ var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+	   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+	   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+	   var assetCode="<%=request.getParameter("assetCode")%>"; 
+	   var frm = that.form;
+	   var removeIds = frm.elements("remove");
+		var cnt = document.getElementById("count").value;
+	
+	 
+	  
+	   if(removeIds)
+	   {
+		 var len = removeIds.length;
+		 var formElements=frm.elements;
+		
+		
+		 var count = 0;
+		 if(typeof len != "number")
+		   removeIds = [removeIds];
+		   for(var i=0; i<cnt; i++)
+		   {
+			 if(removeIds[i].checked)
+		 	   count++;
+		   }
+        }
+
+
+
+	if(count!="0")
+		{
+		
+	  
+ 	   if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm1(assetForm1))
+	     {
+	       document.forms[0].action="/pred/masters/Asset.do?mode=Submit";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="03" && (assetSubCompType=="001" || assetSubCompType=="002"))
+	   {  
+	      document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       	 document.forms[0].submit();
+	    }     
+	
+	   
+	   else if(typeOfAsset=="01" && assetCompType=="05" && assetSubCompType=="003")
+		{
+		   document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetCode="+assetCode+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType+"&assetTypeCode="+typeOfAsset;
+	    	   document.forms[0].submit();
+		}
+	   else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="02" )
+		{
+		   document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetCode="+assetCode+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType+"&assetTypeCode="+typeOfAsset;
+	    	   document.forms[0].submit();
+		}
+	 else if(typeOfAsset=="03" && assetCompType=="03" && assetSubCompType=="003")
+		{
+		   document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetCode="+assetCode+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType+"&assetTypeCode="+typeOfAsset;
+	       document.forms[0].submit();
+		}
+
+
+	else if((typeOfAsset=="01" || typeOfAsset=="02" || typeOfAsset=="03") && assetCompType=="04" )
+	   {  
+	     //alert("sadiq aali"); 
+	     document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetCode="+assetCode+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType+"&assetTypeCode="+typeOfAsset;
+	     document.forms[0].submit();
+	   }     
+	else if(typeOfAsset=="03" && (assetCompType=="05" )&& (assetSubCompType=="001"))
+	   {
+	   		//alert("sadiqali9999999999");
+	         document.forms[0].action="/pred/masters/Asset.do?mode=addSubComp&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       	 document.forms[0].submit();
+	    }    
+	}
+	else
+	{
+		alert("Select Record(s) to Save!");
+	}
+   }
+   function nextfunc()
+	{
+		   //alert("PPP");
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>";
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("pumpCode")%>";
+		 
+		   //alert(typeOfAsset);
+		   //alert(assetCompType);
+		   //alert(assetSubCompType);
+		  
+		 			   
+	 if(typeOfAsset=="01" && (assetCompType=="01" || assetCompType=="05" )&& (assetSubCompType=="001" ||assetSubCompType=="003"))
+	   {
+
+	       document.forms[0].action="/pred/masters/Asset.do?mode=next&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType;
+	       document.forms[0].submit();
+	   }    
+	   			   
+	 	   
+   }
+function prevfunc()
+	{
+		   //alert("PPP");
+		   var assetcode = "<%=request.getParameter("assetCode")%>";
+		   var habcode = "<%=request.getParameter("habCode")%>"
+	   	   var typeOfAsset="<%=request.getParameter("assetTypeCode")%>";
+		   var assetCompType="<%=request.getParameter("assetCompTypeCode")%>";
+		   var assetSubCompType="<%=request.getParameter("assetSubCompTypeCode")%>";
+		   var pumCode ="<%=request.getParameter("PumpCode")%>";
+		    //alert(typeOfAsset);
+		   //alert(assetCompType);
+		   //alert(assetSubCompType);
+		   //alert(habcode);
+		   //alert(assetcode);
+		   //alert(pumCode);
+				   
+ if(typeOfAsset=="01" && (assetCompType=="01" || assetCompType=="05" )&& (assetSubCompType=="001" ||assetSubCompType=="003"))
+	   {
+
+	       document.forms[0].action="/pred/masters/Asset.do?mode=previous&assetTypeCode="+typeOfAsset+"&assetCompTypeCode="+assetCompType+"&assetSubCompTypeCode="+assetSubCompType+"&habCode="+habcode+"&assetCode="+assetcode+"&PumpCode="+pumCode;
+	       document.forms[0].submit();
+	   }    
+	   
+   }
+   
+  
+   
+	</script>
+	</head>
+		
+	<body bgcolor="#edf2f8" topmargin="0" leftmargin="0" >	
+	<%System.out.println("*********in rws_AssetSubCompParamList_frm.jsp"); %>
+	<% System.out.println("sadiq in alert   "+request.getAttribute("message"));%>
+	<%String assetCode=request.getParameter("assetTypeCode");
+	String assetName="";
+	if(assetCode.equals("01"))
+	assetName="PWS";
+	else if(assetCode.equals("02"))
+	assetName="MPWS";
+	else if(assetCode.equals("03"))
+	assetName="CPWS";
+	%>
+	<table  bordercolor= "#8A9FCD"  border="0" rules="none" style="border-collapse:collapse;" width="100%"  >
+	<thead class="gridLabel">
+    <tr bgcolor="#8A9FCD">
+    <td colspan=2 align=left><b>Asset SubComponent Parameter Details </b>
+    </td>
+    </tr>
+ 	</thead>
+	
+	<tr>
+	<td colspan="3">
+	<table  class="row" bordercolor= "#8A9FCD"  border="1"  rules="none" style="border-collapse:collapse;" width="100%" >
+	
+		<c:if test="${sessionScope.assetsubCompParams=='PwsBorewell'}">
+	<html:form action="Asset.do?mode=Submit">
+	
+	  <nested:iterate id="ASSETSUBCOMPONENTS_LIST" property="assetSubComponents" indexId="ndx">
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-SOURCE-BORE WELL</b>
+         </td>
+         </tr>
+		 <tr >
+		 <td align=left class="textborder"><bean:message key="app.pmpCode"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pmpCode"  styleClass="mytext" style="width:160px" readonly="true"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.pumpNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpNo"  styleClass="mytext" style="width:150px"/>
+			</td>
+			
+		</tr>
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.popDes"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="popDes" maxlength="7" styleClass="mytext" style="width:150px"/>
+			</td>
+			
+			<td align=left class="textborder"><bean:message key="app.source"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+			<!-- 	<html:text name="ASSETSUBCOMPONENTS_LIST" property="source" styleClass="mytext" maxlength="30" style="width:150px" onkeypress="upperOnly()"/> -->
+			 <html:select name="ASSETSUBCOMPONENTS_LIST" property="source" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="BW">Bore Well</html:option>
+				<html:option value="RBW">Rotary Bore Well</html:option>
+				<html:option value="IT">Intake Well</html:option>
+				<html:option value="IF">Infiltration Well</html:option>
+            </html:select>
+			</td>
+		</tr>
+		<tr>
+		<td align=left class="textborder"><bean:message key="app.sourceQuality"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+             <html:select name="ASSETSUBCOMPONENTS_LIST" property="sourceQuality" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">NSS</html:option>
+				<html:option value="N">SAFE SOURCE</html:option>
+            </html:select>
+			</td>
+			 <td align=left class="textborder"><bean:message key="app.ifNss"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:select name="ASSETSUBCOMPONENTS_LIST" property="ifNss" styleClass="mycombo" style="width:150px">
+					<html:option value="">SELECT...</html:option>
+					<html:option value="IR">IRON</html:option>
+					<html:option value="BL">BRAKISH</html:option>
+					<html:option value="FL">FLORIDE</html:option>				
+	            </html:select>
+			</td>
+			</tr>
+			<tr >
+			<td align=left class="textborder"><bean:message key="app.sourceYield"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceYield"    styleClass="mytext" style="width:150px"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.sourceDepend"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceDepend" maxlength="50"  styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		</tr>
+		
+		<tr >
+					 <td align=left class="textborder"><bean:message key="app.sourceDepth"/>&nbsp;&nbsp;
+			</td>
+			 <td  class="textborder" align=center >
+			<!--	<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceDepth" styleClass="mytext" style="width:150px"/> -->
+				 <html:select name="ASSETSUBCOMPONENTS_LIST" property="sourceDepth" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Yielding Uniformly Round the Year">Yielding Uniformly Round the Year</html:option>
+				<html:option value="Yielding Less Water in Summer Months">Yielding Less Water in Summer Months</html:option>
+				<html:option value="Totally inadequate in Summer">Totally inadequate in Summer</html:option>
+			
+            </html:select>
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.sourceDiameter"/>(in mm)&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceDiameter"  styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>		
+		
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.sourceCondition"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+			<!-- 	<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceCondition" maxlength="15"  styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/> -->
+			<html:select name="ASSETSUBCOMPONENTS_LIST" property="ifNss" styleClass="mycombo" style="width:150px">
+					<html:option value="">SELECT...</html:option>
+					<html:option value="Siltedup">Siltedup</html:option>
+					<html:option value="Good">Good</html:option>
+					<html:option value="Dilapidated">Dilapidated</html:option>				
+	            </html:select>
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.sourceSwl"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceSwl"  styleClass="mytext" style="width:150px"/>
+			</td>
+		
+		</tr>		
+		
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.sourceNwl"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="sourceNwl"   styleClass="mytext" style="width:150px"/>
+			</td>
+			</tr>
+			 <tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;PUMP HOUSE AND PUMPSET DETAILS</b>
+         </td>
+		 </tr>
+			<tr>
+
+			<td align=left class="textborder"><bean:message key="app.phSize"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="phSize"  styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		</tr>	
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.phCondition"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<!-- <html:text name="ASSETSUBCOMPONENTS_LIST" property="phCondition"   styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/> -->
+				<html:select name="ASSETSUBCOMPONENTS_LIST" indexed="true" property="phCondition" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="SOUND">Sound</html:option>
+				<html:option value="NEEDS MAINTENNANCE">Needs Maintennance</html:option>
+				<html:option value="NEEDS REPAIRS">Needs Repairs</html:option>
+				<html:option value="DELAPITATED">Delapitated</html:option>
+			</html:select>
+
+
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.phType"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<!-- <html:text name="ASSETSUBCOMPONENTS_LIST" property="phType"  styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/> -->
+				<html:select name="ASSETSUBCOMPONENTS_LIST" indexed="true" property="phType" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="LOAD BEARING">Load bearing</html:option>
+				<html:option value="RCC FRAME">RCC Frame</html:option>
+				<html:option value="READYMADE(GI)">Readymade(GI Sheets)</html:option>
+				<html:option value="RCC PIPED">RCC Piped</html:option>
+			</html:select>
+
+			</td>
+		
+		</tr>	
+		
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.pumpName"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpName"   styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+			<td align=left class="textborder"><bean:message key="app.pumpCapacity"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpCapacity"  styleClass="mytext" style="width:150px"/>
+			</td>
+			 
+		</tr>	
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.pumpType"/>&nbsp;&nbsp;
+			 </td>
+			<td  class="textborder" align=center >
+				<!-- <html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpType"   styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/> -->
+					<html:select name="ASSETSUBCOMPONENTS_LIST"   property="pumpType" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Centrifugal">Centrifugal</html:option>
+				<html:option value="SubMersible">SubMersible</html:option>			 
+				<html:option value="Jet">Jet</html:option>
+				<html:option value="SubMersible Centrifugal">SubMersible Centrifugal</html:option>
+				<html:option  value="Vertical Turbine">Vertical Turbine</html:option>	
+				</html:select>
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.purYear"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="purYear"  styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>			
+			<tr >
+			 <td align=left class="textborder"><bean:message key="app.numbers"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="number"  styleClass="mytext" style="width:150px"/>
+			</td>	
+	
+			<td align=left class="textborder"><bean:message key="app.totalhp"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="total_hp"  styleClass="mytext" style="width:150px"/>
+			</td>
+			
+				</tr>
+
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.hrRun"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="hrRun"   styleClass="mytext" style="width:150px"/>
+			</td>
+	
+			<td align=left class="textborder"><bean:message key="app.staExe"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+             <html:select name="ASSETSUBCOMPONENTS_LIST" property="staExe" styleClass="mycombo" style="width:150px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+            </html:select>
+			</td>
+		</tr>	
+		<tr >
+			<td align=left class="textborder"><bean:message key="app.hrMs"/>&nbsp;&nbsp;
+			 </td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="hrMs"   styleClass="mytext" style="width:150px" onkeypress="upperOnly()"/>
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.hrSin"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="hrSin"  styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr>					
+		<tr >
+			 <td align=left class="textborder"><bean:message key="app.pumpDutyLpm"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpDutyLpm"   styleClass="mytext" style="width:150px"/>
+			</td>
+		
+			<td align=left class="textborder"><bean:message key="app.pumpDutyHead"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="pumpDutyHead"  styleClass="mytext" style="width:150px"/>
+			</td>
+			</tr>
+			
+		<tr >
+		<td align=left class="textborder"><bean:message key="app.standByPumpCapacity"/>&nbsp;&nbsp;
+			</td>
+			
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="standByPumpCapacity"  styleClass="mytext" style="width:150px"/>
+			</td>
+				
+			<td align=left class="textborder"><bean:message key="app.standByPumpNo"/>&nbsp;&nbsp;
+			</td>
+			<td  class="textborder" align=center >
+				<html:text name="ASSETSUBCOMPONENTS_LIST" property="standByPumpNo"  styleClass="mytext" style="width:150px"/>
+			</td>
+		</tr> 
+					
+ </nested:iterate>
+   	</table>
+	</td>
+	</tr>
+	<tr>
+			<td  align="left" colspan="1">
+			
+				<html:button property="first" title="First Asset" styleClass="btext" value="First"/>		
+				<html:button property="previous" title="Previous Asset" styleClass="btext" value="Prev" onclick="prevfunc()"/>
+				<html:button property="next" title="Next Asset" styleClass="btext" value="Next" onclick="nextfunc()"/>
+				<html:button property="last" title="Last Asset" styleClass="btext" value="Last" />
+				
+			</td>
+			<td  align="right" colspan="1">
+				 <html:button property="add" title="Add the Fields" styleClass="btext" value="Add New" onclick="addnew()"/>
+				  <html:button property="delete" title="Delete the Fields" styleClass="btext" 
+				  value="Remove" onclick="removefunc()"/>
+			    <html:button property="save" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc()"/>
+	    		<html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>
+				</td>
+	   </tr>
+	   </table>
+       
+   </html:form>
+    </c:if>
+        
+
+
+
+	
+	<c:if test="${sessionScope.assetsubCompParams=='Cisterns'}">
+	<html:form action="Asset.do?mode=Submit">
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-CISTERNS</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisLocation"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisCapacity"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisCondition"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisPf"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisPfCond"/></b></font>
+		 </th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisDrain"/> </b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisTap"/></b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisTapCond"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.cisHr"/></b></font>
+		 </th> 
+		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="cisCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+  		 <td  align=center >
+			 <nested:text name="ASSETRESERVIOR_LIST" indexed="true"  property="cisLocation" styleClass="gridText" maxlength="30" style="width:100px"  onkeypress="upperOnly()"/>
+		</td>
+		 <td  align=center >
+				 <nested:text name="ASSETRESERVIOR_LIST" indexed="true"  property="cisCapLts" maxlength="10"  styleClass="gridText" style="width:100px"/>
+		</td>
+ 		<td  align=center >
+		  	<html:select name="ASSETRESERVIOR_LIST" indexed="true" property="cisCond" styleClass="mycombo" style="width:100px">
+		   <html:option value="">SELECT...</html:option>
+		   <html:option value="Sound">Sound</html:option>
+		   <html:option value="Water tight">Water tight</html:option>
+		   <html:option value="Leaking">Leaking</html:option>
+          </html:select>
+		</td>
+		<td align=center >
+   			<html:select name="ASSETRESERVIOR_LIST" indexed="true" property="cisPf" styleClass="mycombo" style="width:100px">
+		 	<html:option value="">SELECT...</html:option>
+			<html:option value="Y">YES</html:option>
+			<html:option value="N">NO</html:option>
+		 </html:select>
+		</td>
+		<td align=center >
+		 	<html:select name="ASSETRESERVIOR_LIST" indexed="true" property="cisPfCond" styleClass="mycombo" style="width:100px">
+			<html:option value="">SELECT...</html:option>
+			<html:option value="G">GOOD</html:option>
+			<html:option value="B">BAD</html:option>
+		</html:select> 
+		</td>
+		<td align=center >
+		   <html:select name="ASSETRESERVIOR_LIST" indexed="true" property="cisDrain" styleClass="mycombo" style="width:100px">
+		  <html:option value="">SELECT...</html:option>
+		  <html:option value="Y">YES</html:option>
+		  <html:option value="N">NO</html:option>
+		 </html:select> 
+		</td>
+		<td align=center > 
+		 	 <nested:text name="ASSETRESERVIOR_LIST" indexed="true"  property="cisTap" styleClass="gridText" maxlength="10" style="width:100px"  onkeypress="upperOnly()"/>
+		</td>
+		<td align=center >
+	      <!--  <nested:text name="ASSETRESERVIOR_LIST" indexed="true"  property="cisTapCond" styleClass="gridText" maxlength="40" style="width:100px"  onkeypress="upperOnly()"/>	 -->	
+		  <html:select name="ASSETRESERVIOR_LIST" indexed="true" property="cisTapCond" styleClass="mycombo" style="width:100px">
+		  <html:option value="">SELECT...</html:option>
+		  <html:option value="All in Good Cond">All in Good Condition</html:option>
+		  <html:option value="Removed totally">Removed totally</html:option>
+		  <html:option value="Partially removed">Partially removed</html:option>
+		  <html:option value="Tap existing but leaking">Tap existing but leaking</html:option>
+		 </html:select> 
+		</td>
+		<td align=center >
+	       <nested:text name="ASSETRESERVIOR_LIST" indexed="true"  property="cisHr" styleClass="gridText" maxlength="2" style="width:100px"  onkeypress="upperOnly()"/>			 
+		</td>
+        </tr>
+         </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       
+       <html:button property="mode" title="Add New Cistern" styleClass="btext" value="Add New Cistern" onclick="addnew()"/>
+      	 <html:button property="mode" title="Remove Cistern" styleClass="btext" value="Remove Cistern" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+	
+	<c:if test="${sessionScope.assetsubCompParams=='Ohsr'}">
+	<html:form action="Asset.do?mode=Submit">
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-OHSR</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrLocation"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrCapacityLts"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.NoOfFillings"/></b></font>
+		 </th> 
+		 	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrStages"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrLwl"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrMwl"/></b></font>
+		 </th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrFillHrs"/> </b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrEmptyHrs"/></b></font>
+		 </th>	
+		 </tr>
+		 </thead> 
+       <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+	    <% count++; %>
+	      <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		 	 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrCode" maxlength="8" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+			</td>
+			
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrLocation" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+			</td>			
+			 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrCapacityLts"    styleClass="gridText" style="width:100px"/>
+			</td>
+			
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="noOfFillings"    styleClass="gridText" style="width:100px"/>
+			</td>
+		 		 
+			<td  align=center >
+			<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrStages"    styleClass="gridText" style="width:100px"/> 
+			
+			</td>
+		 
+			<td  align=center >
+				
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrLwl" maxlength="50"  styleClass="gridText" style="width:100px"/>
+			</td>
+			 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrMwl" styleClass="gridText" style="width:100px"/>
+			</td>
+		 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrFillHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+			 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohsrEmptyHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+		</tr>		
+		</nested:iterate>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td align="center">
+	    <html:button property="mode" title="Add New OHSR" styleClass="btext" value="Add New OHSR" onclick="addnew()"/>
+      	<html:button property="mode" title="Remove OHSR" styleClass="btext" value="Remove OHSR" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+	 
+	
+	<c:if test="${sessionScope.assetsubCompParams=='Ohbr'}">
+ 	<html:form action="Asset.do?mode=Submit">
+ 	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-OHBR</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrLocation"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrCapacityLts"/></b></font>
+		 </th>
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohsrStages"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrLwl"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrMwl"/></b></font>
+		 </th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrFillHrs"/> </b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ohbrEmptyHrs"/></b></font>
+		 </th>	
+		 </tr>
+		 </thead> 
+       <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+       <% count++; %>
+	      <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		<td align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrCode" maxlength="8" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+			</td>
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrLocation" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+			</td>
+			<td  class="textborder" align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrCapacityLts"    styleClass="gridText" style="width:100px"/>
+			</td>
+			<td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrStages"    styleClass="gridText" style="width:100px"/>
+			</td>
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrLwl" maxlength="50"  styleClass="gridText" style="width:100px"/>
+			</td>
+			<td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrMwl" styleClass="gridText" style="width:100px"/>
+			</td>
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrFillHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+ 			<td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="ohbrEmptyHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+		</tr>		
+		  
+		 </nested:iterate>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td align="center">
+	    <html:button property="mode" title="Add New OHBR" styleClass="btext" value="Add New OHBR" onclick="addnew()"/>
+      	<html:button property="mode" title="Remove OHBR" styleClass="btext" value="Remove OHBR" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='Glsr'}">
+ 	<html:form action="Asset.do?mode=Submit">
+ 	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-GLSR</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrLocation"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrCapacityInLts"/></b></font>
+		 </th>
+		 <th> 
+		   <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.NoOfFillings"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrStages"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrLwl"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrMwl"/></b></font>
+         </th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrFillHrs"/> </b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrEmptyHrs"/></b></font>
+		 </th>	
+		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+		<%count++; %>
+	      <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrCode" maxlength="8" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+			</td>
+ 			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrLocation" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+			</td>
+			
+ 			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrCapacityInLts"    styleClass="gridText" style="width:100px"/>
+			</td>
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="noOfFillings"    styleClass="gridText" style="width:100px"/>
+			</td>
+			<td  align=center > 
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrStages"    styleClass="gridText" style="width:100px"/>
+			</td>
+		 	<td align=center >
+		  	  <nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrLwl" maxlength="50"  styleClass="gridText" style="width:100px"/>
+			</td>
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrMwl" styleClass="gridText" style="width:100px"/>
+			</td>
+ 			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrFillHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+ 			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glsrEmptyHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+		</tr>		
+		</nested:iterate>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<tr>
+	<td align="center">
+	    <html:button property="mode" title="Add New GLSR" styleClass="btext" value="Add New GLSR" onclick="addnew()"/>
+      	<html:button property="mode" title="Remove GLSR" styleClass="btext" value="Remove GLSR" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+		
+	<c:if test="${sessionScope.assetsubCompParams=='Glbr'}">
+ 	<html:form action="Asset.do?mode=Submit">
+ 	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-GLBR</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrLocation"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrCapacityInLts"/></b></font>
+		 </th>
+		 
+		<!--  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glsrStages"/></b></font>
+		 </th> -->
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrLwl"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrMwl"/></b></font>
+         </th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrFillHrs"/> </b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.glbrEmptyHrs"/></b></font>
+		 </th>	
+		 </tr>
+		 </thead> 
+          <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+	     <%count++; %>
+	      <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		 
+		  
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="glbrCode" maxlength="8" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+			</td>
+						 			
+			<td     align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrLocation" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+			</td>
+			
+			 <td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrCapacityInLts"    styleClass="gridText" style="width:100px"/>
+			</td>
+	 
+			<td    align=center >
+				
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrLwl" maxlength="50"  styleClass="gridText" style="width:100px"/>
+			</td>
+			
+ 	 
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrMwl" styleClass="gridText" style="width:100px"/>
+			</td>
+		 
+			<td  align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrFillHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+		 
+			<td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="glbrEmptyHrs"  styleClass="gridText" style="width:100px"/>			 
+			</td>
+		</tr>		
+		</nested:iterate>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<tr>
+	<td align="center">
+	    <html:button property="mode" title="Add New GLBR" styleClass="btext" value="Add New GLBR" onclick="addnew()"/>
+      	<html:button property="mode" title="Remove GLBR" styleClass="btext" value="Remove GLBR" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='BPT'}">
+ 	<html:form action="Asset.do?mode=Submit">
+ 	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-RESERVOIRS-BPT</b>
+        </td>
+        </tr>
+        <tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bptCode"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bptCapacity"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bptStaging"/></b></font>
+		 </th>
+		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bptMaxwl"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bptMinwl"/></b></font>
+		 </th>
+		 </tr>
+		 </thead> 
+          <nested:iterate id="ASSETRESERVIOR_LIST" property="assetReservior" indexId="ndx">
+	     <%count++; %>
+	      <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		 
+		  
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST" indexed="true" property="bptCode" maxlength="8" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+			</td>
+						 			
+			<td     align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="bptCapacity" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+			</td>
+			
+			 <td    align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="bptStaging"    styleClass="gridText" style="width:100px"/>
+			</td>
+	 
+			<td    align=center >
+				
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="bptMaxwl" maxlength="50"  styleClass="gridText" style="width:100px"/>
+			</td>
+			
+ 	 
+			<td   align=center >
+				<nested:text name="ASSETRESERVIOR_LIST"  indexed="true" property="bptMinwl" styleClass="gridText" style="width:100px"/>
+			</td>
+		</tr>		
+		</nested:iterate>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<tr>
+	<td align="center">
+	    <html:button property="mode" title="Add New BPT" styleClass="btext" value="Add New BPT" onclick="addnew()"/>
+      	<html:button property="mode" title="Remove BPT" styleClass="btext" value="Remove BPT" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+	</c:if>
+	
+		
+	<c:if test="${sessionScope.assetsubCompParams=='SSTank'}">
+	<html:form  action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-SS Tank</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssArea"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssDepth"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssCapacityDays"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssCapacityMcum"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankAdeq"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankLocation"/></b></font>
+		 </th>		 
+		 <!-- (these fields are removed 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankYield"/></b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankYieldDate"/></b></font>
+		 </th>	-->
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.powerConn"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.powerHours"/></b></font>
+		 </th>
+ 		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove"  value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssTankCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+	     <td align="center">
+		 	<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		 </td>	
+  		 <td   align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssSize" maxlength="30" styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssDepth" maxlength="30" styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+ 		 </td>
+ 		 
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssCapacityDays"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssCapacityMcum" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	<!--  <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssTankAdeq"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td> -->
+		 <td align=center >
+            <html:select name="ASSETHEADWORK_LIST" indexed="true" property="ssTankAdeq" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Urban">Canal</html:option>
+				<html:option value="Rural">River</html:option>
+				<html:option value="Dedicated">Reserviors</html:option>
+            </html:select>
+  		 </td>
+		 <td  align=center >
+		   <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="ssTankLocation"    styleClass="gridText" style="width:100px" />
+  		 </td>
+		 <!-- (This field is removed) <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankYield"/></b></font>
+		 </th>	
+		 <!--(This field is removed) <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.ssTankYieldDate"/></b></font>
+		 </th>	 -->
+	  	 
+   		  <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="powerConn" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Urban">Urban</html:option>
+				<html:option value="Rural">Rural</html:option>
+				<html:option value="Dedicated">Dedicated</html:option>
+            </html:select></td>
+		<td  align=center >
+		     <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="powerHours"    styleClass="gridText" style="width:100px"  />		 
+   		</td>
+	  	 
+	  	 
+ 		</td>
+		</tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       
+       	<html:button property="mode" title="Add New SS Tank" styleClass="btext" value="Add New SS Tank" onclick="addnew()"/>
+       	 <html:button property="mode" title="Remove SS Tank" styleClass="btext" value="Remove SS Tank" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	 <input type="hidden" name="subCompCode" value="ssTankCode">
+    </html:form>
+	</c:if>
+		
+
+	<c:if test="${sessionScope.assetsubCompParams=='Sump'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-Sump</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpLocation"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpMadeOf"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpDiameter"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpDepth"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpCapacity"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpFillHr"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpEmptyHr"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.sumpCondition"/></b></font>
+		 </th>		 
+  		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+	     <td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		</td>	
+	     <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpLocation"  styleClass="gridText" style="width:160px"/>
+	     </td>
+  		
+  		 <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="sumpType" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="RCC">RCC</html:option>
+				<html:option value="RR">RR</html:option>
+				<html:option value="BRICK">BRICK</html:option>
+            </html:select>
+           </td>
+ 		
+ 		<td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpMadeOf"  styleClass="gridText" style="width:160px"/>
+	     </td>
+	     <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpDiameter"  styleClass="gridText" style="width:160px"/>
+	     </td>
+	     <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpDepth"  styleClass="gridText" style="width:160px" />
+	     </td>
+ 		 </td>
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpCapacity"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpFillHr" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	 <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="sumpEmptyHr"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td>
+		  <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="sumpCondition" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="G">Good</html:option>
+				<html:option value="L">Leaking</html:option>
+				<html:option value="R">Need Repairs</html:option>
+            </html:select></td>
+		
+	  	 
+ 		</td>
+		</tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       
+       	<html:button property="mode" title="Add New Sump" styleClass="btext" value="Add New Sump" onclick="addnew()"/>
+       	 <html:button property="mode" title="Remove Sump" styleClass="btext" value="Remove Sump" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	 <input type="hidden" name="subCompCode" value="sumpCode">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='FootpathBridge'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-FOOT PATH BRIDGE</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeLength"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeWidth"/></b></font>
+		 </th>
+		<!--   <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeWalkwaywidth"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.bridgeSpanLength"/></b></font>
+		 </th>		  -->
+  		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+  		<td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		</td>	
+  		 <td  align=center >
+		  <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeType" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+   		 	<!-- <html:select name="ASSETHEADWORK_LIST" indexed="true" property="bridgeType" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+			</html:select> -->
+           </td>
+ 
+ 		 </td>
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeLength"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeWidth" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	<!--  <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeWalkwaywidth"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td>
+		  <td  align=center >
+              <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="bridgeSpanLength"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+		 </td> -->
+		  	 
+ 		</td>
+		</tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       
+       	<html:button property="mode" title="Add New Foot Path Bridge" styleClass="btext" value="Add New Foot Path Bridge" onclick="addnew()"/>
+       	 <html:button property="mode" title="Remove Foot Path Bridge" styleClass="btext" value="Remove Foot Path Bridge" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	<input type="hidden" name="subCompCode" value="bridgeCode">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='PumpHouse'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-PUMP HOUSE</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpCond"/></b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseArea"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pumpHouseHeight"/></b></font>
+		 </th>
+   		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+	     <td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		 </td>	
+  		 <!-- <td align=center >
+	       <html:select name="ASSETHEADWORK_LIST" indexed="true" property="pumpCond" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="SOUND">Sound</html:option>
+				<html:option value="NEEDS MAINTENNANCE">Needs Maintennance</html:option>
+				<html:option value="NEEDS REPAIRS">Needs Repairs</html:option>
+				<html:option value="DELAPITATED">Delapitated</html:option>
+			</html:select>
+	     </td> -->
+		  <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpCond"  styleClass="gridText" style="width:100px" maxlength="40"/>
+ 		 </td>
+  		 <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseType" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="LOAD BEARING">Load bearing</html:option>
+				<html:option value="RCC FRAME">RCC Frame</html:option>
+				<html:option value="READYMADE(GI)">Readymade(GI Sheets)</html:option>
+				<html:option value="RCC PIPED">RCC Piped</html:option>
+			</html:select>
+           </td>
+ 
+ 		 </td>
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseArea"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="pumpHouseHeight" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	 </tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       	<html:button property="mode" title="Add New Pump House" styleClass="btext" value="Add New Pump House" onclick="addnew()"/>
+       	<html:button property="mode" title="Remove Pump House" styleClass="btext" value="Remove Pump House" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	<input type="hidden" name="subCompCode" value="pumpHouseCode">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='WatchManQuarter'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-WATCHMAN QUARTER</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.watchManCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.watchManType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.watchManArea"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.watchManNoOfQuarters"/></b></font>
+		 </th>
+   		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+         <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="watchManCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+  		<td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		</td>	
+  		  <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="watchManType" styleClass="mycombo" style="width:130px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="LOAD BEARING">Load bearing</html:option>
+				<html:option value="RCC FRAME">RCC Frame</html:option>
+				
+			</html:select>
+           </td>
+ 
+ 		 </td>
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="watchManArea"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="watchManNoOfQuarters" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	 </tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       	<html:button property="mode" title="Add New WatchMan Quarter" styleClass="btext" value="Add New WatchMan Quarter" onclick="addnew()"/>
+       	<html:button property="mode" title="Remove WatchMan Quarter" styleClass="btext" value="Remove WatchMan Quarter" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	<input type="hidden" name="subCompCode" value="watchManCode">
+    </html:form>
+	</c:if>
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='Distribution'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-PIPELINE-DISTRIBUTION</b>
+        </td>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.nopipe"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.pipeMat"/></b></font>
+		</th>
+		<!--  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disType"/></b></font>
+		 </th>  -->
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disLength"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disNoOfStandPosts"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disNoOfHouseConnections"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.disNoOfPipeLines"/></b></font>
+		 </th> 
+		 
+		 
+   		 </tr>
+		 </thead> 
+        <nested:iterate id="ASSETPIPELINE_LIST" property="assetPipeLine" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		  <input type="checkbox" name="remove" value="<%= ndx%>">
+		  <nested:text name="ASSETPIPELINE_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		   <td align=center >
+	        <nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+	     </td>
+		</td> <td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+		</td>	
+		<td   align=center >
+			<nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disNoOfPipes" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>	
+		 	 <td align=center>
+					<html:button  property="addMat" value="..." styleClass="btext"
+								 onclick='<%= "javascript: fnPickPipeMat('" + ndx +"')"%>' />
+		 <!--  <td  align=center >
+   		 	 <html:select name="ASSETPIPELINE_LIST" indexed="true" property="disType" styleClass="mycombo" style="width:100px">
+	 		   <html:option value="">SELECT... </html:option>
+			  <html:option value="PVC">PVC </html:option>
+	  		  <html:option value="HDPE">HDPE </html:option>
+ 			  <html:option value="AC">AC</html:option>
+		      <html:option value="CI">CI </html:option>
+		      <html:option value="PSC">PSC </html:option>
+ 	          <html:option value="BWSP">BWSP</html:option>
+	          <html:option value="GRP">GRP</html:option>
+              <html:option value="GI">GI</html:option>
+              <html:option value="RCC">RCC</html:option>
+ 	  		  </html:select>
+           </td> -->
+		   
+ 		 <td  align=center >
+         <nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disLengths"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+		     <td   align=center >
+			<nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disNoOfStandPosts" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+		  
+		 <td   align=center >
+			<nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disNoOfHouseConnections" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+		 
+		 <td   align=center >
+			<nested:text name="ASSETPIPELINE_LIST" indexed="true" property="disNoOfPipeLines" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+	
+	 	 </tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+       	<html:button property="mode" title="Add New Distribution" styleClass="btext" value="Add New Distribution" onclick="addnew()"/>
+       	<html:button property="mode" title="Remove Distribution" styleClass="btext" value="Remove Distribution" onclick="removeSubComps(this)"/>
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>
+	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	 <input type="hidden" name="subCompCode" value="disCode">  
+    </html:form>
+	</c:if>
+	
+	
+	
+	<c:if test="${sessionScope.assetsubCompParams=='RawWaterCollectionWell' || sessionScope.assetsubCompParams=='ClearWaterCollectionWell'}">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+	    <c:if test="${sessionScope.assetsubCompParams=='RawWaterCollectionWell'}">
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-RAW WATER COLLECTION WELL</b>
+        </td>
+        </c:if>
+        <c:if test="${sessionScope.assetsubCompParams=='ClearWaterCollectionWell'}">
+        <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-CLEAR WATER COLLECTION WELL</b>
+        </td>
+        </c:if>
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;
+         <c:if test="${sessionScope.assetsubCompParams=='RawWaterCollectionWell'}">
+         <bean:message key="app.rwCollectionWellCode"/>
+         </c:if>
+         <c:if test="${sessionScope.assetsubCompParams=='ClearWaterCollectionWell'}">
+         <bean:message key="app.cwCollectionWellCode"/>
+         </c:if>
+          <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+         
+         </b></font>
+		</th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.rwTypeOfFlooring"/></b></font>
+		 </th>
+		 <th> 
+		   <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.rwLocation"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.rwCapacity"/></b></font>
+		 </th>	
+		 <th>
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.rwDiameter"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.rwDepth"/></b></font>
+		 </th>
+		 </tr>
+		 </thead> 
+          <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		
+		 <tr>
+		  <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		  <td align=center >
+	        <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="collectionWellCode" maxlength="3" styleClass="gridText" style="width:160px" readonly="true"/>
+			
+
+	     </td> <td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+							 </td>	
+		  <td align=center >
+           <!--  <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="rwTypeOfFlooring"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/> -->
+		 	 <html:select name="ASSETHEADWORK_LIST" indexed="true" property="rwTypeOfFlooring" styleClass="mycombo" style="width:160px">
+	 			   <html:option value="">SELECT... </html:option>
+				   <html:option value="Circular">Circular </html:option>
+	  			   <html:option value="Rectangular">Rectangular </html:option>
+ 			 </html:select>
+  		 </td>
+		  <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="rwLocation"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td>
+		  <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="rwCapacity"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td>		        
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="rwDiameter"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="rwDepth" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td> 	  	 
+ 		</td>
+		</tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+        <c:if test="${sessionScope.assetsubCompParams=='RawWaterCollectionWell'}">
+
+          	<html:button property="mode" title="Add New Raw Water Collection Well" styleClass="btext" value="Add New RWC Well" onclick="addnew()"/>
+         	 <html:button property="mode" title="Remove Raw Water Collection Well" styleClass="btext" value="Remove RWC Well" onclick="removeSubComps(this)"/>
+        </c:if>
+        <c:if test="${sessionScope.assetsubCompParams=='ClearWaterCollectionWell'}">
+          	<html:button property="mode" title="Add New Clear Water Collection Well" styleClass="btext" value="Add New Clear Water Collection Well" onclick="addnew()"/>
+         	
+         	 <html:button property="mode" title="Remove Clear Water Collection Well" styleClass="btext" value="Remove Clear Water Collection Well" onclick="removeSubComps(this)"/>
+        </c:if> 	 
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="closeFunc()()"/>
+	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+	<input type="hidden" name="subCompCode" value="collectionWellCode">
+    </html:form>
+	</c:if>
+		
+	
+	
+	
+	
+	
+		
+		
+    <c:if test="${sessionScope.assetsubCompParams=='SSFilters' || sessionScope.assetsubCompParams=='RSFilters' }">
+	<html:form action="Asset.do?mode=Submit">
+	 
+	<%int count=0; %>
+	    <tr bgcolor="#8A9FCD" class="gridLabel" >
+	    <c:if test="${sessionScope.assetsubCompParams=='SSFilters'}">
+            <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-SS FILTERS </b>
+            </td>
+        </c:if>
+        
+        <c:if test="${sessionScope.assetsubCompParams=='RSFilters'}">
+          <td colspan=4 align=left ><b>Component Name:&nbsp;<%=assetName%>-HEADWORKS-RS FILTERS </b>
+          </td>
+        </c:if>
+        
+        </tr>
+		<tr>
+		<td>
+		<table bgcolor="#FFFFFF" width="100%" bordercolor="#000000" border="1" style="border-collapse:collapse;margin-top:0">
+	    <thead class="gridHeader">
+	    <tr>
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.select"/></b></font>
+		</th> 
+	    <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpCode"/></b></font>
+		</th> 
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.selectHabs"/></b></font>
+		 </th>
+		<th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpLocation"/></b></font>
+		</th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpType"/></b></font>
+		 </th> 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpMld"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpUnits"/></b></font>
+		 </th>
+		  <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpSize"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpUnitsStandby"/></b></font>
+		 </th>
+		 <c:if test="${sessionScope.assetsubCompParams=='CpwsSSFilters'}">
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpFreqSandScrap"/></b></font>
+		 </th>
+        </c:if>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpRateOfFiltration"/></b></font>
+		</th>		 
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpBackwashFreq"/></b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpPerformance"/></b></font>
+		 </th>	
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpCapacityUse"/></b></font>
+		 </th>
+		 <th> 
+         <font size="1" face="verdana" color="black"><b>&nbsp;<bean:message key="app.wtpExtentionScope"/></b></font>
+		 </th>
+ 		 </tr>
+		 </thead> 
+         <nested:iterate id="ASSETHEADWORK_LIST" property="assetHeadWorks" indexId="ndx">
+	     <% count=count+1; %>
+		 <tr>
+		 <td width="40px" align="center">
+		   <input type="checkbox" name="remove" value="<%= ndx%>">	<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="assetCode" styleClass="gridText" maxlength="0" style="width:0px"  onkeypress="textOnly()"/>
+		 </td>
+		  <td   align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpCode" maxlength="30" styleClass="gridText" style="width:160px" onkeypress="upperOnly()" readonly="true"/>
+		 <input type="hidden" name="subCompCode" value="collectionWellCode">
+ 		 </td>
+ 		 </td> <td align="center">
+		 		
+					<html:button property="addHab" value="..." styleClass="btext"
+							 onclick='<%= "javascript: fnPickHabitations('" + ndx +"')"%>' />
+							 </td>	
+ 		 <td   align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpLocation" maxlength="50" styleClass="gridText" style="width:160px" onkeypress="upperOnly()"/>
+ 		 </td>
+         <td align=center >
+	       <html:select name="ASSETHEADWORK_LIST" indexed="true" property="wtpType" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="SSF">SSF</html:option>
+				<html:option value="RSF">RSF</html:option>
+				 
+            </html:select>
+         </td>
+  		  
+		 <td  align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpMld"  styleClass="gridText" style="width:100px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+ 		  <td   align=center >
+			<nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpUnits" maxlength="30"  styleClass="gridText" style="width:100px" onkeypress="numeralsOnly()"/>
+		 </td>
+ 		 
+	 	 <td align=center >
+            <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpSize"   maxlength="50"  styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>
+  		 </td>
+		 <td  align=center >
+		   <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpUnitsStandby"    styleClass="gridText" style="width:100px" />
+  		 </td>
+  		 <c:if test="${sessionScope.assetsubCompParams=='CpwsSSFilters'}">
+  		 <td  align=center >
+		   <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpFreqSandScrap"    styleClass="gridText" style="width:100px" />
+  		 </td>
+  		 </c:if>
+  		 <td   align=center >
+         <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpRateOfFiltration" maxlength="30" styleClass="gridText" style="width:160px" onkeypress="decimalsOnly()"/>
+ 		 </td>
+		 <td  align=center >
+ 			 <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpBackwashFreq"    styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>		 
+ 		 </td>
+ 		<td  align=center >
+ 		      <html:select name="ASSETHEADWORK_LIST" indexed="true" property="wtpPerformance" styleClass="mycombo" style="width:100px">
+			    <html:option value="">SELECT...</html:option>
+				<html:option value="G">Good</html:option>
+				<html:option value="B">Bad</html:option>
+			  </html:select>
+		</td>
+	  	  <td  align=center >
+ 			 <nested:text name="ASSETHEADWORK_LIST" indexed="true" property="wtpCapacityUse"    styleClass="gridText" style="width:100px" onkeypress="upperOnly()"/>		 
+ 		 </td>
+   		  <td  align=center >
+   		 	<html:select name="ASSETHEADWORK_LIST" indexed="true" property="wtpExtentionScope" styleClass="mycombo" style="width:100px">
+				<html:option value="">SELECT...</html:option>
+				<html:option value="Y">YES</html:option>
+				<html:option value="N">NO</html:option>
+             </html:select></td>
+ 		</td>
+		</tr>
+        </nested:iterate>
+        
+	</table>
+	</td>
+	</tr>
+	
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+         <c:if test="${sessionScope.assetsubCompParams=='SSFilters'}">
+              	<html:button property="mode" title="Add New SS Filter" styleClass="btext" value="Add New SS Filter" onclick="addnew()"/>
+       	        <html:button property="mode" title="Remove SS Filter" styleClass="btext" value="Remove SS Filter" onclick="removeSubComps(this)"/>
+       	 </c:if>
+         <c:if test="${sessionScope.assetsubCompParams=='RSFilters'}">
+              	<html:button property="mode" title="Add New RS Filter" styleClass="btext" value="Add New RS Filter" onclick="addnew()"/>
+       	        <html:button property="mode" title="Remove RS Filter" styleClass="btext" value="Remove RS Filter" onclick="removeSubComps(this)"/>
+       	 </c:if>
+       	        
+		<html:button property="mode" title="Save the Fields" styleClass="btext" value="Save" onclick="savefunc(this)"/>
+	    <html:reset title="Close the Window" styleClass="btext" value="Close" onclick="javascript:window.close()"/>
+	</td>
+   </tr>
+   </table>
+	<input type="hidden" name="count" value="<%= count %>">
+    </html:form>
+    <input type="hidden" name="subCompCode" value="wtpCode">
+	</c:if>		
+ <%@ include file="/commons/rws_alert.jsp"%>
+
+
+
