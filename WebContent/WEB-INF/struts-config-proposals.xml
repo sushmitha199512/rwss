@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+<struts-config>
+
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg"/>
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+	</data-source>
+</data-sources>
+
+<form-beans>
+		
+	<!-- This is a new version of representative proposals -->
+	<form-bean name="RepresentativeProposalForm" type="nic.watersoft.proposals.RepresentativeProposalForm"/>
+	<form-bean name="AdminstrativeSanctionForm" type="nic.watersoft.proposals.RepresentativeProposalForm"/>
+	
+	<form-bean name="RepProposalForm" type="nic.watersoft.proposals.RepresentativeProposalForm"/>
+					   
+	<form-bean name="ProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="NewProposalTrackForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="EditNewProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="EditNewAdminProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="AdminProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+		
+	<form-bean name="OMProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="EditOMProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="OMAdminProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="EditOMAdminProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="OMTrackProposalForm" type="nic.watersoft.proposals.ProposalForm"/>
+	<form-bean name="ShowForwardToOfficesForm" type="nic.watersoft.proposals.ShowForwardToOfficesForm"/>
+	<form-bean name="Prajapadam" type="nic.watersoft.proposals.Rws_Prajapadam_FormBean"/>
+	<form-bean name="AugmentationForm" type="nic.watersoft.proposals.AugmentationForm"/>
+</form-beans>
+
+<global-forwards>
+	<forward name="failure" contextRelative="true" path="/commons/failure.jsp"/>
+	<forward name="unauthorized-access" contextRelative="true" path="/commons/unauthorized-access.jsp"/>
+	<forward name="expire" path="/sessionExpired.jsp"/>
+</global-forwards>
+
+<action-mappings>
+	<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	<!-- Prajapatham mapiings -->
+	<action path="/prajapadam" name="Prajapadam" scope="request" type="nic.watersoft.proposals.Rws_Prajapadam_Act">
+     <forward name="data" path="/rws_prajapadam_frm.jsp"/>
+     <forward name="refresProg" path="/rws_prajapadam_frm.jsp"/>
+     <forward name="view" path="/rws_prajapadam_view.jsp"/>
+     <forward name="edit" path="/rws_prajapadam_edit_frm.jsp"/>
+     <forward name="viewAddProgPage" path="/rws_prajapadam_addProg_frm.jsp"/>
+     <forward name="addProg" path="/rws_prajapadam_addProg_frm.jsp"/>
+      </action>
+      <!-- ########### work wise mappings ############ -->
+     <action path="/Workwise" name="RepresentativeProposalForm" scope="session" type="nic.watersoft.proposals.Rws_work_wise_rpt_act">
+	     <forward name="success" path="/rws_Work_wise_rpt.jsp"/>
+	     <forward name="rpt" path="/rws_Work_wise_rpt_view.jsp"/>
+     </action>
+	<!-- ########### REPRESENTATIVE PROPOSALS ############ -->
+
+	<!-- Representative Proposal Data Action -->
+	<action path="/RepresentativeProposalData" name="RepresentativeProposalForm" scope="session" type="nic.watersoft.proposals.RepresentativeProposalData">
+		<forward name="data-success" path="/rws_representative_proposal_frm.jsp"/>
+		<forward name="pick-hab" path="/rws_pick_hab_frm.jsp"/>
+		<forward name="close-hab" path="/close.jsp"/>
+	</action>
+	
+	<!-- Representative Proposal Insert Action -->
+	<action path="/RepresentativeProposalAction" name="RepresentativeProposalForm" scope="session" type="nic.watersoft.proposals.RepresentativeProposalAction" validate="true" input="/rws_representative_proposal_frm.jsp">
+		<forward name="insert-success" path="/RepresentativeProposalData.do" redirect="true"/>
+		<forward name="failure" path="/RepresentativeProposalData.do"/>
+		<forward name="view-success" path="/rws_rep_proposal_view.jsp"/>
+	</action>
+	<!-- Administrative sanction ########  -->
+	<action path="/AdminstrativeSanction" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.proposals.Administrative_Sanction_Act">
+		<forward name="data-success" path="/rws_Administrative_frm.jsp"/>
+		<forward name="pick-hab" path="/rws_Administrative_pick_hab_frm.jsp"/>
+		<forward name="close-hab" path="/close.jsp"/>
+	    <forward name="invalid-user" path="/invaliduser.jsp"/>
+	    <forward name="getWorks" path="/rws_show_works_frm.jsp"/>
+	    <forward name="getDivisions1" path="/rws_show_works_frm.jsp"/>
+	    <forward name="getSubDivisions1" path="/rws_show_works_frm.jsp"/>
+		<forward name="expire" path="/sessionExpired.jsp"/>
+		<!-- added by swapna on 07-04-2011 for displaying the list of schools and labs -->
+		<forward name="pick-school" path="/rws_Administrative_pick_school_frm.jsp"/>
+		<forward name="pick-lab" path="/rws_Administrative_pick_lab_frm.jsp"/>
+		<!-- end -->
+	</action>
+	<action path="/AdminstrativeSanctionSaveForm" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.proposals.AdministrativeSanctionAction" validate="true" input="/rws_Administrative_frm.jsp">
+		<forward name="insert-success" path="/AdminstrativeSanction.do" redirect="true"/>
+		<forward name="failure" path="/AdminstrativeSanction.do"/>
+		<forward name="failure1" path="/rws_Administrative_frm.jsp"/>
+		<forward name="view-success" path="/rws_administrativeSanction_view.jsp"/>
+		<forward name="data-success" path="/showSelectedAdmin_Rev_Habs.jsp"/>
+		<forward name="expire" path="/sessionExpired.jsp"/>
+<!-- added by swapna on 5-5-2011 for adding schools and labs -->
+		<forward name="data-success1" path="/showSelectedAdmin_Rev_Schools.jsp"/>
+		<forward name="data-success2" path="/showSelectedAdmin_Rev_Labs.jsp"/>
+		<forward name="data-success4" path="/showSelectedAdmin_Rev_Pis.jsp"/>
+		<!-- added by swapna on 19-5-2011  -->
+		 <forward name="updatedwork" path="/closeWithMessage3.jsp"/>
+		<!-- end -->
+	</action>
+	
+	<action path="/EditAdminSanction" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.proposals.EditAdminSanctionForm">
+ 		<forward name="edit-success" path="/rw_administrativeSanction_edit_frm.jsp"/>
+		<forward name="update-success" path="/AdminstrativeSanctionSaveForm.do?mode=View"/>
+		<forward name="cons-update-success" path="/NewProposalData.do"/>
+	 	<forward name="subprogrammes" path="/rw_administrativeSanction_edit_frm.jsp"/>
+		<forward name="getWorks1" path="/rws_show_works1_frm.jsp"/>
+		<forward name="edit-failed" path="/showMessageThenClose.jsp"/>
+	</action>
+	<action path="/ShowAdminSelectedHabs" type="nic.watersoft.proposals.ShowAdminiStrativeSelectedHabs"> 
+		<forward name="data-success" path="/showSelectedAdmin_Rev_Habs.jsp"/>
+	</action>
+	<action path="/PickAdminHabitation" type="nic.watersoft.proposals.PickAdminStrativeHabitation">
+		<forward name="data-success" path="/rws_Administrative_pick_hab_frm.jsp"/>
+		<forward name="Mandal-view" path="/rws_Administrative_pick_Man_frm.jsp"/>
+<!--Added by swapna on 07-04-2011 for displaying schools and labs  -->
+		<forward name="Mandal-school" path="/rws_Administrative_pick_School_frm.jsp"/>
+		<forward name="Mandal-anganwadi" path="/rws_Administrative_pick_Anganwadi_frm.jsp"/>
+		<forward name="Mandal-PI" path="/rws_Administrative_pick_pi_frm.jsp"/>
+		<forward name="Mandal-lab" path="/rws_Administrative_pick_Lab_frm.jsp"/>
+		<!-- end -->
+	</action>
+	<action path="/SaveAdminHabitation" name="AdminstrativeSanctionForm" scope="request" type="nic.watersoft.proposals.SaveAdminHabs">
+		<forward name="save-success" path="/rws_Administrative_pick_hab_frm.jsp"/>
+	</action>
+	 <action path="/AddRemoveAdminHabs" scope="request" name="ProposalForm" type="nic.watersoft.proposals.AddRemoveHabsForAdminiStrativeSanction"> 
+		<forward name="data-success" path="/addRemoveHabsForAdminSanction.jsp"/>
+		<forward name="save-success" path="/addRemoveHabsForAdminSanction.jsp"/>
+		<forward name="Mandal-view" path="/rws_Administrative_pick_Man_edit.jsp"/>
+<!-- added by swapna on 7-5-2011 for adding removing schools and labs -->
+		<forward name="Mandal-school" path="/rws_Administrative_pick_Man_editschool.jsp"/>
+		<forward name="Mandal-lab" path="/rws_Administrative_pick_Man_editlab.jsp"/>
+		<forward name="Mandal-pi" path="/rws_Administrative_pick_Man_editPIs.jsp"/>
+	</action>
+	
+	<action path="/RevisedSanctionSaveForm" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.proposals.AdministrativeSanctionAction" validate="true" input="/rws_Administrative_frm.jsp">
+		<forward name="insert-success" path="/RevisedSanction.do" redirect="true"/>
+		<forward name="failure" path="/RevisedSanction.do"/>
+		<forward name="view-success" path="/rws_revisedSanction_view.jsp"/>
+		<forward name="data-success" path="/showSelectedAdmin_Rev_Habs.jsp"/>
+		<forward name="Edit-Page" path="/rws_revised_sanction_Edit_frm.jsp"/>
+<!-- added by swapna on 1-06-2011  -->
+		 <forward name="updatedrevisedwork" path="/closeWithMessage3.jsp"/>
+		<!-- end -->
+ 	</action>
+ 	<action path="/RevisedSanction" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.proposals.Rws_revised_sanction_act">
+		<forward name="data-success" path="/rws_revised_sanction_frm.jsp"/>
+		<forward name="pick-hab" path="/rws_revised_pick_hab_frm.jsp"/>
+		<forward name="close-hab" path="/close.jsp"/>
+ 	</action>
+ 	<action path="/PickRevisedEditHabitation" type="nic.watersoft.proposals.PickAdminStrativeHabitation">
+		<forward name="data-success" path="/rws_revised_pick_Edit_hab_frm.jsp"/>
+		<forward name="Mandal-view" path="/rws_Revised_pick_Man_frm.jsp"/>
+<!-- added by swapna on 23-5-2011 for adding removing schools and labs -->
+		<forward name="Mandal-school" path="/rws_Revised_pick_Man_editschool.jsp"/>
+		<forward name="Mandal-lab" path="/rws_Revised_pick_Man_editlab.jsp"/>
+	</action>
+	<action path="/SaveRevisedEditHabitation" name="AdminstrativeSanctionForm" scope="request" type="nic.watersoft.proposals.SaveHabitation">
+		<forward name="save-success" path="/rws_revised_pick_Edit_hab_frm.jsp"/>
+	</action>
+	<action path="/SaveRevisedHabitation" name="AdminstrativeSanctionForm" scope="request" type="nic.watersoft.proposals.SaveHabitation">
+		<forward name="save-success" path="/rws_revised_pick_hab_frm.jsp"/>
+	</action>
+	<action path="/PickRevisedHabitation" type="nic.watersoft.proposals.PickAdminStrativeHabitation">
+		<forward name="data-success" path="/rws_revised_pick_hab_frm.jsp"/>
+		<forward name="Mandal-view" path="/rws_revised_pick_hab_man.jsp"/>
+<!-- added by swapna on 17-5-2011 for adding  schools and labs -->
+		<forward name="Mandal-school" path="/rws_revised_pick_school_man.jsp"/>
+		<forward name="Mandal-lab" path="/rws_revised_pick_lab_man.jsp"/>
+	</action>
+	<action path="/AddMoreProgramsForOneWork" scope="session" name="RepresentativeProposalForm" type="nic.watersoft.proposals.AddNewProgToAdminWork_act"> 
+		<forward name="data-success" path="/addNewProgramsToAdminSanncWork.jsp"/>
+	 
+	</action>
+	<!-- End ############################# -->
+	<!-- Representative Proposal Edit Action -->
+	<action path="/EditRepProposal" name="RepresentativeProposalForm" scope="session" type="nic.watersoft.proposals.EditRepProposal">
+		<forward name="success" path="/rws_rep_proposal_view.jsp"/>
+		<forward name="view-success" path="/rws_rep_proposal_view.jsp"/>
+		<forward name="edit-success" path="/rws_rep_proposal_edit_frm.jsp"/>
+		<forward name="update-success" path="/RepresentativeProposalAction.do?mode=View"/>
+		<forward name="cons-update-success" path="/NewProposalData.do"/>
+	</action>
+	
+	<!-- ####### USING AJAX ####### -->
+		
+	<action path="/RepProposalData" name="RepProposalForm" scope="request" type="nic.watersoft.proposals.RepProposalData">
+		<forward name="data-success" path="/rws_rep_proposal_frm.jsp"/>
+	</action>
+	
+	<action path="/RepProposalAction" name="RepProposalForm" scope="request" type="nic.watersoft.proposals.RepProposalAction">
+		<forward name="insert-success" path="/RepProposalData.do"/>
+	</action>
+	
+	
+	<!-- ########### NEW PROPOSALS ############ -->
+
+	<!-- ActionMapping for New Proposal data action -->
+	<action path="/NewProposalData" scope="request" name="ProposalForm" type="nic.watersoft.proposals.NewProposalData">
+		<forward name="data-success" path="/rws_new_proposal_frm.jsp"/>
+	</action>
+	
+	<!-- ActionMapping for New Proposal action -->
+	<action path="/NewProposalAction" name="ProposalForm" scope="request" type="nic.watersoft.proposals.NewProposalAction">
+		<forward name="success" path="/NewProposalData.do" redirect="true"/>
+		<forward name="existing" path="/showExistingWorks.jsp"/>
+		 <forward name="sources" path="/showExistingSources.jsp"/>
+	</action>
+	
+	<!-- ActionMapping for New Proposal edit data action -->
+	<action path="/NewProposalEditData" scope="request" name="EditNewProposalForm" type="nic.watersoft.proposals.NewProposalEditData">
+		<forward name="ord-data-success" path="/rws_new_proposal_edit_frm.jsp"/>
+	</action>
+	<!-- ActionMapping for New Proposal edit action -->
+	<action path="/EditNewProposal" name="EditNewProposalForm" scope="request" type="nic.watersoft.proposals.EditNewProposal" validate="true" input="/rws_new_proposal_edit_frm.jsp">
+		<forward name="data-success" path="/rws_new_proposal_edit_frm.jsp"/>
+		<forward name="edit-success" path="/NewProposalData.do"/>
+	</action>
+
+	<!-- ActionMapping for New Admin Proposal edit data action -->
+	<action path="/NewAdminProposalEditData" scope="request" name="EditNewAdminProposalForm" type="nic.watersoft.proposals.NewAdminProposalEditData">
+		<forward name="data-success" path="/rws_new_admin_proposal_edit_frm.jsp"/>
+	</action>
+
+	<action path="/EditAdminProposal" name="EditNewAdminProposalForm" scope="request" type="nic.watersoft.proposals.NewAdminProposalEditData" validate="true" input="/rws_new_admin_proposal_edit_frm.jsp">
+		<forward name="update-success" path="/NewAdminProposalData.do"/>
+	</action>
+	
+
+	<!-- ActionMapping for New Proposals Administrative Sanctions -->
+	<action path="/NewAdminProposalData" scope="request" name="AdminProposalForm" type="nic.watersoft.proposals.NewAdminProposalData">
+		<forward name="success" path="/rws_new_admin_proposal_frm.jsp"/>
+	</action>
+	
+	<action path="/NewAdminProposalAction" scope="request" name="AdminProposalForm" type="nic.watersoft.proposals.NewAdminProposalAction">
+		<forward name="success" path="/NewAdminProposalData.do" redirect="true"/>
+		<forward name="failure" path="/NewAdminProposalData.do"/>
+	</action>
+	
+	<!-- Tracking for New Proposals -->
+	<action path="/NewProposalTrackingData" name="NewProposalTrackForm" scope="request" type="nic.watersoft.proposals.NewProposalTrackingData">
+		<forward name="success" path="/rws_new_proposal_tracking_frm.jsp"/>
+	</action>
+
+	<action path="/NewProposalTracking" name="NewProposalTrackForm" scope="request" type="nic.watersoft.proposals.NewProposalTracking">
+		<forward name="success" path="/rws_new_proposal_tracking_rpt.jsp"/>
+		<forward name="failure" path="/failure.jsp"/>
+	</action>
+	
+	<action path="/ListNewProposals" type="nic.watersoft.proposals.ListNewProposals">
+			<forward name="data-success" path="/rws_new_proposals_list.jsp"/>
+	</action>
+	<action path="/ShowForwardOffices" type="nic.watersoft.proposals.ShowForwardOffices"> 
+		<forward name="data-success" path="/showForwardOffices.jsp"/>
+	</action>
+	<action path="/ShowForwardToOffices" name="ShowForwardToOfficesForm" type="nic.watersoft.proposals.ShowForwardToOffices" scope="request"> 
+		<forward name="data-success" path="/showForwardToOffices.jsp"/>
+	</action>
+	<action path="/ShowSelectedHabs" type="nic.watersoft.proposals.ShowSelectedHabs"> 
+		<forward name="data-success" path="/showSelectedHabs.jsp"/>
+	</action>
+	<action path="/ShowOtherDetails" type="nic.watersoft.proposals.ShowOtherDetails"> 
+		<forward name="data-success" path="/showOtherDetails.jsp"/>
+	</action>
+	<action path="/ShowSanctionDetails" type="nic.watersoft.proposals.ShowSanctionDetails"> 
+		<forward name="data-success" path="/showSanctionDetails.jsp"/>
+	</action>
+	<action path="/PickHabitation" type="nic.watersoft.proposals.PickHabitation">
+		<forward name="data-success" path="/rws_pick_hab_frm.jsp"/>
+	</action>
+	<action path="/SaveHabitation" name="RepresentativeProposalForm" scope="request" type="nic.watersoft.proposals.SaveHabitation">
+		<forward name="save-success" path="/rws_pick_hab_frm.jsp"/>
+	</action>
+	<action path="/PickAugmentationWork" name="AugmentationForm" type="nic.watersoft.proposals.PickAugmentationWork">
+		<forward name="data-success" path="/showAugmentationWork.jsp"/>
+	</action>
+	<action path="/AddRemoveHabs" scope="request" name="ProposalForm" type="nic.watersoft.proposals.AddRemoveHabs"> 
+		<forward name="data-success" path="/addRemoveHabs.jsp"/>
+		<forward name="save-success" path="/addRemoveHabs.jsp"/>
+	</action>
+	<action path="/AddRemoveConsHabs" scope="request" name="ProposalForm" type="nic.watersoft.proposals.AddRemoveConsHabs"> 
+		<forward name="data-success" path="/addRemoveConsHabs.jsp"/>
+		<forward name="save-success" path="/addRemoveConsHabs.jsp"/>
+	</action>
+	
+	<action path="/PickAssetHabitation" name="OMProposalForm" type="nic.watersoft.proposals.PickAssetHabitation">
+		<forward name="data-success" path="/rws_pick_asset_hab_frm.jsp"/>
+	</action>
+	<action path="/SaveAssetHab" name="OMProposalForm" type="nic.watersoft.proposals.SaveAssetHab">
+		<forward name="success" path="/rws_pick_asset_hab_frm.jsp"/>
+	</action>
+	<action path="/ShowFunctionalHabs" type="nic.watersoft.proposals.ShowFunctionalHabs"> 
+		<forward name="data-success" path="/showFunctionalHabs.jsp"/>
+	</action>
+	<!-- O&amp;M Proposals -->
+	
+	<!-- O&amp;M Proposals Normal -->
+	<action path="/OMProposalData" scope="request" name="OMProposalForm" type="nic.watersoft.proposals.OMProposalData" validate="false">
+		<forward name="success" path="/rws_om_proposal_frm.jsp"/>
+		<forward name="failure" path="/failure.jsp"/>
+	</action>
+
+	<action path="/OMProposalAction" name="OMProposalForm" scope="request" type="nic.watersoft.proposals.OMProposalAction" validate="true">
+		<forward name="success" path="/OMProposalData.do" redirect="true"/>
+	</action>
+
+	<action path="/EditOMProposal" name="EditOMProposalForm" scope="request" type="nic.watersoft.proposals.EditOMProposal" validate="true" input="/rws_om_proposal_edit_frm.jsp">
+		<forward name="success" path="/rws_om_proposal_edit_frm.jsp"/>
+		<forward name="edit-success" path="/OMProposalData.do"/>
+		<forward name="failure" path="/failure.jsp"/>
+	</action>
+	
+	<!-- O&amp;M Proposals Admin -->	
+	
+	<action path="/OMAdminProposalData" scope="request" name="OMAdminProposalForm" type="nic.watersoft.proposals.OMAdminProposalData">
+		<forward name="success" path="/rws_om_admin_proposal_frm.jsp"/>
+	</action>
+	
+	<action path="/OMAdminProposal" scope="request" name="OMAdminProposalForm" type="nic.watersoft.proposals.OMAdminProposalAction" validate="true">
+		<forward name="success" path="/OMAdminProposalData.do" redirect="true"/>
+		<forward name="failure" path="/OMAdminProposalData.do"/>
+	</action>
+		
+	<action path="/EditOMAdminProposal" name="EditOMAdminProposalForm" scope="session" type="nic.watersoft.proposals.EditOMAdminProposal" validate="true" input="/rws_om_admin_proposal_edit_frm.jsp">
+		<forward name="success" path="/rws_om_admin_proposal_edit_frm.jsp"/>
+		<forward name="edit-success" path="/OMAdminProposalData.do"/>
+		<forward name="failure" path="/failure.jsp"/>
+	</action>
+	
+	<action path="/ListOMProposals" type="nic.watersoft.proposals.ListOMProposals">
+		<forward name="data-success" path="/rws_om_proposals_list.jsp"/>
+	</action>
+	
+	<action path="/OMProposalTrackingData" name="OMTrackProposalForm" scope="request" type="nic.watersoft.proposals.OMProposalTrackingData">
+		<forward name="success" path="/rws_om_proposal_tracking_frm.jsp"/>
+	</action>
+
+	<action path="/OMProposalTracking" name="OMTrackProposalForm" scope="request" type="nic.watersoft.proposals.OMProposalTracking">
+		<forward name="success" path="/rws_om_proposal_tracking_rpt.jsp"/>
+		<forward name="failure" path="/failure.jsp"/>
+	</action>
+
+
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources"/> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-proposals.xml"/>
+</plug-in>
+
+</struts-config>

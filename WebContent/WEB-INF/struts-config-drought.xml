@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources>
+		<data-source type="org.apache.commons.dbcp.BasicDataSource">
+			<set-property property="driverClassName"
+				value="oracle.jdbc.driver.OracleDriver" />
+			<set-property property="url"
+				value="jdbc:oracle:thin:@10.160.2.84:1521:wsoft" />
+			<set-property property="username" value="preduser" />
+			<set-property property="password" value="preduser" />
+			<set-property property="" value="" />
+		</data-source>
+	</data-sources>
+
+
+	<form-beans>
+		<form-bean name="DroughtForm"
+			       type="nic.watersoft.drought.DroughtForm" />
+		<form-bean name="waterTransportForm"
+			       type="nic.watersoft.drought.WaterTransportFrm" />
+
+		<form-bean name="droughtCumulativeFrm"
+			       type="nic.watersoft.drought.DroughtCumulativeFrm" />
+
+
+     <form-bean name="AdminstrativeSanctionForm" 
+                type="nic.watersoft.drought.Rws_Drought_Admin_Sanction_Frm" />
+              
+   <form-bean name="DroughtDailyAbstractForm" 
+                type="nic.watersoft.drought.Rws_Drought_Daily_Abstract_Frm" />
+<form-bean name="newsItemForm" 
+                type="nic.watersoft.drought.RwsDroughtNewsItemForm" />
+</form-beans>
+	
+	<!--***************************************************************************************-->
+
+	<action-mappings>
+		<action path="/switch"
+			type="org.apache.struts.actions.SwitchAction" />
+			
+			<action path="/newsItem" name="newsItemForm"  scope="session" type="nic.watersoft.drought.RwsDroughtNewsItemAction">
+			<forward name="view" path="/rws_news_item.jsp" />
+			<forward name="newsPaperDownload" path="/rws_news_paper_clippings_download.jsp" />
+			<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+			
+		<action path="/PowerTransport" name="DroughtForm"
+			scope="request"
+			type="nic.watersoft.drought.rws_WaterTransportHabAct_frm">
+			<forward name="get2"
+				path="/rws_drink_water_transport_frm.jsp" />
+			<forward name="cview"
+				path="/rws_drink_water_transport_list_frm.jsp" />
+			<forward name="save"
+				path="/rws_drink_water_transport_list_frm.jsp" />
+			<forward name="redirect"
+				path="/rws_drink_water_transport_frm.jsp" />
+			<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+        <action path="/DroughtReport" name="DroughtForm"
+			scope="session"
+			type="nic.watersoft.drought.rws_drought_report_by_asset">
+			<forward name="getReport"
+				path="/rws_drought_report_by_asset_work.jsp" />
+			<forward name="get2"
+				path="/rws_drought_report_dist_mandal.jsp" />
+		
+		</action>
+       <action path="/Scarcity" name="DroughtForm" scope="session"
+		type="nic.watersoft.drought.Rws_drought_scarcity_frm" >
+		<forward name="data" path="/rws_scarcity_reasons_frm.jsp"/>
+        <forward name="save" path="/rws_scarcity_reasons_frm.jsp"/>
+        <forward name="view" path="/rws_scarcity_list_frm.jsp"/>
+        <forward name="delete" path="/rws_scarcity_list_frm.jsp"/>
+        <forward name="edit" path="/rws_edit_scracity_frm.jsp" />
+        <forward name="get" path="/rws_edit_scracity_frm.jsp" />
+        <forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+		<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+		<forward name="expire" path="/../masters/sessionExpired.jsp" />
+        </action>
+		<action name="waterTransportForm" path="/TransportWaterDetail"
+			scope="session" type="nic.watersoft.drought.WaterTransportAction">
+			<forward name="get2"
+				path="/rws_transportation_of_drinking_water.jsp" />
+				<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+
+		<action name="droughtCumulativeFrm" path="/DroughtCumulative"
+			scope="session"
+			type="nic.watersoft.drought.DroughtCumulativeAction">
+			<forward name="get2"
+				path="/rws_drought_cumulative_entry.jsp" />
+
+			<forward name="view"
+				path="/rws_drought_cumulative_entry.jsp" />
+            <forward name="save"
+				path="/rws_drought_cumulative_entry.jsp" />
+
+		</action>
+		<action path="/FlushDeep" name="DroughtForm" scope="session"
+		type="nic.watersoft.drought.Rws_FlushingDeepeningAct_frm" >
+		<forward name="data" path="/rws_flushdeep_frm.jsp"/>
+      	<forward name="view" path="/rws_flushdeep_frm.jsp"/>
+        <forward name="save" path="/rws_flushdeep_frm.jsp"/>
+        <forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+		<forward name="expire" path="/../masters/sessionExpired.jsp" />
+        </action>
+
+         
+ <action path="/sstank" name="DroughtForm" type="nic.watersoft.drought.sstankAction" scope="session">
+   <forward name="data" path="/rws_drought_sstank_frm.jsp"/>
+   <forward name="view" path="/rws_drought_sstank_frm.jsp"/> 
+   <forward name="save" path="/rws_drought_sstank_frm.jsp"/> 
+   <forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+	<forward name="expire" path="/../masters/sessionExpired.jsp" />
+ </action> 
+
+  <action path="/AdminstrativeSanction" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.drought.Rws_Drought_Admin_Sanction_Act">
+		<forward name="data-success" path="/rws_drought_works_frm.jsp"/>
+		<forward name="pick-hab" path="/rws_drought_admn_pick_hab_frm.jsp"/>
+		<forward name="close-hab" path="/close.jsp"/>
+	    <forward name="invalid-user" path="/invaliduser.jsp"/>
+	    <forward name="getWorks" path="/rws_show_works_frm.jsp"/>
+	    <forward name="getDivisions1" path="/rws_show_works_frm.jsp"/>
+	    <forward name="getSubDivisions1" path="/rws_show_works_frm.jsp"/>
+		<forward name="expire" path="/sessionExpired.jsp"/>
+        <forward name="pickSources" path="/rws_drought_sources.jsp"/>
+        <forward name="sourceHabs" path="/rws_drought_sources.jsp"/>
+        <forward name="sourceTypes" path="/rws_drought_sources.jsp"/>
+        <forward name="subSourceTypes" path="/rws_drought_sources.jsp"/>
+        <forward name="newSource" path="/rws_drought_sources.jsp"/>
+        <forward name="addSource" path="/rws_drought_works_frm.jsp"/>
+        <forward name="getSourceDetails" path="/rws_drought_sources.jsp"/>
+        <forward name="addSourceDetails" path="/rws_drought_sources.jsp"/>
+        <forward name="getAssets" path="/rws_show_assets_frm.jsp"/>
+        <forward name="edit" path="/rw_administrativeSanction_edit_frm.jsp"/>
+		<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+       </action>
+
+      <action path="/AdminstrativeSanctionSaveForm" name="AdminstrativeSanctionForm" scope="session" type="nic.watersoft.drought.Rws_Drought_AdminSanctionAction" validate="true" input="/rws_drought_works_frm.jsp">
+			<forward name="insert-success" path="/AdminstrativeSanction.do" redirect="true"/>
+	        <forward name="update-success" path="/rw_administrativeSanction_edit_frm.jsp"/>
+			<forward name="failure" path="/AdminstrativeSanction.do"/>
+			<forward name="failure1" path="/rws_drought_works_frm.jsp"/>
+			<forward name="view-success" path="/rws_drought_adminSanction_view.jsp"/>
+			<forward name="data-success" path="/showSelectedAdmin_Rev_Habs.jsp"/>
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/../masters/UnAuthorize.jsp" />
+      </action>
+
+
+   <action path="/PickAdminHabitation" type="nic.watersoft.drought.PickAdminStrativeHabitation">
+		<forward name="data-success" path="/rws_drought_admn_pick_hab_frm.jsp"/>
+		<forward name="Mandal-view" path="/rws_drought_admn_pick_Man_frm.jsp"/>
+    </action>
+
+    <action path="/SaveAdminHabitation" name="AdminstrativeSanctionForm" scope="request" type="nic.watersoft.drought.DroughtSaveAdminHabs">
+		<forward name="save-success" path="/rws_drought_admn_pick_hab_frm.jsp"/>
+	</action>
+
+  
+   <action path="/PickAdminSources" name="AdminstrativeSanctionForm"   scope="session" type="nic.watersoft.drought.PickAdminStrativeSources">
+		<forward name="pickSources" path="/rws_drought_sources.jsp"/>
+		      
+	</action>
+
+   <action path="/AddMoreProgramsForOneWork" scope="session" name="AdminstrativeSanctionForm" type="nic.watersoft.drought.AddNewProgToAdminWork_act"> 
+		<forward name="data-success" path="/addNewProgramsToAdminSanncWork.jsp"/>
+	 
+	</action>
+	
+	
+ <action path="/dailyReprot" name="DroughtDailyAbstractForm" type="nic.watersoft.drought.Drought_DailyAbstract_Action" scope="session">
+   <forward name="data" path="/rws_drought_daily_abstract_frm.jsp"/>
+   <forward name="view" path="/rws_drought_daily_abstract_frm.jsp"/> 
+   <forward name="save" path="/rws_drought_daily_abstract_frm.jsp"/> 
+   <forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+   <forward name="expire" path="/../masters/sessionExpired.jsp" />
+ </action> 
+
+	</action-mappings>
+	<message-resources
+		parameter="nic.watersoft.resources.ApplicationResources" />
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-drought.xml"/>
+    </plug-in>
+</struts-config>

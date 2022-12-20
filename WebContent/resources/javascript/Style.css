@@ -1,0 +1,33 @@
+BODY {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana
+}
+TD {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana
+}
+P {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana
+}
+H1 {
+	FONT-SIZE: 14pt; FONT-FAMILY: Verdana
+}
+TABLE {
+	BORDER-COLLAPSE: collapse
+}
+TD {
+	PADDING-RIGHT: 10px; BORDER-TOP: #aaaaaa 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #aaaaaa 1px solid; WHITE-SPACE: nowrap; TEXT-ALIGN: left
+}
+TH {
+	PADDING-RIGHT: 10px; BORDER-TOP: #aaaaaa 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #aaaaaa 1px solid; WHITE-SPACE: nowrap; TEXT-ALIGN: left
+}
+TH {
+	COLOR: #ffffff; BACKGROUND-COLOR: #666666
+}
+#outerDiv {
+	POSITION: relative
+}
+#innerDiv {
+	OVERFLOW: auto
+}
+#innerDiv TD {
+	WHITE-SPACE: nowrap
+}

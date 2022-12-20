@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg"/>
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+	</data-source>
+</data-sources>
+
+<form-beans>
+	<form-bean name="NewEstimateForm" type="nic.watersoft.estimates.EstimateForm"/>
+	<form-bean name="NewEstTechForm" type="nic.watersoft.estimates.EstimateForm"/>
+	<form-bean name="EditNewEstForm" type="nic.watersoft.estimates.EstimateForm"/>
+	
+	<form-bean name="OMEstimateForm" type="nic.watersoft.estimates.EstimateForm"/>
+	<form-bean name="OMEstTechForm" type="nic.watersoft.estimates.EstimateForm"/>
+	<form-bean name="EditOMEstForm" type="nic.watersoft.estimates.EstimateForm"/>
+	
+	<form-bean name="TaskSubTaskForm" type="nic.watersoft.estimates.TaskSubTaskForm"/>
+	<form-bean name="TsMileStoneFrm" type="nic.watersoft.estimates.TsMileStoneForm"/>
+</form-beans>
+
+<global-forwards>
+	<forward name="failure" contextRelative="true" path="/commons/failure.jsp"/>
+	<forward name="unauthorized-access" contextRelative="true" path="/commons/unauthorized-access.jsp"/>
+</global-forwards>
+
+<action-mappings>
+	<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	
+	<!-- Action Mappings for New Estimates -->
+
+	<action path="/NewEstimateData" scope="request" name="NewEstimateForm" type="nic.watersoft.estimates.NewEstimateData" validate="false">
+		<forward name="data-success" path="/rws_new_est_frm.jsp"/>
+	</action>
+	
+	<action path="/NewEstimateAction" scope="request" name="NewEstimateForm" type="nic.watersoft.estimates.NewEstimateAction" validate="true" input="/rws_new_est_frm.jsp">
+		<forward name="insert-success" path="/NewEstimateData.do" redirect="true"/>
+		<forward name="view-success" path="/rws_new_est_view.jsp"/>
+		<forward name="print-success" path="/rws_new_est_print.jsp"/>
+		<forward name="excel-success" path="/rws_new_est_xls.jsp"/>
+		<forward name="edit-success" path="/rws_new_est_edit_frm.jsp"/>
+		<forward name="update-success" path="/rws_new_est_view.jsp"/>
+		<forward name="generateNewSourceCode" path="/rws_generateNewSourceCode.jsp"/>
+		
+	</action>
+	
+	<action path="/NewEstSanctionData" scope="request" name="NewEstTechForm" type="nic.watersoft.estimates.NewEstSanctionData">
+		<forward name="data-success" path="/rws_new_est_sanctions_frm.jsp"/>
+	</action>
+	
+	<action path="/NewEstSanctionAction" scope="request" name="NewEstTechForm" type="nic.watersoft.estimates.NewEstSanctionAction" input="/rws_new_est_sanctions_frm.jsp">
+		<forward name="success" path="/NewEstSanctionData.do" redirect="true"/>
+		<forward name="validation-failed" path="/NewEstSanctionData.do"/>
+	</action>
+
+	<action path="/EditNewEstimate" scope="request" name="EditNewEstForm" type="nic.watersoft.estimates.EditNewEstimate">
+		<forward name="data-success" path="/rws_new_est_edit_frm.jsp"/>
+		<forward name="update-view-success" path="/rws_new_est_view.jsp"/>
+		<forward name="update-tech-success" path="/NewEstSanctionData.do"/>
+	</action>
+
+	<!-- Action Mappings for O&amp;M Estimates -->
+
+	<action path="/OMEstimateData" scope="request" name="OMEstimateForm" type="nic.watersoft.estimates.OMEstimateData">
+		<forward name="data-success" path="/rws_om_est_frm.jsp"/>
+	</action>
+	
+	<action path="/OMEstimateAction" scope="request" name="OMEstimateForm" type="nic.watersoft.estimates.OMEstimateAction" validate="true" input="/rws_om_est_frm.jsp">
+		<forward name="insert-success" path="/OMEstimateData.do" redirect="true"/>
+		<forward name="view-success" path="/rws_om_est_view.jsp"/>
+		<forward name="print-success" path="/rws_om_est_print.jsp"/>
+		<forward name="excel-success" path="/rws_om_est_xls.jsp"/>
+	</action>
+	
+	<action path="/OMEstSanctionData" scope="request" name="OMEstTechForm" type="nic.watersoft.estimates.OMEstSanctionData">
+		<forward name="data-success" path="/rws_om_est_sanctions_frm.jsp"/>
+	</action>
+	
+	<action path="/OMEstSanctionAction" scope="request" name="OMEstTechForm" type="nic.watersoft.estimates.OMEstSanctionAction" validate="true" input="/rws_om_est_sanctions_frm.jsp">
+		<forward name="success" path="/OMEstSanctionData.do" redirect="true"/>
+		<forward name="validation-failed" path="/OMEstSanctionData.do"/>
+	</action>
+	
+	<action path="/EditOMEstimate" scope="session" name="EditOMEstForm" validate="true" input="/rws_om_est_edit_frm.jsp" type="nic.watersoft.estimates.EditOMEstimate">
+		<forward name="data-success" path="/rws_om_est_edit_frm.jsp"/>
+		<forward name="update-view-success" path="/rws_om_est_view.jsp"/>
+		<forward name="update-tech-success" path="/OMEstSanctionData.do"/>
+	</action>
+	
+	<!-- This Action Mapping is used in both New and O&amp;M Estimates -->
+	
+	<action path="/ShowWorkDetails" type="nic.watersoft.estimates.ShowWorkDetails">
+		<forward name="new-success" path="/rws_new_work_details.jsp"/>
+		<forward name="om-success" path="/rws_om_work_details.jsp"/>
+	</action>
+
+	<action path="/ShowWorkComponents" type="nic.watersoft.estimates.ShowWorkComponents">
+		<forward name="data-success" path="/rws_show_work_components.jsp"/>
+	</action>
+	
+	<action path="/PickTaskSubTask" name="TaskSubTaskForm" scope="session" type="nic.watersoft.estimates.PickTaskSubTask">
+		<forward name="data-success" path="/pickTaskSubTask.jsp"/>
+	</action>	
+	
+	<action path="/SaveTaskSubTask" name="TaskSubTaskForm" scope="session" type="nic.watersoft.estimates.SaveTaskSubTask">
+		<forward name="success" contextRelative="true" path="/proposals/close.jsp"/>
+	</action>	
+	
+	<action path="/ShowSourceDetails" type="nic.watersoft.estimates.ShowSourceDetails">
+		<forward name="success" path="/rws_show_source_details.jsp"/>
+	</action>
+	<!-- code for ts milestones added by sridhar-->
+	<action path="/TsMileStone" scope="request" name="TsMileStoneFrm" type="nic.watersoft.estimates.TsMileStoneAction" >
+	<forward name="data" path="/rws_ts_milestone_frm.jsp"/>
+	<forward name="addNew" path="/rws_ts_milestone_frm.jsp"/>  
+	<forward name="save" path="/rws_ts_milestone_frm.jsp"/>
+	<forward name="expire" path="/sessionExpired.jsp"/>
+	</action>
+		
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources"/> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-estimates.xml"/>
+</plug-in>
+
+</struts-config>

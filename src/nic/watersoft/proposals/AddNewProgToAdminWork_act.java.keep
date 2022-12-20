@@ -1,0 +1,277 @@
+package nic.watersoft.proposals;
+
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import nic.watersoft.commons.CommonLists;
+import nic.watersoft.commons.Debug;
+ 
+ 
+import nic.watersoft.commons.RwsUser;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+public class AddNewProgToAdminWork_act extends Action 
+{
+ 
+	private ArrayList subprogrammes;
+	 
+	private ArrayList proposals;
+	
+
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception
+	{
+		String target = new String("data-success");
+		try{
+		RepresentativeProposalForm myForm = (RepresentativeProposalForm)form;
+		String mode = myForm.getMode();
+		System.out.println("User pressed the " + mode + " button.");
+		DataSource dataSource = getDataSource(request);
+		HttpSession session = request.getSession();
+		RwsUser user = (RwsUser)session.getAttribute("RWS_USER");
+		boolean init = myForm.getInit();
+		ArrayList subPrograms=null;
+		String workId=request.getParameter("workId");
+		String workName=request.getParameter("workName");
+		 
+		System.out.println("workId"+workId+workName);
+		ProposalHolder proposalHolder = new ProposalHolder();
+		CommonLists commonLists = new CommonLists(dataSource);
+		System.out.println("------------------"+request.getParameter("UpdateProg"));
+		if(request.getParameter("UpdateProg")!=null&&request.getParameter("UpdateProg").equals("YES"))
+		{
+			request.setAttribute("UpdateAddedProgras","UpdateAddedProgras");
+		}
+		if(init)
+		{
+			
+			proposalHolder.setWorkId(workId);
+			proposals = new ArrayList(1);
+			proposalHolder.setWorkName(workName);
+		 	proposals.add(proposalHolder);
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+			String currentDate = fmt.format(new java.util.Date());
+		 	myForm.setProposals(proposals);
+		 	myForm.setInit(false);
+		 	myForm.setMode("");
+		}
+		if(mode != null && mode.equals("subprogrammes"))
+		{
+			String index = request.getParameter("index");
+			 System.out.println("************"+index);
+			int ndx = 0;
+			if(index != null)
+			{
+				try
+				{	ndx = Integer.parseInt(index);
+				    System.out.println("************"+ndx);
+				}
+				catch(NumberFormatException nfe)
+				{	System.out.println("Error converting index to ndx " + nfe);
+				}
+			}
+			proposals = myForm.getProposals();
+			proposalHolder = (ProposalHolder)proposals.get(ndx);
+			System.out.println("programme code is "+proposalHolder.getProgrammeCode()+proposalHolder);
+			String programmeCode = proposalHolder.getProgrammeCode();
+			subprogrammes = commonLists.getSubprogrammes(programmeCode);
+			proposalHolder.setSubprogrammes(subprogrammes);
+			proposals.set(ndx, proposalHolder);
+			myForm.setProposals(proposals);
+		}
+		if(mode != null && mode.equals("Add"))
+		{
+			System.out.println("in add mode");
+			proposals = myForm.getProposals();
+			int size = proposals.size();
+			if(size == 0)
+				size = 1;
+		 	proposalHolder = (ProposalHolder)proposals.get(size-1);
+		  	proposalHolder = new ProposalHolder();
+		  	proposalHolder.setWorkId(workId);
+		  	proposalHolder.setWorkName(workName);
+		 	proposals.add(proposalHolder);
+			myForm.setProposals(proposals);
+			if(request.getParameter("AddNewForRev")!=null)
+			{
+				request.setAttribute("UpdateAddedProgragsForRevise","");
+			}
+		}
+		if(mode != null && mode.equals("Remove"))
+		{
+			ArrayList selectedHabs = null;
+			proposals = myForm.getProposals();
+						
+			String[] removeIds = request.getParameterValues("remove");
+			if(removeIds != null && removeIds.length != 0)
+			{
+				for(int p=0; p<removeIds.length; p++)
+				{
+					System.out.println("removeIds["+p+"] : " + removeIds[p]);
+				}
+				 
+					for(int i=removeIds.length; i>0; i--)
+					{
+						proposals.remove(Integer.parseInt(removeIds[i-1]));
+					}
+		  		myForm.setProposals(proposals);
+		 	}
+			else
+			{
+				String message = "Please select atleast one proposal to remove.";
+				request.setAttribute("message",message);
+			}
+			if(request.getParameter("AddNewForRev")!=null)
+			{
+				request.setAttribute("UpdateAddedProgragsForRevise","");
+			}
+		}
+		if(mode != null && mode.equals("Add Programs"))
+		{
+			String staus=request.getParameter("status");
+			System.out.println("Status is "+staus);
+			System.out.println("save added programs");
+			
+			proposals = myForm.getProposals();
+			System.out.println("Size of added programms is "+proposals.size());
+			ProposalDAO proposalDAO = new ProposalDAO(dataSource);
+			boolean status=proposalDAO.saveAddminWorkIdAddedProgs(getDataSource(request),proposals,myForm.getWorkId(),staus);
+			if(status==true)
+			{
+				request.setAttribute("message","Programs Added Successfully");
+			}
+			else
+			{ 
+				
+				request.setAttribute("message","Failed To add");
+			}
+		}
+		if(mode != null && mode.equalsIgnoreCase("Add Rev Programs"))
+		{
+			String staus=request.getParameter("revstaus");
+			System.out.println("Status is "+staus);
+			System.out.println("save added programs in revised table");
+			
+			proposals = myForm.getProposals();
+			System.out.println("Size of added programms is "+proposals.size());
+			ProposalDAO proposalDAO = new ProposalDAO(dataSource);
+			boolean status=proposalDAO.saveRevisedWorkIdAddedProgs(getDataSource(request),proposals,myForm.getWorkId(),staus);
+			if(status==true)
+			{
+				request.setAttribute("message","Revised Programs Added Successfully");
+	 		}
+			else
+			{
+				request.setAttribute("message","Failed To add");
+				 
+			}
+			request.removeAttribute("UpdateAddedProgras");
+			request.setAttribute("UpdateAddedProgragsForRevise","");
+		}
+		
+		if(mode != null && mode.equalsIgnoreCase("AddRevFromViewPrograms"))
+		{
+			String staus=request.getParameter("revstaus");
+			System.out.println("Status is "+staus);
+			System.out.println("save added programs in revised table");
+			
+			proposals = myForm.getProposals();
+			System.out.println("Size of added programms is "+proposals.size());
+			ProposalDAO proposalDAO = new ProposalDAO(dataSource);
+			boolean status=proposalDAO.saveRevisedWorkIdAddedProgsFromView(getDataSource(request),proposals,myForm.getWorkId(),staus);
+			if(status==true)
+			{
+				request.setAttribute("message","Revised Programs Added Successfully");
+				 
+			}
+			else
+			{
+				request.setAttribute("message","Failed To add");
+				 
+			}
+			request.removeAttribute("UpdateAddedProgras");
+			request.removeAttribute("UpdateAddedProgragsForRevise");
+			request.setAttribute("FromViewUpdateRevProgs","");
+		}
+		if(mode != null && mode.equals("UpdatePrograms"))
+		{
+			System.out.println("in update of added programs list");
+		 
+			ProposalDAO proposalDAO = new ProposalDAO(dataSource);
+			proposals=new ArrayList();
+			if(request.getParameter("revisedList")==null)
+			{
+				 proposals=proposalDAO.getAddedProgramsList(getDataSource(request),workId);
+				 
+				
+				if(proposals.size()>0)
+				{
+				myForm.setProposals(proposals);
+				}
+				else
+				{   
+					proposalHolder.setWorkId(workId);
+				    proposalHolder.setWorkName(workName);
+					proposals.add(proposalHolder);
+					myForm.setProposals(proposals);
+			 	}
+				request.setAttribute("UpdateAddedProgras","UpdateAddedProgras");
+			}
+			else
+			{
+				proposals=proposalDAO.getAddedProgramsListForRevised(getDataSource(request),workId);
+				request.removeAttribute("UpdateAddedProgras");
+				request.setAttribute("UpdateAddedProgragsForRevise","");
+				if(proposals.size()>0)
+				{
+				   myForm.setProposals(proposals);
+				}
+				else
+				{
+			 		proposals.add(proposalHolder);
+					myForm.setProposals(proposals);
+				}
+			}
+			
+			if(request.getParameter("AddrevisedProgs")!=null&&request.getParameter("AddrevisedProgs").equalsIgnoreCase("YES"))
+			{
+				request.removeAttribute("UpdateAddedProgras");
+				request.setAttribute("UpdateAddedProgragsForRevise","");
+		 	}
+			 
+		}
+		 if(mode != null && mode.equals("UpdateRevPrograms"))
+		  { 
+		 	System.out.println("in updation of revised programs fromm view");
+		 	ProposalDAO proposalDAO = new ProposalDAO(dataSource);
+		 	proposals=proposalDAO.getAddedProgramsListForRevised(getDataSource(request),workId);
+			request.removeAttribute("UpdateAddedProgras");
+			request.removeAttribute("UpdateAddedProgragsForRevise");
+			request.setAttribute("FromViewUpdateRevProgs","");
+			if(proposals.size()>0)
+			{
+			   myForm.setProposals(proposals);
+			}
+			else
+			{
+		 		proposals.add(proposalHolder);
+				myForm.setProposals(proposals);
+			}
+		  }
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception ::"+e);
+		}
+		return mapping.findForward(target);
+	}
+}

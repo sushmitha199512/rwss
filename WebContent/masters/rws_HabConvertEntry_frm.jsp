@@ -1,0 +1,404 @@
+<%@ include file="/commons/rws_header1.jsp" %>
+<%@ include file="/commons/AdminAuthorization.jsp"%>
+<%@ include file="/commons/rws_generaladmin_header.jsp"%>
+<head>
+<script language="javascript">
+function funcDistrictChanged()
+{
+	document.forms[0].action="/pred/masters/HabConvert.do?mode=exist&mode1=mandals";
+	document.forms[0].submit();	
+}
+function funcDistrictChanged1()
+{
+	document.forms[0].action="/pred/masters/HabConvert.do?mode=new&mode1=mandals";
+	document.forms[0].submit();	
+}
+function selectionChanged(mode)
+{
+	if(document.forms[0].panchayat)
+	{
+		document.forms[0].action="/pred/masters/HabConvert.do?mode=exist&mode1="+mode;
+		document.forms[0].submit();
+	}
+}
+function selectionChanged1(mode)
+{
+	if(document.forms[0].panchayat)
+	{
+		document.forms[0].action="/pred/masters/HabConvert.do?mode=new&mode1="+mode;
+		document.forms[0].submit();
+	}
+}
+function convertHab()
+{
+	if(document.forms[0].district.value != document.forms[0].district1.value)
+	{
+		alert("dist :"+document.forms[0].district.value +" dist 1 :"+document.forms[0].district1.value);
+		//alert("Both Districts Should be Same");
+	}
+	else if(document.forms[0].mandal.value != document.forms[0].mandal1.value)
+	{
+		alert("Both Mandals Should be Same");
+	}
+	else if(document.forms[0].habitation.value == "")
+	{
+		alert("Please Select Existed Habitation");
+	}
+	else if(document.forms[0].habitation1.value == "")
+	{
+		alert("Please Select New Habitation");
+	}
+	else if(document.forms[0].coveredStatus.value=="")
+	{
+		alert("Please Select Coverage Status for New Habitation");
+	}
+	else if(document.forms[0].habitation1.value == document.forms[0].habitation.value)
+	{
+		alert("              Convertion Not Possible \n Old & New Habitations Should Not be Same");
+	}
+	else
+	{
+		var print = "Please Check Both the Habitation Details:\n      Panchayat: "+document.getElementById("panchayat")[document.getElementById("panchayat").selectedIndex].text+"->"+document.getElementById("panchayat1")[document.getElementById("panchayat1").selectedIndex].text;
+		print += "\n      Village: "+document.getElementById("village")[document.getElementById("village").selectedIndex].text+"->"+document.getElementById("village1")[document.getElementById("village1").selectedIndex].text;
+		print += "\n      Habitation: "+document.getElementById("habitation")[document.getElementById("habitation").selectedIndex].text+"->"+document.getElementById("habitation1")[document.getElementById("habitation1").selectedIndex].text;
+		print += "\n      Hab Code: "+document.getElementById("habName").value+"->"+document.getElementById("habName1").value;
+		alert(print);
+		if(confirm("Are You Sure! Press OK to Convert the Habitation - This Operation Can not be Reverted"))
+		{
+			var oldCode = document.forms[0].habitation.value;
+			var newCode = document.forms[0].habitation1.value;
+			var coveredStatus = document.forms[0].coveredStatus.value;
+			var token =  document.forms[0].token.value;
+			var url="/pred/masters/HabConvert.do?mode=convert&oldCode="+oldCode+"&newCode="+newCode+"&coveredStatus="+coveredStatus+"&token="+token;
+			ajaxFunction(url,document.getElementById("mydivid"));
+		}
+	}
+
+}
+ function ajaxFunction(URL,divobj)
+		{ 
+			if (URL.indexOf("?") != -1) { URL = URL + "&date=" + new Date(); } else { URL = URL + "?date=" + new Date(); }
+			var xmlHttp;
+			try{
+				xmlHttp=new XMLHttpRequest();    
+			}
+			catch (e){    
+				try{
+					xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");      
+				}
+				catch (e){
+				  try{
+					  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");        
+				  }
+				  catch (e){
+					  alert("Your browser does not support AJAX!");        
+					  return false;        
+				  }      
+				}    
+			}
+			if (xmlHttp==null)
+			{
+			  alert ("Your browser does not support AJAX!");
+			  return;
+			} 
+			xmlHttp.onreadystatechange=function()
+			{
+			  if(xmlHttp.readyState==4)
+			  {
+				alert(xmlHttp.responseText);
+				document.getElementById('load').style.display='none';
+				document.getElementById('convert').style.display='block';
+				document.getElementById('convertReport').style.display='block';				
+			  }
+			  else{
+				  document.getElementById('convert').style.display='none';
+				  document.getElementById('load').style.display='block';
+				  document.getElementById('convertReport').style.display='none';		
+			  }
+			}
+			xmlHttp.open("GET",URL,true);
+			xmlHttp.send(null);  
+		}
+</script>
+</head>
+<body> 
+<html:form action="HabConvert.do">
+	<% 
+		String csrfToken="";
+		nic.watersoft.commons.ValidationUtils valUtil = new nic.watersoft.commons.ValidationUtils();
+		csrfToken = valUtil.getCSRFCode();
+		session.setAttribute("csrfToken",csrfToken);
+	%>
+	<html:hidden property="token" styleClass="mytext" value="${sessionScope.csrfToken}" />
+<table border = 0 cellspacing = 0 cellpadding = 0 width="50%"  bordercolor=#000000 style="border-collapse:collapse" bgcolor="#ffffff" ALIGN=CENTER>
+<caption>
+		<table  border=0 rules=none style="border-collapse:collapse" align = "RIGHT">			
+			<tr align="right" colspan="30">
+				<!-- 				<td class="bwborder"><a href="../admin/rws_general_admn_loginsuccess.jsp">&nbsp;Back</a></td>	 -->	
+<%if(GeneralUser != null && GeneralSuccess!=null ){ %>
+				<td class="bwborder"><a href="../admin/rws_general_admn_loginsuccess.jsp">&nbsp;Back</a></td>	
+				<%} else { %>		
+				<td class="bwborder"><a href="<rws:context page='/home.jsp'/>">Home&nbsp;</a></td>	
+				
+				<%} %>				
+			</tr>  
+		</table>
+	</caption>
+
+</table>
+<table align="center" cellpadding="0" cellspacing="0" border=0>
+<thead>
+	<tr>
+		<td>
+			<jsp:include page="/commons/TableHeaderWithoutClose.jsp">
+				<jsp:param name="TableName" value="Habitation Convert Form" />
+				<jsp:param name="TWidth" value="100%" />
+				<jsp:param name="contextHelpUrl" value="/pred/help/Hab.doc" />
+			</jsp:include>
+		</td>
+	</tr>
+</thead>
+
+<tfoot>
+<tr>
+<td>
+	<jsp:include page="/commons/TableFotter.jsp">
+		<jsp:param name="TWidth" value="100%"/>
+	</jsp:include>
+</td>
+</tr>
+</tfoot>
+
+<tbody>
+<tr>
+<td>
+
+<table bgcolor="#DEE3E0" bordercolor= "#8A9FCD" rules="cols" border="1" 
+	   style="border-collapse:collapse;" width="920" >
+<tr>
+<td>
+	<fieldset>
+	<legend><bean:message key="legend.rwsOffices"/></legend>
+	<label>
+	<table bgcolor="#DEE3E0" bordercolor= "#8A9FCD" border="1" 
+	   style="border-collapse:collapse;" width="920" >
+	   <tr>
+			<td class="textborder" align="center" width="450">Existing Hab Info(UI Coverage Status Habs)</td>
+			<td class="textborder" align="center" width="20">&nbsp;</td>
+			<td class="textborder" align="center" width="450">New Hab Info(No Coverage Status Habs)</td>
+		</tr>
+	<tr>
+    <td><table  border=0  width="450">
+      <%-- <tr>
+        <td class="textborder">District <span class="mandatory">*</span> </td>
+        <td class="textborder"><html:select property="district" style="width:300px"   onchange="javascript: funcDistrictChanged()"	 styleClass="mycombo">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="districts" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr> --%>
+      <tr>					
+		<logic:equal name="RWS_USER" property="circleOfficeCode" value="00">
+        <td class="textborder">District <span class="mandatory">*</span> </td>
+        <td class="textborder"><html:select property="district" style="width:300px"   onchange="javascript: funcDistrictChanged()"	 styleClass="mycombo">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="districts" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+        </logic:equal>
+        <logic:notEqual name="RWS_USER" property="circleOfficeCode" value="00">
+				<td class="textborder">District<span class="mandatory">*</span></td>
+				<td class="textborder">
+				<html:text property="districtName" styleClass="mytext" style="width:300px"    readonly="true" />				
+				<html:hidden property="district" />
+				</td>
+				</logic:notEqual>	
+      </tr>
+      <tr>
+        <td class="textborder">Mandal <span class="mandatory">*</span> </td>
+        <td><html:select property="mandal" style="width:300px"    styleClass="mycombo" onchange="selectionChanged('panchayats')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="mandals1" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Panchayat <span class="mandatory">*</span> </td>
+        <td><html:select property="panchayat" style="width:300px"    styleClass="mycombo" onchange="selectionChanged('villages')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="panchayats1" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Village <span class="mandatory">*</span> </td>
+        <td><html:select property="village" style="width:300px"    styleClass="mycombo" onchange="selectionChanged('habitations')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="villages1" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Habitation Name <span class="mandatory">*</span> </td>
+        <td><html:select property="habitation" style="width:300px"    styleClass="mycombo" onchange="selectionChanged('habName')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="habitations1" name="labelValueBean" 
+								  property="habCode" labelProperty="panchayatName" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Habitation Code <span class="mandatory">*</span> </td>
+        <td><html:text property="habName" style="width:300px"  readonly="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Coverage Status<span class="mandatory">*</span> </td>
+        <td><input type=text name="oldStatus" style="width:300px" readonly value="UI"/>
+        </td>
+      </tr>
+    </table></td>
+    <td width="20">&nbsp;</td>
+    <td><table  border=0  width="450">
+      <%-- <tr>
+        <td class="textborder">District <span class="mandatory">*</span> </td>
+        <td class="textborder"><html:select property="district1" style="width:300px"   onchange="javascript: funcDistrictChanged1()"	 styleClass="mycombo">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="districts" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr> --%>
+       <tr>					
+		<logic:equal name="RWS_USER" property="circleOfficeCode" value="00">
+        <td class="textborder">District <span class="mandatory">*</span> </td>
+        <td class="textborder"><html:select property="district1" style="width:300px"   onchange="javascript:funcDistrictChanged1()"	 styleClass="mycombo">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="districts" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+        </logic:equal>
+        <logic:notEqual name="RWS_USER" property="circleOfficeCode" value="00">
+				<td class="textborder">District<span class="mandatory">*</span></td>
+				<td class="textborder">
+				<html:text property="districtName" styleClass="mytext" style="width:300px"    readonly="true" />				
+				<html:hidden property="district1"  />
+				</td>
+				</logic:notEqual>	
+      </tr>
+      <tr>
+        <td class="textborder">Mandal <span class="mandatory">*</span> </td>
+        <td><html:select property="mandal1" style="width:300px"    styleClass="mycombo" onchange="selectionChanged1('panchayats')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="mandals2" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Panchayat <span class="mandatory">*</span> </td>
+        <td><html:select property="panchayat1" style="width:300px"    styleClass="mycombo" onchange="selectionChanged1('villages')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="panchayats2" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Village <span class="mandatory">*</span> </td>
+        <td><html:select property="village1" style="width:300px"    styleClass="mycombo" onchange="selectionChanged1('habitations')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="villages2" name="labelValueBean" 
+								  property="value" labelProperty="label" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Habitation Name <span class="mandatory">*</span> </td>
+        <td><html:select property="habitation1" style="width:300px"    styleClass="mycombo" onchange="selectionChanged1('habName')">
+            <html:option value="">
+              <bean:message key="app.pleaseSelect" />
+            </html:option>
+            <html:options collection="habitations2" name="labelValueBean" 
+								  property="habCode" labelProperty="panchayatName" />
+          </html:select>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Habitation Code <span class="mandatory">*</span> </td>
+        <td><html:text property="habName1" style="width:300px"   readonly="true"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="textborder">Coverage Status <span class="mandatory">*</span> </td>
+        <td><html:select property="coveredStatus" style="width:300px"    styleClass="mycombo" onchange="selectionChanged1('habName')">
+            <html:option value="LAST">Last Year</html:option>
+            <html:option value="PC1">PC1</html:option>
+            <html:option value="PC2">PC2</html:option>
+			<html:option value="PC3">PC3</html:option>
+			<html:option value="PC4">PC4</html:option>
+			<html:option value="FC">FC</html:option>
+			<html:option value="NSS">NSS</html:option>
+			<html:option value="NC">NC</html:option>
+          </html:select>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+		</label>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+	<td>
+		<table width="100%">
+			<tr><td class="textborder" align=center>
+				<div id="convert" style="position:relative;overflow-y:auto;left:10;height:20;width:270;top:1;display:block">
+					<input type="button" name="submits" class="btext" value="Copy&nbsp;&nbsp;&gt;&gt;&gt;&gt;" onclick="convertHab()"/>
+				</div>
+				<div id="convertReport" style="position:relative;overflow-y:auto;left:240;height:20;width:270;top:5;display:none">
+					<a href="HabConvertionReport.jsp" target="_new">View Report</a>
+				</div>
+				<div id="load" style="position:relative;overflow-y:auto;left:10;height:20;width:270;top:5;display:none"><img src="../images/loader-3.gif"/></div>				
+			</td></tr>
+		</table>
+	</td>
+	</tr>
+		</table>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</html:form>
+	</body>
+<%@ include file="/commons/rws_alert.jsp"%>		 
+	

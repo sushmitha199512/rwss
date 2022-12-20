@@ -1,0 +1,117 @@
+/* CSS Document */
+
+
+/* Menu */
+
+
+.suckertreemenu ul{
+margin: 0;
+padding:0;
+list-style-type: none;
+}
+
+
+/*Top level list items*/
+.suckertreemenu ul li{
+position: relative;
+display: inline;
+float: left;
+vertical-align:top;
+line-height:20px;
+border:0px solid #fff;
+/*background-color: yellow; /*overall menu background color*/
+}
+
+/*Top level menu link items style*/
+.suckertreemenu ul li a{
+display: block;
+width:100; /*Width of top level menu link items*/
+padding: 1px 12px;
+text-decoration: none;
+color: #fff;/*to modify main menu text color*/
+font-size: 12px;
+font-family: verdana;
+size:15px;
+font-weight:bold;
+text-align:center;
+
+}
+
+.suckertreemenu-ltab{
+width:170px;
+text-align:left;
+}
+
+.suckertreemenu-sep{
+color:#a3bad2
+}
+
+/*1st sub level menu*/
+.suckertreemenu ul li ul{
+left: 0;
+position: absolute;
+display: block;
+visibility: hidden;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.suckertreemenu ul li ul li{
+display: list-item;
+float: none;
+width:110px; /*to modify menu width size*/
+line-height:20px;
+background-color: #3399FF;/*to modify color of the sub menu*/
+border-bottom:1px solid #738589;
+
+}
+
+.suckertreemenu ul li ul li.b{
+display: list-item;
+float: none;
+width:110px; /*to modify menu width size*/
+line-height:20px;
+background-color: #3399FF;/*to modify color of the sub menu*/
+border-bottom:1px solid #738589;
+}
+
+
+.suckertreemenu ul li ul li ul{
+/*left:159px;  no need to change, as true value set by script */
+position: absolute;
+top: 0;
+left: 100%;
+width: 100%;
+border:0px solid #8aa8ca;
+}
+
+/* Sub level menu links style */
+.suckertreemenu ul li ul li a{
+display: block;
+width: 100px; /*width of sub menu levels -- to modify menu width size*/
+color: #fff;/*sub menu text color change*/
+text-decoration: none;
+padding: 0px 5px;
+
+text-align:left;
+/*border: 1px solid #ccc;*/
+}
+
+.suckertreemenu ul li a:hover{
+	color: #FDD191;
+	/*background-position:center center;
+	background-image:url(images/menu_tab_sep.gif);
+	275ca3*/
+	background-color: #3F4C53;/*to modify menu mouse over color*/
+
+}
+
+
+
+* html p#iepara{ /*For a paragraph (if any) that immediately follows suckertree menu, add 1em top spacing between the two in IE*/
+padding-top: 0em;
+}
+
+/* Holly Hack for IE \*/
+* html .suckertreemenu ul li { float: left; height: 0%; }
+* html .suckertreemenu ul li a { height: 0%; }
+/* End */

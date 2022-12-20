@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+<data-sources>
+<data-source type="org.apache.commons.dbcp.BasicDataSource">
+<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<set-property property="url" value="jdbc:oracle:thin:@10.160.0.20:1521:wsoft" />
+<set-property property="username" value="aprwssuser"/>
+<set-property property="password" value="aprwssuser"/>
+<set-property property="maxActive" value="1000" />
+<set-property property="maxWait" value="5000" />
+<!-- 
+<set-property property="maxActive" value="100"/>
+<set-property property="maxWait" value="100"/>
+ -->
+<set-property property="" value=""/>
+</data-source>
+</data-sources>
+
+<form-beans>
+	<form-bean name="UrbanCompForm" type="nic.watersoft.complaints.UrbanCompForm" />
+	<form-bean name="UserAgencyForm" type="nic.watersoft.complaints.UserForm"/>
+	<form-bean name="CompForm" type="nic.watersoft.complaints.CompForm" />
+	<form-bean name="genericActionForm" type="nic.watersoft.complaints.GenericActionForm"/>
+	<!--  added by achuta on 11/4/2017 -->
+	<form-bean name="agencyForm" type="nic.watersoft.complaints.AgencyForm"/>
+	<form-bean name="EmployeeEntryFormNew" type="nic.watersoft.complaints.Ur_Employee_Mobile_Updation_Form" />
+</form-beans>
+
+
+
+<!--***************************************************************************************-->
+ 
+<action-mappings>
+<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+
+<action input="/rws_AgencyEntry_frm.jsp"
+   name="agencyForm" path="/Agency" scope="session"
+   type="nic.watersoft.complaints.rws_AgencyEntryAct_frm" validate="true">
+   <forward name="data" path="/rws_AgencyEntry_frm.jsp"/>
+   <forward name="Save" path="/rws_AgencyEntry_frm.jsp"/>
+   <forward name="View" path="/rws_AgencyEntryList_frm.jsp"/>
+   <forward name="get" path="/rws_EditAgencyEntry_frm.jsp"/>
+   <forward name="edit" path="/Agency.do?mode=View"/>
+   <forward name="delete" path="/Agency.do?mode=View"/>
+  </action>
+  
+ <action path="/UserAgencyAct" name="UserAgencyForm" scope="request"  type="nic.watersoft.complaints.UserAgencyAction"  input="/rws_agency_user_frm.jsp">
+		<forward name="data" path="/rws_agency_user_frm.jsp"/>
+		 <forward name="save" path="/UserAgencyAct.do?mode=data"/> 
+	 <!-- 	<forward name="success" path="/UserAgencyAct.do?mode=data" /> -->
+		<!--  <forward name="view" path="/rws_agency_user_view.jsp"/> 
+		<forward name="failure" path="/UserAgencyAct.do?mode=data"/> -->
+		<forward name="closeWithMessage" path="/rws_agency_user_frm.jsp"/>
+</action>
+
+<action path="/Complaintsgeneric" name="CompForm" 
+		type="nic.watersoft.complaints.Rws_AsstComplaintActgeneric_frm" scope="session" >
+		<forward name="get2" path="/rws_assets_complaints_generic_frm.jsp"/>
+        <forward name="view" path="/rws_assets_complaints_generic_frm.jsp"/>
+	    <forward name="save" path="/rws_assets_complaints_generic_frm.jsp" />
+        <forward name="openNew" path="/rws_generic_print_frm.jsp" />
+	    <forward name="cview" path="/rws_generic_listin_frm.jsp" />
+	    <forward name="cdelete" path="/rws_generic_listin_frm.jsp" />
+        <forward name="get" path="/rws_generic_editin_frm.jsp"/>
+	    <forward name="edit" path="/rws_generic_editin_frm.jsp"/>
+		<forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+		<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+		<forward name="expire" path="/../masters/sessionExpired.jsp" />
+</action>
+
+<action path="/UrbanComplaintsgeneric" name="UrbanCompForm"  type="nic.watersoft.complaints.Rws_AsstUrbanComplaintActgeneric_frm" scope="session" >
+		<forward name="get2" path="/rws_assets_urban_complaints_generic_frm.jsp"/>
+        <forward name="view" path="/rws_assets_urban_complaints_generic_frm.jsp"/>
+	    <forward name="save" path="/rws_assets_urban_complaints_generic_frm.jsp" />
+        <forward name="openNew" path="/rws_urban_generic_print_frm.jsp" />
+	    <forward name="cview" path="/rws_urban_generic_listin_frm.jsp" />
+	    <forward name="cdelete" path="/rws_urban_generic_listin_frm.jsp" />
+        <forward name="get" path="/rws_urban_generic_editin_frm.jsp"/>
+	    <forward name="edit" path="/rws_urban_generic_editin_frm.jsp"/>
+		<forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+</action>
+
+
+
+<action path="/Complaintsoutgeneric" name="CompForm" 
+		type="nic.watersoft.complaints.rws_AsstComplaintActoutgeneric_frm" scope="session" >
+		<forward name="get2" path="/rws_assets_complaints_outgeneric_frm.jsp"/>
+        <forward name="view" path="/rws_assets_complaints_outgeneric_frm.jsp"/>
+	    <forward name="save" path="/rws_assets_complaints_outgeneric_frm.jsp" />
+        <forward name="openNew" path="/rws_outgeneric_print_frm.jsp" />
+	    <forward name="cview" path="/rws_generic_list_frm.jsp" />
+	    <forward name="cdelete" path="/rws_generic_list_frm.jsp" />
+         <forward name="get" path="/rws_generic_edit_frm.jsp"/>
+	    <forward name="edit" path="/rws_generic_edit_frm.jsp"/>
+		<forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+</action>
+
+<action path="/ComplaintNogeneric" name="CompForm" type="nic.watersoft.complaints.rws_ComplaintNoActgeneric_frm" >
+		<forward name="get2" path="/rws_complaintsnogeneric_frm.jsp" />
+		<forward name="cview" path="/rws_complaintsnogeneric_rpt.jsp" />
+		<forward name="get3" path="/rws_complaintno_dmpgeneric_frm.jsp" />
+        <forward name="get4" path="/rws_complaintsnogeneric_frm.jsp" />
+		</action>
+
+
+
+
+ <action name="genericActionForm" path="/GenericActionTaken"
+			scope="session" type="nic.watersoft.complaints.GenericActionTaken_Act">
+			<forward name="get2" path="/rws_generic_actiontaken_rpt.jsp" />
+			<forward name="cmplaintData" path="/rws_generic_actiontaken_rpt.jsp" />
+			<forward name="Save" path="/rws_generic_actiontaken_rpt.jsp"/>
+			<forward name="imageView" path="/rws_Grievance_Image_View.jsp"/>
+			<forward name="unAuthorise" path="/../masters//UnAuthorize.jsp" />
+			<forward name="expire" path="/../masters/sessionExpired.jsp" />
+		</action>
+		
+	<action name="genericActionForm" path="/GenericActionTaken_Urban"  type="nic.watersoft.complaints.GenericActionTaken_Urban">
+		<forward name="get2" path="/urbn_generic_actiontaken_rpt.jsp" />
+		<forward name="cmplaintData" path="/urbn_generic_actiontaken_rpt.jsp" />
+		<forward name="Save" path="/urbn_generic_actiontaken_rpt.jsp"/>
+		<forward name="imageView" path="/rws_Grievance_Image_View.jsp"/>		
+	</action>
+ 	<action path="/ComplaintNogeneric_Urban" name="CompForm" type="nic.watersoft.complaints.urb_ComplaintNoActgeneric_frm" >
+		<forward name="get2" path="/urb_complaintsnogeneric_frm.jsp" />
+		<forward name="cview" path="/urb_complaintsnogeneric_rpt.jsp" />
+		<forward name="get3" path="/urb_complaintno_dmpgeneric_frm.jsp" />		
+        <forward name="get4" path="/urb_complaintsnogeneric_frm.jsp" />
+	</action>
+	<action path="/employeeEntryNew" name="EmployeeEntryFormNew" scope="session" 
+	        type="nic.watersoft.complaints.Ur_Employee_Mobile_Updation_Action" >
+	   <forward name="get" path="/ur_employee_entry_frm.jsp"/>
+	   <forward name="ubdateMobile" path="/ur_employee_entry_frm.jsp"/> 
+	    <forward name="viewMobile" path="/ur_employee_entry_list.jsp"/> 
+</action>
+
+	
+	
+</action-mappings>
+
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources" />
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+</plug-in>
+
+</struts-config>
