@@ -1,0 +1,78 @@
+.SplashScreen{
+    background-color: #f2e7e7;
+    font: icon;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #009999;
+    border-bottom-color: #009999;
+    border-left-color: #009999;
+    border-right-color: #009999;
+    background-position: center center;
+    visibility: visible;
+    z-index: 10;
+    position: absolute;
+    top: 150px;
+    width:80%;
+    height:80%;
+    left:200px;
+}
+div#tbl-container {
+width: 990px;
+height: 430px;
+overflow: scroll;
+}
+
+div#tbl-container table th {
+width: 100px;
+}
+
+
+
+thead th, thead th.locked {
+font-size: 14px;
+font-weight: bold;
+text-align: center;
+background-color: #C1D8B1;
+color: black;
+border-right: 1px solid #C1D8B1;
+position:relative;
+cursor: default;
+}
+
+thead th {
+top: expression(document.getElementById("tbl-container").scrollTop-2); /* IE5+ only */
+z-index: 20;
+}
+
+
+td.locked, th.locked{
+background-color: #ffeaff;
+font-weight: bold;
+border-right: 1px solid silver;
+left: expression(document.getElementById("tbl-container").scrollLeft); /* IE5+ only */
+position: relative;
+z-index: 10;
+}
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.style4 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+.style6 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; }
+.style7 {
+	font-size: 12px;
+	font-family: verdana;
+}

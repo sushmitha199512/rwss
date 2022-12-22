@@ -1,0 +1,762 @@
+ <%@ page import="nic.watersoft.proposals.workProposals" %>
+<%@ include file="/commons/rws_header1.jsp" %>
+<%@ include file="/commons/rws_header2.jsp" %>
+
+<html>
+<head>
+<script language="JavaScript" src="./resources/calendar.js"></script>
+<script language="JavaScript">
+var newWindow;
+function getFormSprad()
+{
+document.monitoringForm.revflag.value="1";
+document.monitoringForm.submit();
+}
+function fngetForm(elem)
+{
+ document.monitoringForm.revflag.value="";
+var index = elem.name.substr(5,1);
+document.monitoringForm.action ="/pred/worksMonitoring/workStatus.do?index="+index;
+document.monitoringForm.submit();
+}
+function getForm()
+{
+	
+
+document.monitoringForm.submit();
+
+}
+function getWorkExpForm()
+{
+document.forms[0].action="./workStatus.do?workStage=Wexp&mode=data";
+document.monitoringForm.submit();
+}
+function saveProgramschedule()
+{
+	
+document.monitoringForm.revflag.value="saveWip";
+document.monitoringForm.submit();
+
+}
+function getSubDivisions()
+	{
+		document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+		document.monitoringForm.submit();
+	}
+	function getDivisions()
+	{
+		document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+		document.monitoringForm.submit();
+
+	}
+	function winClose()
+{
+	location.href="/pred/home.jsp";
+}
+function main()
+{
+	window.location="main.jsp";
+}
+function getSubProgramme()
+{
+	//alert("aaaa");
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+	
+}
+function fnWorks()
+{
+	document.monitoringForm.submit();
+	}
+	function insert()
+{
+    alert("Record Successfully Inserted");
+	document.monitoringForm.flag.value="1";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+}
+function revinsert()
+{
+	alert("Record Successfully Inserted");
+	document.monitoringForm.revflag.value="2";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+	}
+	function revupdate()
+	{
+		alert("Record Successfully Updated");
+	document.monitoringForm.revflag.value="2";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+   }
+   function revfndelete()
+   {
+   alert("Record Successfully Deleted");
+	document.monitoringForm.revdel.value="revdel";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+	}
+	function sinsert(elem)
+{
+	var index = elem.name.substr(5,1);
+	var sindex = "sindex";
+
+	alert("Record Successfully Inserted");
+	document.monitoringForm.revflag.value="3";
+	document.monitoringForm.action ="/pred/worksMonitoring/workStatus.do?sindex="+sindex;
+	document.monitoringForm.submit();
+	}
+	function supdate(index)
+	{
+	
+	var sindex = "sindex";
+		alert("Record Successfully Updated");
+		
+	document.monitoringForm.revflag.value="3";
+	document.monitoringForm.action ="/pred/worksMonitoring/workStatus.do?sindex="+sindex;
+	document.monitoringForm.submit();
+   }
+   function sfndelete()
+   {
+   alert("Record Successfully Deleted");
+	document.monitoringForm.revdel.value="srevdel";
+	document.monitoringForm.action="workStatus.do";
+	document.monitoringForm.submit();
+	}
+function update()
+{
+	alert("Record Successfully Updated");
+	document.monitoringForm.flag.value="1";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+}
+function fndelete()
+{
+	alert("Record Successfully Deleted");
+	document.monitoringForm.del.value="del";
+	document.monitoringForm.action="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+	}
+function fnPickHabitations()
+{
+	
+	//var hoc = document.getElementById("headOfficeCode").value;
+	var coc = document.getElementById("cmbCircle").value;
+	var doc = document.getElementById("cmbDivision").value;
+	//var soc = document.getElementById("cmbSubDivision").value;
+	var soc = "00";
+	//alert(coc);
+	//alert(doc);
+	//alert(soc);
+	if(coc == '')
+		alert("Please select circle, division and subdivision.");
+	else
+	if(doc == '')
+		alert("Please select division and subdivision.");
+	else
+	if(soc == '')
+		alert("Please select subdivision.");		
+	else
+	{			
+		//var proposalId = document.getElementById("WORK["+index+"].proposalId").value;
+		var width = 648;
+		var height = 332;
+		var left = parseInt((screen.availWidth/2)-(width/2));
+		var top = parseInt((screen.availHeight/2)-(height/2));
+	
+		var url = "switch.do?prefix=/worksMonitoring&page=/PickHabitation.do&mode=pickhab"
+				+ "&coc="+coc+"&doc="+doc+"&soc="+soc;
+				
+	    var properties = "width="+width+",height="+height+",screenX="+left+",screenY="+top+",toolbar=no,"
+					   + "status=no,menubar=no,location=no,directories=no,scrollbars=yes,copyhistory=no,"
+					   + "resizable=yes";
+		//if( !newWindow || newWindow.closed)
+		//{
+			newWindow = window.open(url,"", properties);
+		//}
+		//else
+		//{
+			newWindow.focus();
+		//}
+	}
+}
+function revfnPickHabitations()
+{
+	
+	//var hoc = document.getElementById("headOfficeCode").value;
+	var coc = document.getElementById("cmbCircle").value;
+	var doc = document.getElementById("cmbDivision").value;
+	//var soc = document.getElementById("cmbSubDivision").value;
+	var soc = "00";
+	if(coc == '')
+		alert("Please select circle, division and subdivision.");
+	else
+	if(doc == '')
+		alert("Please select division and subdivision.");
+	else
+	if(soc == '')
+		alert("Please select subdivision.");		
+	else
+	{			
+		//var proposalId = document.getElementById("WORK["+index+"].proposalId").value;
+		var width = 648;
+		var height = 332;
+		var left = parseInt((screen.availWidth/2)-(width/2));
+		var top = parseInt((screen.availHeight/2)-(height/2));
+	
+		var url = "switch.do?prefix=/worksMonitoring&page=/RevPickHabitation.do&mode=pickhab"
+				+ "&coc="+coc+"&doc="+doc+"&soc="+soc;
+				
+	    var properties = "width="+width+",height="+height+",screenX="+left+",screenY="+top+",toolbar=no,"
+					   + "status=no,menubar=no,location=no,directories=no,scrollbars=yes,copyhistory=no,"
+					   + "resizable=yes";
+		//if( !newWindow || newWindow.closed)
+		//{
+			newWindow = window.open(url, "", properties);
+		//}
+		//else
+		//{
+			newWindow.focus();
+		//}
+	}
+	
+}
+function addNew()
+{
+	document.monitoringForm.revflag.value="4";
+	document.monitoringForm.action ="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+}
+function remove()
+{
+   var ele=confirm("do u want to remove ");
+   if(ele)
+   {
+	document.monitoringForm.revflag.value="remove";
+	document.monitoringForm.action ="/pred/worksMonitoring/workStatus.do";
+	document.monitoringForm.submit();
+	}else
+	{
+	return;
+	}
+}
+</script>
+</head>
+<body>
+<html:form action="/workStatus"  >
+<center>
+<!-- <span class = "mainHeading">WATERSOFT</span><br>
+<span class = "mainHeading">Panchayat Raj & Engineering Department, Rural Water Supply Sector</span> <br>
+<span class = "mainHeading">Government of Andhra Pradesh</span> -->
+
+
+</center>
+	
+<center>
+
+	<table cellpadding="0" cellspacing="0" align="center"  >
+		<tr height="95%">
+			<td>
+	<table cellpadding="0" cellspacing="0" width="750" align="center" >
+		<tr>
+			<td>
+	
+	 
+	<TABLE CELLPADDING="0" CELLSPACING="0"   style="border-collapse:collapse"  bordercolor= "#8A9FCD">
+   <TR>
+      <TD WIDTH="20" bordercolor=white><IMG SRC="/pred/resources/images/r_t_left1.gif" ALT=""></TD>
+	  <TD  bgcolor="#8A9FCD" width=900>
+	  <table border=0 style="border-collapse:collapse" cellpadding=0 cellspacing=0 width="100%">
+	  <tr><td >
+	  <font color="#000000" face=verdana size=2><B><center>Work Status Form</center></B><font></td>
+	    <td align=right><IMG SRC="/pred/resources/images/icon_help.gif" WIDTH="12" HEIGHT="12" >&nbsp;
+		<IMG SRC="/pred/resources/images/cloapp.gif" WIDTH="12" HEIGHT="12" onclick="winClose()" style="cursor:hand" alt="Close">
+		</tr></table>
+		</td>
+	  <TD WIDTH="20" bordercolor=white><IMG SRC="/pred/resources/images/r_t_right1.gif" ALT=""></TD>
+</TABLE>
+<table width="100%" bgcolor="#DEE3E0" cellpadding="2" cellspacing="2" border="1" bordercolor="#364d67" rules="none" style="border-collapse:collapse">
+	<tr>
+	<td>
+<fieldset>
+<legend><font color=#871D0E face=verdana size=2><b>RWS Offices</b></font></legend>
+<label>
+	<table>
+	<tbody class="formTBody">
+		<tr>
+			
+		<logic:present name="circles">
+		<td width="160"><bean:message key="app.circle" />
+		
+		<td width="160"><html:select property="cmbCircle" style="width:183px" styleClass="comboFont" onchange="getDivisions()">
+			<html:option value="">SELECT</html:option>
+			<html:options collection="circles"  property="code" labelProperty="name" />
+			</html:select>
+			<%System.out.println("aaaa");%>
+		</td>
+		</logic:present>
+		<logic:notPresent name="circles">
+		<td width="160"><bean:message key="app.circle" />
+		
+		<td width="160"><html:select property="cmbCircle" style="width:183px" styleClass="comboFont" >
+			<html:option value="">SELECT</html:option>
+			</html:select>
+		</td>
+		</logic:notPresent>
+		<logic:present name="divisions">
+		<td ><bean:message key="app.division" />
+		
+		<td><html:select property="cmbDivision" style="width:183px" styleClass="comboFont" onchange="getSubDivisions()">
+			<html:option value="">SELECT</html:option>
+			<html:options collection="divisions" name="division" property="code" labelProperty="name" />
+			</html:select>
+		</td>
+		</logic:present>
+
+		<logic:notPresent name="divisions">
+		<td class=label><bean:message key="app.division" />
+		
+		<td><html:select property="cmbDivision" style="width:183px" styleClass="comboFont" >
+	 		</html:select>
+		</td>
+		</logic:notPresent>
+	</tr>
+	 
+	
+	<tr>
+		<logic:present name="programmes">
+		<td ><bean:message key="app.programme" />
+		
+		<td ><html:select property="cmbProgramme" style="width:183px" styleClass="comboFont" onchange="getSubProgramme()">
+			<html:option value="">SELECT</html:option>
+			<html:options collection="programmes" name="programme" property="code" labelProperty="name" />
+		 	</html:select>
+			<%System.out.println("aaa");%>
+		</td>
+		</logic:present>
+		<logic:notPresent name="programmes">
+		<td width="160"><bean:message key="app.programme" />
+		
+		<td width="160"><html:select property="cmbProgramme" style="width:183px" styleClass="comboFont" >
+			
+			</html:select>
+		</td>
+		</logic:notPresent>
+	 <logic:present name="subprogrammes">
+		<td width="160"><bean:message key="app.subprogramme" />
+		
+		<td width="160"><html:select property="cmbSubprogramme" style="width:183px" styleClass="comboFont" onchange="fnWorks()">
+			<html:option value="">SELECT</html:option>
+			<html:options collection="subprogrammes" name="subprogramme" property="code" labelProperty="name" />
+			</html:select>
+			<%System.out.println("aaaa");%>
+		</td>
+		</logic:present>
+		<logic:notPresent name="subprogrammes">
+		<td width="160"><bean:message key="app.subprogramme" />
+		
+		<td width="160"><html:select property="cmbSubprogramme" style="width:183px" styleClass="comboFont" >
+			
+			</html:select>
+		</td>
+		</logic:notPresent>
+	</tr> 
+	<tr>
+		
+		<td width="200"><bean:message key="app.ascheme" />
+		
+		<td ><html:select property="cmbAssetType" style="width:183px" styleClass="comboFont" onchange="getForm()">
+		<html:option value="">SELECT</html:option>
+		<html:options collection="assetType" name="typeofAsset" property="assetcode" labelProperty="assetname" />
+	 	</html:select>
+		</td>
+	</tr>
+	 <tr>
+		<logic:present name="works">
+		 <td ><bean:message key="app.work" /> </td>
+		
+		<td ><html:select property="cmbWorks" style="width:300px" styleClass="comboFont" onchange="fnWorks()">
+		 	<html:option value="">SELECT</html:option>
+			<html:options collection="works" name="work" property="workid" labelProperty="workname" />
+			</html:select>
+			
+		</td>
+		</logic:present>
+		<logic:notPresent name="works">
+		 <td width="160"><bean:message key="app.work" /></td>
+	 	 <td width="160"><html:select property="cmbWorks" style="width:300px" styleClass="comboFont" >
+	    </html:select>
+		</td>
+		</logic:notPresent>
+	</tr>
+		</tbody>
+		</table>
+		</label>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+	<td>
+<fieldset>
+<legend><font color=#871D0E face=verdana size=2><b>Work Stages</b></font></legend>
+<label>
+	<table>
+	<tbody class="formTBody">
+	
+	<%
+	String s=request.getParameter("radgroup");
+	if (s==null)
+	s="";
+	if (s=="")
+	{
+	%>
+		
+	<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()">
+		<option value="adSan" checked></option></td>
+		
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()">
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()"> 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+		<%}
+		if (s.equals("adSan"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" checked="true">
+		<!-- <option value="adSan" selected></option></td> -->
+			
+				<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()">
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+		<%}%>
+		<%
+				if (s.equals("techsan"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+			<%
+				if (s.equals("sitePrep"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+			<%
+				if (s.equals("contMgnt"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+		
+			<%
+				if (s.equals("wip"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+			<%
+				if (s.equals("workComp"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+			<%
+				if (s.equals("amStone"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp  class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()" checked="true">
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+			
+		<%
+				if (s.equals("Wexp"))
+		{
+			%>
+			<tr>
+		<td width="50"><input type="radio" name=radgroup  value=adSan class="comboFont" onClick="getForm()" >
+		<!-- <option value="adSan" selected></option></td> -->
+		<td width="160"><font face=verdana size=2><b>Admin Sanction</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=techsan class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Technical Sanction</b></td>
+			<td width="50"><input type="radio" name=radgroup value=sitePrep class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Source Identification</b></td>
+		</tr>
+	<tr>
+		<td width="50"><input type="radio" name=radgroup value=contMgnt class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Contractor Management</b></td>
+		<!-- <td width="50"><input type="radio" name=radgroup value=workGnd class="comboFont" onclick="getForm()" >
+		 <td width="160"><font face=verdana size=2><b>Work Grounded</b></td> -->
+		<td width="50"><input type="radio" name=radgroup  value=wip class="comboFont" onclick="getForm()" > 
+		<td width="160"><font face=verdana size=2><b>Program Schedule</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=Wexp checked="true" class="comboFont" onclick="getWorkExpForm()"> 
+		<td width="160"><font face=verdana size=2><b>Work Expenditure</b></td>
+		</tr>
+		<tr>
+		<td width="50"><input type="radio" name=radgroup  value=workComp class="comboFont" onclick="getForm()" >
+		<td width="160"><font face=verdana size=2><b>Work Completion</b></td>
+		<td width="50"><input type="radio" name=radgroup  value=amStone class="comboFont" onclick="getForm()"  >
+		<td width="160"><font face=verdana size=2><b>All Stages</b></td>
+		
+		</tr>
+			<%}%>	
+		</tbody>
+		</table>
+		</label>
+		</fieldset>
+		</td>
+		</tr>
+			<%
+		
+		System.out.println("sssssssssss"+s);
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("adSan"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_Admin_Form.jsp" %>
+		<%}%>
+		<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("techsan"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_Tech_Form.jsp" %>
+				<%} %>
+		
+		<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("sitePrep"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_Source_Form.jsp" %>
+		<%}%>
+		 
+		<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("contMgnt"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_ContMgnt_Form.jsp" %>
+				<%}%>
+	 	<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("wip"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_WIP_Form.jsp" %>
+				<%}%>
+		<%if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("Wexp"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_Work_Exp_Form.jsp" %>
+				<%}%>
+		<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("workComp"))
+		{
+		%>
+				<%@ include file="/worksMonitoring/Work_Status_WorkComp_Form.jsp" %>
+		<%}%>
+	 	<%
+		if (request.getParameter("radgroup")!=null && request.getParameter("radgroup").equals("amStone"))
+		{
+		%>
+		<%@ include file="/worksMonitoring/Work_Status_All_Form.jsp" %>
+	    <%}%>
+	<TABLE CELLPADDING="0" CELLSPACING="0"   style="border-collapse:collapse" >
+    <TR>
+      <TD WIDTH="20" bordercolor=white><IMG SRC="/pred/resources/images/r_b_left1.gif" ALT=""></TD>
+	  <TD  bgcolor="#8A9FCD" width=900>
+	  <TD WIDTH="20" bordercolor=white><IMG SRC="/pred/resources/images/r_b_right1.gif" ALT=""></TD>
+</TABLE>
+</center>	
+<br><br>
+<center>				
+		<FONT   color="#000099"  face=verdena size=2><font color="#000099" ><b>Designed and Developed by National Informatics Centre, AP State Center</FONT></td>	
+ </center>
+  </body>
+  </html:form>
+ <%@ include file="/commons/rws_alert.jsp"%>

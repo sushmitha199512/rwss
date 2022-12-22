@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+				 "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.2</jspversion>
+	<shortname>rws</shortname>
+	<uri>WEB-INF</uri>
+	<info>A simple tag that prints the current context</info>
+	<tag>
+	     <name>context</name>
+	     <tagclass>nic.watersoft.tags.ContextTag</tagclass>
+	     <bodycontent>empty</bodycontent>
+	     <info>Print context</info>
+	     <attribute>
+		<name>page</name>
+		<required>false</required>
+	     </attribute>
+	</tag>
+	<tag>
+	     <name>expenditure</name>
+	     <tagclass>nic.watersoft.tags.ExpenditureTag</tagclass>
+		 <bodycontent>true</bodycontent>
+	     <info>Workid</info>
+	     <attribute>
+		<name>workid</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	     </attribute>
+	</tag>
+	<tag>
+	     <name>alert</name>
+	     <tagclass>nic.watersoft.tags.AlertTag</tagclass>
+	     <bodycontent>empty</bodycontent>
+	     <info>Print JavaScript alert message</info>
+	     <attribute>
+		<name>property</name>
+		<required>false</required>
+	     </attribute>
+	     <attribute>
+		<name>scope</name>
+		<required>false</required>
+	     </attribute>
+	</tag>
+</taglib>

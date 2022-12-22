@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources>
+		<data-source type="org.apache.commons.dbcp.BasicDataSource">
+			<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+			<set-property property="url"
+				value="jdbc:oracle:thin:@10.160.0.20:1521:wsoft" />
+			<set-property property="username" value="aprwssuser" />
+			<set-property property="password" value="aprwssuser" />
+			<set-property property="maxActive" value="1000" />
+			<set-property property="maxWait" value="5000" />
+			<!-- <set-property property="maxActive" value="100"/> <set-property property="maxWait" 
+				value="100"/> -->
+			<set-property property="" value="" />
+		</data-source>
+	</data-sources>
+
+	<form-beans>
+		<form-bean name="schemeForm" type="nic.watersoft.masters.ConverstionOfSchemeForm" />
+		<form-bean name="repForm" type="nic.watersoft.masters.PublicRepForm" />
+		<form-bean name="districtForm" type="nic.watersoft.masters.DistrictForm" />
+		<form-bean name="headForm" type="nic.watersoft.masters.HeadForm" />
+		<form-bean name="officeForm" type="nic.watersoft.masters.OfficeForm" />
+		<form-bean name="circleOfficeForm" type="nic.watersoft.masters.CircleForm" />
+		<form-bean name="divisionOfficeForm" type="nic.watersoft.masters.DivisionForm" />
+		<form-bean name="subdivisionOfficeForm" type="nic.watersoft.masters.SubDivisionForm" />
+		<form-bean name="mandalSubdivisionForm"
+			type="nic.watersoft.masters.MandalSubDivisionForm" />
+		<form-bean name="sectionOfficeForm" type="nic.watersoft.masters.SectionForm" />
+		<form-bean name="sourceForm" type="nic.watersoft.masters.SourceForm" />
+		<form-bean name="sourceTypeForm" type="nic.watersoft.masters.SourceTypeForm" />
+		<form-bean name="subSourceTypeForm" type="nic.watersoft.masters.SubSourceTypeForm" />
+		<form-bean name="assetTypeForm" type="nic.watersoft.masters.AssetTypeForm" />
+		<form-bean name="assetCompTypeForm" type="nic.watersoft.masters.AssetCompTypeForm" />
+		<form-bean name="assetSubCompTypeForm" type="nic.watersoft.masters.AssetSubCompTypeForm" />
+		<form-bean name="assetSubCompParamForm"
+			type="nic.watersoft.masters.AssetSubCompParamForm" />
+		<form-bean name="assetForm" type="nic.watersoft.masters.AssetForm" />
+		<form-bean name="contamForm" type="nic.watersoft.masters.ContamForm" />
+		<form-bean name="storeForm" type="nic.watersoft.masters.StoreForm" />
+		<form-bean name="supplierForm" type="nic.watersoft.masters.SupplierForm" />
+		<form-bean name="instituteForm" type="nic.watersoft.masters.InstituteForm" />
+		<form-bean name="panchayatForm" type="nic.watersoft.masters.PanchRajForm" />
+		<form-bean name="habStatusForm" type="nic.watersoft.masters.HabStatusForm" />
+		<form-bean name="loginForm" type="nic.watersoft.masters.LoginForm" />
+		<form-bean name="majorHeadForm" type="nic.watersoft.masters.MajorHeadForm" />
+		<form-bean name="submajorHeadForm" type="nic.watersoft.masters.SubMajorHeadForm" />
+		<form-bean name="minorHeadForm" type="nic.watersoft.masters.MinorHeadForm" />
+		<form-bean name="grpSubHeadForm" type="nic.watersoft.masters.GroupSubHeadForm" />
+		<form-bean name="subHeadForm" type="nic.watersoft.masters.SubHeadForm" />
+		<form-bean name="detailHeadForm" type="nic.watersoft.masters.DetailHeadForm" />
+		<form-bean name="subDetailHeadForm" type="nic.watersoft.masters.SubDetailHeadForm" />
+		<form-bean name="paoForm1" type="nic.watersoft.masters.PaoForm" />
+		<form-bean name="programmeForm" type="nic.watersoft.masters.ProgrammeForm" />
+		<form-bean name="subprogrammeForm" type="nic.watersoft.masters.SubProgrammeForm" />
+		<form-bean name="contractorForm" type="nic.watersoft.masters.ContractorForm" />
+		<form-bean name="wqTestForm" type="nic.watersoft.masters.WaterTestForm" />
+		<form-bean name="wqPTestForm" type="nic.watersoft.masters.WaterParameterTestForm" />
+		<form-bean name="wqLabForm" type="nic.watersoft.masters.WQLabForm" />
+		<form-bean name="itemForm" type="nic.watersoft.masters.ItemForm" />
+		<form-bean name="priorityForm" type="nic.watersoft.masters.PriorityForm" />
+
+		<form-bean name="workSpecialForm" type="nic.watersoft.masters.WorkSpecialForm" />
+		<form-bean name="desgnForm" type="nic.watersoft.masters.DesgnForm" />
+		<form-bean name="qualForm" type="nic.watersoft.masters.QualForm" />
+		<form-bean name="empForm" type="nic.watersoft.masters.EmpForm" />
+		<form-bean name="empdesgnForm" type="nic.watersoft.masters.EmpDesgnForm" />
+		<form-bean name="empworkForm" type="nic.watersoft.masters.EmpWorkForm" />
+
+		<form-bean name="empSearchForm" type="nic.watersoft.masters.EmpSearchForm" />
+
+		<form-bean name="hofficeForm" type="nic.watersoft.masters.HofficeForm" />
+		<form-bean name="tslimitForm" type="nic.watersoft.masters.TslimitForm" />
+		<form-bean name="userAuditForm" type="nic.watersoft.masters.UserAuditForm" />
+		<form-bean name="schoolForm" type="nic.watersoft.masters.SchoolForm" />
+		<form-bean name="schoolFormReport" type="nic.watersoft.masters.SchoolForm" />
+		<form-bean name="workcategoryForm" type="nic.watersoft.masters.rws_work_categoryForms" />
+		<!--added by swapna -->
+		<form-bean name="bankForm" type="nic.watersoft.masters.BankForm" />
+		<!-- added by swapna on 26-08-2011 for mandal subdivision conversion -->
+		<form-bean name="mandalSubdivisionConForm"
+			type="nic.watersoft.masters.MandalSubDivisionConForm" />
+		<form-bean name="milestoneForm" type="nic.watersoft.masters.RwsMileStoneForm" />
+		<form-bean name="milestoneStageForm"
+			type="nic.watersoft.masters.RwsMileStoneStageForm" />
+		<form-bean name="reasonsForm"
+			type="nic.watersoft.masters.Rws_Reason_forDelay_Entry_Form" />
+		<form-bean name="ddwsPhyCompForm"
+			type="nic.watersoft.masters.Rws_Ddws_Phy_Comp_Form" />
+		<form-bean name="constituencyMasterForm"
+			type="nic.watersoft.masters.ConstituencyMasterForm" />
+
+		<form-bean name="dscRegToken" type="nic.watersoft.masters.DSCRegToken" />
+		<form-bean name="DirectBillsForm"
+			type="nic.watersoft.masters.Rws_Direct_Bills_Form"></form-bean>
+		<form-bean name="employeeMasterForm" type="nic.watersoft.masters.EmployeeMasterForm" />
+		<form-bean name="HabNewEntry"
+			type="nic.watersoft.masters.HabitationNewEntry_Form"></form-bean>
+		<form-bean name="targetHabWorkForm" type="nic.watersoft.masters.TargetHabWorkForm" />
+
+		<form-bean name="SarpanchForm"
+			type="nic.watersoft.masters.rws_panchayat_sarpanch_form" />
+
+		<form-bean name="AssetChangeForm"
+			type="nic.watersoft.masters.rws_asset_change_division_subdivision_form" />
+
+		<form-bean name="reconvertionForm" type="nic.watersoft.masters.ReconvertionForm" />
+		<form-bean name="assetReconvertionForm"
+			type="nic.watersoft.masters.AssetReconvertionForm" />
+		<form-bean name="HabSafeSuplyForm"
+			type="nic.watersoft.masters.Rws_Habitation_Safe_Suplly_Form" />
+		<form-bean name="IFSCEntryForm" type="nic.watersoft.masters.Rws_IFSCCode_Form" />
+		<form-bean name="OTPForm" type="nic.watersoft.masters.Rws_OTP_ENC_Form" />
+		<form-bean name="FunctionalRepair"
+			type="nic.watersoft.masters.rws_functional_repair_frm" />
+		<form-bean name="imisProgrammeForm"
+			type="nic.watersoft.masters.Rws_Imis_Programme_Entry_Form" />
+			
+	   <form-bean name="qcagencyForm" type="nic.watersoft.masters.QCAgencyForm" />
+			
+	</form-beans>
+
+	<!--*************************************************************************************** -->
+
+	<action-mappings>
+		<action path="/switch" type="org.apache.struts.actions.SwitchAction" />
+		<action path="/otp" name="OTPForm" scope="session"
+			type="nic.watersoft.masters.Rws_OTP_ENC_Action">
+			<forward name="data" path="/rws_otp_bank_enc_frm.jsp" />
+			<forward name="get" path="/rws_contractor_sel_payment.jsp" />
+		</action>
+		<action path="/IFSCEntry" name="IFSCEntryForm" scope="session"
+			type="nic.watersoft.masters.Rws_IFSCCodeEntry_Action">
+			<forward name="data" path="/rws_ifsc_code_entry_frm.jsp" />
+			<forward name="save" path="/rws_ifsc_code_entry_frm.jsp" />
+			<forward name="View" path="/rws_ifsc_code_list.jsp" />
+			<forward name="get" path="/rws_ifsc_code_edit_frm.jsp" />
+			<forward name="Update" path="/IFSCEntry.do?mode=View" />
+			<forward name="delete" path="/IFSCEntry.do?mode=View" />
+			<forward name="ViewReport" path="/rws_ifsc_code_Report.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action path="/qcagency" name="qcagencyForm" scope="request" type="nic.watersoft.masters.rws_qcagency_entry_frm" 
+input="/rws_qc_agency_entry_frm.jsp">
+			<forward name="QcAgencyEntryFrm" path="/rws_qc_agency_entry_frm.jsp" />
+			<forward name="save" path="/rws_qc_agency_entry_frm.jsp" />
+			<forward name="view" path="/rws_QCAgenciesList.jsp" />
+			<forward name="QCAgencyEdit" path="/rws_qc_agency_entry_frm.jsp" />
+			<forward name="excelView" path="/rws_QCAgencyListExcel.jsp"/>
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/habSafeSuply" name="HabSafeSuplyForm" scope="session"
+			type="nic.watersoft.masters.Rws_Habitation_Safe_Suplly_Action">
+			<forward name="habSafeSuplyEntry" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="mandals" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="panchayats" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="villages" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="habitations" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="view" path="/Rws_Habitation_Safe_Suplly_Entry_Frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/AssetChange" input="/rws_assets_convert_division_subdivision.jsp"
+			name="AssetChangeForm" scope="session"
+			type="nic.watersoft.masters.rws_Asset_Change_Action" validate="false">
+			<forward name="init" path="/rws_assets_convert_division_subdivision.jsp" />
+			<forward name="getData"
+				path="/rws_assets_convert_division_subdivision_view.jsp" />
+			<forward name="edit"
+				path="/rws_assets_convert_division_subdivision_edit.jsp" />
+			<forward name="close" path="/close.jsp" />
+		</action>
+
+		<action path="/reconvertion" name="reconvertionForm" scope="request"
+			type="nic.watersoft.masters.Reconvertion">
+			<forward name="success" path="/rws_HabConvert_Reconvert_frm.jsp" />
+			<forward name="showMsg" path="/showMessageThenClose.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/sarpanch" name="SarpanchForm" scope="session"
+			type="nic.watersoft.masters.rws_panchayat_sarpanch_action">
+
+			<forward name="sarpanchEntryFrm" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="get" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="view" path="/rws_SarpanchList.jsp" />
+			<forward name="excelView" path="/rws_SarpanchListExcel.jsp" />
+			<forward name="sarpanchEdit" path="/rws_sarpanch_edit_frm.jsp" />
+			<forward name="save" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="update" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_sarpanch_entry_frm.jsp" />
+			<forward name="delete" path="/rws_sarpanchList.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<!-- added on 18112014 for ceo entry form -->
+		<action path="/ceo" name="SarpanchForm" scope="session"
+			type="nic.watersoft.masters.rws_ceo_action">
+
+			<forward name="ceoEntryFrm" path="/rws_ceo_entry_frm.jsp" />
+			<forward name="get" path="/rws_ceo_entry_frm.jsp" />
+			<forward name="view" path="/rws_ceoList.jsp" />
+			<forward name="ceoEdit" path="/rws_ceo_edit_frm.jsp" />
+			<forward name="save" path="/rws_ceo_entry_frm.jsp" />
+			<forward name="update" path="/rws_ceo_entry_frm.jsp" />
+
+			<forward name="saveNew" path="/rws_ceo_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<!-- end -->
+		<!-- Urban Head Offices -->
+
+		<!--<action path="/UrDivision" name="divisionOfficeForm" type="nic.watersoft.masters.ur_DivisionEntryAct_frm" 
+			validate="true" input="/rws_DivisionEntry_frm.jsp" scope="request" > -->
+		<action path="/UrDivision" name="divisionOfficeForm"
+			type="nic.watersoft.masters.ur_DivisionEntryAct_frm" validate="true"
+			input="/ur_DivisionEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/ur_DivisionEntry_frm.jsp" />
+			<forward name="View" path="/ur_DivisionEntryList_frm.jsp" />
+			<forward name="get" path="/ur_EditDivisionEntry_frm.jsp" />
+			<forward name="edit" path="/UrDivision.do?mode=View" />
+			<forward name="delete" path="/UrDivision.do?mode=View" />
+			<forward name="data" path="/ur_DivisionEntry_frm.jsp" />
+		</action>
+		<action path="/DivisionData" name="divisionOfficeForm"
+			type="nic.watersoft.masters.HabActionData" scope="session">
+			<forward name="success" path="/ur_DivisionEntry_frm.jsp" />
+		</action>
+		<action path="/UrCircle" name="circleOfficeForm"
+			type="nic.watersoft.masters.ur_CircleEntryAct_frm" validate="true"
+			input="/ur_CircleEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/ur_CircleEntry_frm.jsp" />
+			<forward name="View" path="/ur_CircleEntryList_frm.jsp" />
+			<forward name="get" path="/ur_EditCircleEntry_frm.jsp" />
+			<forward name="edit" path="/UrCircle.do?mode=View" />
+			<forward name="delete" path="/UrCircle.do?mode=View" />
+			<forward name="data" path="/ur_CircleEntry_frm.jsp" />
+		</action>
+		<action path="/UrSubDivision" name="subdivisionOfficeForm"
+			type="nic.watersoft.masters.ur_SubDivisionEntryAct_frm" validate="true"
+			input="/ur_SubDivisionEntry_frm.jsp" scope="request">
+
+			<forward name="Save" path="/ur_SubDivisionEntry_frm.jsp" />
+			<forward name="View" path="/ur_SubDivisionEntryList_frm.jsp" />
+			<forward name="get" path="/ur_EditSubDivisionEntry_frm.jsp" />
+			<forward name="edit" path="/UrSubDivision.do?mode=View" />
+			<forward name="delete" path="/UrSubDivision.do?mode=View" />
+			<forward name="inc" path="/ur_SubDivisionEntry_frm.jsp" />
+			<forward name="data" path="/ur_SubDivisionEntry_frm.jsp" />
+			<forward name="getmandals" path="/ur_MandalSubDivision_frm.jsp" />
+		</action>
+
+		<action path="/MuncipalSubdivision" name="mandalSubdivisionForm"
+			type="nic.watersoft.masters.ur_Muncipal_SubDivisionAct_frm" input="/ur_Muncipal_SubDivisionLnk_frm.jsp"
+			scope="request">
+			<forward name="Save" path="/ur_Muncipal_SubDivisionLnk_frm.jsp" />
+			<forward name="View" path="/ur_Muncipal_SubDivisionEntryLnkList_frm.jsp" />
+			<forward name="get" path="/ur_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="edit" path="/ur_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="delete" path="/MuncipalSubdivision.do?mode=View" />
+			<forward name="disp" path="/ur_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="data" path="/ur_Muncipal_SubDivisionLnk_frm.jsp" />
+			<forward name="resetForm" path="/ur_Muncipal_SubDivisionLnk_frm.jsp" />
+			<forward name="data1" path="/ur_hab_coverage_population_frm.jsp" />
+			<forward name="showData" path="/ur_hab_coverage_population_frm.jsp" />
+			<forward name="showMandals" path="/ur_show_mandals_frm.jsp" />
+			<forward name="populateVillage" path="/ur_hab_coverage_population_frm.jsp" />
+			<forward name="saveHabData" path="/ur_hab_coverage_population_frm.jsp" />
+		</action>
+
+		<!--end -->
+		<!-- added on 20112014 for mpdo entry from -->
+
+		<action path="/mpdo" name="SarpanchForm" scope="session"
+			type="nic.watersoft.masters.rws_mpdo_action">
+			<forward name="mpdoEntryFrm" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="sectionOfficer" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="view" path="/rws_mpdoList.jsp" />
+			<forward name="get" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="mpdoEdit" path="/rws_mpdo_edit_frm.jsp" />
+			<forward name="save" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="update" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_mpdo_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<!-- end -->
+		<action path="/villagesec" name="SarpanchForm" scope="session"
+			type="nic.watersoft.masters.rws_villagesec_action" input="/rws_Village_Sec_entry_frm.jsp">
+
+			<forward name="villagesecEntryFrm" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="get" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="villages" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="view" path="/rws_villagesec_List.jsp" />
+			<forward name="villageSecEdit" path="/rws_Village_Sec_edit_frm.jsp" />
+			<forward name="save" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="update" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="delete" path="/rws_Village_Sec_entry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+
+		<!-- end -->
+
+
+
+
+
+
+		<action path="/HabWork" name="targetHabWorkForm" scope="session"
+			type="nic.watersoft.masters.Rws_TargetHabWorkAct_frm">
+			<forward name="data" path="/rws_work_target_habitation_frm.jsp" />
+			<forward name="Save" path="/rws_work_target_habitation_frm.jsp" />
+			<forward name="view" path="/rws_work_target_habitation_list_frm.jsp" />
+			<forward name="get" path="/rws_work_target_habitation_edit_frm.jsp" />
+			<forward name="delete" path="/HabWork.do?mode=view " />
+			<forward name="Update" path="/HabWork.do?mode=view " />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/HabiYield" name="HabNewEntry" scope="session"
+			input="/rws_source_yield_update.jsp" type="nic.watersoft.masters.RWS_Habitation_Yield_Action">
+			<forward name="savesources" path="/rws_source_yield_cpws_update.jsp" />
+			<forward name="habidata" path="/rws_source_yield_update.jsp" />
+			<forward name="saveYield" path="/rws_source_yield_update.jsp"></forward>
+			<forward name="getAssets" path="/rws_hab_yeild_update_asset.jsp" />
+			<forward name="assethabs" path="/rws_hab_yield_habs_update.jsp" />
+			<forward name="saveHabs" path="/rws_hab_yield_habs_update.jsp" />
+			<forward name="sources1" path="/rws_source_yield_cpws_update.jsp" />
+			<forward name="pickmandals" path="/rws_source_pick_mandals.jsp" />
+			<forward name="pickhabs" path="/rws_source_pick_habs.jsp"></forward>
+			<forward name="habsinassets" path="/rws_asset_habs_crash.jsp"></forward>
+			<forward name="saveassethabs" path="/rws_asset_habs_crash.jsp"></forward>
+
+		</action>
+
+
+		<action path="/EmployeeChange" name="employeeMasterForm" scope="session"
+			type="nic.watersoft.masters.rws_EmployeeChangeAct_frm">
+			<forward name="data" path="/rws_employee_officechange_frm.jsp" />
+			<forward name="view" path="/rws_employee_officechange_frm.jsp" />
+			<forward name="update" path="/rws_employee_officechange_frm.jsp" />
+
+		</action>
+
+
+		<action name="DirectBillsForm" path="/bills"
+			type="nic.watersoft.masters.rws_masters_Direct_Bills_Action" scope="session">
+			<forward name="success" path="/rws_works_WorkStatus.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="addRemarks" path="/rws_not_ground_remarks.jsp" />
+			<forward name="close" path="/closeWithMessage4.jsp" />
+			<forward name="showMsg" path="/showMessageThenClose1.jsp" />
+			<forward name="ExpVoucher" path="/rws_work_exp_voucher_works_vouchers_frm.jsp" />
+			<forward name="ExpVoucherContractor" path="/rws_direct_bills_voucher_entry.jsp" />
+			<forward name="BillForVoucher" path="/rws_direct_bills_entry_form.jsp" />
+			<forward name="vouchersIssue" path="/rws_direct_bills_noofmilestones_list.jsp" />
+		</action>
+
+		<action path="/eeDSRegForm" name="dscRegToken" input="/rws_ee_ds_reg_form.jsp"
+			scope="session" type="nic.watersoft.masters.rws_DSC_RegTokenEntryAct_frm"
+			validate="true">
+			<forward name="eepao" path="/rws_ee_ds_reg_form.jsp" />
+			<forward name="sign" path="/rws_ee_ds_reg_form.jsp" />
+			<forward name="view" path="/rws_ee_ds_reg_form.jsp" />
+			<forward name="load" path="/rws_ee_ds_reg_form.jsp" />
+		</action>
+
+		<action input="/rws_PublicRepEntry_frm.jsp" name="repForm"
+			path="/PublicRep" scope="request"
+			type="nic.watersoft.masters.rws_PublicRepEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_PublicRepEntry_frm.jsp" />
+			<forward name="View" path="/rws_PublicRepEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditPublicRepEntry_frm.jsp" />
+			<forward name="edit" path="/PublicRep.do?mode=View" />
+			<forward name="delete" path="/PublicRep.do?mode=View" />
+			<forward name="data" path="/rws_PublicRepEntry_frm.jsp" />			
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action input="/rws_PanchRajEntry_frm.jsp" name="panchayatForm"
+			path="/PanchRaj" scope="request"
+			type="nic.watersoft.masters.rws_PanchRajEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_PanchRajEntry_frm.jsp" />
+			<forward name="data" path="/rws_PanchRajEntry_frm.jsp" />
+			<forward name="Add" path="/rws_PanchRajEntry_frm.jsp" />
+			<forward name="Remove" path="/rws_PanchRajEntry_frm.jsp" />
+			<forward name="resetForm" path="/rws_PanchRajEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		
+		<action path="/Head" name="headForm"
+			type="nic.watersoft.masters.rws_HeadEntryAct_frm" validate="true"
+			input="/rws_HeadEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_HeadEntry_frm.jsp" />
+			<forward name="View" path="/rws_HeadEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditHeadEntry_frm.jsp" />
+			<forward name="edit" path="/Head.do?mode=View" />
+		<!-- 	<forward name="delete" path="/Head.do?mode=View" /> -->
+			<forward name="data" path="/rws_HeadEntry_frm.jsp" />			
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+		
+		<action path="/Circle" name="circleOfficeForm"
+			type="nic.watersoft.masters.rws_CircleEntryAct_frm" validate="true"
+			input="/rws_CircleEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_CircleEntry_frm.jsp" />
+			<forward name="View" path="/rws_CircleEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditCircleEntry_frm.jsp" />
+			<forward name="edit" path="/Circle.do?mode=View" />
+			<!-- <forward name="delete" path="/Circle.do?mode=View" /> -->
+			<forward name="data" path="/rws_CircleEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/Division" name="divisionOfficeForm"
+			type="nic.watersoft.masters.rws_DivisionEntryAct_frm" validate="true"
+			input="/rws_DivisionEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_DivisionEntry_frm.jsp" />
+			<forward name="View" path="/rws_DivisionEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditDivisionEntry_frm.jsp" />
+			<forward name="edit" path="/Division.do?mode=View" />
+			<forward name="delete" path="/Division.do?mode=View" />
+			<forward name="data" path="/rws_DivisionEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/DivisionData" name="divisionOfficeForm"
+			type="nic.watersoft.masters.HabActionData" scope="session">
+			<forward name="success" path="/rws_DivisionEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />		
+		</action>
+		
+		<action path="/SubDivision" name="subdivisionOfficeForm"
+			type="nic.watersoft.masters.rws_SubDivisionEntryAct_frm" validate="true"
+			input="/rws_SubDivisionEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_SubDivisionEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubDivisionEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubDivisionEntry_frm.jsp" />
+			<forward name="edit" path="/SubDivision.do?mode=View" />
+			<forward name="delete" path="/SubDivision.do?mode=View" />
+			<forward name="inc" path="/rws_SubDivisionEntry_frm.jsp" />
+			<forward name="data" path="/rws_SubDivisionEntry_frm.jsp" />
+			<forward name="getmandals" path="/rws_MandalSubDivision_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />		
+		</action>
+		
+		<action path="/MandalSubdivision" name="mandalSubdivisionForm"
+			type="nic.watersoft.masters.rws_Mandal_SubDivisionAct_frm" input="/rws_Mandal_SubDivisionLnk_frm.jsp"
+			scope="request">
+			<forward name="Save" path="/rws_Mandal_SubDivisionLnk_frm.jsp" />
+			<forward name="View" path="/rws_Mandal_SubDivisionEntryLnkList_frm.jsp" />
+			<forward name="get" path="/rws_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="edit" path="/rws_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="delete" path="/MandalSubdivision.do?mode=View" />
+			<forward name="disp" path="/rws_EditMandalSubDivisionAccEntry_frm.jsp" />
+			<forward name="data" path="/rws_Mandal_SubDivisionLnk_frm.jsp" />
+			<forward name="resetForm" path="/rws_Mandal_SubDivisionLnk_frm.jsp" />
+			<forward name="data1" path="/rws_hab_coverage_population_frm.jsp" />
+			<forward name="showData" path="/rws_hab_coverage_population_frm.jsp" />
+			<forward name="showMandals" path="/rws_show_mandals_frm.jsp" />
+			<forward name="populateVillage" path="/rws_hab_coverage_population_frm.jsp" />
+			<forward name="saveHabData" path="/rws_hab_coverage_population_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />		
+		</action>
+		
+		<action path="/Section" name="sectionOfficeForm"
+			type="nic.watersoft.masters.rws_SectionEntryAct_frm" validate="true"
+			input="/rws_SectionEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_SectionEntry_frm.jsp" />
+			<forward name="View" path="/rws_SectionEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSectionEntry_frm.jsp" />
+			<forward name="edit" path="/Section.do?mode=View" />
+			<forward name="delete" path="/Section.do?mode=View" />
+			<forward name="inc" path="/rws_SectionEntry_frm.jsp" />
+			<forward name="data" path="/rws_SectionEntry_frm.jsp" />
+		</action>
+		
+		<action path="/Office" name="officeForm"
+			type="nic.watersoft.masters.rws_OfficeEntryAct_frm" validate="true"
+			input="/rws_OfficeEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_OfficeEntry_frm.jsp" />
+			<forward name="View" path="/rws_OfficeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditOfficeEntry_frm.jsp" />
+			<forward name="edit" path="/Office.do?mode=View" />
+			<forward name="delete" path="/Office.do?mode=View" />
+			<forward name="data" path="/rws_OfficeEntry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />		
+		</action>
+		
+		<action input="/rws_AssetTypeEntry_frm.jsp" name="assetTypeForm"
+			path="/AssetType" scope="request"
+			type="nic.watersoft.masters.rws_AssetTypeEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_AssetTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetTypeEntry_frm.jsp" />
+			<forward name="edit" path="/AssetType.do?mode=View" />
+			<forward name="delete" path="/AssetType.do?mode=View" />
+			<forward name="data" path="/rws_AssetTypeEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action input="/rws_bank_branch_frm.jsp" name="bankForm" path="/bank"
+			scope="request" type="nic.watersoft.masters.rws_bankEntryAct_frm"
+			validate="true">
+			<forward name="data" path="/rws_bank_branch_frm.jsp" />
+			<forward name="save" path="/rws_bank_branch_frm.jsp" />
+			<forward name="View" path="/rws_Bank_List_frm.jsp" />
+			<forward name="get" path="/rws_BankEdit_frm.jsp" />
+			<forward name="delete" path="/bank.do?mode=View" />
+			<forward name="edit" path="/bank.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action input="/rws_Branch_frm.jsp" name="bankForm" path="/branch"
+			scope="request" type="nic.watersoft.masters.rws_BranchEntryAct_frm"
+			validate="true">
+			<forward name="data" path="/rws_Branch_frm.jsp" />
+			<forward name="save" path="/rws_Branch_frm.jsp" />
+			<forward name="View" path="/rws_Branch_List_frm.jsp" />
+			<forward name="get" path="/rws_BranchEdit_frm.jsp" />
+			<forward name="delete" path="/branch.do?mode=View" />
+			<forward name="edit" path="/branch.do?mode=View" />
+			<forward name="division" path="/rws_Branch_frm.jsp" />
+			<forward name="branch" path="/rws_BranchEdit_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<!-- added by swapna on 26-08-2011 for mandal subdivision conversion -->
+		<action path="/MandalSubdivisionCon" name="mandalSubdivisionConForm"
+			type="nic.watersoft.masters.rws_Mandal_SubDivisionConAct_frm" input="/rws_mandalSubdivision.jsp"
+			scope="request">
+			<forward name="data" path="/rws_mandalSubdivision.jsp" />
+			<forward name="save" path="/rws_mandalSubdivision.jsp" />
+			<forward name="msName" path="/rws_SubdivisionName_Change.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<!--*******************************added by swapna**************************************** -->
+		<action input="/rws_Office_Bank_frm.jsp" name="bankForm" path="/office"
+			scope="request" type="nic.watersoft.masters.rws_OfficeBankEntryAct_frm"
+			validate="true">
+			<forward name="data" path="/rws_Office_Bank_frm.jsp" />
+			<forward name="save" path="/rws_Office_Bank_frm.jsp" />
+			<forward name="division" path="/rws_Office_Bank_frm.jsp" />
+			<forward name="branch" path="/rws_Office_Bank_frm.jsp" />
+			<forward name="View" path="/rws_OfficeBank_List_frm.jsp" />
+			<forward name="get" path="/rws_OfficeBankEdit_frm.jsp" />
+			<forward name="delete" path="/office.do?mode=View" />
+			<forward name="edit" path="/office.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<!--********************************************************************************************* -->
+
+		<!--*******************************Asset**************************************** -->
+		<action path="/Asset" input="/rws_AssetEntry_frm.jsp" name="assetForm"
+			scope="session" type="nic.watersoft.masters.rws_AssetAct_frm"
+			validate="false">
+			<forward name="goToAddNewAction" path="/Asset.do?mode=goToAddNewAction" />
+			<forward name="init" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="divisions" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="subdivisions" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="mandals" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="prhabs" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="Save" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="pumpCodeChanged" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="opModify" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="opAddNew" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetEntryList_frm.jsp" />
+			<forward name="View1" path="/rws_AssetEntryList_Scheme_frm.jsp" />
+			<forward name="ViewUpdate" path="/rws_AssetEntryList_update_frm.jsp" />
+			<forward name="viewUpdateProgram" path="/rws_AssetEntryList_update_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetEntry_frm.jsp" />
+			<forward name="getNew" path="/Asset.do?mode=data" />
+			<forward name="delete" path="/Asset.do?mode=View" />
+			<forward name="deleteasset" path="/closeWithMessage3.jsp" />
+			<forward name="edit" path="/Asset.do?mode=View" />
+			<forward name="data" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="assetTypeCodeChanged" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="disp" path="/rws_EditAssetEntry_frm.jsp" />
+			<forward name="hab" path="/rws_AssetHabEntry_frm.jsp" />
+			<forward name="params" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="addNewOandM" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="next" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="previous" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="addNew" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="addSubComp" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="remove" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="removeSubComps" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="pumpset" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="nextpump" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="removePumpset" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="firstHP" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="lastHP" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="previouspump" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="addSubCompPump" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="navigatePumpset" path="/rws_AssetSubCompParamList_pumpset.jsp" />
+			<forward name="ponds" path="/rws_AssetSubCompParamList_others.jsp" />
+			<forward name="pipeclass" path="/rws_pick_pipe_material_frm.jsp" />
+			<forward name="checks" path="/close.jsp" />
+			<forward name="AddHabs" path="/rws_addHabs.jsp" />
+			<forward name="SaveHab" path="/rws_addHabs.jsp" />
+			<forward name="pickpipemat" path="/rws_AssetSubCompParamList_frm.jsp" />
+			<forward name="gotoPickpipematMode" path="/Asset.do?mode=pickpipemat" />
+			<forward name="pickhab" path="/rws_PickHab_frm.jsp" />
+			<forward name="close" path="/close.jsp" />
+			<forward name="closeWithMessage" path="/closeWithMessage.jsp" />
+			<forward name="opMissingCodes" path="/rws_missedSchemeCodeList.jsp" />
+			<forward name="water" path="/rws_AssetEntry_water_frm.jsp" />
+			<forward name="AddSource" path="/rws_AssetEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="habLink" path="/rws_Asset_Pick_Man_frm.jsp" />
+			<forward name="close4" path="/closeWithMessage4.jsp" />
+			<forward name="showFile" path="/rws_source_image.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+		<action path="/annualMaintenance" input="/rws_Annual_Maintenance_frm.jsp"
+			name="assetForm" scope="session"
+			type="nic.watersoft.masters.rws_Annual_Maintenance_Action" validate="false">
+			<forward name="init" path="/rws_Annual_Maintenance_frm.jsp" />
+			<forward name="get" path="/rws_Annual_Maintenance_frm.jsp" />
+			<forward name="save" path="/rws_Annual_Maintenance_frm.jsp" />
+		</action>
+		<!--*******************************Asset type**************************************** -->
+		<action input="/rws_AssetTypeEntry_frm.jsp" name="assetTypeForm"
+			path="/AssetType" scope="request"
+			type="nic.watersoft.masters.rws_AssetTypeEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_AssetTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetTypeEntry_frm.jsp" />
+			<forward name="edit" path="/AssetType.do?mode=View" />
+			<forward name="delete" path="/AssetType.do?mode=View" />
+			<forward name="data" path="/rws_AssetTypeEntry_frm.jsp" />
+		</action>
+		<!--*****************************Asset Component type************************************** -->
+
+
+		<action input="/rws_AssetCompTypeEntry_frm.jsp" name="assetCompTypeForm"
+			path="/AssetCompType" scope="request"
+			type="nic.watersoft.masters.rws_AssetCompTypeEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_AssetCompTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetCompTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetCompTypeEntry_frm.jsp" />
+			<forward name="edit" path="/AssetCompType.do?mode=View" />
+			<forward name="delete" path="/AssetCompType.do?mode=View" />
+			<forward name="data" path="/rws_AssetCompTypeEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<!--*****************************Asset SubComponent type************************************** -->
+		<action input="/rws_AssetSubCompTypeEntry_frm.jsp" name="assetSubCompTypeForm"
+			path="/AssetSubCompType" scope="request"
+			type="nic.watersoft.masters.rws_AssetSubCompTypeEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_AssetSubCompTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetSubCompTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetSubCompTypeEntry_frm.jsp" />
+			<forward name="edit" path="/AssetSubCompType.do?mode=View" />
+			<forward name="delete" path="/AssetSubCompType.do?mode=View" />
+			<forward name="data" path="/rws_AssetSubCompTypeEntry_frm.jsp" />
+			<forward name="inc" path="/rws_AssetSubCompTypeEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<!--*****************************Asset SubComponent Parameter************************************** -->
+		<action input="/rws_AssetSubCompParamEntry_frm.jsp" name="assetSubCompParamForm"
+			path="/AssetSubCompParam" scope="request"
+			type="nic.watersoft.masters.rws_AssetSubCompParamEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_AssetSubCompParamEntry_frm.jsp" />
+			<forward name="View" path="/rws_AssetSubCompParamEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditAssetSubCompParamEntry_frm.jsp" />
+			<forward name="edit" path="/AssetSubCompParam.do?mode=View" />
+			<forward name="delete" path="/AssetSubCompParam.do?mode=View" />
+			<forward name="data" path="/rws_AssetSubCompParamEntry_frm.jsp" />
+		</action>
+
+
+		<!--****************************** Contamination *********************** -->
+		<action input="/rws_ContamEntry_frm.jsp" name="contamForm"
+			path="/Contam" scope="request" type="nic.watersoft.masters.rws_ContamEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_ContamEntry_frm.jsp" />
+			<forward name="View" path="/rws_ContamEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditContamEntry_frm.jsp" />
+			<forward name="getdelete" path="/rws_DeleteContamEntry_frm.jsp" />
+			<forward name="edit" path="/Contam.do?mode=View" />
+			<forward name="delete" path="/Contam.do?mode=View" />
+			<forward name="data" path="/rws_ContamEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		<!--************************************************************************************** -->
+		<action path="/Source" name="sourceForm" validate="true"
+			type="nic.watersoft.masters.rws_SourceEntryAct_frm" input="rws_SourceEntry_frm.jsp"
+			scope="request">
+			<forward name="panchayats" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="villages" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="habitations" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="Save" path="/closeWithMessage1.jsp" />
+			<forward name="sourceForm" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="view" path="/rws_SourceEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSourceEntry_frm.jsp" />
+			<forward name="viewSources" path="/rws_EditProposalSourceDetails_frm.jsp" />
+			<forward name="getsource" path="/rws_EditSourceEntry_frm.jsp" />
+			<forward name="edit" path="/Source.do?mode=view" />
+			<forward name="delete" path="/Source.do?mode=view" />
+			<forward name="data" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="contidata" path="/rws_SourceEntry_frm.jsp" />
+			<forward name="asset" path="/rws_PickAssetsInSameHab_frm.jsp" />
+			<forward name="pickhab" path="/rws_PickHab_frm.jsp" />
+			<forward name="disphab" path="/rws_DispHab_frm.jsp" />
+			<forward name="Add" path="/close.jsp" />
+			<forward name="AddHab" path="/close.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="closeWithMessage" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/SourceType" name="sourceTypeForm"
+			type="nic.watersoft.masters.rws_SourceTypeEntryAct_frm" validate="true"
+			input="rws_SourceTypeEntry_frm.jsp">
+			<forward name="Save" path="/rws_SourceTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_SourceTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSourceTypeEntry_frm.jsp" />
+			<forward name="edit" path="/SourceType.do?mode=View" />
+			<!-- <forward name="delete" path="/SourceType.do?mode=View" /> -->
+			<forward name="data" path="/rws_SourceTypeEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action path="/SubSourceType" name="subSourceTypeForm"
+			type="nic.watersoft.masters.rws_SubSourceTypeEntryAct_frm" input="rws_SubSourceTypeEntry_frm.jsp"
+			validate="true" scope="request">
+			<forward name="Save" path="/rws_SubSourceTypeEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubSourceTypeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubSourceTypeEntry_frm.jsp" />
+			<forward name="edit" path="/SubSourceType.do?mode=View" />
+			<forward name="delete" path="/SubSourceType.do?mode=View" />
+			<forward name="data" path="/rws_SubSourceTypeEntry_frm.jsp" />
+		</action>
+
+		<action input="/rws_StoreEntry_frm.jsp" name="storeForm" path="/Stores"
+			scope="request" type="nic.watersoft.masters.rws_StoreEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_StoreEntry_frm.jsp" />
+			<forward name="View" path="/rws_StoreEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditStoreEntry_frm.jsp" />
+			<forward name="edit" path="/Stores.do?mode=View" />
+			<forward name="delete" path="/Stores.do?mode=View" />
+			<forward name="data" path="/rws_StoreEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<!--********************************************************************************************* -->
+		<action input="/rws_SupplierEntry_frm.jsp" name="supplierForm"
+			path="/Supplier" scope="request"
+			type="nic.watersoft.masters.rws_SupplierEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_SupplierEntry_frm.jsp" />
+			<forward name="View" path="/rws_SupplierEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSupplierEntry_frm.jsp" />
+			<forward name="edit" path="/Supplier.do?mode=View" />
+			<forward name="delete" path="/Supplier.do?mode=View" />
+			<forward name="data" path="/rws_SupplierEntry_frm.jsp" />
+		</action>
+
+		<!--********************************************************************************************* -->
+		<action input="/rws_InstituteEntry_frm.jsp" name="instituteForm"
+			path="/Institute" scope="request"
+			type="nic.watersoft.masters.rws_InstituteEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_InstituteEntry_frm.jsp" />
+			<forward name="View" path="/rws_InstituteEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditInstituteEntry_frm.jsp" />
+			<forward name="edit" path="/Institute.do?mode=View" />
+			<forward name="delete" path="/Institute.do?mode=View" />
+			<forward name="data" path="/rws_InstituteEntry_frm.jsp" />			
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/HabStatus" name="habStatusForm" scope="request"
+			validate="true" type="nic.watersoft.masters.rws_HabStatusEntryAct_frm"
+			input="/rws_HabStatusEntry_frm.jsp">
+			<!-- <forward name="Save" path="/rws_HabStatusEntry_frm.jsp"/> -->
+			<forward name="Save" path="/HabData.do?mode=success" />
+			<forward name="View" path="/rws_HabStatusEntryList_frm.jsp" />
+			<forward name="View1" path="/rws_HabStatusEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditHabStatusEntry1_frm.jsp" />
+			<forward name="Update" path="/HabStatus.do?mode=View" />
+			<forward name="UpdateLatLong" path="/HabData.do?mode=success" />
+			<forward name="delete" path="/HabStatus.do?mode=View" />
+			<forward name="success" path="/rws_HabStatusEntry_frm.jsp" />
+			<forward name="resetForm" path="/rws_HabStatusEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/HabData" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.HabActionData">
+			<forward name="success" path="/rws_HabStatusEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+		<action path="/HabConvert" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.HabConvertData">
+			<forward name="success" path="/rws_HabConvertEntry_frm.jsp" />
+			<forward name="showMsg" path="/showMessageThenClose.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<action name="habStatusForm" path="/habStatusEditFrm" scope="request"
+			type="nic.watersoft.masters.HabStatusEditFrm">
+			<forward name="getData" path="/HabData.do" />
+		</action>
+
+		<action path="/Panchayat" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.rws_panchayat_entry_frm">
+			<forward name="panchayatEntryFrm" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="view" path="/rws_PanchayatList.jsp" />
+			<forward name="excelView" path="/rws_PanchayatListExcel.jsp" />
+			<forward name="panchayatEdit" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="save" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="addNew" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_panchayat_entry_frm.jsp" />
+			<forward name="delete" path="/rws_PanchayatList.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+		
+		<action path="/Village" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.rws_village_entry_frm">
+			<forward name="villageEntryFrm" path="/rws_village_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_village_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_village_entry_frm.jsp" />
+			<forward name="view" path="/rws_VillageList.jsp" />
+			<forward name="excelView" path="/rws_VillageListExcel.jsp" />
+			<forward name="villageEdit" path="/rws_village_entry_frm.jsp" />
+			<forward name="save" path="/rws_village_entry_frm.jsp" />
+			<forward name="addNew" path="/rws_village_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_village_entry_frm.jsp" />
+			<forward name="delete" path="/rws_VillageList.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/Habitation" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.rws_habitation_entry_frm">
+			<forward name="habitationEntryFrm" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="mandals" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="panchayats" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="villages" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="habitations" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="habName" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="view" path="/rws_HabitationList.jsp" />
+			<forward name="excelView" path="/rws_habitationListExcel.jsp" />
+			<forward name="habitationEdit" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="save" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="addNew" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="saveNew" path="/rws_habitation_entry_frm.jsp" />
+			<forward name="delete" path="/rws_HabitationList.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/ContaminationDetails" name="habStatusForm"
+			scope="request" type="nic.watersoft.masters.rws_contamination_details_entry_frm">
+			<forward name="contaminationDetailsEntryFrm" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="delete" path="/rws_ContaminationDetailsList.jsp" />
+			<forward name="view" path="/rws_ContaminationDetailsList.jsp" />
+			<forward name="excelView" path="/rws_ContaminationDetailsListExcel.jsp" />
+			<forward name="contaminationDetailsEdit" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="edit" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="nssHabs" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="save" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="data" path="/rws_contamination_details_entry_frm.jsp" />
+			<forward name="excelView" path="/rws_ContaminationDetailsListExcel.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action path="/ChangeHabitationCode" name="habStatusForm"
+			scope="request" type="nic.watersoft.masters.rws_habitation_code_change_frm">
+			<forward name="habitationEntryFrm" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="mandals" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="panchayats" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="villages" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="habitations" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="habName" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="view" path="/rws_HabitationCodesList.jsp" />
+			<forward name="habitationEdit" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="save" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="addNew" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="saveNew" path="/rws_habitation_code_change_frm.jsp" />
+			<forward name="delete" path="/rws_HabitationCodesList.jsp" />
+		</action>
+
+		<action path="/ShowComponentDetails" type="nic.watersoft.masters.ShowComponentDetails">
+			<forward name="data-success" path="/rws_show_component_details.jsp" />
+			<forward name="success" path="/rws_show_Asset_component_details.jsp" />
+		</action>
+
+		<action input="/rws_PriorityEntry_frm.jsp" name="priorityForm"
+			path="/Priority" scope="request"
+			type="nic.watersoft.masters.rws_PriorityEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_PriorityEntry_frm.jsp" />
+			<forward name="View" path="/rws_PriorityEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditPriority_frm.jsp" />
+			<forward name="edit" path="/Priority.do?mode=View" />
+			<forward name="delete" path="/Priority.do?mode=View" />
+			<forward name="data" path="/rws_PriorityEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />			
+		</action>
+
+		<action input="/rws_MajorHeadAccEntry_frm.jsp" name="majorHeadForm"
+			path="/MajorHead" scope="request"
+			type="nic.watersoft.masters.rws_MajorHeadAccEntryAct_frm" validate="true">
+			<forward name="data" path="/rws_MajorHeadAccEntry_frm.jsp" />
+			<forward name="Save" path="/rws_MajorHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_MajorHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditMajorHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/MajorHead.do?mode=View" />
+			<forward name="delete" path="/MajorHead.do?mode=View" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		
+		<action input="/rws_SubMajorHeadAccEntry_frm.jsp" name="submajorHeadForm"
+			path="/SubMajorHead" scope="request"
+			type="nic.watersoft.masters.rws_SubMajorHeadAccEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_SubMajorHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubMajorHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubMajorHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/SubMajorHead.do?mode=View" />
+			<forward name="delete" path="/SubMajorHead.do?mode=View" />
+			<forward name="data" path="/rws_SubMajorHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_MinorHeadAccEntry_frm.jsp" name="minorHeadForm"
+			path="/MinorHead" scope="request"
+			type="nic.watersoft.masters.rws_MinorHeadAccEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_MinorHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_MinorHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditMinorHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/MinorHead.do?mode=View" />
+			<forward name="delete" path="/MinorHead.do?mode=View" />
+			<forward name="data" path="/rws_MinorHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_GroupSubHeadAccEntry_frm.jsp" name="grpSubHeadForm"
+			path="/GrpSubHead" scope="request"
+			type="nic.watersoft.masters.rws_GroupSubHeadAccEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_GroupSubHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_GroupSubHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditGroupSubHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/GrpSubHead.do?mode=View" />
+			<forward name="delete" path="/GrpSubHead.do?mode=View" />
+			<forward name="data" path="/rws_GroupSubHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_SubHeadAccEntry_frm.jsp" name="subHeadForm"
+			path="/SubHead" scope="request"
+			type="nic.watersoft.masters.rws_SubHeadAccEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_SubHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/SubHead.do?mode=View" />
+			<forward name="delete" path="/SubHead.do?mode=View" />
+			<forward name="data" path="/rws_SubHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action input="/rws_DetailHeadAccEntry_frm.jsp" name="detailHeadForm"
+			path="/DetailHead" scope="request"
+			type="nic.watersoft.masters.rws_DetailHeadAccEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_DetailHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_DetailHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditDetailHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/DetailHead.do?mode=View" />
+			<forward name="delete" path="/DetailHead.do?mode=View" />
+			<forward name="data" path="/rws_DetailHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_SubDetailHeadAccEntry_frm.jsp" name="subDetailHeadForm"
+			path="/SubDetailHead" scope="request"
+			type="nic.watersoft.masters.rws_SubDetailHeadAccEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_SubDetailHeadAccEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubDetailHeadAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubDetailHeadAccEntry_frm.jsp" />
+			<forward name="edit" path="/SubDetailHead.do?mode=View" />
+			<forward name="delete" path="/SubDetailHead.do?mode=View" />
+			<forward name="data" path="/rws_SubDetailHeadAccEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_ProgrammeEntry_frm.jsp" name="programmeForm"
+			path="/Programme" scope="request"
+			type="nic.watersoft.masters.rws_ProgrammeEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_ProgrammeEntry_frm.jsp" />
+			<forward name="View" path="/rws_ProgrammeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditProgrammeEntry_frm.jsp" />
+			<forward name="edit" path="/Programme.do?mode=View" />
+			<forward name="delete" path="/Programme.do?mode=View" />
+			<forward name="data" path="/rws_ProgrammeEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action input="/rws_SubProgrammeEntry_frm.jsp" name="subprogrammeForm"
+			path="/SubProgramme" scope="request"
+			type="nic.watersoft.masters.rws_SubProgrammeEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_SubProgrammeEntry_frm.jsp" />
+			<forward name="View" path="/rws_SubProgrammeEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditSubProgrammeEntry_frm.jsp" />
+			<forward name="edit" path="/SubProgramme.do?mode=View" />
+			<forward name="delete" path="/SubProgramme.do?mode=View" />
+			<forward name="data" path="/rws_SubProgrammeEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_Contractor_frm.jsp" name="contractorForm"
+			path="/Contractor" scope="request"
+			type="nic.watersoft.masters.rws_ContractorEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_Contractor_frm.jsp" />
+			<forward name="View" path="/rws_ContractorList_frm.jsp" />
+			<forward name="get" path="/rws_EditContractor_frm.jsp" />
+			<forward name="edit" path="/Contractor.do?mode=View" />
+			<forward name="delete" path="/Contractor.do?mode=View" />
+			<forward name="data" path="/rws_Contractor_frm.jsp" />
+			<forward name="projexecuted" path="/rws_projects_executed_frm.jsp" />
+			<forward name="projcompletedintime" path="/rws_projects_executedintime_frm.jsp" />
+			<forward name="projinhand" path="/rws_projects_inhand_frm.jsp" />
+			<forward name="projlast" path="/rws_projects_lastfive_frm.jsp" />
+			<forward name="getContractorlist" path="/rws_contractor_rep_details_frm.jsp" />
+			<forward name="ViewContractor" path="/rws_contractor_rep_details_list_frm.jsp" />
+			<forward name="getContractorreport" path="/rws_contractor_rep_details_edit_frm.jsp" />
+			<forward name="getCircles" path="/rws_contractor_rep_details_frm.jsp" />
+			<forward name="viewdivisionwiseContractor" path="/rws_contractor_rep_division_list_frm.jsp" />
+			<forward name="close" path="/closeWithMessage6.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		
+		<action input="/rws_WaterQualityTestMasterEntry_frm.jsp" name="wqTestForm"
+			path="/WaterTest" scope="request"
+			type="nic.watersoft.masters.rws_WaterQualityTestMasterEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_WaterQualityTestMasterEntry_frm.jsp" />
+			<forward name="View" path="/rws_WaterQualityTestMasterList_frm.jsp" />
+			<forward name="get" path="/rws_EditWaterQualityTestMaster_frm.jsp" />
+			<forward name="edit" path="/WaterTest.do?mode=View" />
+			<forward name="delete" path="/WaterTest.do?mode=View" />
+			<forward name="data" path="/rws_WaterQualityTestMasterEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		
+		<action input="/rws_WaterQualityParameterTestEntry_frm.jsp"
+			name="wqPTestForm" path="/WaterPTest" scope="request"
+			type="nic.watersoft.masters.rws_WaterQualityParameterTestMasterEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_WaterQualityParameterTestEntry_frm.jsp" />
+			<forward name="View" path="/rws_WaterQualityParameterTestList_frm.jsp" />
+			<forward name="get" path="/rws_EditWaterQualityParameterTest_frm.jsp" />
+			<forward name="edit" path="/WaterPTest.do?mode=View" />
+			<forward name="delete" path="/WaterPTest.do?mode=View" />
+			<forward name="data" path="/rws_WaterQualityParameterTestEntry_frm.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		<!--******************************************************************************** -->
+		<action path="/WaterLab" name="wqLabForm"
+			input="/rws_WaterQualityLabMasterEntry_frm.jsp" scope="request"
+			type="nic.watersoft.masters.rws_WaterQualityLabMasterEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_WaterQualityLabMasterEntry_frm.jsp" />
+			<forward name="View" path="/rws_WaterQualityLabMasterList_frm.jsp" />
+			<forward name="get" path="/rws_EditWaterQualityLabMaster_frm.jsp" />
+			<forward name="edit" path="/WaterLab.do?mode=View" />
+			<forward name="delete" path="/WaterLab.do?mode=View" />
+			<forward name="data" path="/rws_WaterQualityLabMasterEntry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+		<!--************************************************************************************* -->
+		<action input="/rws_ItemEntry_frm.jsp" name="itemForm" path="/Item"
+			scope="request" type="nic.watersoft.masters.rws_ItemMasterEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_ItemEntry_frm.jsp" />
+			<forward name="View" path="/rws_ItemEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditItemEntry_frm.jsp" />
+			<forward name="edit" path="/Item.do?mode=View" />
+			<forward name="delete" path="/Item.do?mode=View" />
+			<forward name="data" path="/rws_ItemEntry_frm.jsp" />
+		</action>
+
+
+		<action path="/Hoffice" name="hofficeForm" scope="request"
+			type="nic.watersoft.masters.rws_HofficeEntryAct_frm" validate="true">
+			<forward name="data" path="/rws_HofficeEntry_frm.jsp" />
+			<forward name="View" path="/rws_HofficeEntryList_frm.jsp" />
+		</action>
+
+		<action path="/Tslimit" name="tslimitForm" scope="request"
+			type="nic.watersoft.masters.rws_TslimitEntryAct_frm" validate="false">
+			<forward name="data" path="/rws_TslimitEntry_frm.jsp" />
+		</action>
+		<action path="/UserAudit" name="userAuditForm" scope="request"
+			type="nic.watersoft.masters.rws_UserAuditEntryAct_frm" validate="true">
+			<forward name="data2" path="/UserAudit.do?mode=data" />
+			<forward name="data" path="/rws_UserAuditEntry_frm.jsp" />
+			<!--<forward name="data" path="/rws_UserAuditEntry_frm.jsp?mode=data" 
+				/> -->
+			<forward name="data1" path="/rws_UserAuditEntry_frm.jsp" />
+			<forward name="view" path="/rws_UserAuditEntryList_frm.jsp" />
+		</action>
+
+		<action path="/Desgn" name="desgnForm"
+			type="nic.watersoft.masters.rws_EmpDesgnEntryAct_frm" validate="true"
+			input="/rws_DesgnEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_DesgnEntry_frm.jsp" />
+			<forward name="Update" path="/rws_EditDesgnEntry_frm.jsp" />
+			<forward name="View" path="/rws_DesgnEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditDesgnEntry_frm.jsp" />
+			<forward name="edit" path="/Desgn.do?mode=View" />
+			<forward name="delete" path="/Desgn.do?mode=View" />
+			<forward name="data" path="/rws_DesgnEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+
+		<action path="/Qual" input="/rws_QualEntry_frm.jsp" name="qualForm"
+			scope="request" type="nic.watersoft.masters.rws_EmpQualEntryAct_frm"
+			validate="true">
+			<forward name="Save" path="/rws_QualEntry_frm.jsp" />
+			<forward name="View" path="/rws_QualEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditQualEntry_frm.jsp" />
+			<forward name="edit" path="/Qual.do?mode=View" />
+			<forward name="delete" path="/Qual.do?mode=View" />
+			<forward name="data" path="/rws_QualEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action input="/rws_WorkSpecialEntry_frm.jsp" name="workSpecialForm"
+			path="/WorkSpecial" scope="request"
+			type="nic.watersoft.masters.rws_EmpWorkSpecialEntryAct_frm" validate="true">
+			<forward name="Save" path="/rws_WorkSpecialEntry_frm.jsp" />
+			<forward name="View" path="/rws_WorkSpecialEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditWorkSpecialEntry_frm.jsp" />
+			<forward name="edit" path="/WorkSpecial.do?mode=View" />
+			<forward name="delete" path="/WorkSpecial.do?mode=View" />
+			<forward name="data" path="/rws_WorkSpecialEntry_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/Employee" name="empForm"
+			type="nic.watersoft.masters.rws_EmployeeEntryAct_frm" validate="true"
+			input="/rws_EmpEntry_frm.jsp" scope="request">
+			<forward name="Save" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="View" path="/rws_EmpEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="edit2Update" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="edit" path="/Employee.do?mode=View" />
+			<forward name="delete" path="/Employee.do?mode=View" />
+			<forward name="data" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="get1" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="get2" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="getData1" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="getData2" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="getDesignations" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="getDesignationsEdit" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="Update" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="UpdateData" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="checklist" path="/rws_EmpCheckList_frm.jsp" />
+			<forward name="getSubDivisions" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="getDivisions" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="getDesigs" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="getDistricts" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="ViewDetails" path="/rws_EmpEntryList_frm.jsp" />
+			<forward name="OfficeDetails" path="/rws_EmpEntry_frm.jsp" />
+			<forward name="OfficeDetailsEdit" path="/rws_EditEmpEntry_frm.jsp" />
+			<forward name="dates" path="/rws_Edit_EmpCheckList.jsp" />
+			<forward name="data1" path="/rws_EmpCheckList_frm.jsp" />
+			<forward name="viewCheckList" path="/rws_EmpCheckList_frm1.jsp" />
+			<forward name="StatusForms" path="/rws_Emp_Status_Forms.jsp" />
+			<forward name="ViewReport" path="/rws_Emp_StatusEntry_List.jsp" />
+			<forward name="selectedOptions" path="/rws_Emp_Status_Forms.jsp" />
+			<forward name="DeptOptForms" path="/rws_Emp_Deptopt_frm.jsp" />
+			<forward name="DeptReport" path="/rws_Emp_Deptopt_rpt.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="close" path="/closeWithMessage6.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action path="/EmpSearch" name="empSearchForm" input="/rws_EmpSearch_frm.jsp"
+			scope="session" type="nic.watersoft.masters.rws_EmployeeSearch_Act"
+			validate="true">
+			<forward name="EmployeeList" path="/rws_EmpSearch_frm.jsp" />
+			<forward name="view" path="/rws_EmpSearch_view.jsp" />
+			<forward name="edit" path="/Employee.do?mode=View" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="Insert" path="/Employee.do?mode=data" />
+			<forward name="getDesignations" path="/rws_EmpSearch_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+		
+		<action path="/PaoAction" name="paoForm1" input="/rws_PaoAccEntry_frm.jsp"
+			scope="session" type="nic.watersoft.masters.rws_PaoEntryAct_frm"
+			validate="true">
+			<forward name="data" path="/rws_PaoAccEntry_frm.jsp" />
+			<forward name="save" path="/rws_PaoAccEntry_frm.jsp" />
+			<forward name="view" path="/rws_PaoAccEntryList_frm.jsp" />
+			<forward name="get" path="/rws_EditPaoAccEntry_frm.jsp" />
+			<forward name="edit" path="/rws_PaoAccEntryList_frm.jsp" />
+			<forward name="delete" path="/PaoAction.do?mode=view" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action path="/school" name="schoolForm" input="/rws_School_Master_frm.jsp"
+			scope="request" type="nic.watersoft.masters.rws_SchoolAct_frm"
+			validate="true">
+
+			<forward name="data" path="/rws_School_Master_frm.jsp" />
+			<forward name="Save" path="/rws_School_Master_frm.jsp" />
+			<forward name="View" path="/rws_School_Data_View.jsp" />
+			<forward name="get" path="/rws_School_Master_View.jsp" />
+			<forward name="Update" path="/rws_School_Master_View.jsp" />
+			<forward name="delete" path="/school.do?mode=View" />
+			<forward name="deleteschool" path="/closeWithMessage3.jsp" />
+			<forward name="addAsset" path="/rws_School_Asset_Linkage_frm.jsp" />
+			<forward name="getAssets" path="/rws_School_Asset_frm.jsp" />
+			<forward name="close" path="/closeWithMessage4.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+		</action>
+
+		<action path="/schoolrep" name="schoolFormReport" input="/rws_School_Report_frm.jsp"
+			scope="request" type="nic.watersoft.masters.rws_SchoolReport_Act"
+			validate="true">
+
+			<forward name="data" path="/rws_School_Report_frm.jsp" />
+			<forward name="viewDetails" path="/rws_School_Details_View.jsp" />
+
+		</action>
+
+		<action path="/workCategory" name="workcategoryForm" input="/rws_work_categoryForrm.jsp"
+			scope="request" type="nic.watersoft.masters.rws_work_plan_prog_link_Act"
+			validate="true">
+			<forward name="data" path="/rws_work_Category.jsp" />
+			<forward name="view" path="/rws_work_Category_view.jsp" />
+			<forward name="get" path="/rws_work_Category_edit.jsp" />
+			<forward name="delete" path="/rws_work_Category_view.jsp" />
+			<forward name="close" path="/workCategory.do?mode=data" />			
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/HabSCST" name="habStatusForm" input="/rws_Hab_SC_ST_rpt.jsp"
+			scope="request" type="nic.watersoft.masters.rws_habs_sc_st_Act"
+			validate="true">
+			<forward name="Habsave" path="/rws_Hab_SC_ST_rpt.jsp" />
+			<forward name="view" path="/rws_Hab_SC_ST_rpt.jsp" />
+			<forward name="lcSave" path="/rws_Hab_SC_detais_rpt.jsp" />
+			<forward name="close" path="/closeWithMessage6.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp" />
+		</action>
+
+		<action input="/Rws_Reason_forDelay_Entry_Frm.jsp" name="reasonsForm"
+			path="/reasons" scope="request"
+			type="nic.watersoft.masters.Rws_Reason_forDelay_Entry_Act" validate="true">
+			<forward name="data" path="/Rws_Reason_forDelay_Entry_Frm.jsp" />
+			<forward name="save" path="/Rws_Reason_forDelay_Entry_Frm.jsp" />
+			<forward name="View" path="/Rws_Reason_forDelay_List.jsp" />
+			<forward name="get" path="/Rws_Reason_forDelay_edit.jsp" />
+			<forward name="edit" path="/reasons.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_milestone_entry_frm.jsp" name="milestoneForm"
+			path="/milestone" scope="request"
+			type="nic.watersoft.masters.Rws_Milestone_Entry_Act" validate="true">
+			<forward name="data" path="/rws_milestone_entry_frm.jsp" />
+			<forward name="save" path="/rws_milestone_entry_frm.jsp" />
+			<forward name="View" path="/rws_milestone_list.jsp" />
+			<forward name="get" path="/rws_mileStone_edit.jsp" />
+			<forward name="delete" path="/milestone.do?mode=View" />
+			<forward name="edit" path="/milestone.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+
+
+		<action input="/rws_milestone_entry_frm.jsp" name="milestoneStageForm"
+			path="/milestonestage" scope="request"
+			type="nic.watersoft.masters.Rws_MilestoneStage_Entry_Act" validate="true">
+			<forward name="data" path="/rws_milestonestage_entry_frm.jsp" />
+			<forward name="save" path="/rws_milestonestage_entry_frm.jsp" />
+			<forward name="View" path="/rws_milestonestage_list.jsp" />
+			<forward name="get" path="/rws_milestonestage_edit.jsp" />
+			<forward name="delete" path="/milestonestage.do?mode=View" />
+			<forward name="edit" path="/milestonestage.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_ddws_phy_comp_entry_frm.jsp" name="ddwsPhyCompForm"
+			path="/ddwsPhyComp" scope="request"
+			type="nic.watersoft.masters.Rws_Ddws_Phy_Comp_Entry_Act" validate="true">
+			<forward name="data" path="/rws_ddws_phy_comp_entry_frm.jsp" />
+			<forward name="save" path="/rws_ddws_phy_comp_entry_frm.jsp" />
+			<forward name="View" path="/rws_ddws_phy_comp_list.jsp" />
+			<forward name="get" path="/rws_ddws_phy_comp_edit.jsp" />
+			<forward name="delete" path="/ddwsPhyComp.do?mode=View" />
+			<forward name="edit" path="/ddwsPhyComp.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_ddws_milestone_entry_frm.jsp" name="milestoneForm"
+			path="/ddwsmilestone" scope="request"
+			type="nic.watersoft.masters.Rws_Ddws_Milestone_Entry_Act" validate="true">
+			<forward name="data" path="/rws_ddws_milestone_entry_frm.jsp" />
+			<forward name="save" path="/rws_ddws_milestone_entry_frm.jsp" />
+			<forward name="View" path="/rws_ddws_milestone_list.jsp" />
+			<forward name="get" path="/rws_ddws_mileStone_edit.jsp" />
+			<forward name="delete" path="/ddwsmilestone.do?mode=View" />
+			<forward name="edit" path="/ddwsmilestone.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_ddws_milestonestage_entry_frm.jsp" name="milestoneStageForm"
+			path="/ddwsmilestonestage" scope="request"
+			type="nic.watersoft.masters.Rws_Ddws_MilestoneStage_Entry_Act"
+			validate="true">
+			<forward name="data" path="/rws_ddws_milestonestage_entry_frm.jsp" />
+			<forward name="save" path="/rws_ddws_milestonestage_entry_frm.jsp" />
+			<forward name="View" path="/rws_ddws_milestonestage_list.jsp" />
+			<forward name="get" path="/rws_ddws_milestonestage_edit.jsp" />
+			<forward name="delete" path="/ddwsmilestonestage.do?mode=View" />
+			<forward name="edit" path="/ddwsmilestonestage.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_ddws_lnk_entry_frm.jsp" name="milestoneStageForm"
+			path="/ddwslnk" scope="request" type="nic.watersoft.masters.Rws_Ddws_Lnk_Entry_Act"
+			validate="true">
+			<forward name="data" path="/rws_ddws_lnk_entry_frm.jsp" />
+			<forward name="save" path="/rws_ddws_lnk_entry_frm.jsp" />
+			<forward name="View" path="/rws_ddws_lnk_list.jsp" />
+			<forward name="get" path="/rws_ddws_lnk_edit.jsp" />
+			<forward name="delete" path="/ddwslnk.do?mode=View" />
+			<forward name="edit" path="/ddwslnk.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_constituencymapping_frm.jsp" name="constituencyMasterForm"
+			path="/Constituency" scope="session"
+			type="nic.watersoft.masters.Rws_ConstituencyMappingAct_frm">
+			<forward name="data" path="/rws_constituencymapping_frm.jsp" />
+			<forward name="save" path="/rws_constituencymapping_frm.jsp" />
+			<forward name="view" path="/rws_constituencymapping_list_frm.jsp" />
+			<forward name="edit" path="/Constituency.do?mode=view" />
+			<forward name="get" path="/rws_constituencymapping_edit_frm.jsp" />
+			<forward name="delete" path="/Constituency.do?mode=view" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/assetReconvertion" name="assetReconvertionForm"
+			scope="request" type="nic.watersoft.masters.AssetReconvertion">
+			<forward name="success" path="/rws_AssetConvert_Reconvert_frm.jsp" />
+			<forward name="expire" path="/sessionExpired.jsp" />
+			<forward name="showMsg" path="/showMessageThenClose.jsp" />
+			<forward name="unauthorize" path="/UnAuthorize.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action path="/FuncRepair" name="FunctionalRepair" scope="session"
+			type="nic.watersoft.masters.rws_functional_repair_action">
+			<forward name="data" path="/rws_functional_repair_frm.jsp" />
+			<forward name="submit" path="/rws_functional_repair_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action name="schemeForm" path="/conversionOfSchemes" scope="request"
+			type="nic.watersoft.masters.rws_ConversionOfScheme_EntryAct_frm">
+			<forward name="Save" path="/rws_ConversionOfScheme_Entry_frm.jsp" />
+			<forward name="data" path="/rws_ConversionOfScheme_Entry_frm.jsp" />
+			<forward name="Add" path="/rws_ConversionOfScheme_Entry_frm.jsp" />
+			<forward name="Remove" path="/rws_ConversionOfScheme_Entry_frm.jsp" />
+			<forward name="resetForm" path="/rws_ConversionOfScheme_Entry_frm.jsp" />
+		</action>
+		
+		<action input="/rws_repair_type_entry_frm.jsp" name="FunctionalRepair" path="/repair" scope="request"
+			type="nic.watersoft.masters.rws_repair_type_entry_frm" validate="true">
+			<forward name="data" path="/rws_repair_type_entry_frm.jsp" />
+			<forward name="save" path="/rws_repair_type_entry_frm.jsp" />
+			<forward name="View" path="/rws_repair_type_list.jsp" />
+			<forward name="get" path="/rws_repair_type_edit.jsp" />
+			<forward name="edit" path="/repair.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action input="/rws_repair_lnk_entry_frm.jsp" name="FunctionalRepair"
+			path="/repairlnk" scope="request"
+			type="nic.watersoft.masters.Rws_Repairs_Lnk_Entry_Act" validate="true">
+			<forward name="data" path="/rws_repair_lnk_entry_frm.jsp" />
+			<forward name="save" path="/rws_repair_lnk_entry_frm.jsp" />
+			<forward name="View" path="/rws_ast_comp_lnk_list.jsp" />
+			<forward name="delete" path="/rws_repair_lnk_entry_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		<action path="/UiHabData" name="habStatusForm" scope="request"
+			type="nic.watersoft.masters.RwsUiHabActionData" input="/rws_ui_hab_to_nc_frm.jsp">
+			<forward name="data" path="/rws_ui_hab_to_nc_frm.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+		
+		<action input="/Rws_Imis_Programme_Entry_Frm.jsp" name="imisProgrammeForm"
+			path="/ImisProgramme" scope="request"
+			type="nic.watersoft.masters.Rws_Imis_Programme_Entry_Act" validate="true">
+			<forward name="data" path="/Rws_Imis_Programme_Entry_Frm.jsp" />
+			<forward name="save" path="/Rws_Imis_Programme_Entry_Frm.jsp" />
+			<forward name="View" path="/Rws_Imis_Programme_List.jsp" />
+			<forward name="get" path="/Rws_Imis_Programme_edit.jsp" />
+			<forward name="edit" path="/ImisProgramme.do?mode=View" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>
+
+		<action path="/ImisProgrammeLink" name="imisProgrammeForm"
+			input="/rws_work_categoryForrm.jsp" scope="request"
+			type="nic.watersoft.masters.Rws_Imis_Prog_Link_Act" validate="true">
+			<forward name="data" path="/rws_Imis_Prog_Lnk_Frm.jsp" />
+			<forward name="view" path="/Rws_imis_prog_lnk_view.jsp" />
+			<forward name="get" path="/Rws_Imis_prog_lnk_edit.jsp" />
+			<forward name="delete" path="/rws_work_Category_view.jsp" />
+			<forward name="close" path="/closeWithMessage3.jsp" />
+			<forward name="unAuthorise" path="/UnAuthorize.jsp "/>
+			<forward name="expire" path="/sessionExpired.jsp"/>
+		</action>	
+		
+
+	</action-mappings>
+
+
+	<message-resources parameter="nic.watersoft.resources.ApplicationResources" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>

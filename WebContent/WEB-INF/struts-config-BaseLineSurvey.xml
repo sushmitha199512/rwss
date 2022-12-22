@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+
+<struts-config>
+	 
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <set-property property="url" value="jdbc:oracle:thin:@10.160.2.137:1521:orcl"/>
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+		<set-property property="maxActive" value="1000" />
+		<set-property property="maxWait" value="5000" />
+	</data-source>
+</data-sources>
+	<form-beans>
+    
+   <form-bean name="blsOrgForm" type="nic.watersoft.BaseLineSurvey.blsOrgForm"/>
+<form-bean name="houseHoldForm" type="nic.watersoft.BaseLineSurvey.blsHouseHoldForm"/>
+<form-bean name="CommunitySanitaryForm" type="nic.watersoft.BaseLineSurvey.bls_comm_santnForm" />
+
+<form-bean name="BaseLineForm"
+			       type="nic.watersoft.BaseLineSurvey.BaseLineForm" />
+			      <form-bean name="WaterFacilityForm" type="nic.watersoft.BaseLineSurvey.water_facForm" />
+	</form-beans>
+  
+	<action-mappings>
+	
+	  <action input="/rws_bls_hh_goi_entry_frm.jsp" name="houseHoldForm" path="/goihousehold" scope="request"   type="nic.watersoft.BaseLineSurvey.rws_bls_hhgoi_Action">
+   <forward name="data" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="getmandal" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="getpanchayath" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="getvillage" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="gethab" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="save" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+   <forward name="view" path="/rws_bls_hh_goi_entry_frm.jsp"/>
+    
+  </action>
+	
+	  <action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	  
+	  
+	  
+<action path="/waterFac" name="WaterFacilityForm" type="nic.watersoft.BaseLineSurvey.water_facAction" validate="true" input="/rws_bls_water_facility_entry_frm.jsp" scope="request" >
+	<forward name="data" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="mandal" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="panchayat" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="village" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="hab" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="habdetails" path="/rws_bls_water_facility_entry_frm.jsp"/>
+	<forward name="save" path="/rws_bls_water_facility_entry_frm.jsp"/>    
+</action>
+		
+<action path="/Govtgp" name="BaseLineForm"	scope="session"		type="nic.watersoft.BaseLineSurvey.rws_GovtGpAct_frm">
+			<forward name="data"	path="/rws_govt_frm.jsp" />
+			<forward name="cview"	path="/rws_govt_list_frm.jsp" />
+			<forward name="save"	path="/rws_govt_frm.jsp" />
+			<forward name="get"	path="/rws_govtedit_frm.jsp" />
+			<forward name="delete"	path="/rws_govt_list_frm.jsp" />
+			<forward name="edit"	path="/rws_govtedit_frm.jsp" />
+			  <forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+</action>
+		
+<action path="/Commgp" name="BaseLineForm"	scope="session"		type="nic.watersoft.BaseLineSurvey.rws_CommGpAct_frm">
+			<forward name="data"	path="/rws_comm_frm.jsp" />
+			<forward name="cview"	path="/rws_comm_list_frm.jsp" />
+			<forward name="save"	path="/rws_comm_frm.jsp" />
+			<forward name="get"	path="/rws_commedit_frm.jsp" />
+			<forward name="edit"	path="/rws_commedit_frm.jsp" />
+			<forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+</action>
+		
+<action path="/School" name="BaseLineForm"	scope="session"		type="nic.watersoft.BaseLineSurvey.Rws_SchoolAct_frm">
+			<forward name="data"	path="/rws_school_entry_frm.jsp" />
+			<forward name="cview"	path="/rws_school_list_frm.jsp" />
+			<forward name="save"	path="/rws_school_entry_frm.jsp" />
+			<forward name="get"	path="/rws_schooledit_frm.jsp" />
+			<forward name="edit"	path="/rws_schooledit_frm.jsp" />
+			<forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+</action>
+		
+		<action path="/Angan" name="BaseLineForm"	scope="session"		type="nic.watersoft.BaseLineSurvey.Rws_AnganAct_frm">
+			<forward name="data"	path="/rws_angan_frm.jsp" />
+			<forward name="cview"	path="/rws_angan_list_frm.jsp" />
+			<forward name="save"	path="/rws_angan_frm.jsp" />
+			<forward name="get"	path="/rws_anganedit_frm.jsp" />
+			<forward name="edit"	path="/rws_anganedit_frm.jsp" />
+			  <forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+			
+			
+		</action>
+		
+		
+		<action path="/SolidWaste" name="BaseLineForm"	scope="session"		type="nic.watersoft.BaseLineSurvey.rws_SolidWasteAct_frm">
+			<forward name="data"	path="/rws_solid_frm.jsp" />
+			
+			<forward name="save"	path="/rws_solid_frm.jsp" />
+			<forward name="cview"	path="/rws_solid_list_frm.jsp" />
+			<forward name="get"	path="/rws_solidedit_frm.jsp" />
+			<forward name="edit"	path="/rws_solidedit_frm.jsp" />
+			
+			
+			
+			  <forward name="closeWithMessage" path="/closeWithMessage.jsp"/>
+			
+			
+		</action>
+		
+	  
+	  <action input="/rws_bls_org_frm.jsp" name="blsOrgForm" path="/orgingp" scope="request"   type="nic.watersoft.BaseLineSurvey.rws_bls_orgAction">
+   <forward name="data" path="/rws_bls_org_frm.jsp"/>
+   <forward name="getmandal" path="/rws_bls_org_frm.jsp"/>
+   <forward name="getpanchayath" path="/rws_bls_org_frm.jsp"/>
+   <forward name="getvillage" path="/rws_bls_org_frm.jsp"/>
+   <forward name="gethab" path="/rws_bls_org_frm.jsp"/>
+   <forward name="view" path="/rws_bls_org_frm.jsp"/>
+   <forward name="save" path="/rws_bls_org_frm.jsp"/>
+  </action>
+	
+	<action input="/rws_bls_household_frm.jsp" name="houseHoldForm" path="/household" scope="request"   type="nic.watersoft.BaseLineSurvey.rws_bls_householdAction">
+   <forward name="data" path="/rws_bls_household_frm.jsp"/>
+   <forward name="getmandal" path="/rws_bls_household_frm.jsp"/>
+   <forward name="getpanchayath" path="/rws_bls_household_frm.jsp"/>
+   <forward name="getvillage" path="/rws_bls_household_frm.jsp"/>
+   <forward name="gethab" path="/rws_bls_household_frm.jsp"/>
+   <forward name="save" path="/rws_bls_household_frm.jsp"/>
+   <forward name="view" path="/rws_bls_household_list.jsp"/>
+    <forward name="edit" path="/rws_bls_household_edit_frm.jsp"/>
+     <forward name="close" path="/closeWithMessage6.jsp"/>
+  </action>
+
+<action path="/commSan" name="CommunitySanitaryForm" type="nic.watersoft.BaseLineSurvey.bls_comm_santnAction" validate="true" input="/rws_bls_comm_sanitation_Entry_frm.jsp" scope="request" >
+	<forward name="data" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="mandal" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="panchayat" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="village" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="hab" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="habdetails" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+	<forward name="save" path="/rws_bls_comm_sanitation_Entry_frm.jsp"/>
+    
+</action>
+	  
+	
+	 
+	
+	</action-mappings>
+	
+	<message-resources parameter="nic.watersoft.resources.ApplicationResources" /> 
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml"/>
+	</plug-in>
+
+
+</struts-config>

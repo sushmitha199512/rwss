@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+<struts-config>
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg"/>
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+	</data-source>
+</data-sources>
+
+<form-beans>
+<form-bean name="GrievanceloginForm" type="nic.watersoft.admin.GrievanceLoginForm"/>
+	<form-bean name="UserManagementForm" type="nic.watersoft.admin.UserForm"/>
+	<form-bean name="ChangePasswordForm" type="nic.watersoft.admin.UserForm"/>
+	<form-bean name="EditUserForm" type="nic.watersoft.admin.UserForm"/>
+	<form-bean name="UserRoleForm" type="nic.watersoft.admin.UserForm"/>
+    <form-bean name="MonPhyFin" type="nic.watersoft.admin.Mon_Phy_Fin_form"/> 
+    <form-bean name="HabFreezUnfreez" type="nic.watersoft.admin.HabFreezUnfreezForm"/> 
+    <form-bean name="resetFormBean" type="nic.watersoft.admin.RwsResetPaswordFrm"/>
+    <form-bean name="forgotPasswordBean" type="nic.watersoft.admin.ForgotPasswordFormBean"/>
+    <form-bean name="usersList" type="nic.watersoft.admin.UserListForm"/>
+    
+    <form-bean name="RWSHOForm" type="nic.watersoft.admin.RWSHOUserForm"/>
+</form-beans>
+
+<global-forwards>
+	<forward name="success" path="/commons/success.jsp"/>
+	<forward name="failure" path="/commons/failure.jsp"/>
+	<forward name="unauthorized-access" contextRelative="true" path="/../commons/UnAuthorize.jsp	"/>
+	<forward name="pwdsent" contextRelative="true" path="/rws_login_frm.jsp"/>
+</global-forwards>
+
+<action-mappings>
+	<action path="/switch" type="org.apache.struts.actions.SwitchAction"/>
+	<action path="/users" name="usersList" scope="request" type="nic.watersoft.admin.UserListAction" input="/UserListForm.jsp">
+		<forward name="data" path="/UserListForm.jsp"></forward>
+		<forward name="get" path="/UserListForm.jsp"></forward>
+		<forward name="view" path="/UserListEditForm.jsp"></forward>
+		<forward name="save" path="/UserListForm.jsp"></forward>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp"/>	
+	 	<forward name="expire" path="/../masters/sessionExpired.jsp"/>	 
+	</action>
+	
+	 <action path="/LoginGrievance" name="GrievanceloginForm" type="nic.watersoft.admin.LoginGrievanceAction" scope="session"  attribute="GrievanceloginForm" validate="true" input="/rws_grievence_login_frm.jsp">
+			<!-- <forward name="login" path="/rws_grievence_login_frm.jsp"/> -->
+			<forward name="grievance" path="/../dashboards/rws_grievance_dashboard.jsp"/>
+			<forward name="failure" path="/../rws_login_failed.jsp"/>
+	</action>
+
+	<action path="/forgotPassword" name="forgotPasswordBean" scope="request" validate="true" type="nic.watersoft.admin.ForgotPasswordAction" >
+		<forward name="forgot" path="/rws_forgot_pwd.jsp"/>
+		<forward name="supwdsent" path="/closeWithMessage4.jsp"/>	
+	</action>
+
+	<action path="/resetPassword" name="resetFormBean" scope="request" type="nic.watersoft.admin.RwsResetPasswordAction" >
+		<forward name="view" path="/rws_pwd_reset.jsp"/>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp	" />	
+	 	<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+	</action>
+
+	 <action path="/UserManagementData" name="UserManagementForm" scope="request" type="nic.watersoft.admin.UserManagementData" validate="false">
+		<forward name="data-success" path="/rws_user_frm.jsp"/>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp" />	
+	 	<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+	 	<forward name="Error" path="/../dashboards/showError.jsp"/>
+	</action>
+	
+	<action path="/ajaxCall" name="UserManagementForm" scope="request" type="nic.watersoft.admin.UserManagementData" validate="false">
+    <forward name="unauthorized-access" path="/../commons/UnAuthorize.jsp" />	
+</action>
+	<action path="/UserManagementAction" name="UserManagementForm" scope="request" validate="true" type="nic.watersoft.admin.UserManagementAction" input="/rws_user_frm.jsp">
+		<forward name="success" path="/UserManagementData.do" redirect="true"/>
+		<forward name="view-success" path="/rws_user_view.jsp"/>
+		<forward name="failure" path="/UserManagementData.do"/>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp	" />	
+		<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+	</action>
+		
+	<action path="/ChangePasswordAction" name="ChangePasswordForm" type="nic.watersoft.admin.ChangePasswordAction">
+		<forward name="success" path="/rws_logout.jsp"/>
+		<forward name="failure" path="/rws_change_password_frm.jsp"/>
+		<forward name="init" path="/rws_change_password_frm.jsp"/>
+	</action>
+
+	<action path="/EditUser" name="EditUserForm" scope="request" validate="true" input="/rws_user_edit_frm.jsp" type="nic.watersoft.admin.EditUser">
+		<forward name="data-success" path="/rws_user_edit_frm.jsp"/>
+		<forward name="success" path="/rws_user_view.jsp"/>
+		<forward name="failure" path="/rws_user_edit_frm.jsp"/>
+		<forward name="view" path="/UserManagementData.do"/>
+		<forward name="close" path="/closeWithMessage4.jsp"/>
+		<forward name="print-success" path="/rws_user_print.jsp"/>
+		<forward name="excel-success" path="/rws_user_excel.jsp"/>
+		<forward name="unknown" path="/invalid_url.jsp"/>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp" />	
+		<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+	</action>	
+	
+	<action path="/UserRolesData" name="UserRoleForm" scope="request" type="nic.watersoft.admin.UserRolesData">
+		<forward name="data-success" path="/rws_roles_frm.jsp"/>
+	</action>
+	
+	<action path="/UserRolesAction" name="UserRoleForm" scope="request" validate="true" type="nic.watersoft.admin.UserRolesAction" input="/rws_roles_frm.jsp">
+		<forward name="success" path="/UserRolesData.do" redirect="true"/>
+		<forward name="view-success" path="/rws_roles_view.jsp"/>
+	</action>
+	
+	<action path="/EditRoles" name="UserRoleForm" scope="request" validate="true" input="/rws_roles_edit_frm.jsp" type="nic.watersoft.admin.EditRoles">
+		<forward name="data-success" path="/rws_roles_edit_frm.jsp"/>
+		<forward name="success" path="/rws_roles_view.jsp"/>
+		<forward name="print-success" path="/rws_roles_print.jsp"/>
+		<forward name="excel-success" path="/rws_roles_excel.jsp"/>
+	</action>
+	
+	<action path="/MonPhyFin" name="MonPhyFin" scope="session" 
+         type="nic.watersoft.admin.Mon_Phy_Fin_form_act">
+		<forward name="init" path="/rws_phy_fin_status_frm.jsp"/>
+        <forward name="year" path="/rws_phy_fin_status_frm.jsp"/>
+        <forward name="list" path="/rws_phy_fin_status_list_frm.jsp"/>
+ </action>
+     <action path="/myfreez" name="HabFreezUnfreez" scope="session" type="nic.watersoft.admin.HabFreezUnfreez_act">
+		<forward name="display" path="/HabFreezUnfreez.jsp"/>
+        <forward name="view" path="/HabFreezUnfreez.jsp"/>
+        <forward name="unAuthorise" path="/../commons/UnAuthorize.jsp	" />	
+	 	<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+     </action>
+
+
+	<!-- <action path="/RwsHoPage" name="RWSHOForm" scope="request" type="nic.watersoft.admin.RWSHOUserManagementData" validate="false">
+		<forward name="data-success" path="/rws_HO_budget_page.jsp"/>
+		<forward name="unAuthorise" path="/../commons/UnAuthorize.jsp	" />	
+	 	<forward name="expire" path="/../masters/sessionExpired.jsp"/>
+	</action> -->
+
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources"/> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-admin.xml"/>
+</plug-in>
+
+</struts-config>

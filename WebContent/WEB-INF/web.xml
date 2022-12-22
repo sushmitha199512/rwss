@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app>
+<display-name>WATERSOFT-PRED</display-name>
+ <distributable/> 	
+<filter>
+    <filter-name>ieCompFilter</filter-name>
+    <filter-class>nic.watersoft.commons.CompatibleFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>ieCompFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<filter>
+    <filter-name>xssFilter</filter-name>
+    <filter-class>nic.watersoft.commons.XSSFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>xssFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<filter>
+  <filter-name>clickJackFilter</filter-name>
+  <filter-class>nic.watersoft.commons.ClickjackFilter</filter-class>
+</filter>
+<filter-mapping>
+  <filter-name>clickJackFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+
+<security-constraint>
+    <display-name>Prevent GET requests on the Login.do file</display-name>
+    <web-resource-collection>
+        <web-resource-name>The Login.do file</web-resource-name>
+        <url-pattern>/Login.do</url-pattern>
+       <!--  <http-method>GET</http-method> -->
+       <http-method-omission>GET</http-method-omission>
+       <http-method-omission>POST</http-method-omission>
+       <!-- Commented on 22-04-2022 for Security Audit-->
+    </web-resource-collection>
+    <auth-constraint />
+</security-constraint>
+
+
+<filter>
+  <filter-name>sqlInjectionBlackList</filter-name>
+  <filter-class>nic.watersoft.commons.RequestFilter</filter-class>
+</filter>
+<filter-mapping>
+  <filter-name>sqlInjectionBlackList</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping> 
+ 
+<filter>
+	<description>logging filter</description>
+	<display-name>Log filter</display-name>
+	<filter-name>logfilter</filter-name>
+	<filter-class>nic.watersoft.admin.Logger</filter-class>
+</filter>
+
+ 	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/masters/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/worksMonitoring/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/works/*</url-pattern>
+	</filter-mapping> 
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/switch.do</url-pattern>
+	</filter-mapping> 
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/proposals/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/estimates/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/wquality/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/contractor/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/drought/*</url-pattern>
+	</filter-mapping> 
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/home.do</url-pattern>
+	</filter-mapping> 	
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/home.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/Login.do</url-pattern>
+	</filter-mapping> 	
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/Sanitation/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/complaints/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/pushkar/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>logfilter</filter-name>
+		<url-pattern>/smsmobile/*</url-pattern>
+	</filter-mapping>
+	
+	 <listener>
+		<listener-class>nic.watersoft.scheduler.JobListener</listener-class>
+	  </listener>  
+	 <!-- <listener>
+		<listener-class>nic.watersoft.scheduler.JobListenerTransactions</listener-class>
+	  </listener>  -->
+		
+	
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/admin</param-name>
+			<param-value>/WEB-INF/struts-config-admin.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/masters</param-name>
+			<param-value>/WEB-INF/struts-config-masters.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/worksMonitoring</param-name>
+			<param-value>/WEB-INF/struts-config-worksMonitoring.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/works</param-name>
+			<param-value>/WEB-INF/struts-config-works.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/wquality</param-name>
+			<param-value>/WEB-INF/struts-config-wquality.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/proposals</param-name>
+			<param-value>/WEB-INF/struts-config-proposals.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/estimates</param-name>
+			<param-value>/WEB-INF/struts-config-estimates.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/contractor</param-name>
+			<param-value>/WEB-INF/struts-config-contractor.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/reports</param-name>
+			<param-value>/WEB-INF/struts-config-reports.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/fundAccounting</param-name>
+			<param-value>/WEB-INF/struts-config-fundAccounting.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/drought</param-name>
+			<param-value>/WEB-INF/struts-config-drought.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/BaseLineSurvey</param-name>
+			<param-value>/WEB-INF/struts-config-BaseLineSurvey.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config/Sanitation</param-name>
+			<param-value>/WEB-INF/struts-config-Sanitation.xml</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>config/complaints</param-name>
+			<param-value>/WEB-INF/struts-config-complaints.xml</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>config/pushkar</param-name>
+			<param-value>/WEB-INF/struts-config-pushkar.xml</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>config/smsmobile</param-name>
+			<param-value>/WEB-INF/struts-config-smsmobile.xml</param-value>
+		</init-param>
+		
+		
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	    <servlet-name>RestWS</servlet-name>
+	    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+	    <init-param>
+	      <param-name>jersey.config.server.provider.packages</param-name>
+	      <param-value>nic.watersoft.service</param-value>
+	    </init-param>
+	</servlet>
+	<servlet>
+	 <servlet-name>jsp</servlet-name>
+    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+     <init-param>
+        <param-name>mappedfile</param-name>
+        <param-value>false</param-value>
+    </init-param>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>RestWS</servlet-name>
+	    <url-pattern>/RestCM/*</url-pattern>
+	</servlet-mapping>
+	
+
+	<welcome-file-list>
+		<welcome-file>rws_login_frm.jsp</welcome-file>
+	</welcome-file-list>
+<jsp-config>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-html-el.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-html-el.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/WEB-INF/rws-tags.tld</taglib-uri>
+		<taglib-location>/WEB-INF/rws-tags.tld</taglib-location>
+	</taglib>
+	<taglib>
+  <taglib-uri>/WEB-INF/jstl-core</taglib-uri> 
+  <taglib-location>/WEB-INF/c.tld</taglib-location> 
+  </taglib>
+	
+ <taglib>
+    <taglib-uri>
+      http://jsptags.com/tags/navigation/pager
+    </taglib-uri>
+    <taglib-location>
+      /WEB-INF/pager-taglib.tld
+    </taglib-location>
+  </taglib>
+  </jsp-config>
+	<resource-ref>
+	    <description>DB Connection</description>
+	    <res-ref-name>jdbc/pred</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	</resource-ref>
+
+
+<session-config>
+	<session-timeout>30</session-timeout>
+	 <cookie-config>
+       <http-only>true</http-only>
+       <!-- <secure>true</secure> -->
+     </cookie-config>
+</session-config>
+ 
+ <error-page>
+     <error-code>404</error-code>
+     <location>/pred_error_page.jsp</location>
+ </error-page>
+
+ <error-page>
+     <error-code>500</error-code>
+     <location>/pred_error_page.jsp</location>
+ </error-page>
+
+ <!--
+  <error-page>
+     <exception-type>javax.servlet.ServletException</exception-type>
+     <location>/pred_error_page.jsp</location>
+  </error-page>
+  
+   <error-page>
+     <error-code>404</error-code>
+     <location>/pred_error_page.jsp</location>
+   </error-page>
+   <error-page>
+   	<error-code>500</error-code>
+     <location>/pred_error_page.jsp</location>
+     </error-page>
+      <error-page>
+      <location>/pred_error_page.jsp</location>
+     </error-page>
+   -->
+</web-app>

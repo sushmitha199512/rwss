@@ -1,0 +1,66 @@
+/* --- static menu styles ---
+note:
+	1. not all browsers render styles the same way so try out your style sheet
+	on different browsers before publishing;
+style naming convention:
+	m<zero based menu number>l<zero based level number>i|o<for inner or outer tag>
+*/
+
+
+.m0l0o {
+	text-decoration: none;
+	margin: 0px;
+	border: 1px solid #ffffff;
+	font-weight:bold;
+}
+
+.m0l1o {
+	text-decoration: none;
+	margin: 0px;
+	border: 1px solid #ffffff;
+	font-weight:bold;
+}
+
+.m0l2o {
+	text-decoration: none;
+	margin: 0px;
+	border: 1px solid #ffffff;
+	font-weight:bold;
+}
+
+.m0l3o {
+	text-decoration: none;
+	margin: 0px;
+	border: 1px solid #ffffff;
+	font-weight:bold;
+}
+
+
+.m0l0i {
+	padding: 2px;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 8pt;
+}
+
+.m0l1i {
+	padding: 2px;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 8pt;
+}
+
+.m0l2i {
+	padding: 2px;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 8pt;
+}
+
+.m0l3i {
+	padding: 2px;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 8pt;
+}
+

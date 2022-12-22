@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+
+<struts-config>
+ <data-sources>
+<data-source type="org.apache.commons.dbcp.BasicDataSource">
+<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg" />
+<set-property property="username" value="preduser"/>
+<set-property property="password" value="preduser"/>
+</data-source>
+</data-sources>
+
+
+<form-beans>
+	<form-bean name="waterSampleForm" type="nic.watersoft.wquality.WaterSampleForm"/>
+	<form-bean name="waterSampleGeoTestForm" type="nic.watersoft.wquality.WaterSampleGeoTestForm"/>
+	<form-bean name="waterSampleResForm" type="nic.watersoft.wquality.WaterSampleResForm"/>
+	<form-bean name="wqFinalIdenForm" type="nic.watersoft.wquality.WQFinalise_IdenForm"/>
+	<form-bean name="wqDrillStatusForm" type="nic.watersoft.wquality.WQDrillStatusForm"/>
+	<form-bean name="waterSampleFtkTestForm" type="nic.watersoft.wquality.WaterSampleFtkTestForm"/>
+	<form-bean name="waterSampleFtkTestForm1" type="nic.watersoft.wquality.WaterSampleFtkTestForm"/>
+</form-beans>
+
+<!--***************************************************************************************-->
+
+<action-mappings>
+
+ <action input="/rws_water_sample_collection_frm.jsp" name="waterSampleForm"
+   path="/WaterSample" scope="request" type="nic.watersoft.wquality.rws_WaterSample_frm" validate="false">
+   <forward name="Save" path="/rws_water_sample_collection_frm.jsp"/>  
+   <forward name="View" path="/rws_WaterSampleTestList_frm.jsp"/>
+    <forward name="view" path="/rws_FtkTestList_frm.jsp"/>
+   <!-- <forward name="get" path="/rws_Editwater_sample_collection_frm.jsp"/> -->
+   <forward name="get" path="/rws_water_sample_collection_frm.jsp"/>
+   <forward name="edit" path="/WaterSample.do?mode=View"/>
+   <forward name="delete" path="/rws_WaterSampleTestList_frm.jsp"/>
+   <forward name="Delete" path="/rws_FtkTestList_frm.jsp"/>
+   <forward name="data" path="/rws_water_sample_collection_frm.jsp"/>
+   <forward name="viewSources" path="/rws_sourceList_frm.jsp"/>
+   <forward name="viewftkSources" path="/rws_ftksourceList_frm.jsp"/>
+   <forward name="selectSource" path="/rws_water_sample_collection_frm.jsp"/>
+   <forward name="selectftkSource" path="/rws_water_sample_collection_frm.jsp"/>
+   <forward name="Update" path="/rws_water_sample_collection_frm.jsp"/>
+   <forward name="reset" path="/rws_water_sample_collection_frm.jsp"/>   
+   <forward name="forwardtolab" path="/rws_water_sample_collection_frm.jsp"/> 
+ </action>
+<!--********************************************************************************-->
+<action input="/rws_wq_ftksample_obtained_forwarded_frm.jsp" name="waterSampleFtkTestForm"
+   path="/WaterSampleFtkTest" scope="request" type="nic.watersoft.wquality.rws_WaterSampleFtkTest_frm" validate="true">
+   <forward name="data" path="/rws_wq_ftksample_obtained_forwarded_frm.jsp"/>
+   <forward name="Submit" path="/WaterSampleFtkTest.do?mode=data"/>
+   <forward name="Forward" path="/WaterSampleFtkTest.do?mode=data"/>
+   <forward name="testResult" path="/rws_wq_ftktestResult.jsp"/>
+   <forward name="testResults" path="/rws_wq_ftktestResults.jsp"/>
+   </action>
+  <!--********************************************************************************-->
+ <action input="/rws_wq_sample_obtained_forwarded_frm.jsp" name="waterSampleGeoTestForm"
+   path="/WaterSampleGeoTest" scope="request" type="nic.watersoft.wquality.rws_WaterSampleGeoTest_frm" validate="true">
+   <forward name="data" path="/rws_wq_sample_obtained_forwarded_frm.jsp"/>
+   <forward name="Submit" path="/WaterSampleGeoTest.do?mode=data"/>
+   <forward name="Forward" path="/WaterSampleGeoTest.do?mode=data"/>
+   <forward name="testResult" path="/rws_wq_testResult.jsp"/>
+   <forward name="testResults" path="/rws_wq_testResults.jsp"/>
+   </action>
+
+ <!--********************************************************************************-->
+  <action input="/rws_WQSample_TestRes_frm.jsp" name="waterSampleResForm"
+   path="/WaterSampleRes" scope="request" type="nic.watersoft.wquality.rws_WaterSampleResult_frm" validate="true">
+   <forward name="data" path="/rws_WQSample_TestRes_frm.jsp"/>
+   <forward name="doNothing" path="/rws_WQSample_TestRes_frm.jsp"/>
+   <!--<forward name="Submit" path="/rws_WQSample_TestRes_frm.jsp"/>-->
+   <forward name="Submit" path="/WaterSampleRes.do?mode=data"/>
+   <forward name="View" path="/rws_WaterSampleTestResList_frm.jsp"/>
+   <forward name="get" path="/rws_EditWQSample_TestRes_frm.jsp"/>
+   <forward name="edit" path="/WaterSampleRes.do?mode=View"/>
+   <forward name="delete" path="/WaterSampleRes.do?mode=View"/>
+   <forward name="test" path="/rws_WQParameterList.jsp"/>
+   <forward name="testview" path="/rws_WQParameterList.jsp"/>
+   <forward name="updateTests" path="/rws_UpdateWQParameterList.jsp"/>
+   <forward name="Save" path="/close.jsp"/>
+   </action>
+
+ <!--********************************************************************************-->
+ <action input="/rws_WQ_Finalise_Identifcation_frm.jsp" name="wqFinalIdenForm"
+   path="/WaterFinalIden" scope="request" type="nic.watersoft.wquality.rws_WQ_Finalise_Iden_frm" validate="true">
+   <forward name="data" path="/rws_WQ_Finalise_Identifcation_frm.jsp"/>
+   <forward name="Save" path="/rws_WQ_Finalise_Identifcation_frm.jsp"/>
+   <forward name="View" path="/rws_WQ_Finalise_IdentifcationList_frm.jsp"/>
+   <forward name="get" path="/rws_EditWQ_Finalise_Identifcation_frm.jsp"/>
+   <forward name="update" path="/rws_EditWQ_Finalise_Identifcation_frm.jsp"/>
+   <forward name="edit" path="/WaterFinalIden.do?mode=View"/>
+   <forward name="delete" path="/WaterFinalIden.do?mode=View"/>
+   <forward name="newSource" path="/rws_WQ_Finalise_Identifcation_frm.jsp"/>
+  </action>
+   <!--********************************************************************************-->
+   <action input="/rws_WQ_DrillingStatus_frm.jsp" name="wqDrillStatusForm"
+   path="/DrillStatus" scope="request" type="nic.watersoft.wquality.rws_WQ_DrillingStatus_frm" validate="true">
+   <forward name="data" path="/rws_WQ_DrillingStatus_frm.jsp"/>
+   <forward name="Save" path="/rws_WQ_DrillingStatus_frm.jsp"/>
+   <forward name="View" path="/rws_WQ_DrillingStatusList_frm.jsp"/>
+   <forward name="get" path="/rws_EditWQ_DrillingStatus_frm.jsp"/>
+   <forward name="edit" path="/DrillStatus.do?mode=View"/>
+   <forward name="delete" path="/DrillStatus.do?mode=View"/>
+   <forward name="show" path="/rws_WQ_FinalStatusList_frm.jsp"/>
+   </action>
+
+	<action path="/WorkDetails" type="nic.watersoft.estimates.ShowWorkDetails" >
+	<forward name="success" path="/rws_work_details.jsp"/>
+   </action>
+</action-mappings
+
+
+
+
+
+
+
+
+
+>
+
+<!--********************************************************************************-->
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources" /> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-wquality.xml"/>
+</plug-in>
+
+</struts-config>

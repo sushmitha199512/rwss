@@ -1,0 +1,388 @@
+.pageFooter
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 9pt;
+	color: green;
+}
+.pageFooter1
+{
+	position: absolute;
+	bottom:0;
+	left:150;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 9pt;
+	color: #330099;
+	text-align: center;
+		
+}
+.pageHeading
+{
+	font-family:  Georgia;
+	font-weight: bold;
+	font-size: 20pt;
+	color: orange;
+}
+.pageHeading1
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 12pt;
+	color: #CC6600;
+}
+.pageHeading2
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 12pt;
+	color: #006600;
+}
+.mystyle
+{
+	background-color:silver;
+	border-width:1;
+	color:black;
+	font-family:verdana;
+	font-size:7pt;
+}
+
+.btext
+{
+	border-width:1;
+	border-color:#000000;
+	background-color:#efefef;
+	color:#660099;
+	font-weight:bold;
+	height:18px;
+	font-family:verdana;
+	font-size:9pt
+}
+
+.mycborder
+{
+	padding:0;
+	height:15px;
+	font-family:verdana;
+	font-weight:bold;
+	font-size:5pt;
+	
+}
+.mycborder1
+{
+	padding:0;
+	height:15px;
+	font-family:verdana;
+
+	font-size:5pt;
+	
+}
+
+.mycombo
+{
+	height:15px;
+	border-width:0;
+	font-size:9pt;
+	font-family:verdana;
+}
+.mytext2
+{
+	height:14px;
+	border-width:0;
+	border-style:none;
+	font:menu;
+}
+
+.hightcombo
+{
+	height:250px;
+	width:150px;
+	font-size:.9em;
+	font-family:verdana;
+}
+.hightlongcombo
+{
+	height:250px;
+	width:600px;
+	font-size:.9em;
+	font-family:verdana;
+	overflow:auto;
+	resize:both;
+}
+.mediumlongcombo
+{
+	height:100px;
+	width:450px;
+	font-size:.9em;
+	font-family:verdana;
+}
+.combo
+{
+	height:15px;
+	width:150px;
+	font-size:.9em;
+	font-family:verdana;
+}
+.comboLarge
+{
+	height:15px;
+	width: 600px;
+	border: 0 solid 1px black;
+	font-size:.9em;
+	font-family:verdana;
+}
+.comboMedium
+{
+	height:15px;
+	width: 200px;
+	border: 0 solid 1px black;
+	font-size:.9em;
+	font-family:verdana;
+}
+.mandatory
+{
+	font-family:verdana;
+	font-weight:bold;
+	font-size:9pt;
+	color:red;
+}
+.rsInLakhs
+{
+	font-family:verdana;
+	font-weight:bold;
+	font-size:9pt;
+	color:yellow;
+}
+legend
+{
+	font-family:verdana;
+	font-size:9pt;
+	color:#800000;
+}
+fieldset
+{
+	padding: 2px 2px 2px 2px;
+}
+.tableBody
+{
+	font-family:verdana;
+	font-size:.9em;
+	text-align:left;
+}
+.gridLabel
+{
+	font-family:verdana;
+	font-size:8pt;
+	text-align:center;
+}
+.gridText
+{
+	border-width:0;
+	border-color:#000000;
+	background-color:#ffffff;
+	height:18px;
+	width:100%;
+	font:menu;
+}
+.noborder-text-box
+{
+	border: 0;
+	height: 18px;
+	font: menu;
+}
+.label
+{
+	font:menu;
+}
+.staticLabel
+{	
+	font-family: verdana;
+	font-size: .8em;
+	font-weight: normal;
+	color: #000000;
+}
+.staticLabelBold
+{	
+	font-family: verdana;
+	font-size: .8em;
+	font-weight: bold;
+	color: #000000;
+}
+
+.thin-text-box
+{
+	border-width:1px;
+	border-color:#000000;
+}
+.notAvailable
+{
+	font-style:italic;
+	color:red;
+}
+.message
+{
+	font-family: verdana;
+	font-size: .8em;
+}
+.row0
+{
+	background-color: #D7DEEE;
+}
+.row1
+{
+	background-color: #E9EDF5;
+}
+
+.gridHeader
+{
+	font:menu;
+	font-size:.8em;
+	text-align: center;
+	background: #8A9FCD;
+	color:#000000;
+	
+}
+.gridContent
+{
+	font-family:verdana;
+	font-size:.8em;
+	color:#000000;
+}
+
+.formTBody
+{
+	font-family: verdana;
+	font-weight: bold;
+	font-size: .8em;
+	background-color: #DEE3E0;
+	color: #000000;
+}
+.formHeader
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: .8em;
+	color: #ffffff;
+}
+.formFooter
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: .6em;
+	color: #ffffff;
+}
+.column1
+{	
+	width:150px;
+}
+.column2
+{
+	width:200px;
+}
+.column3
+{
+	width:150px;
+}
+.column4
+{
+	width:150px;
+}
+.userDetails
+{
+	font-family:verdana;font-size:8pt;text-decoration:none;color:#316A95
+}
+.reportHeader
+{
+	font-family:verdana;
+	font-size:8pt;
+	font-weight: bold;
+	color:#993366;
+}
+.reportTitle
+{
+	font-family:verdana;
+	font-size:9pt;
+	font-weight: bold;
+	color: #ffffff;
+	background-color:#8A9FCD;
+}
+.reportHead
+{
+	font-family:verdana;
+	font-size:8pt;
+	font-weight: bold;
+	text-align: center;
+	color:#993366;
+	background-color: #ffffff;
+}
+.reportBody
+{
+	font-family:verdana;
+	font-size:8pt;
+	background-color: #ffffff;
+}
+.printTitle
+{
+	font-family:verdana;
+	font-size:9pt;
+	font-weight: bold;
+	color: #000000;
+	background-color:#ffffff;
+}
+.printHead
+{
+	font-family:verdana;
+	font-size:8pt;
+	font-weight: bold;
+	text-align: center;
+	color:#000000;
+	background-color: #ffffff;
+}
+.printBody
+{
+	font-family:verdana;
+	font-size:8pt;
+	color: #000000;
+	background-color: #ffffff;
+}
+
+A:link{font-family:verdana;font-size:8pt;text-decoration:none;color:#316A95}
+A:visited{font-family:verdana;font-size:8pt;text-decoration:none;color:#316A95}
+A:hover{font-family:verdana;font-size:8pt;text-decoration:underline;color:#316A95}
+
+#white
+{
+	font-family: verdana;
+	font-size: .7em;
+	color: white;
+}
+#edit
+{
+	color: #6600CC;
+}
+#delete
+{
+	color: #990066;
+}
+
+#dhtmltooltip{
+position: absolute;
+left: -300px;
+width: 150px;
+border: 1px solid black;
+padding: 2px;
+background-color: lightyellow;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+}
+
+#dhtmlpointer{
+position:absolute;
+left: -300px;
+z-index: 101;
+visibility: hidden;
+}
+
+

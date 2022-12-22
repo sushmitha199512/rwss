@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connect>
+	<!-- Setting Runtime Database Type -->
+	<ActualDBType>SQLSERVER</ActualDBType>
+
+	<!-- For Connecting SQLSERVER DATABASE -->
+	<DBInfo DBType="SQLSERVER">
+		<System>10.160.2.208</System>
+		<Driver>com.microsoft.jdbc.sqlserver.SQLServerDriver</Driver>
+		<URL>jdbc:microsoft:sqlserver:</URL>
+		<Port>1433</Port>
+		<DBName>fas-web</DBName>
+		<UserId>sa</UserId>
+		<Password>sa123</Password>
+	</DBInfo>
+	
+	<!-- For Connecting MYSQL DATABASE -->
+	<DBInfo DBType="MYSQL">
+		<System>localhost</System>
+		<Driver>com.mysql.jdbc.Driver</Driver>
+		<URL>jdbc:mysql://</URL>
+		<Port>3306</Port>
+		<DBName>dmt</DBName>
+		<UserId>root</UserId>
+		<Password>root</Password>
+	</DBInfo>
+
+	<!-- For Connecting ORACLE DATABASE -->
+	<DBInfo DBType="ORACLE">
+		<System>10.160.2.87</System>
+		<Driver>oracle.jdbc.driver.OracleDriver</Driver>
+		<URL>jdbc:oracle:thin:@</URL>
+		<Port>1521</Port>
+		<DBName>stage10g</DBName>
+		<UserId>preduser</UserId>
+		<Password>preduser</Password>
+	</DBInfo>
+
+	<DBInfo DBType="MSACCESS">
+		<System>aa</System>
+		<Driver>sun.jdbc.odbc.JdbcOdbcDriver</Driver>
+		<URL>jdbc:odbc:dmt</URL>
+		<Port>a</Port>
+		<DBName>a</DBName>
+		<UserId>a</UserId>
+		<Password>a</Password>
+	</DBInfo>
+
+</connect>

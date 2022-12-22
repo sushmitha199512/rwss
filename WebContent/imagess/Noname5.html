@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Example jqDock</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' type='text/css' href='example.css' />
+<script type='text/javascript' src='jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='jquery.jqDock.min.js'></script>
+<style>
+/*position and hide the menu initially - leave room for the menu to expand...*/
+#description {margin-left:150px; width:510px;}
+#page {padding:20px 0; width:100%;}
+#menu {position:absolute; top:20px; left:10px; display:none;}
+/*dock styling...*/
+/*...set the cursor...*/
+#menu div.jqDock {cursor:pointer;}
+/*label styling...*/
+div.jqDockLabel {padding-bottom:8px; font-size:12px; font-family:verdana; font-weight:bold; white-space:nowrap; color:#444b69; cursor:pointer;}
+</style>
+<script>
+jQuery(document).ready(function($){
+  // set up the options to be used for jqDock...
+  var dockOptions =
+    { align: 'center' // vertical menu, with expansion LEFT/RIGHT from the center
+    , labels: 'br'  // add labels (override the 'tl' default)
+    , inactivity: 4000 // set inactivity timeout to 4 seconds
+    };
+  // ...and apply...
+  $('#menu').jqDock(dockOptions);
+});
+</script>
+<BODY>
+<div id='page'>
+  <div id='menu'>
+    <img src='portfolio.png' title='Favourites' alt='' />
+    <img src='link.png' title='Pictures' alt='' />
+    <img src='email.png' title='Music' alt='' />
+  </div>
+</div>
+</BODY>
+</HTML>

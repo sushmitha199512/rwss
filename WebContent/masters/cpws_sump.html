@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>WaterSoft</title>
+
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/rwsstyle.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/theme1.css">
+<link rel="stylesheet" type="text/css" href="/pred/resources/style/menu.css">
+<script language="JavaScript" src="/pred/resources/javascript/utils.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/calendar.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/rwsscript.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_items.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/menu_tpl.js"></script>
+<script language="JavaScript" src="/pred/resources/javascript/ajax.js"></script>
+	<script language="javascript">
+	function savefunc()
+	{
+	   var typeOfAsset="01";
+	   var assetCompType="04";
+	   var assetSubCompType="002";
+       
+ 	   if(typeOfAsset=="04" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm1(assetForm1))
+	     {
+	       document.forms[0].action="/pred/masters/Asset1.do?mode=Submit";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="001")
+	   {
+	     if(validateAssetForm2(assetForm2))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset2.do?mode=addPWSBorewell";
+	       document.forms[0].submit();
+	     }
+	   }    
+	   else if(typeOfAsset=="01" && assetCompType=="01" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm3(assetForm3))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset3.do?mode=addGLSR";
+	       document.forms[0].submit();
+	     }
+	   }   
+	    else if(typeOfAsset=="01" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm4(assetForm4))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset4.do?mode=addResOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="001")
+	   {  
+	     if(validateAssetForm5(assetForm5))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset5.do?mode=addResCPWSOHSR";
+	       document.forms[0].submit();
+	     }
+	   }     
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="002")
+	   {  
+	     if(validateAssetForm6(assetForm6))
+	     { 
+	       document.forms[0].action="/pred/masters/Asset6.do?mode=addResCPWSOHBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="003")
+	   { 	   
+	     if(validateAssetForm7(assetForm7))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset7.do?mode=addResCPWSGLSR";
+	       document.forms[0].submit();
+	     }
+	   }  
+	   else if(typeOfAsset=="03" && assetCompType=="04" && assetSubCompType=="004")
+	   { 	   
+	     if(validateAssetForm8(assetForm8))
+	     {  
+	       document.forms[0].action="/pred/masters/Asset8.do?mode=addResCPWSGLBR";
+	       document.forms[0].submit();
+	     }
+	   }  
+   }
+	</script>
+	</head>
+		
+	<body bgcolor="#edf2f8" topmargin="0" leftmargin="0" >
+ 
+	<table  bordercolor= "#8A9FCD"  border="0" rules="none" style="border-collapse:collapse;" width="100%"  >
+	<thead class="gridLabel">
+    <tr bgcolor="#8A9FCD">
+    <td colspan=2 align=left><b>Asset SubComponent Parameter Details</b>
+    </td>
+    </tr>
+ 	</thead>
+	
+	<tr>
+	<td colspan="2">
+	<table  class="row0" bordercolor= "#8A9FCD"  border="1"  rules="none" style="border-collapse:collapse;" width="100%" >
+	     
+	<form name="assetForm3" method="post" >
+ 		<tr bgcolor="#8A9FCD" class="gridLabel" >
+         <td colspan=4 align=left ><b>Component Name:&nbsp;CPWS-HEADWORKS-SUMP</b>
+         </td>
+         </tr>
+		<tr >
+		<td  align=left class="textborder">Sump Code</td>
+		<td class="textborder" align=center><input type="text" name="sumpCode" maxlength="13" value=""  style="width:100px" class="mytext"></td></td>
+		<td  align=left class="textborder">Sump Type</td>
+		<td class="textborder" align=center>
+		<select name="sumpType"  style="width:100px" class="mytext">
+		<option>SELECT...</option>
+		<option vakue="RCC">RCC</option>
+		<option value="RR">RR</option>
+		<option value="BRICK">Brick</option>
+		<td>
+		<tr>
+		<td  align=left class="textborder">Capacity of Sump(ltrs)</td>
+		<td class="textborder" align=center><input type="text" name="sumpCapacity" maxlength="13" value=""  style="width:100px" class="mytext"></td></td>
+		<td  align=left class="textborder">No.of Hours Required for filling</td>
+		<td class="textborder" align=center> <input type="text" name="sumpFillHours" maxlength="13" value=""  style="width:100px" class="mytext"></td></td>
+		</tr>
+		<tr>
+		<td  align=left class="textborder">No.of Hours Required to empty</td>
+		<td class="textborder" align=center><input type="text" name="sumpHours" maxlength="13" value=""  style="width:100px" class="mytext"></td></td>
+		<td  align=left class="textborder">Sump Condition</td>
+		<td class="textborder" align=center>
+		<select name="sumpCond"  style="width:100px" class="mytext">
+		<option>SELECT...</option>
+		<option value="GOOD">Good</option>
+		<option value="LEAKING">Leaking</option>
+		<option value="NEED REPAIRS">Need Repairs</option>
+		</select>
+		</td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	<tr>
+	<td  align="center" colspan="3">
+		<input type="button" name="mode" value="Save"   class="btext" title="Save the Fields">
+	    <input type="reset" value="Close" onclick="javascript:window.close()" class="btext" title="Close the Window">
+	</td>
+   </tr>
+   </table>
+    </form>

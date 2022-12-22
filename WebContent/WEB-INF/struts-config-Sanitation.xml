@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd"> 
+
+<struts-config>
+<data-sources>
+	<data-source type="org.apache.commons.dbcp.BasicDataSource">
+		<set-property property="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <set-property property="url" value="jdbc:oracle:thin:@10.160.19.167:1521:orastg"/>
+		<set-property property="username" value="preduser"/>
+		<set-property property="password" value="preduser"/>
+	</data-source>
+</data-sources>
+
+<form-beans>
+<form-bean name="IhhlForm" type="org.apache.struts.action.DynaActionForm">
+	<form-property name="district" type="java.lang.String"/>
+		<form-property name="mandal" type="java.lang.String"/>
+		<form-property name="panchayat" type="java.lang.String"/>
+		<form-property name="village" type="java.lang.String"/>
+		<form-property name="habCode" type="java.lang.String"/>
+		<form-property name="category" type="java.lang.String"/>
+		<form-property name="subcategory" type="java.lang.String"/>
+		<form-property name="CATEGORY_CODE" type="java.lang.String"/>
+		<form-property name="cardid" type="java.lang.String"/>
+		<form-property name="cardtypes" type="java.lang.String"/>
+		
+		<form-property name="Constituency" type="java.lang.String"/>
+		<form-property name="compl_stat"  type="java.lang.String[]"/>
+		<form-property name="subcat"  type="java.lang.String"/>
+		<form-property name="cst" type="java.lang.String"/>
+		<form-property name="csc"            type="java.lang.String"/>
+		<form-property name="ctot"           type="java.lang.String"/>
+		<form-property name="tot_wat_supl"   type="java.lang.String"/>
+		<form-property name="ext_wat_lvl"    type="java.lang.String"/>
+		<form-property name="near_surf_source" type="java.lang.String"/>
+		<form-property name="near_ground_source" type="java.lang.String"/>
+		<form-property name="prev_stat" type="java.lang.String[]"/>
+		<form-property name="prop_year" type="java.lang.String"/>
+		<form-property name="amnt_reqd" type="java.lang.String"/>
+		<form-property name="flopop" type="java.lang.String"/>
+		<form-property name="freason" type="java.lang.String"/>
+		<form-property name="creport" type="java.lang.String" />
+		<form-property name="fields" type="java.lang.String[]" />
+		<form-property name="checkall" type="java.lang.String" />
+		<form-property name="districtName" type="java.lang.String"/>
+		<form-property name="cp_condition" type="java.lang.String"/>
+		<form-property name="csc_condition" type="java.lang.String"/>
+		<form-property name="constituency" type="java.lang.String"/>
+		
+		<form-property name="cst_condition" type="java.lang.String"/>
+		<form-property name="ctot_condition" type="java.lang.String"/>
+		<form-property name="flopop_condition" type="java.lang.String"/>
+		<form-property name="tot_wat_supl_condition" type="java.lang.String"/>
+		<form-property name="ext_wat_lvl_condition" type="java.lang.String"/>
+		<form-property name="near_surf_source_condition" type="java.lang.String"/>
+		<form-property name="near_ground_source_condition" type="java.lang.String"/>
+		<form-property name="amnt_reqd_condition" type="java.lang.String"/>
+		<form-property name="popdet" type="java.lang.String[]"/>
+<!--added by swapna-->
+		<form-property name="gen" type="java.lang.String"/>
+		<form-property name="cardtype" type="java.lang.String"/>
+		<form-property name="cat" type="java.lang.String"/>
+	</form-bean>
+
+
+</form-beans>
+<global-forwards>
+	<forward name="ExceptionPage" path="/CheckList_Exception_Page.jsp"/>
+</global-forwards>
+<action-mappings>
+
+<action path="/IhhlReport" name="IhhlForm" scope="request"  type="nic.watersoft.Sanitation.IhhlReportAct">
+  	   <forward name="inFlexi" path="/rws_ihhl_jb_report_form.jsp" />
+  	   <forward name="outFlex" path="/rws_ihhl_jb_list_form.jsp" />
+  	   
+		<forward name="expire" path="/sessionExpired.jsp"/>
+	</action>
+
+</action-mappings>
+
+<message-resources parameter="nic.watersoft.resources.ApplicationResources" /> 
+
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation-wquality.xml"/>
+</plug-in>
+
+</struts-config>

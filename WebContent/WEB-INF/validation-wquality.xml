@@ -1,0 +1,160 @@
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN" 
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+	
+	<formset>
+			<form name="waterSampleForm">
+			
+			<field property="circleOfficeCode" depends="required">
+		 		<arg0 key="app.circle" />
+			</field>
+		
+			<field property="divisionOfficeCode" depends="required">
+		 		<arg0 key="app.division" />
+			</field>
+  		
+  			<field property="subdivisionOfficeCode" depends="required">
+		 		<arg0 key="app.subdivision" />
+			</field>						
+
+			<field property="mandalCode" depends="required">
+		 		<arg0 key="app.mandal" />
+			</field>
+			
+			<field property="panchayatCode" depends="required">
+		 		<arg0 key="app.panchayat" />
+			</field>
+			
+			<field property="villageCode" depends="required">
+		 		<arg0 key="app.village" />
+			</field>
+			
+			
+			<field property="habCode" depends="required">
+		 		<arg0 key="app.habitation" />
+			</field>
+				 
+			<field property="sourceCode"  depends="required">
+			<arg0 key="app.source" />
+			</field>
+			
+			<field property="testCode"  depends="required">
+			<arg0 key="app.typeOfTest" />
+			</field>
+			
+			<field property="natureOfTest" depends="required">
+		 		<arg0 key="app.natureOfTest" />
+			</field>
+			
+			
+			<field property="sampCollectCode" depends="required">
+		 		<arg0 key="app.sampCollectCode" />
+			</field>
+			
+			
+			<field property="sampCollectDate"  depends="required,date">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.sampCollectDate" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+					
+			<field property="labCode"  depends="required">
+			<arg0 key="app.labCode" />
+			</field>
+			
+						
+	</form>
+		<form name="waterSampleResForm">
+			<field property="testCode" depends="required">
+		 		<arg0 key="app.testCode" />
+			</field>
+			<field property="testPCode"  depends="required">
+			<arg0 key="app.testPCode" />
+			</field>
+		</form>
+		
+		 <form name="wqFinalIdenForm">
+			<field property="habCode" depends="required">
+		 		<arg0 key="app.Hab" />
+			</field>
+			
+			<field property="sourceCode"  depends="required">
+			<arg0 key="app.sourceCode" />
+			</field>
+			
+			<field property="workCode"  depends="required">
+			  <arg0 key="app.workId" />
+			</field>
+			
+			<field property="subprgmCode"  depends="required">
+			   <arg0 key="app.subprgmCode" />
+			</field>
+			
+			<field property="prgmCode"  depends="required">
+			   <arg0 key="app.prgmCode" />
+			</field>
+			
+			<field property="siteIdenData"  depends="required,date">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.siteIdenData" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			
+			<field property="empcode"  depends="required">
+			   <arg0 key="app.employeeCode" />
+			</field>
+			
+			<field property="finalised"  depends="required">
+			   <arg0 key="app.finalised" />
+			</field>
+			
+			<field property="finalDate"  depends="required,date">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.finalDate" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			
+			<field property="remarks"  depends="required">
+			   <arg0 key="app.remarks" />
+			</field>
+			
+		</form>	
+			
+          <form name="wqDrillStatusForm">
+			<field property="workCode" depends="required">
+		 		<arg0 key="app.workId" />
+			</field>
+			
+			<field property="drillStatus"  depends="required">
+			<arg0 key="app.drillStatus" />
+			</field>
+			
+			<field property="drillDate"  depends="required,date">
+				<msg name="mask" key="errors.datevalids" />
+				<arg0 key="app.drillDate" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			
+			<field property="yield"  depends="required,float">
+			 <arg0 key="app.yield" />
+			 
+			</field>
+			
+		</form>
+	</formset>
+	
+</form-validation>
